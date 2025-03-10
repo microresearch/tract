@@ -1,0 +1,645 @@
+ARM GAS  /tmp/ccbhKxhV.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/english2phoneme/phoneme.lst 
+ input file    	: /tmp/ccbhKxhV.s
+ output file   	: src/english2phoneme/phoneme.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:36:00.000+0100
+
+ARM GAS  /tmp/ccbhKxhV.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"phoneme.c"
+  15              		.text
+  16              		.section	.text.isvowel,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	isvowel
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	isvowel, %function
+  24              	isvowel:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 4138     		subs	r0, r0, #65
+  29 0002 00F0FF00 		and	r0, r0, #255
+  30 0006 1428     		cmp	r0, #20
+  31 0008 05D8     		bhi	.L3
+  32 000a 044B     		ldr	r3, .L5
+  33 000c 23FA00F0 		lsr	r0, r3, r0
+  34 0010 00F00100 		and	r0, r0, #1
+  35 0014 7047     		bx	lr
+  36              	.L3:
+  37 0016 0020     		movs	r0, #0
+  38 0018 7047     		bx	lr
+  39              	.L6:
+  40 001a 00BF     		.align	2
+  41              	.L5:
+  42 001c 11411000 		.word	1065233
+  43              		.size	isvowel, .-isvowel
+  44              		.section	.text.isconsonant,"ax",%progbits
+  45              		.align	1
+  46              		.p2align 2,,3
+  47              		.global	isconsonant
+  48              		.syntax unified
+  49              		.thumb
+  50              		.thumb_func
+  51              		.type	isconsonant, %function
+  52              	isconsonant:
+  53              		@ args = 0, pretend = 0, frame = 0
+  54              		@ frame_needed = 0, uses_anonymous_args = 0
+  55              		@ link register save eliminated.
+  56 0000 4138     		subs	r0, r0, #65
+  57 0002 00F0FF00 		and	r0, r0, #255
+ARM GAS  /tmp/ccbhKxhV.s 			page 3
+
+
+  58 0006 1928     		cmp	r0, #25
+  59 0008 09D8     		bhi	.L9
+  60 000a 1428     		cmp	r0, #20
+  61 000c 09D8     		bhi	.L10
+  62 000e 064B     		ldr	r3, .L11
+  63 0010 23FA00F0 		lsr	r0, r3, r0
+  64 0014 00F00100 		and	r0, r0, #1
+  65 0018 80F00100 		eor	r0, r0, #1
+  66 001c 7047     		bx	lr
+  67              	.L9:
+  68 001e 0020     		movs	r0, #0
+  69 0020 7047     		bx	lr
+  70              	.L10:
+  71 0022 0120     		movs	r0, #1
+  72 0024 7047     		bx	lr
+  73              	.L12:
+  74 0026 00BF     		.align	2
+  75              	.L11:
+  76 0028 11411000 		.word	1065233
+  77              		.size	isconsonant, .-isconsonant
+  78              		.section	.text.outnum,"ax",%progbits
+  79              		.align	1
+  80              		.p2align 2,,3
+  81              		.global	outnum
+  82              		.syntax unified
+  83              		.thumb
+  84              		.thumb_func
+  85              		.type	outnum, %function
+  86              	outnum:
+  87              		@ Volatile: function does not return.
+  88              		@ args = 0, pretend = 0, frame = 0
+  89              		@ frame_needed = 0, uses_anonymous_args = 0
+  90              		@ link register save eliminated.
+  91 0000 074C     		ldr	r4, .L15
+  92 0002 421E     		subs	r2, r0, #1
+  93 0004 0749     		ldr	r1, .L15+4
+  94 0006 2568     		ldr	r5, [r4]
+  95 0008 2944     		add	r1, r1, r5
+  96              	.L14:
+  97 000a 931C     		adds	r3, r2, #2
+  98 000c 92F801C0 		ldrb	ip, [r2, #1]	@ zero_extendqisi2
+  99 0010 0132     		adds	r2, r2, #1
+ 100 0012 2B44     		add	r3, r3, r5
+ 101 0014 01F801CF 		strb	ip, [r1, #1]!
+ 102 0018 1B1A     		subs	r3, r3, r0
+ 103 001a 2360     		str	r3, [r4]
+ 104 001c F5E7     		b	.L14
+ 105              	.L16:
+ 106 001e 00BF     		.align	2
+ 107              	.L15:
+ 108 0020 00000000 		.word	output_count
+ 109 0024 FFFFFFFF 		.word	output_array-1
+ 110              		.size	outnum, .-outnum
+ 111              		.section	.text.leftmatch,"ax",%progbits
+ 112              		.align	1
+ 113              		.p2align 2,,3
+ 114              		.global	leftmatch
+ARM GAS  /tmp/ccbhKxhV.s 			page 4
+
+
+ 115              		.syntax unified
+ 116              		.thumb
+ 117              		.thumb_func
+ 118              		.type	leftmatch, %function
+ 119              	leftmatch:
+ 120              		@ args = 0, pretend = 0, frame = 0
+ 121              		@ frame_needed = 0, uses_anonymous_args = 0
+ 122 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 123 0002 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 124 0004 002B     		cmp	r3, #0
+ 125 0006 60D0     		beq	.L35
+ 126 0008 0446     		mov	r4, r0
+ 127 000a 0D46     		mov	r5, r1
+ 128 000c FFF7FEFF 		bl	strlen
+ 129 0010 411E     		subs	r1, r0, #1
+ 130 0012 6618     		adds	r6, r4, r1
+ 131 0014 0028     		cmp	r0, #0
+ 132 0016 58D0     		beq	.L35
+ 133 0018 2218     		adds	r2, r4, r0
+ 134 001a 4E4C     		ldr	r4, .L63
+ 135              	.L33:
+ 136 001c 12F8013D 		ldrb	r3, [r2, #-1]!	@ zero_extendqisi2
+ 137 0020 E05C     		ldrb	r0, [r4, r3]	@ zero_extendqisi2
+ 138 0022 8707     		lsls	r7, r0, #30
+ 139 0024 06D1     		bne	.L44
+ 140 0026 202B     		cmp	r3, #32
+ 141 0028 18BF     		it	ne
+ 142 002a 272B     		cmpne	r3, #39
+ 143 002c 0CBF     		ite	eq
+ 144 002e 0120     		moveq	r0, #1
+ 145 0030 0020     		movne	r0, #0
+ 146 0032 04D1     		bne	.L19
+ 147              	.L44:
+ 148 0034 2878     		ldrb	r0, [r5]	@ zero_extendqisi2
+ 149 0036 9842     		cmp	r0, r3
+ 150 0038 43D0     		beq	.L45
+ 151              	.L43:
+ 152 003a 0020     		movs	r0, #0
+ 153              	.L17:
+ 154 003c F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 155              	.L19:
+ 156 003e 3A2B     		cmp	r3, #58
+ 157 0040 38D8     		bhi	.L22
+ 158 0042 222B     		cmp	r3, #34
+ 159 0044 FAD9     		bls	.L17
+ 160 0046 233B     		subs	r3, r3, #35
+ 161 0048 172B     		cmp	r3, #23
+ 162 004a F6D8     		bhi	.L43
+ 163 004c 01A0     		adr	r0, .L24
+ 164 004e 50F823F0 		ldr	pc, [r0, r3, lsl #2]
+ 165 0052 00BF     		.p2align 2
+ 166              	.L24:
+ 167 0054 21010000 		.word	.L27+1
+ 168 0058 3B000000 		.word	.L43+1
+ 169 005c 3B000000 		.word	.L43+1
+ 170 0060 3B000000 		.word	.L43+1
+ 171 0064 3B000000 		.word	.L43+1
+ARM GAS  /tmp/ccbhKxhV.s 			page 5
+
+
+ 172 0068 3B000000 		.word	.L43+1
+ 173 006c 3B000000 		.word	.L43+1
+ 174 0070 3B000000 		.word	.L43+1
+ 175 0074 11010000 		.word	.L26+1
+ 176 0078 3B000000 		.word	.L43+1
+ 177 007c 3B000000 		.word	.L43+1
+ 178 0080 F3000000 		.word	.L25+1
+ 179 0084 3B000000 		.word	.L43+1
+ 180 0088 3B000000 		.word	.L43+1
+ 181 008c 3B000000 		.word	.L43+1
+ 182 0090 3B000000 		.word	.L43+1
+ 183 0094 3B000000 		.word	.L43+1
+ 184 0098 3B000000 		.word	.L43+1
+ 185 009c 3B000000 		.word	.L43+1
+ 186 00a0 3B000000 		.word	.L43+1
+ 187 00a4 3B000000 		.word	.L43+1
+ 188 00a8 3B000000 		.word	.L43+1
+ 189 00ac 3B000000 		.word	.L43+1
+ 190 00b0 CF000000 		.word	.L23+1
+ 191              		.p2align 1
+ 192              	.L22:
+ 193 00b4 5E2B     		cmp	r3, #94
+ 194 00b6 C1D1     		bne	.L17
+ 195 00b8 2878     		ldrb	r0, [r5]	@ zero_extendqisi2
+ 196 00ba FFF7FEFF 		bl	isconsonant
+ 197 00be 0028     		cmp	r0, #0
+ 198 00c0 BCD0     		beq	.L17
+ 199              	.L45:
+ 200 00c2 013D     		subs	r5, r5, #1
+ 201              	.L21:
+ 202 00c4 8B1B     		subs	r3, r1, r6
+ 203 00c6 D342     		cmn	r3, r2
+ 204 00c8 A8D1     		bne	.L33
+ 205              	.L35:
+ 206 00ca 0120     		movs	r0, #1
+ 207 00cc F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 208              	.L23:
+ 209 00ce 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 210 00d0 413B     		subs	r3, r3, #65
+ 211 00d2 D8B2     		uxtb	r0, r3
+ 212 00d4 1928     		cmp	r0, #25
+ 213 00d6 F5D8     		bhi	.L21
+ 214 00d8 1F4F     		ldr	r7, .L63+4
+ 215              	.L30:
+ 216 00da DBB2     		uxtb	r3, r3
+ 217 00dc 27FA03F3 		lsr	r3, r7, r3
+ 218 00e0 DB07     		lsls	r3, r3, #31
+ 219 00e2 EFD4     		bmi	.L21
+ 220 00e4 15F8013D 		ldrb	r3, [r5, #-1]!	@ zero_extendqisi2
+ 221 00e8 413B     		subs	r3, r3, #65
+ 222 00ea D8B2     		uxtb	r0, r3
+ 223 00ec 1928     		cmp	r0, #25
+ 224 00ee F4D9     		bls	.L30
+ 225 00f0 E8E7     		b	.L21
+ 226              	.L25:
+ 227 00f2 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 228 00f4 422B     		cmp	r3, #66
+ARM GAS  /tmp/ccbhKxhV.s 			page 6
+
+
+ 229 00f6 E4D0     		beq	.L45
+ 230 00f8 442B     		cmp	r3, #68
+ 231 00fa E2D0     		beq	.L45
+ 232 00fc 473B     		subs	r3, r3, #71
+ 233 00fe DBB2     		uxtb	r3, r3
+ 234 0100 132B     		cmp	r3, #19
+ 235 0102 9AD8     		bhi	.L43
+ 236 0104 1548     		ldr	r0, .L63+8
+ 237 0106 D840     		lsrs	r0, r0, r3
+ 238 0108 10F00100 		ands	r0, r0, #1
+ 239 010c D9D1     		bne	.L45
+ 240 010e F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 241              	.L26:
+ 242 0110 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 243 0112 03F0EF00 		and	r0, r3, #239
+ 244 0116 4928     		cmp	r0, #73
+ 245 0118 D3D0     		beq	.L45
+ 246 011a 452B     		cmp	r3, #69
+ 247 011c D1D0     		beq	.L45
+ 248 011e 8CE7     		b	.L43
+ 249              	.L27:
+ 250 0120 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 251 0122 413B     		subs	r3, r3, #65
+ 252 0124 DBB2     		uxtb	r3, r3
+ 253 0126 142B     		cmp	r3, #20
+ 254 0128 87D8     		bhi	.L43
+ 255 012a 0B4F     		ldr	r7, .L63+4
+ 256 012c 27FA03F3 		lsr	r3, r7, r3
+ 257 0130 13F00100 		ands	r0, r3, #1
+ 258 0134 82D0     		beq	.L17
+ 259 0136 681E     		subs	r0, r5, #1
+ 260              	.L29:
+ 261 0138 0546     		mov	r5, r0
+ 262 013a 0138     		subs	r0, r0, #1
+ 263 013c 2B78     		ldrb	r3, [r5]	@ zero_extendqisi2
+ 264 013e 413B     		subs	r3, r3, #65
+ 265 0140 DBB2     		uxtb	r3, r3
+ 266 0142 142B     		cmp	r3, #20
+ 267 0144 27FA03FC 		lsr	ip, r7, r3
+ 268 0148 BCD8     		bhi	.L21
+ 269 014a 1CF0010F 		tst	ip, #1
+ 270 014e F3D1     		bne	.L29
+ 271 0150 B8E7     		b	.L21
+ 272              	.L64:
+ 273 0152 00BF     		.align	2
+ 274              	.L63:
+ 275 0154 01000000 		.word	_ctype_+1
+ 276 0158 11411000 		.word	1065233
+ 277 015c E9880900 		.word	624873
+ 278              		.size	leftmatch, .-leftmatch
+ 279              		.section	.text.rightmatch,"ax",%progbits
+ 280              		.align	1
+ 281              		.p2align 2,,3
+ 282              		.global	rightmatch
+ 283              		.syntax unified
+ 284              		.thumb
+ 285              		.thumb_func
+ARM GAS  /tmp/ccbhKxhV.s 			page 7
+
+
+ 286              		.type	rightmatch, %function
+ 287              	rightmatch:
+ 288              		@ args = 0, pretend = 0, frame = 0
+ 289              		@ frame_needed = 0, uses_anonymous_args = 0
+ 290 0000 38B5     		push	{r3, r4, r5, lr}
+ 291 0002 0378     		ldrb	r3, [r0]	@ zero_extendqisi2
+ 292 0004 002B     		cmp	r3, #0
+ 293 0006 57D0     		beq	.L86
+ 294 0008 0246     		mov	r2, r0
+ 295 000a 5E4C     		ldr	r4, .L124
+ 296              	.L85:
+ 297 000c E05C     		ldrb	r0, [r4, r3]	@ zero_extendqisi2
+ 298 000e 8507     		lsls	r5, r0, #30
+ 299 0010 06D1     		bne	.L100
+ 300 0012 202B     		cmp	r3, #32
+ 301 0014 18BF     		it	ne
+ 302 0016 272B     		cmpne	r3, #39
+ 303 0018 0CBF     		ite	eq
+ 304 001a 0120     		moveq	r0, #1
+ 305 001c 0020     		movne	r0, #0
+ 306 001e 04D1     		bne	.L67
+ 307              	.L100:
+ 308 0020 0878     		ldrb	r0, [r1]	@ zero_extendqisi2
+ 309 0022 9842     		cmp	r0, r3
+ 310 0024 43D0     		beq	.L101
+ 311              	.L99:
+ 312 0026 0020     		movs	r0, #0
+ 313              	.L65:
+ 314 0028 38BD     		pop	{r3, r4, r5, pc}
+ 315              	.L67:
+ 316 002a 3A2B     		cmp	r3, #58
+ 317 002c 38D8     		bhi	.L70
+ 318 002e 222B     		cmp	r3, #34
+ 319 0030 FAD9     		bls	.L65
+ 320 0032 233B     		subs	r3, r3, #35
+ 321 0034 172B     		cmp	r3, #23
+ 322 0036 F6D8     		bhi	.L99
+ 323 0038 01A0     		adr	r0, .L72
+ 324 003a 50F823F0 		ldr	pc, [r0, r3, lsl #2]
+ 325 003e 00BF     		.p2align 2
+ 326              	.L72:
+ 327 0040 29010000 		.word	.L76+1
+ 328 0044 27000000 		.word	.L99+1
+ 329 0048 0F010000 		.word	.L75+1
+ 330 004c 27000000 		.word	.L99+1
+ 331 0050 27000000 		.word	.L99+1
+ 332 0054 27000000 		.word	.L99+1
+ 333 0058 27000000 		.word	.L99+1
+ 334 005c 27000000 		.word	.L99+1
+ 335 0060 FF000000 		.word	.L74+1
+ 336 0064 27000000 		.word	.L99+1
+ 337 0068 27000000 		.word	.L99+1
+ 338 006c E1000000 		.word	.L73+1
+ 339 0070 27000000 		.word	.L99+1
+ 340 0074 27000000 		.word	.L99+1
+ 341 0078 27000000 		.word	.L99+1
+ 342 007c 27000000 		.word	.L99+1
+ARM GAS  /tmp/ccbhKxhV.s 			page 8
+
+
+ 343 0080 27000000 		.word	.L99+1
+ 344 0084 27000000 		.word	.L99+1
+ 345 0088 27000000 		.word	.L99+1
+ 346 008c 27000000 		.word	.L99+1
+ 347 0090 27000000 		.word	.L99+1
+ 348 0094 27000000 		.word	.L99+1
+ 349 0098 27000000 		.word	.L99+1
+ 350 009c BD000000 		.word	.L71+1
+ 351              		.p2align 1
+ 352              	.L70:
+ 353 00a0 5E2B     		cmp	r3, #94
+ 354 00a2 C1D1     		bne	.L65
+ 355 00a4 0878     		ldrb	r0, [r1]	@ zero_extendqisi2
+ 356 00a6 FFF7FEFF 		bl	isconsonant
+ 357 00aa 0028     		cmp	r0, #0
+ 358 00ac BCD0     		beq	.L65
+ 359              	.L101:
+ 360 00ae 0131     		adds	r1, r1, #1
+ 361              	.L69:
+ 362 00b0 12F8013F 		ldrb	r3, [r2, #1]!	@ zero_extendqisi2
+ 363 00b4 002B     		cmp	r3, #0
+ 364 00b6 A9D1     		bne	.L85
+ 365              	.L86:
+ 366 00b8 0120     		movs	r0, #1
+ 367 00ba 38BD     		pop	{r3, r4, r5, pc}
+ 368              	.L71:
+ 369 00bc 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 370 00be 413B     		subs	r3, r3, #65
+ 371 00c0 D8B2     		uxtb	r0, r3
+ 372 00c2 1928     		cmp	r0, #25
+ 373 00c4 F4D8     		bhi	.L69
+ 374 00c6 304D     		ldr	r5, .L124+4
+ 375              	.L79:
+ 376 00c8 DBB2     		uxtb	r3, r3
+ 377 00ca 25FA03F3 		lsr	r3, r5, r3
+ 378 00ce DB07     		lsls	r3, r3, #31
+ 379 00d0 EED4     		bmi	.L69
+ 380 00d2 11F8013F 		ldrb	r3, [r1, #1]!	@ zero_extendqisi2
+ 381 00d6 413B     		subs	r3, r3, #65
+ 382 00d8 D8B2     		uxtb	r0, r3
+ 383 00da 1928     		cmp	r0, #25
+ 384 00dc F4D9     		bls	.L79
+ 385 00de E7E7     		b	.L69
+ 386              	.L73:
+ 387 00e0 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 388 00e2 422B     		cmp	r3, #66
+ 389 00e4 E3D0     		beq	.L101
+ 390 00e6 442B     		cmp	r3, #68
+ 391 00e8 E1D0     		beq	.L101
+ 392 00ea 473B     		subs	r3, r3, #71
+ 393 00ec D8B2     		uxtb	r0, r3
+ 394 00ee 1328     		cmp	r0, #19
+ 395 00f0 99D8     		bhi	.L99
+ 396 00f2 264B     		ldr	r3, .L124+8
+ 397 00f4 C340     		lsrs	r3, r3, r0
+ 398 00f6 13F00103 		ands	r3, r3, #1
+ 399 00fa D8D1     		bne	.L101
+ARM GAS  /tmp/ccbhKxhV.s 			page 9
+
+
+ 400 00fc 93E7     		b	.L99
+ 401              	.L74:
+ 402 00fe 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 403 0100 03F0EF00 		and	r0, r3, #239
+ 404 0104 4928     		cmp	r0, #73
+ 405 0106 D2D0     		beq	.L101
+ 406 0108 452B     		cmp	r3, #69
+ 407 010a D0D0     		beq	.L101
+ 408 010c 8BE7     		b	.L99
+ 409              	.L75:
+ 410 010e 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 411 0110 452B     		cmp	r3, #69
+ 412 0112 24D0     		beq	.L122
+ 413 0114 492B     		cmp	r3, #73
+ 414 0116 86D1     		bne	.L99
+ 415 0118 4B78     		ldrb	r3, [r1, #1]	@ zero_extendqisi2
+ 416 011a 4E2B     		cmp	r3, #78
+ 417 011c 83D1     		bne	.L99
+ 418 011e 8B78     		ldrb	r3, [r1, #2]	@ zero_extendqisi2
+ 419 0120 472B     		cmp	r3, #71
+ 420 0122 80D1     		bne	.L99
+ 421              	.L120:
+ 422 0124 0331     		adds	r1, r1, #3
+ 423 0126 C3E7     		b	.L69
+ 424              	.L76:
+ 425 0128 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 426 012a 413B     		subs	r3, r3, #65
+ 427 012c DBB2     		uxtb	r3, r3
+ 428 012e 142B     		cmp	r3, #20
+ 429 0130 3FF679AF 		bhi	.L99
+ 430 0134 144D     		ldr	r5, .L124+4
+ 431 0136 25FA03F3 		lsr	r3, r5, r3
+ 432 013a 13F00100 		ands	r0, r3, #1
+ 433 013e 3FF473AF 		beq	.L65
+ 434 0142 481C     		adds	r0, r1, #1
+ 435              	.L78:
+ 436 0144 0146     		mov	r1, r0
+ 437 0146 0130     		adds	r0, r0, #1
+ 438 0148 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 439 014a 413B     		subs	r3, r3, #65
+ 440 014c DBB2     		uxtb	r3, r3
+ 441 014e 142B     		cmp	r3, #20
+ 442 0150 25FA03FC 		lsr	ip, r5, r3
+ 443 0154 ACD8     		bhi	.L69
+ 444 0156 1CF0010F 		tst	ip, #1
+ 445 015a F3D1     		bne	.L78
+ 446 015c A8E7     		b	.L69
+ 447              	.L122:
+ 448 015e 4B78     		ldrb	r3, [r1, #1]	@ zero_extendqisi2
+ 449 0160 481C     		adds	r0, r1, #1
+ 450 0162 4C2B     		cmp	r3, #76
+ 451 0164 09D0     		beq	.L123
+ 452 0166 A3F15205 		sub	r5, r3, #82
+ 453 016a 012D     		cmp	r5, #1
+ 454 016c 03D9     		bls	.L102
+ 455 016e 442B     		cmp	r3, #68
+ 456 0170 01D0     		beq	.L102
+ARM GAS  /tmp/ccbhKxhV.s 			page 10
+
+
+ 457 0172 0146     		mov	r1, r0
+ 458 0174 9CE7     		b	.L69
+ 459              	.L102:
+ 460 0176 0231     		adds	r1, r1, #2
+ 461 0178 9AE7     		b	.L69
+ 462              	.L123:
+ 463 017a 8B78     		ldrb	r3, [r1, #2]	@ zero_extendqisi2
+ 464 017c 592B     		cmp	r3, #89
+ 465 017e D1D0     		beq	.L120
+ 466 0180 0146     		mov	r1, r0
+ 467 0182 95E7     		b	.L69
+ 468              	.L125:
+ 469              		.align	2
+ 470              	.L124:
+ 471 0184 01000000 		.word	_ctype_+1
+ 472 0188 11411000 		.word	1065233
+ 473 018c E9880900 		.word	624873
+ 474              		.size	rightmatch, .-rightmatch
+ 475              		.section	.text.find_rule,"ax",%progbits
+ 476              		.align	1
+ 477              		.p2align 2,,3
+ 478              		.global	find_rule
+ 479              		.syntax unified
+ 480              		.thumb
+ 481              		.thumb_func
+ 482              		.type	find_rule, %function
+ 483              	find_rule:
+ 484              		@ args = 0, pretend = 0, frame = 0
+ 485              		@ frame_needed = 0, uses_anonymous_args = 0
+ 486 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 487 0004 9146     		mov	r9, r2
+ 488 0006 5268     		ldr	r2, [r2, #4]
+ 489 0008 0D46     		mov	r5, r1
+ 490 000a CAB1     		cbz	r2, .L127
+ 491 000c 4E1E     		subs	r6, r1, #1
+ 492 000e 0446     		mov	r4, r0
+ 493 0010 09F11409 		add	r9, r9, #20
+ 494 0014 8719     		adds	r7, r0, r6
+ 495              	.L128:
+ 496 0016 1378     		ldrb	r3, [r2]	@ zero_extendqisi2
+ 497 0018 ABB1     		cbz	r3, .L148
+ 498 001a 04EB060C 		add	ip, r4, r6
+ 499 001e A846     		mov	r8, r5
+ 500 0020 04E0     		b	.L132
+ 501              	.L149:
+ 502 0022 12F8013F 		ldrb	r3, [r2, #1]!	@ zero_extendqisi2
+ 503 0026 08F10108 		add	r8, r8, #1
+ 504 002a 6BB1     		cbz	r3, .L130
+ 505              	.L132:
+ 506 002c 1CF8011F 		ldrb	r1, [ip, #1]!	@ zero_extendqisi2
+ 507 0030 9942     		cmp	r1, r3
+ 508 0032 F6D0     		beq	.L149
+ 509              	.L131:
+ 510 0034 D9F80420 		ldr	r2, [r9, #4]
+ 511 0038 09F11409 		add	r9, r9, #20
+ 512 003c 002A     		cmp	r2, #0
+ 513 003e EAD1     		bne	.L128
+ARM GAS  /tmp/ccbhKxhV.s 			page 11
+
+
+ 514              	.L127:
+ 515 0040 681C     		adds	r0, r5, #1
+ 516 0042 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 517              	.L148:
+ 518 0046 A846     		mov	r8, r5
+ 519              	.L130:
+ 520 0048 3946     		mov	r1, r7
+ 521 004a 59F8140C 		ldr	r0, [r9, #-20]
+ 522 004e FFF7FEFF 		bl	leftmatch
+ 523 0052 0028     		cmp	r0, #0
+ 524 0054 EED0     		beq	.L131
+ 525 0056 04EB0801 		add	r1, r4, r8
+ 526 005a 59F80C0C 		ldr	r0, [r9, #-12]
+ 527 005e FFF7FEFF 		bl	rightmatch
+ 528 0062 0028     		cmp	r0, #0
+ 529 0064 E6D0     		beq	.L131
+ 530 0066 A9F10800 		sub	r0, r9, #8
+ 531 006a FFF7FEFF 		bl	outnum
+ 532              		.size	find_rule, .-find_rule
+ 533 006e 00BF     		.section	.text.xlate_word,"ax",%progbits
+ 534              		.align	1
+ 535              		.p2align 2,,3
+ 536              		.global	xlate_word
+ 537              		.syntax unified
+ 538              		.thumb
+ 539              		.thumb_func
+ 540              		.type	xlate_word, %function
+ 541              	xlate_word:
+ 542              		@ args = 0, pretend = 0, frame = 0
+ 543              		@ frame_needed = 0, uses_anonymous_args = 0
+ 544 0000 38B5     		push	{r3, r4, r5, lr}
+ 545 0002 0121     		movs	r1, #1
+ 546 0004 0A4D     		ldr	r5, .L156
+ 547 0006 0446     		mov	r4, r0
+ 548 0008 4278     		ldrb	r2, [r0, #1]	@ zero_extendqisi2
+ 549              	.L152:
+ 550 000a A2F14103 		sub	r3, r2, #65
+ 551 000e 4FF0000C 		mov	ip, #0
+ 552 0012 2046     		mov	r0, r4
+ 553 0014 192B     		cmp	r3, #25
+ 554 0016 98BF     		it	ls
+ 555 0018 A2F1400C 		subls	ip, r2, #64
+ 556 001c 55F82C20 		ldr	r2, [r5, ip, lsl #2]
+ 557 0020 FFF7FEFF 		bl	find_rule
+ 558 0024 225C     		ldrb	r2, [r4, r0]	@ zero_extendqisi2
+ 559 0026 0146     		mov	r1, r0
+ 560 0028 002A     		cmp	r2, #0
+ 561 002a EED1     		bne	.L152
+ 562 002c 38BD     		pop	{r3, r4, r5, pc}
+ 563              	.L157:
+ 564 002e 00BF     		.align	2
+ 565              	.L156:
+ 566 0030 00000000 		.word	Rules
+ 567              		.size	xlate_word, .-xlate_word
+ 568              		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/ccbhKxhV.s 			page 12
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 phoneme.c
+     /tmp/ccbhKxhV.s:17     .text.isvowel:00000000 $t
+     /tmp/ccbhKxhV.s:24     .text.isvowel:00000000 isvowel
+     /tmp/ccbhKxhV.s:42     .text.isvowel:0000001c $d
+     /tmp/ccbhKxhV.s:45     .text.isconsonant:00000000 $t
+     /tmp/ccbhKxhV.s:52     .text.isconsonant:00000000 isconsonant
+     /tmp/ccbhKxhV.s:76     .text.isconsonant:00000028 $d
+     /tmp/ccbhKxhV.s:79     .text.outnum:00000000 $t
+     /tmp/ccbhKxhV.s:86     .text.outnum:00000000 outnum
+     /tmp/ccbhKxhV.s:108    .text.outnum:00000020 $d
+     /tmp/ccbhKxhV.s:112    .text.leftmatch:00000000 $t
+     /tmp/ccbhKxhV.s:119    .text.leftmatch:00000000 leftmatch
+     /tmp/ccbhKxhV.s:167    .text.leftmatch:00000054 $d
+     /tmp/ccbhKxhV.s:191    .text.leftmatch:000000b4 $t
+     /tmp/ccbhKxhV.s:275    .text.leftmatch:00000154 $d
+     /tmp/ccbhKxhV.s:280    .text.rightmatch:00000000 $t
+     /tmp/ccbhKxhV.s:287    .text.rightmatch:00000000 rightmatch
+     /tmp/ccbhKxhV.s:327    .text.rightmatch:00000040 $d
+     /tmp/ccbhKxhV.s:351    .text.rightmatch:000000a0 $t
+     /tmp/ccbhKxhV.s:471    .text.rightmatch:00000184 $d
+     /tmp/ccbhKxhV.s:476    .text.find_rule:00000000 $t
+     /tmp/ccbhKxhV.s:483    .text.find_rule:00000000 find_rule
+     /tmp/ccbhKxhV.s:534    .text.xlate_word:00000000 $t
+     /tmp/ccbhKxhV.s:541    .text.xlate_word:00000000 xlate_word
+     /tmp/ccbhKxhV.s:566    .text.xlate_word:00000030 $d
+
+UNDEFINED SYMBOLS
+output_count
+output_array
+strlen
+_ctype_
+Rules

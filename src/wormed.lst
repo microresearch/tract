@@ -1,0 +1,1186 @@
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/wormed.lst 
+ input file    	: /tmp/ccZ0Tj7E.s
+ output file   	: src/wormed.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:35:59.000+0100
+
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"wormed.c"
+  15              		.text
+  16              		.section	.text.wormed_newsay,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	wormed_newsay
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	wormed_newsay, %function
+  24              	wormed_newsay:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 7047     		bx	lr
+  29              		.size	wormed_newsay, .-wormed_newsay
+  30 0002 00BF     		.section	.text.chirp_get_sample,"ax",%progbits
+  31              		.align	1
+  32              		.p2align 2,,3
+  33              		.global	chirp_get_sample
+  34              		.syntax unified
+  35              		.thumb
+  36              		.thumb_func
+  37              		.type	chirp_get_sample, %function
+  38              	chirp_get_sample:
+  39              		@ args = 0, pretend = 0, frame = 8
+  40              		@ frame_needed = 0, uses_anonymous_args = 0
+  41              		@ link register save eliminated.
+  42 0000 1C4B     		ldr	r3, .L13
+  43 0002 82B0     		sub	sp, sp, #8
+  44 0004 DFED1C7A 		vldr.32	s15, .L13+4
+  45 0008 93ED007A 		vldr.32	s14, [r3]
+  46 000c 1B49     		ldr	r1, .L13+8
+  47 000e 27EE277A 		vmul.f32	s14, s14, s15
+  48 0012 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+  49 0014 77EEC77A 		vsub.f32	s15, s15, s14
+  50 0018 FCEEE77A 		vcvt.u32.f32	s15, s15
+  51 001c CDED017A 		vstr.32	s15, [sp, #4]	@ int
+  52 0020 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
+  53 0024 9A42     		cmp	r2, r3
+  54 0026 07D9     		bls	.L4
+  55 0028 0133     		adds	r3, r3, #1
+  56 002a DBB2     		uxtb	r3, r3
+  57 002c 282B     		cmp	r3, #40
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 3
+
+
+  58 002e 0B70     		strb	r3, [r1]
+  59 0030 05D9     		bls	.L7
+  60 0032 1348     		ldr	r0, .L13+12
+  61 0034 02B0     		add	sp, sp, #8
+  62              		@ sp needed
+  63 0036 7047     		bx	lr
+  64              	.L4:
+  65 0038 0022     		movs	r2, #0
+  66 003a 1346     		mov	r3, r2
+  67 003c 0A70     		strb	r2, [r1]
+  68              	.L7:
+  69 003e 1149     		ldr	r1, .L13+16
+  70 0040 114A     		ldr	r2, .L13+20
+  71 0042 CB5C     		ldrb	r3, [r1, r3]	@ zero_extendqisi2
+  72 0044 1288     		ldrh	r2, [r2]
+  73 0046 02FB03F3 		mul	r3, r2, r3
+  74 004a 43F30F13 		sbfx	r3, r3, #4, #16
+  75 004e B3F5007F 		cmp	r3, #512
+  76 0052 03DB     		blt	.L12
+  77 0054 6FF0FF00 		mvn	r0, #255
+  78 0058 02B0     		add	sp, sp, #8
+  79              		@ sp needed
+  80 005a 7047     		bx	lr
+  81              	.L12:
+  82 005c 0B4A     		ldr	r2, .L13+24
+  83 005e 9342     		cmp	r3, r2
+  84 0060 B8BF     		it	lt
+  85 0062 1346     		movlt	r3, r2
+  86 0064 C3F38700 		ubfx	r0, r3, #2, #8
+  87 0068 80F08000 		eor	r0, r0, #128
+  88 006c 0002     		lsls	r0, r0, #8
+  89 006e 00B2     		sxth	r0, r0
+  90 0070 02B0     		add	sp, sp, #8
+  91              		@ sp needed
+  92 0072 7047     		bx	lr
+  93              	.L14:
+  94              		.align	2
+  95              	.L13:
+  96 0074 00000000 		.word	_selz
+  97 0078 00007F43 		.word	1132396544
+  98 007c 00000000 		.word	periodCounter.9
+  99 0080 0080FFFF 		.word	-32768
+ 100 0084 00000000 		.word	chirp
+ 101 0088 00000000 		.word	synthEnergy
+ 102 008c 00FEFFFF 		.word	-512
+ 103              		.size	chirp_get_sample, .-chirp_get_sample
+ 104              		.section	.text.votglot_get_sample,"ax",%progbits
+ 105              		.align	1
+ 106              		.p2align 2,,3
+ 107              		.global	votglot_get_sample
+ 108              		.syntax unified
+ 109              		.thumb
+ 110              		.thumb_func
+ 111              		.type	votglot_get_sample, %function
+ 112              	votglot_get_sample:
+ 113              		@ args = 0, pretend = 0, frame = 8
+ 114              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 4
+
+
+ 115              		@ link register save eliminated.
+ 116 0000 134B     		ldr	r3, .L21
+ 117 0002 DFED147A 		vldr.32	s15, .L21+4
+ 118 0006 93ED007A 		vldr.32	s14, [r3]
+ 119 000a 1349     		ldr	r1, .L21+8
+ 120 000c 27EE277A 		vmul.f32	s14, s14, s15
+ 121 0010 10B4     		push	{r4}
+ 122 0012 77EEC77A 		vsub.f32	s15, s15, s14
+ 123 0016 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 124 0018 83B0     		sub	sp, sp, #12
+ 125 001a 232B     		cmp	r3, #35
+ 126 001c FCEEE77A 		vcvt.u32.f32	s15, s15
+ 127 0020 CDED017A 		vstr.32	s15, [sp, #4]	@ int
+ 128 0024 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
+ 129 0028 10D8     		bhi	.L18
+ 130 002a 0C4C     		ldr	r4, .L21+12
+ 131 002c 9808     		lsrs	r0, r3, #2
+ 132 002e 2056     		ldrsb	r0, [r4, r0]
+ 133 0030 0002     		lsls	r0, r0, #8
+ 134              	.L16:
+ 135 0032 0133     		adds	r3, r3, #1
+ 136 0034 82F07F02 		eor	r2, r2, #127
+ 137 0038 03F07F03 		and	r3, r3, #127
+ 138 003c 9342     		cmp	r3, r2
+ 139 003e 08BF     		it	eq
+ 140 0040 0023     		moveq	r3, #0
+ 141 0042 0B70     		strb	r3, [r1]
+ 142 0044 03B0     		add	sp, sp, #12
+ 143              		@ sp needed
+ 144 0046 5DF8044B 		ldr	r4, [sp], #4
+ 145 004a 7047     		bx	lr
+ 146              	.L18:
+ 147 004c 0020     		movs	r0, #0
+ 148 004e F0E7     		b	.L16
+ 149              	.L22:
+ 150              		.align	2
+ 151              	.L21:
+ 152 0050 00000000 		.word	_selz
+ 153 0054 00007F43 		.word	1132396544
+ 154 0058 00000000 		.word	periodCounter.8
+ 155 005c 00000000 		.word	glottal_wave
+ 156              		.size	votglot_get_sample, .-votglot_get_sample
+ 157              		.section	.text.impulsive_get_sample,"ax",%progbits
+ 158              		.align	1
+ 159              		.p2align 2,,3
+ 160              		.global	impulsive_get_sample
+ 161              		.syntax unified
+ 162              		.thumb
+ 163              		.thumb_func
+ 164              		.type	impulsive_get_sample, %function
+ 165              	impulsive_get_sample:
+ 166              		@ args = 0, pretend = 0, frame = 8
+ 167              		@ frame_needed = 0, uses_anonymous_args = 0
+ 168              		@ link register save eliminated.
+ 169 0000 124B     		ldr	r3, .L30
+ 170 0002 82B0     		sub	sp, sp, #8
+ 171 0004 DFED127A 		vldr.32	s15, .L30+4
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 5
+
+
+ 172 0008 93ED007A 		vldr.32	s14, [r3]
+ 173 000c 1149     		ldr	r1, .L30+8
+ 174 000e 27EE277A 		vmul.f32	s14, s14, s15
+ 175 0012 0B78     		ldrb	r3, [r1]	@ zero_extendqisi2
+ 176 0014 77EEC77A 		vsub.f32	s15, s15, s14
+ 177 0018 022B     		cmp	r3, #2
+ 178 001a FCEEE77A 		vcvt.u32.f32	s15, s15
+ 179 001e CDED017A 		vstr.32	s15, [sp, #4]	@ int
+ 180 0022 9DF80420 		ldrb	r2, [sp, #4]	@ zero_extendqisi2
+ 181 0026 0AD8     		bhi	.L26
+ 182 0028 0B48     		ldr	r0, .L30+12
+ 183 002a 9342     		cmp	r3, r2
+ 184 002c C056     		ldrsb	r0, [r0, r3]
+ 185 002e 4FEA0020 		lsl	r0, r0, #8
+ 186 0032 07D8     		bhi	.L27
+ 187              	.L29:
+ 188 0034 0133     		adds	r3, r3, #1
+ 189 0036 DBB2     		uxtb	r3, r3
+ 190 0038 0B70     		strb	r3, [r1]
+ 191 003a 02B0     		add	sp, sp, #8
+ 192              		@ sp needed
+ 193 003c 7047     		bx	lr
+ 194              	.L26:
+ 195 003e 9342     		cmp	r3, r2
+ 196 0040 0648     		ldr	r0, .L30+16
+ 197 0042 F7D9     		bls	.L29
+ 198              	.L27:
+ 199 0044 0023     		movs	r3, #0
+ 200 0046 0B70     		strb	r3, [r1]
+ 201 0048 02B0     		add	sp, sp, #8
+ 202              		@ sp needed
+ 203 004a 7047     		bx	lr
+ 204              	.L31:
+ 205              		.align	2
+ 206              	.L30:
+ 207 004c 00000000 		.word	_selz
+ 208 0050 00007F43 		.word	1132396544
+ 209 0054 00000000 		.word	periodCounter.7
+ 210 0058 00000000 		.word	impulsive_source
+ 211 005c 0080FFFF 		.word	-32768
+ 212              		.size	impulsive_get_sample, .-impulsive_get_sample
+ 213              		.section	.text.sampled_source_getsample,"ax",%progbits
+ 214              		.align	1
+ 215              		.p2align 2,,3
+ 216              		.global	sampled_source_getsample
+ 217              		.syntax unified
+ 218              		.thumb
+ 219              		.thumb_func
+ 220              		.type	sampled_source_getsample, %function
+ 221              	sampled_source_getsample:
+ 222              		@ args = 0, pretend = 0, frame = 0
+ 223              		@ frame_needed = 0, uses_anonymous_args = 0
+ 224              		@ link register save eliminated.
+ 225 0000 1F48     		ldr	r0, .L35
+ 226 0002 204B     		ldr	r3, .L35+4
+ 227 0004 D0ED007A 		vldr.32	s15, [r0]	@ int
+ 228 0008 93ED007A 		vldr.32	s14, [r3]
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 6
+
+
+ 229 000c FAEECF7A 		vcvt.f32.s32	s15, s15, #2
+ 230 0010 9FED1D6A 		vldr.32	s12, .L35+8
+ 231 0014 DFED1D5A 		vldr.32	s11, .L35+12
+ 232 0018 0368     		ldr	r3, [r0]
+ 233 001a 67EE867A 		vmul.f32	s15, s15, s12
+ 234 001e DFED1C6A 		vldr.32	s13, .L35+16
+ 235 0022 27EE257A 		vmul.f32	s14, s14, s11
+ 236 0026 0133     		adds	r3, r3, #1
+ 237 0028 1A49     		ldr	r1, .L35+20
+ 238 002a 052B     		cmp	r3, #5
+ 239 002c 37EE267A 		vadd.f32	s14, s14, s13
+ 240 0030 FDEEE76A 		vcvt.s32.f32	s13, s15
+ 241 0034 A8BF     		it	ge
+ 242 0036 0023     		movge	r3, #0
+ 243 0038 0360     		str	r3, [r0]
+ 244 003a 16EE902A 		vmov	r2, s13	@ int
+ 245 003e B8EEE66A 		vcvt.f32.s32	s12, s13
+ 246 0042 31F91230 		ldrsh	r3, [r1, r2, lsl #1]
+ 247 0046 77EEC67A 		vsub.f32	s15, s15, s12
+ 248 004a 05EE903A 		vmov	s11, r3	@ int
+ 249 004e 531C     		adds	r3, r2, #1
+ 250 0050 31F91330 		ldrsh	r3, [r1, r3, lsl #1]
+ 251 0054 F8EEE55A 		vcvt.f32.s32	s11, s11
+ 252 0058 06EE903A 		vmov	s13, r3	@ int
+ 253 005c F8EEE66A 		vcvt.f32.s32	s13, s13
+ 254 0060 76EEE56A 		vsub.f32	s13, s13, s11
+ 255 0064 67EEA67A 		vmul.f32	s15, s15, s13
+ 256 0068 77EEA57A 		vadd.f32	s15, s15, s11
+ 257 006c 77EEA77A 		vadd.f32	s15, s15, s15
+ 258 0070 67EE277A 		vmul.f32	s15, s14, s15
+ 259 0074 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 260 0078 17EE903A 		vmov	r3, s15	@ int
+ 261 007c 18B2     		sxth	r0, r3
+ 262 007e 7047     		bx	lr
+ 263              	.L36:
+ 264              		.align	2
+ 265              	.L35:
+ 266 0080 00000000 		.word	nper.6
+ 267 0084 00000000 		.word	_selz
+ 268 0088 0000C842 		.word	1120403456
+ 269 008c 00008044 		.word	1149239296
+ 270 0090 00002046 		.word	1176502272
+ 271 0094 00000000 		.word	natural_samples
+ 272              		.size	sampled_source_getsample, .-sampled_source_getsample
+ 273              		.section	.text.natural_source_getsample,"ax",%progbits
+ 274              		.align	1
+ 275              		.p2align 2,,3
+ 276              		.global	natural_source_getsample
+ 277              		.syntax unified
+ 278              		.thumb
+ 279              		.thumb_func
+ 280              		.type	natural_source_getsample, %function
+ 281              	natural_source_getsample:
+ 282              		@ args = 0, pretend = 0, frame = 0
+ 283              		@ frame_needed = 0, uses_anonymous_args = 0
+ 284              		@ link register save eliminated.
+ 285 0000 294B     		ldr	r3, .L43+16
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 7
+
+
+ 286 0002 2A48     		ldr	r0, .L43+20
+ 287 0004 93ED007A 		vldr.32	s14, [r3]
+ 288 0008 0288     		ldrh	r2, [r0]
+ 289 000a B7EEC77A 		vcvt.f64.f32	d7, s14
+ 290 000e 2849     		ldr	r1, .L43+24
+ 291 0010 0132     		adds	r2, r2, #1
+ 292 0012 9FED216B 		vldr.64	d6, .L43
+ 293 0016 12B2     		sxth	r2, r2
+ 294 0018 27EE067B 		vmul.f64	d7, d7, d6
+ 295 001c FA2A     		cmp	r2, #250
+ 296 001e C8BF     		it	gt
+ 297 0020 0022     		movgt	r2, #0
+ 298 0022 0280     		strh	r2, [r0]	@ movhi
+ 299 0024 FDEEC77B 		vcvt.s32.f64	s15, d7
+ 300 0028 17EE903A 		vmov	r3, s15	@ int
+ 301 002c 2833     		adds	r3, r3, #40
+ 302 002e 9BB2     		uxth	r3, r3
+ 303 0030 A3F1280C 		sub	ip, r3, #40
+ 304 0034 9342     		cmp	r3, r2
+ 305 0036 31F91C10 		ldrsh	r1, [r1, ip, lsl #1]
+ 306 003a 26DD     		ble	.L41
+ 307 003c 07EE901A 		vmov	s15, r1	@ int
+ 308 0040 DFED1C4A 		vldr.32	s9, .L43+28
+ 309 0044 9FED1C6A 		vldr.32	s12, .L43+32
+ 310 0048 B8EEE77A 		vcvt.f32.s32	s14, s15
+ 311 004c 07EE903A 		vmov	s15, r3	@ int
+ 312 0050 1A4B     		ldr	r3, .L43+36
+ 313 0052 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 314 0056 D3ED006A 		vldr.32	s13, [r3]
+ 315 005a 67EE877A 		vmul.f32	s15, s15, s14
+ 316 005e 9FED105B 		vldr.64	d5, .L43+8
+ 317 0062 67EEA47A 		vmul.f32	s15, s15, s9
+ 318 0066 77EEC77A 		vsub.f32	s15, s15, s14
+ 319 006a 77EEA67A 		vadd.f32	s15, s15, s13
+ 320 006e 27EE866A 		vmul.f32	s12, s15, s12
+ 321 0072 C3ED007A 		vstr.32	s15, [r3]
+ 322 0076 B7EEC66A 		vcvt.f64.f32	d6, s12
+ 323 007a 26EE056B 		vmul.f64	d6, d6, d5
+ 324 007e BDEEC66B 		vcvt.s32.f64	s12, d6
+ 325 0082 16EE102A 		vmov	r2, s12	@ int
+ 326 0086 10B2     		sxth	r0, r2
+ 327 0088 7047     		bx	lr
+ 328              	.L41:
+ 329 008a DFED0D7A 		vldr.32	s15, .L43+40
+ 330 008e 0020     		movs	r0, #0
+ 331 0090 0A4B     		ldr	r3, .L43+36
+ 332 0092 C3ED007A 		vstr.32	s15, [r3]
+ 333 0096 7047     		bx	lr
+ 334              	.L44:
+ 335              		.align	3
+ 336              	.L43:
+ 337 0098 00000000 		.word	0
+ 338 009c 00806B40 		.word	1080786944
+ 339 00a0 00000000 		.word	0
+ 340 00a4 00009040 		.word	1083179008
+ 341 00a8 00000000 		.word	_selz
+ 342 00ac 00000000 		.word	nper.5
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 8
+
+
+ 343 00b0 00000000 		.word	B0
+ 344 00b4 FA7EAA3E 		.word	1051361018
+ 345 00b8 4260E53C 		.word	1021665346
+ 346 00bc 00000000 		.word	vwave.4
+ 347 00c0 00000000 		.word	0
+ 348              		.size	natural_source_getsample, .-natural_source_getsample
+ 349              		.section	.text.impulsivex_get_sample,"ax",%progbits
+ 350              		.align	1
+ 351              		.p2align 2,,3
+ 352              		.global	impulsivex_get_sample
+ 353              		.syntax unified
+ 354              		.thumb
+ 355              		.thumb_func
+ 356              		.type	impulsivex_get_sample, %function
+ 357              	impulsivex_get_sample:
+ 358              		@ args = 0, pretend = 0, frame = 0
+ 359              		@ frame_needed = 0, uses_anonymous_args = 0
+ 360 0000 304A     		ldr	r2, .L52
+ 361 0002 4FF4FA43 		mov	r3, #32000
+ 362 0006 DFED307A 		vldr.32	s15, .L52+4
+ 363 000a 92ED007A 		vldr.32	s14, [r2]
+ 364 000e DFED2F6A 		vldr.32	s13, .L52+8
+ 365 0012 27EE277A 		vmul.f32	s14, s14, s15
+ 366 0016 10B5     		push	{r4, lr}
+ 367 0018 77EEC77A 		vsub.f32	s15, s15, s14
+ 368 001c FCEEE77A 		vcvt.u32.f32	s15, s15
+ 369 0020 17EE902A 		vmov	r2, s15	@ int
+ 370 0024 94B2     		uxth	r4, r2
+ 371 0026 B3FBF4F3 		udiv	r3, r3, r4
+ 372 002a 00EE103A 		vmov	s0, r3	@ int
+ 373 002e B8EEC00A 		vcvt.f32.s32	s0, s0
+ 374 0032 20EE260A 		vmul.f32	s0, s0, s13
+ 375 0036 FFF7FEFF 		bl	expf
+ 376 003a 2549     		ldr	r1, .L52+12
+ 377 003c 30EE007A 		vadd.f32	s14, s0, s0
+ 378 0040 244B     		ldr	r3, .L52+16
+ 379 0042 F7EE007A 		vmov.f32	s15, #1.0e+0
+ 380 0046 0A88     		ldrh	r2, [r1]
+ 381 0048 20EE000A 		vmul.f32	s0, s0, s0
+ 382 004c 0132     		adds	r2, r2, #1
+ 383 004e 83ED027A 		vstr.32	s14, [r3, #8]
+ 384 0052 77EEC77A 		vsub.f32	s15, s15, s14
+ 385 0056 12B2     		sxth	r2, r2
+ 386 0058 F1EE406A 		vneg.f32	s13, s0
+ 387 005c 77EE807A 		vadd.f32	s15, s15, s0
+ 388 0060 9442     		cmp	r4, r2
+ 389 0062 C3ED036A 		vstr.32	s13, [r3, #12]
+ 390 0066 0A80     		strh	r2, [r1]	@ movhi
+ 391 0068 C3ED017A 		vstr.32	s15, [r3, #4]
+ 392 006c 1EDA     		bge	.L46
+ 393 006e 0022     		movs	r2, #0
+ 394 0070 9FED196A 		vldr.32	s12, .L52+20
+ 395 0074 0A80     		strh	r2, [r1]	@ movhi
+ 396              	.L48:
+ 397 0076 D3ED045A 		vldr.32	s11, [r3, #16]
+ 398 007a 66EE277A 		vmul.f32	s15, s12, s15
+ 399 007e 93ED055A 		vldr.32	s10, [r3, #20]
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 9
+
+
+ 400 0082 25EE877A 		vmul.f32	s14, s11, s14
+ 401 0086 154A     		ldr	r2, .L52+24
+ 402 0088 66EE856A 		vmul.f32	s13, s13, s10
+ 403 008c C3ED055A 		vstr.32	s11, [r3, #20]
+ 404 0090 82ED006A 		vstr.32	s12, [r2]
+ 405 0094 77EE877A 		vadd.f32	s15, s15, s14
+ 406 0098 77EEA67A 		vadd.f32	s15, s15, s13
+ 407 009c BDEEE77A 		vcvt.s32.f32	s14, s15
+ 408 00a0 C3ED047A 		vstr.32	s15, [r3, #16]
+ 409 00a4 17EE103A 		vmov	r3, s14	@ int
+ 410 00a8 18B2     		sxth	r0, r3
+ 411 00aa 10BD     		pop	{r4, pc}
+ 412              	.L46:
+ 413 00ac 022A     		cmp	r2, #2
+ 414 00ae 02DD     		ble	.L51
+ 415 00b0 9FED096A 		vldr.32	s12, .L52+20
+ 416 00b4 DFE7     		b	.L48
+ 417              	.L51:
+ 418 00b6 0A49     		ldr	r1, .L52+28
+ 419 00b8 01EB8202 		add	r2, r1, r2, lsl #2
+ 420 00bc 92ED006A 		vldr.32	s12, [r2]
+ 421 00c0 D9E7     		b	.L48
+ 422              	.L53:
+ 423 00c2 00BF     		.align	2
+ 424              	.L52:
+ 425 00c4 00000000 		.word	_selz
+ 426 00c8 00007042 		.word	1114636288
+ 427 00cc 2EE3CDB8 		.word	-1194466514
+ 428 00d0 00000000 		.word	nper.3
+ 429 00d4 00000000 		.word	rgl
+ 430 00d8 00000000 		.word	0
+ 431 00dc 00000000 		.word	vwave.1
+ 432 00e0 00000000 		.word	doublet.2
+ 433              		.size	impulsivex_get_sample, .-impulsivex_get_sample
+ 434              		.section	.bss.vwave.1,"aw",%nobits
+ 435              		.align	2
+ 436              		.type	vwave.1, %object
+ 437              		.size	vwave.1, 4
+ 438              	vwave.1:
+ 439 0000 00000000 		.space	4
+ 440              		.section	.rodata.doublet.2,"a"
+ 441              		.align	2
+ 442              		.type	doublet.2, %object
+ 443              		.size	doublet.2, 12
+ 444              	doublet.2:
+ 445 0000 00000000 		.word	0
+ 446 0004 405D464B 		.word	1262902592
+ 447 0008 405D46CB 		.word	-884581056
+ 448              		.section	.bss.nper.3,"aw",%nobits
+ 449              		.align	1
+ 450              		.type	nper.3, %object
+ 451              		.size	nper.3, 2
+ 452              	nper.3:
+ 453 0000 0000     		.space	2
+ 454              		.section	.bss.vwave.4,"aw",%nobits
+ 455              		.align	2
+ 456              		.type	vwave.4, %object
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 10
+
+
+ 457              		.size	vwave.4, 4
+ 458              	vwave.4:
+ 459 0000 00000000 		.space	4
+ 460              		.section	.bss.nper.5,"aw",%nobits
+ 461              		.align	1
+ 462              		.type	nper.5, %object
+ 463              		.size	nper.5, 2
+ 464              	nper.5:
+ 465 0000 0000     		.space	2
+ 466              		.section	.bss.nper.6,"aw",%nobits
+ 467              		.align	2
+ 468              		.type	nper.6, %object
+ 469              		.size	nper.6, 4
+ 470              	nper.6:
+ 471 0000 00000000 		.space	4
+ 472              		.section	.bss.periodCounter.7,"aw",%nobits
+ 473              		.type	periodCounter.7, %object
+ 474              		.size	periodCounter.7, 1
+ 475              	periodCounter.7:
+ 476 0000 00       		.space	1
+ 477              		.section	.bss.periodCounter.8,"aw",%nobits
+ 478              		.type	periodCounter.8, %object
+ 479              		.size	periodCounter.8, 1
+ 480              	periodCounter.8:
+ 481 0000 00       		.space	1
+ 482              		.section	.bss.periodCounter.9,"aw",%nobits
+ 483              		.type	periodCounter.9, %object
+ 484              		.size	periodCounter.9, 1
+ 485              	periodCounter.9:
+ 486 0000 00       		.space	1
+ 487              		.section	.rodata.str1.4,"aMS",%progbits,1
+ 488              		.align	2
+ 489              	.LC0:
+ 490 0000 63726974 		.ascii	"crit-damped glot low-pass filter\000"
+ 490      2D64616D 
+ 490      70656420 
+ 490      676C6F74 
+ 490      206C6F77 
+ 491              		.section	.data.rgl,"aw"
+ 492              		.align	2
+ 493              		.type	rgl, %object
+ 494              		.size	rgl, 24
+ 495              	rgl:
+ 496 0000 00000000 		.word	.LC0
+ 497 0004 00000000 		.space	20
+ 497      00000000 
+ 497      00000000 
+ 497      00000000 
+ 497      00000000 
+ 498              		.section	.rodata.B0,"a"
+ 499              		.align	2
+ 500              		.type	B0, %object
+ 501              		.size	B0, 448
+ 502              	B0:
+ 503 0000 B004     		.short	1200
+ 504 0002 7604     		.short	1142
+ 505 0004 4004     		.short	1088
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 11
+
+
+ 506 0006 0E04     		.short	1038
+ 507 0008 DF03     		.short	991
+ 508 000a B403     		.short	948
+ 509 000c 8B03     		.short	907
+ 510 000e 6503     		.short	869
+ 511 0010 4103     		.short	833
+ 512 0012 1F03     		.short	799
+ 513 0014 0003     		.short	768
+ 514 0016 E202     		.short	738
+ 515 0018 C602     		.short	710
+ 516 001a AB02     		.short	683
+ 517 001c 9202     		.short	658
+ 518 001e 7A02     		.short	634
+ 519 0020 6402     		.short	612
+ 520 0022 4E02     		.short	590
+ 521 0024 3A02     		.short	570
+ 522 0026 2702     		.short	551
+ 523 0028 1502     		.short	533
+ 524 002a 0302     		.short	515
+ 525 002c F301     		.short	499
+ 526 002e E301     		.short	483
+ 527 0030 D401     		.short	468
+ 528 0032 C601     		.short	454
+ 529 0034 B801     		.short	440
+ 530 0036 AB01     		.short	427
+ 531 0038 9F01     		.short	415
+ 532 003a 9301     		.short	403
+ 533 003c 8701     		.short	391
+ 534 003e 7C01     		.short	380
+ 535 0040 7201     		.short	370
+ 536 0042 6801     		.short	360
+ 537 0044 5E01     		.short	350
+ 538 0046 5501     		.short	341
+ 539 0048 4C01     		.short	332
+ 540 004a 4301     		.short	323
+ 541 004c 3B01     		.short	315
+ 542 004e 3301     		.short	307
+ 543 0050 2C01     		.short	300
+ 544 0052 2401     		.short	292
+ 545 0054 1D01     		.short	285
+ 546 0056 1601     		.short	278
+ 547 0058 1001     		.short	272
+ 548 005a 0901     		.short	265
+ 549 005c 0301     		.short	259
+ 550 005e FD00     		.short	253
+ 551 0060 F700     		.short	247
+ 552 0062 F200     		.short	242
+ 553 0064 ED00     		.short	237
+ 554 0066 E700     		.short	231
+ 555 0068 E200     		.short	226
+ 556 006a DD00     		.short	221
+ 557 006c D900     		.short	217
+ 558 006e D400     		.short	212
+ 559 0070 D000     		.short	208
+ 560 0072 CC00     		.short	204
+ 561 0074 C700     		.short	199
+ 562 0076 C300     		.short	195
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 12
+
+
+ 563 0078 C000     		.short	192
+ 564 007a BC00     		.short	188
+ 565 007c B800     		.short	184
+ 566 007e B400     		.short	180
+ 567 0080 B100     		.short	177
+ 568 0082 AE00     		.short	174
+ 569 0084 AA00     		.short	170
+ 570 0086 A700     		.short	167
+ 571 0088 A400     		.short	164
+ 572 008a A100     		.short	161
+ 573 008c 9E00     		.short	158
+ 574 008e 9B00     		.short	155
+ 575 0090 9900     		.short	153
+ 576 0092 9600     		.short	150
+ 577 0094 9300     		.short	147
+ 578 0096 9100     		.short	145
+ 579 0098 8E00     		.short	142
+ 580 009a 8C00     		.short	140
+ 581 009c 8900     		.short	137
+ 582 009e 8700     		.short	135
+ 583 00a0 8500     		.short	133
+ 584 00a2 8300     		.short	131
+ 585 00a4 8000     		.short	128
+ 586 00a6 7E00     		.short	126
+ 587 00a8 7C00     		.short	124
+ 588 00aa 7A00     		.short	122
+ 589 00ac 7800     		.short	120
+ 590 00ae 7700     		.short	119
+ 591 00b0 7500     		.short	117
+ 592 00b2 7300     		.short	115
+ 593 00b4 7100     		.short	113
+ 594 00b6 6F00     		.short	111
+ 595 00b8 6E00     		.short	110
+ 596 00ba 6C00     		.short	108
+ 597 00bc 6A00     		.short	106
+ 598 00be 6900     		.short	105
+ 599 00c0 6700     		.short	103
+ 600 00c2 6600     		.short	102
+ 601 00c4 6400     		.short	100
+ 602 00c6 6300     		.short	99
+ 603 00c8 6100     		.short	97
+ 604 00ca 6000     		.short	96
+ 605 00cc 5F00     		.short	95
+ 606 00ce 5D00     		.short	93
+ 607 00d0 5C00     		.short	92
+ 608 00d2 5B00     		.short	91
+ 609 00d4 5A00     		.short	90
+ 610 00d6 5800     		.short	88
+ 611 00d8 5700     		.short	87
+ 612 00da 5600     		.short	86
+ 613 00dc 5500     		.short	85
+ 614 00de 5400     		.short	84
+ 615 00e0 5300     		.short	83
+ 616 00e2 5200     		.short	82
+ 617 00e4 5000     		.short	80
+ 618 00e6 4F00     		.short	79
+ 619 00e8 4E00     		.short	78
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 13
+
+
+ 620 00ea 4D00     		.short	77
+ 621 00ec 4C00     		.short	76
+ 622 00ee 4B00     		.short	75
+ 623 00f0 4B00     		.short	75
+ 624 00f2 4A00     		.short	74
+ 625 00f4 4900     		.short	73
+ 626 00f6 4800     		.short	72
+ 627 00f8 4700     		.short	71
+ 628 00fa 4600     		.short	70
+ 629 00fc 4500     		.short	69
+ 630 00fe 4400     		.short	68
+ 631 0100 4400     		.short	68
+ 632 0102 4300     		.short	67
+ 633 0104 4200     		.short	66
+ 634 0106 4100     		.short	65
+ 635 0108 4000     		.short	64
+ 636 010a 4000     		.short	64
+ 637 010c 3F00     		.short	63
+ 638 010e 3E00     		.short	62
+ 639 0110 3D00     		.short	61
+ 640 0112 3D00     		.short	61
+ 641 0114 3C00     		.short	60
+ 642 0116 3B00     		.short	59
+ 643 0118 3B00     		.short	59
+ 644 011a 3A00     		.short	58
+ 645 011c 3900     		.short	57
+ 646 011e 3900     		.short	57
+ 647 0120 3800     		.short	56
+ 648 0122 3800     		.short	56
+ 649 0124 3700     		.short	55
+ 650 0126 3700     		.short	55
+ 651 0128 3600     		.short	54
+ 652 012a 3600     		.short	54
+ 653 012c 3500     		.short	53
+ 654 012e 3500     		.short	53
+ 655 0130 3400     		.short	52
+ 656 0132 3400     		.short	52
+ 657 0134 3300     		.short	51
+ 658 0136 3300     		.short	51
+ 659 0138 3200     		.short	50
+ 660 013a 3200     		.short	50
+ 661 013c 3100     		.short	49
+ 662 013e 3100     		.short	49
+ 663 0140 3000     		.short	48
+ 664 0142 3000     		.short	48
+ 665 0144 2F00     		.short	47
+ 666 0146 2F00     		.short	47
+ 667 0148 2E00     		.short	46
+ 668 014a 2E00     		.short	46
+ 669 014c 2D00     		.short	45
+ 670 014e 2D00     		.short	45
+ 671 0150 2C00     		.short	44
+ 672 0152 2C00     		.short	44
+ 673 0154 2B00     		.short	43
+ 674 0156 2B00     		.short	43
+ 675 0158 2A00     		.short	42
+ 676 015a 2A00     		.short	42
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 14
+
+
+ 677 015c 2900     		.short	41
+ 678 015e 2900     		.short	41
+ 679 0160 2900     		.short	41
+ 680 0162 2900     		.short	41
+ 681 0164 2800     		.short	40
+ 682 0166 2800     		.short	40
+ 683 0168 2700     		.short	39
+ 684 016a 2700     		.short	39
+ 685 016c 2600     		.short	38
+ 686 016e 2600     		.short	38
+ 687 0170 2600     		.short	38
+ 688 0172 2600     		.short	38
+ 689 0174 2500     		.short	37
+ 690 0176 2500     		.short	37
+ 691 0178 2400     		.short	36
+ 692 017a 2400     		.short	36
+ 693 017c 2400     		.short	36
+ 694 017e 2400     		.short	36
+ 695 0180 2300     		.short	35
+ 696 0182 2300     		.short	35
+ 697 0184 2300     		.short	35
+ 698 0186 2300     		.short	35
+ 699 0188 2200     		.short	34
+ 700 018a 2200     		.short	34
+ 701 018c 2100     		.short	33
+ 702 018e 2100     		.short	33
+ 703 0190 2100     		.short	33
+ 704 0192 2100     		.short	33
+ 705 0194 2000     		.short	32
+ 706 0196 2000     		.short	32
+ 707 0198 2000     		.short	32
+ 708 019a 2000     		.short	32
+ 709 019c 1F00     		.short	31
+ 710 019e 1F00     		.short	31
+ 711 01a0 1F00     		.short	31
+ 712 01a2 1F00     		.short	31
+ 713 01a4 1E00     		.short	30
+ 714 01a6 1E00     		.short	30
+ 715 01a8 1E00     		.short	30
+ 716 01aa 1E00     		.short	30
+ 717 01ac 1D00     		.short	29
+ 718 01ae 1D00     		.short	29
+ 719 01b0 1D00     		.short	29
+ 720 01b2 1D00     		.short	29
+ 721 01b4 1C00     		.short	28
+ 722 01b6 1C00     		.short	28
+ 723 01b8 1C00     		.short	28
+ 724 01ba 1C00     		.short	28
+ 725 01bc 1B00     		.short	27
+ 726 01be 1B00     		.short	27
+ 727              		.section	.rodata.natural_samples,"a"
+ 728              		.align	2
+ 729              		.type	natural_samples, %object
+ 730              		.size	natural_samples, 200
+ 731              	natural_samples:
+ 732 0000 CAFE     		.short	-310
+ 733 0002 70FE     		.short	-400
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 15
+
+
+ 734 0004 1202     		.short	530
+ 735 0006 6401     		.short	356
+ 736 0008 E000     		.short	224
+ 737 000a 5900     		.short	89
+ 738 000c 1700     		.short	23
+ 739 000e F6FF     		.short	-10
+ 740 0010 C6FF     		.short	-58
+ 741 0012 F0FF     		.short	-16
+ 742 0014 CD01     		.short	461
+ 743 0016 5702     		.short	599
+ 744 0018 1802     		.short	536
+ 745 001a BD02     		.short	701
+ 746 001c 0203     		.short	770
+ 747 001e 5D02     		.short	605
+ 748 0020 F101     		.short	497
+ 749 0022 CD01     		.short	461
+ 750 0024 3002     		.short	560
+ 751 0026 9401     		.short	404
+ 752 0028 6E00     		.short	110
+ 753 002a E000     		.short	224
+ 754 002c 8300     		.short	131
+ 755 002e 6800     		.short	104
+ 756 0030 9FFF     		.short	-97
+ 757 0032 9B00     		.short	155
+ 758 0034 1601     		.short	278
+ 759 0036 66FF     		.short	-154
+ 760 0038 73FB     		.short	-1165
+ 761 003a AAFD     		.short	-598
+ 762 003c E102     		.short	737
+ 763 003e 7D00     		.short	125
+ 764 0040 B0FD     		.short	-592
+ 765 0042 2900     		.short	41
+ 766 0044 0B00     		.short	11
+ 767 0046 09FF     		.short	-247
+ 768 0048 F6FF     		.short	-10
+ 769 004a 4100     		.short	65
+ 770 004c 5C00     		.short	92
+ 771 004e 5000     		.short	80
+ 772 0050 D0FE     		.short	-304
+ 773 0052 4700     		.short	71
+ 774 0054 A700     		.short	167
+ 775 0056 FFFF     		.short	-1
+ 776 0058 7A00     		.short	122
+ 777 005a E900     		.short	233
+ 778 005c A100     		.short	161
+ 779 005e D5FF     		.short	-43
+ 780 0060 1601     		.short	278
+ 781 0062 DF01     		.short	479
+ 782 0064 E501     		.short	485
+ 783 0066 9701     		.short	407
+ 784 0068 0A01     		.short	266
+ 785 006a 8A02     		.short	650
+ 786 006c 8600     		.short	134
+ 787 006e 5000     		.short	80
+ 788 0070 EC00     		.short	236
+ 789 0072 4400     		.short	68
+ 790 0074 0401     		.short	260
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 16
+
+
+ 791 0076 0D01     		.short	269
+ 792 0078 B300     		.short	179
+ 793 007a 3500     		.short	53
+ 794 007c 8C00     		.short	140
+ 795 007e 1301     		.short	275
+ 796 0080 2501     		.short	293
+ 797 0082 2801     		.short	296
+ 798 0084 6800     		.short	104
+ 799 0086 0101     		.short	257
+ 800 0088 9800     		.short	152
+ 801 008a 3701     		.short	311
+ 802 008c B600     		.short	182
+ 803 008e 0701     		.short	263
+ 804 0090 F500     		.short	245
+ 805 0092 7D00     		.short	125
+ 806 0094 3A01     		.short	314
+ 807 0096 8C00     		.short	140
+ 808 0098 2C00     		.short	44
+ 809 009a CB00     		.short	203
+ 810 009c E600     		.short	230
+ 811 009e 15FF     		.short	-235
+ 812 00a0 E2FE     		.short	-286
+ 813 00a2 1700     		.short	23
+ 814 00a4 6B00     		.short	107
+ 815 00a6 5C00     		.short	92
+ 816 00a8 A5FF     		.short	-91
+ 817 00aa 2600     		.short	38
+ 818 00ac D001     		.short	464
+ 819 00ae BB01     		.short	443
+ 820 00b0 B000     		.short	176
+ 821 00b2 6200     		.short	98
+ 822 00b4 F0FC     		.short	-784
+ 823 00b6 6FF6     		.short	-2449
+ 824 00b8 9DF8     		.short	-1891
+ 825 00ba EBFB     		.short	-1045
+ 826 00bc C0F9     		.short	-1600
+ 827 00be 4AFA     		.short	-1462
+ 828 00c0 98FA     		.short	-1384
+ 829 00c2 13FB     		.short	-1261
+ 830 00c4 4BFC     		.short	-949
+ 831 00c6 26FD     		.short	-730
+ 832              		.global	inks
+ 833              		.section	.data.inks,"aw"
+ 834              		.align	2
+ 835              		.type	inks, %object
+ 836              		.size	inks, 16
+ 837              	inks:
+ 838 0000 01010101 		.ascii	"\001\001\001\001\001\001\001\002\002\003\003\004\004"
+ 838      01010102 
+ 838      02030304 
+ 838      04
+ 839 000d 050500   		.ascii	"\005\005\000"
+ 840              		.global	rates
+ 841              		.section	.data.rates,"aw"
+ 842              		.align	2
+ 843              		.type	rates, %object
+ 844              		.size	rates, 16
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 17
+
+
+ 845              	rates:
+ 846 0000 06050403 		.ascii	"\006\005\004\003\002\001\001\001\001\001\001\001\001"
+ 846      02010101 
+ 846      01010101 
+ 846      01
+ 847 000d 010101   		.ascii	"\001\001\001"
+ 848              		.global	impulsive_source
+ 849              		.section	.data.impulsive_source,"aw"
+ 850              		.align	2
+ 851              		.type	impulsive_source, %object
+ 852              		.size	impulsive_source, 3
+ 853              	impulsive_source:
+ 854 0000 8000FA   		.ascii	"\200\000\372"
+ 855              		.global	glottal_wave
+ 856              		.section	.data.glottal_wave,"aw"
+ 857              		.align	2
+ 858              		.type	glottal_wave, %object
+ 859              		.size	glottal_wave, 9
+ 860              	glottal_wave:
+ 861 0000 803600ED 		.ascii	"\2006\000\355\333\311\266\244\222"
+ 861      DBC9B6A4 
+ 861      92
+ 862              		.global	chirp
+ 863              		.section	.data.chirp,"aw"
+ 864              		.align	2
+ 865              		.type	chirp, %object
+ 866              		.size	chirp, 41
+ 867              	chirp:
+ 868 0000 002AD432 		.ascii	"\000*\3242\262\022%\024\002\341\305\002_Z\005\017&\374"
+ 868      B2122514 
+ 868      02E1C502 
+ 868      5F5A050F 
+ 868      26FC
+ 869 0012 A5A5D6DD 		.ascii	"\245\245\326\335\334\374%+\"!\017\377\370\356\355\357"
+ 869      DCFC252B 
+ 869      22210FFF 
+ 869      F8EEEDEF 
+ 870 0022 F7F6FA00 		.ascii	"\367\366\372\000\003\002\001"
+ 870      030201
+ 871              		.global	u10
+ 872              		.section	.bss.u10,"aw",%nobits
+ 873              		.align	1
+ 874              		.type	u10, %object
+ 875              		.size	u10, 2
+ 876              	u10:
+ 877 0000 0000     		.space	2
+ 878              		.global	u9
+ 879              		.section	.bss.u9,"aw",%nobits
+ 880              		.align	1
+ 881              		.type	u9, %object
+ 882              		.size	u9, 2
+ 883              	u9:
+ 884 0000 0000     		.space	2
+ 885              		.global	u8
+ 886              		.section	.bss.u8,"aw",%nobits
+ 887              		.align	1
+ 888              		.type	u8, %object
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 18
+
+
+ 889              		.size	u8, 2
+ 890              	u8:
+ 891 0000 0000     		.space	2
+ 892              		.global	u7
+ 893              		.section	.bss.u7,"aw",%nobits
+ 894              		.align	1
+ 895              		.type	u7, %object
+ 896              		.size	u7, 2
+ 897              	u7:
+ 898 0000 0000     		.space	2
+ 899              		.global	u6
+ 900              		.section	.bss.u6,"aw",%nobits
+ 901              		.align	1
+ 902              		.type	u6, %object
+ 903              		.size	u6, 2
+ 904              	u6:
+ 905 0000 0000     		.space	2
+ 906              		.global	u5
+ 907              		.section	.bss.u5,"aw",%nobits
+ 908              		.align	1
+ 909              		.type	u5, %object
+ 910              		.size	u5, 2
+ 911              	u5:
+ 912 0000 0000     		.space	2
+ 913              		.global	u4
+ 914              		.section	.bss.u4,"aw",%nobits
+ 915              		.align	1
+ 916              		.type	u4, %object
+ 917              		.size	u4, 2
+ 918              	u4:
+ 919 0000 0000     		.space	2
+ 920              		.global	u3
+ 921              		.section	.bss.u3,"aw",%nobits
+ 922              		.align	1
+ 923              		.type	u3, %object
+ 924              		.size	u3, 2
+ 925              	u3:
+ 926 0000 0000     		.space	2
+ 927              		.global	u2
+ 928              		.section	.bss.u2,"aw",%nobits
+ 929              		.align	1
+ 930              		.type	u2, %object
+ 931              		.size	u2, 2
+ 932              	u2:
+ 933 0000 0000     		.space	2
+ 934              		.global	u1
+ 935              		.section	.bss.u1,"aw",%nobits
+ 936              		.align	1
+ 937              		.type	u1, %object
+ 938              		.size	u1, 2
+ 939              	u1:
+ 940 0000 0000     		.space	2
+ 941              		.global	u0
+ 942              		.section	.bss.u0,"aw",%nobits
+ 943              		.align	1
+ 944              		.type	u0, %object
+ 945              		.size	u0, 2
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 19
+
+
+ 946              	u0:
+ 947 0000 0000     		.space	2
+ 948              		.global	pulselength
+ 949              		.section	.bss.pulselength,"aw",%nobits
+ 950              		.type	pulselength, %object
+ 951              		.size	pulselength, 1
+ 952              	pulselength:
+ 953 0000 00       		.space	1
+ 954              		.global	pulsecounter
+ 955              		.section	.bss.pulsecounter,"aw",%nobits
+ 956              		.type	pulsecounter, %object
+ 957              		.size	pulsecounter, 1
+ 958              	pulsecounter:
+ 959 0000 00       		.space	1
+ 960              		.global	average
+ 961              		.section	.bss.average,"aw",%nobits
+ 962              		.align	1
+ 963              		.type	average, %object
+ 964              		.size	average, 2
+ 965              	average:
+ 966 0000 0000     		.space	2
+ 967              		.global	total
+ 968              		.section	.bss.total,"aw",%nobits
+ 969              		.align	1
+ 970              		.type	total, %object
+ 971              		.size	total, 2
+ 972              	total:
+ 973 0000 0000     		.space	2
+ 974              		.global	pitchindex
+ 975              		.section	.bss.pitchindex,"aw",%nobits
+ 976              		.type	pitchindex, %object
+ 977              		.size	pitchindex, 1
+ 978              	pitchindex:
+ 979 0000 00       		.space	1
+ 980              		.global	location
+ 981              		.section	.bss.location,"aw",%nobits
+ 982              		.align	1
+ 983              		.type	location, %object
+ 984              		.size	location, 2
+ 985              	location:
+ 986 0000 0000     		.space	2
+ 987              		.global	synthEnergy
+ 988              		.section	.data.synthEnergy,"aw"
+ 989              		.align	1
+ 990              		.type	synthEnergy, %object
+ 991              		.size	synthEnergy, 2
+ 992              	synthEnergy:
+ 993 0000 0E00     		.short	14
+ 994              		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 20
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 wormed.c
+     /tmp/ccZ0Tj7E.s:17     .text.wormed_newsay:00000000 $t
+     /tmp/ccZ0Tj7E.s:24     .text.wormed_newsay:00000000 wormed_newsay
+     /tmp/ccZ0Tj7E.s:31     .text.chirp_get_sample:00000000 $t
+     /tmp/ccZ0Tj7E.s:38     .text.chirp_get_sample:00000000 chirp_get_sample
+     /tmp/ccZ0Tj7E.s:96     .text.chirp_get_sample:00000074 $d
+     /tmp/ccZ0Tj7E.s:485    .bss.periodCounter.9:00000000 periodCounter.9
+     /tmp/ccZ0Tj7E.s:867    .data.chirp:00000000 chirp
+     /tmp/ccZ0Tj7E.s:992    .data.synthEnergy:00000000 synthEnergy
+     /tmp/ccZ0Tj7E.s:105    .text.votglot_get_sample:00000000 $t
+     /tmp/ccZ0Tj7E.s:112    .text.votglot_get_sample:00000000 votglot_get_sample
+     /tmp/ccZ0Tj7E.s:152    .text.votglot_get_sample:00000050 $d
+     /tmp/ccZ0Tj7E.s:480    .bss.periodCounter.8:00000000 periodCounter.8
+     /tmp/ccZ0Tj7E.s:860    .data.glottal_wave:00000000 glottal_wave
+     /tmp/ccZ0Tj7E.s:158    .text.impulsive_get_sample:00000000 $t
+     /tmp/ccZ0Tj7E.s:165    .text.impulsive_get_sample:00000000 impulsive_get_sample
+     /tmp/ccZ0Tj7E.s:207    .text.impulsive_get_sample:0000004c $d
+     /tmp/ccZ0Tj7E.s:475    .bss.periodCounter.7:00000000 periodCounter.7
+     /tmp/ccZ0Tj7E.s:853    .data.impulsive_source:00000000 impulsive_source
+     /tmp/ccZ0Tj7E.s:214    .text.sampled_source_getsample:00000000 $t
+     /tmp/ccZ0Tj7E.s:221    .text.sampled_source_getsample:00000000 sampled_source_getsample
+     /tmp/ccZ0Tj7E.s:266    .text.sampled_source_getsample:00000080 $d
+     /tmp/ccZ0Tj7E.s:470    .bss.nper.6:00000000 nper.6
+     /tmp/ccZ0Tj7E.s:731    .rodata.natural_samples:00000000 natural_samples
+     /tmp/ccZ0Tj7E.s:274    .text.natural_source_getsample:00000000 $t
+     /tmp/ccZ0Tj7E.s:281    .text.natural_source_getsample:00000000 natural_source_getsample
+     /tmp/ccZ0Tj7E.s:337    .text.natural_source_getsample:00000098 $d
+     /tmp/ccZ0Tj7E.s:464    .bss.nper.5:00000000 nper.5
+     /tmp/ccZ0Tj7E.s:502    .rodata.B0:00000000 B0
+     /tmp/ccZ0Tj7E.s:458    .bss.vwave.4:00000000 vwave.4
+     /tmp/ccZ0Tj7E.s:350    .text.impulsivex_get_sample:00000000 $t
+     /tmp/ccZ0Tj7E.s:357    .text.impulsivex_get_sample:00000000 impulsivex_get_sample
+     /tmp/ccZ0Tj7E.s:425    .text.impulsivex_get_sample:000000c4 $d
+     /tmp/ccZ0Tj7E.s:452    .bss.nper.3:00000000 nper.3
+     /tmp/ccZ0Tj7E.s:495    .data.rgl:00000000 rgl
+     /tmp/ccZ0Tj7E.s:438    .bss.vwave.1:00000000 vwave.1
+     /tmp/ccZ0Tj7E.s:444    .rodata.doublet.2:00000000 doublet.2
+     /tmp/ccZ0Tj7E.s:435    .bss.vwave.1:00000000 $d
+     /tmp/ccZ0Tj7E.s:441    .rodata.doublet.2:00000000 $d
+     /tmp/ccZ0Tj7E.s:449    .bss.nper.3:00000000 $d
+     /tmp/ccZ0Tj7E.s:455    .bss.vwave.4:00000000 $d
+     /tmp/ccZ0Tj7E.s:461    .bss.nper.5:00000000 $d
+     /tmp/ccZ0Tj7E.s:467    .bss.nper.6:00000000 $d
+     /tmp/ccZ0Tj7E.s:476    .bss.periodCounter.7:00000000 $d
+     /tmp/ccZ0Tj7E.s:481    .bss.periodCounter.8:00000000 $d
+     /tmp/ccZ0Tj7E.s:486    .bss.periodCounter.9:00000000 $d
+     /tmp/ccZ0Tj7E.s:488    .rodata.str1.4:00000000 $d
+     /tmp/ccZ0Tj7E.s:492    .data.rgl:00000000 $d
+     /tmp/ccZ0Tj7E.s:499    .rodata.B0:00000000 $d
+     /tmp/ccZ0Tj7E.s:728    .rodata.natural_samples:00000000 $d
+     /tmp/ccZ0Tj7E.s:837    .data.inks:00000000 inks
+     /tmp/ccZ0Tj7E.s:834    .data.inks:00000000 $d
+     /tmp/ccZ0Tj7E.s:845    .data.rates:00000000 rates
+     /tmp/ccZ0Tj7E.s:842    .data.rates:00000000 $d
+     /tmp/ccZ0Tj7E.s:850    .data.impulsive_source:00000000 $d
+     /tmp/ccZ0Tj7E.s:857    .data.glottal_wave:00000000 $d
+ARM GAS  /tmp/ccZ0Tj7E.s 			page 21
+
+
+     /tmp/ccZ0Tj7E.s:864    .data.chirp:00000000 $d
+     /tmp/ccZ0Tj7E.s:876    .bss.u10:00000000 u10
+     /tmp/ccZ0Tj7E.s:873    .bss.u10:00000000 $d
+     /tmp/ccZ0Tj7E.s:883    .bss.u9:00000000 u9
+     /tmp/ccZ0Tj7E.s:880    .bss.u9:00000000 $d
+     /tmp/ccZ0Tj7E.s:890    .bss.u8:00000000 u8
+     /tmp/ccZ0Tj7E.s:887    .bss.u8:00000000 $d
+     /tmp/ccZ0Tj7E.s:897    .bss.u7:00000000 u7
+     /tmp/ccZ0Tj7E.s:894    .bss.u7:00000000 $d
+     /tmp/ccZ0Tj7E.s:904    .bss.u6:00000000 u6
+     /tmp/ccZ0Tj7E.s:901    .bss.u6:00000000 $d
+     /tmp/ccZ0Tj7E.s:911    .bss.u5:00000000 u5
+     /tmp/ccZ0Tj7E.s:908    .bss.u5:00000000 $d
+     /tmp/ccZ0Tj7E.s:918    .bss.u4:00000000 u4
+     /tmp/ccZ0Tj7E.s:915    .bss.u4:00000000 $d
+     /tmp/ccZ0Tj7E.s:925    .bss.u3:00000000 u3
+     /tmp/ccZ0Tj7E.s:922    .bss.u3:00000000 $d
+     /tmp/ccZ0Tj7E.s:932    .bss.u2:00000000 u2
+     /tmp/ccZ0Tj7E.s:929    .bss.u2:00000000 $d
+     /tmp/ccZ0Tj7E.s:939    .bss.u1:00000000 u1
+     /tmp/ccZ0Tj7E.s:936    .bss.u1:00000000 $d
+     /tmp/ccZ0Tj7E.s:946    .bss.u0:00000000 u0
+     /tmp/ccZ0Tj7E.s:943    .bss.u0:00000000 $d
+     /tmp/ccZ0Tj7E.s:952    .bss.pulselength:00000000 pulselength
+     /tmp/ccZ0Tj7E.s:953    .bss.pulselength:00000000 $d
+     /tmp/ccZ0Tj7E.s:958    .bss.pulsecounter:00000000 pulsecounter
+     /tmp/ccZ0Tj7E.s:959    .bss.pulsecounter:00000000 $d
+     /tmp/ccZ0Tj7E.s:965    .bss.average:00000000 average
+     /tmp/ccZ0Tj7E.s:962    .bss.average:00000000 $d
+     /tmp/ccZ0Tj7E.s:972    .bss.total:00000000 total
+     /tmp/ccZ0Tj7E.s:969    .bss.total:00000000 $d
+     /tmp/ccZ0Tj7E.s:978    .bss.pitchindex:00000000 pitchindex
+     /tmp/ccZ0Tj7E.s:979    .bss.pitchindex:00000000 $d
+     /tmp/ccZ0Tj7E.s:985    .bss.location:00000000 location
+     /tmp/ccZ0Tj7E.s:982    .bss.location:00000000 $d
+     /tmp/ccZ0Tj7E.s:989    .data.synthEnergy:00000000 $d
+
+UNDEFINED SYMBOLS
+_selz
+expf

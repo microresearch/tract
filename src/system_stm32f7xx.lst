@@ -1,0 +1,201 @@
+ARM GAS  /tmp/cchSyDxr.s 			page 1
+
+
+ GNU assembler version 2.28 (arm-none-eabi)
+	 using BFD version (2.28-5+9+b3) 2.28.
+ options passed	: -I -I -I -I -I -I -EL -mcpu=cortex-m7 -mthumb-interwork -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/system_stm32f7xx.lst 
+ input file    	: /tmp/cchSyDxr.s
+ output file   	: src/system_stm32f7xx.o
+ target        	: arm-none-eabi
+ time stamp    	: 2021-01-21T15:18:54.000+0100
+
+ARM GAS  /tmp/cchSyDxr.s 			page 2
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m7
+   3              		.eabi_attribute 28, 1
+   4              		.fpu fpv5-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"system_stm32f7xx.c"
+  17              		.section	.text.SystemInit,"ax",%progbits
+  18              		.align	2
+  19              		.global	SystemInit
+  20              		.thumb
+  21              		.thumb_func
+  22              		.type	SystemInit, %function
+  23              	SystemInit:
+  24              		.fnstart
+  25              	.LFB141:
+  26              		@ args = 0, pretend = 0, frame = 0
+  27              		@ frame_needed = 0, uses_anonymous_args = 0
+  28              		@ link register save eliminated.
+  29 0000 054B     		ldr	r3, .L2
+  30 0002 4FF00061 		mov	r1, #134217728
+  31 0006 D3F88820 		ldr	r2, [r3, #136]
+  32 000a 42F47000 		orr	r0, r2, #15728640
+  33 000e C3F88800 		str	r0, [r3, #136]
+  34 0012 9960     		str	r1, [r3, #8]
+  35 0014 7047     		bx	lr
+  36              	.L3:
+  37 0016 00BF     		.align	2
+  38              	.L2:
+  39 0018 00ED00E0 		.word	-536810240
+  40              		.cantunwind
+  41              		.fnend
+  42              		.size	SystemInit, .-SystemInit
+  43              		.section	.text.SystemCoreClockUpdate,"ax",%progbits
+  44              		.align	2
+  45              		.global	SystemCoreClockUpdate
+  46              		.thumb
+  47              		.thumb_func
+  48              		.type	SystemCoreClockUpdate, %function
+  49              	SystemCoreClockUpdate:
+  50              		.fnstart
+  51              	.LFB142:
+  52              		@ args = 0, pretend = 0, frame = 0
+  53              		@ frame_needed = 0, uses_anonymous_args = 0
+  54              		@ link register save eliminated.
+  55 0000 10B4     		push	{r4}
+  56 0002 1C4C     		ldr	r4, .L16
+  57 0004 A368     		ldr	r3, [r4, #8]
+ARM GAS  /tmp/cchSyDxr.s 			page 3
+
+
+  58 0006 03F00C00 		and	r0, r3, #12
+  59 000a 0428     		cmp	r0, #4
+  60 000c 26D0     		beq	.L6
+  61 000e 0828     		cmp	r0, #8
+  62 0010 0DD0     		beq	.L7
+  63 0012 194C     		ldr	r4, .L16+4
+  64              	.L5:
+  65 0014 1749     		ldr	r1, .L16
+  66 0016 194B     		ldr	r3, .L16+8
+  67 0018 8868     		ldr	r0, [r1, #8]
+  68 001a 1949     		ldr	r1, .L16+12
+  69 001c C0F3031C 		ubfx	ip, r0, #4, #4
+  70 0020 13F80C20 		ldrb	r2, [r3, ip]	@ zero_extendqisi2
+  71 0024 D440     		lsrs	r4, r4, r2
+  72 0026 0C60     		str	r4, [r1]
+  73 0028 5DF8044B 		ldr	r4, [sp], #4
+  74 002c 7047     		bx	lr
+  75              	.L7:
+  76 002e 6368     		ldr	r3, [r4, #4]
+  77 0030 6168     		ldr	r1, [r4, #4]
+  78 0032 5B02     		lsls	r3, r3, #9
+  79 0034 01F03F02 		and	r2, r1, #63
+  80 0038 12D4     		bmi	.L15
+  81 003a 0F48     		ldr	r0, .L16+4
+  82 003c 6468     		ldr	r4, [r4, #4]
+  83 003e B0FBF2FC 		udiv	ip, r0, r2
+  84 0042 C4F38813 		ubfx	r3, r4, #6, #9
+  85 0046 0CFB03F1 		mul	r1, ip, r3
+  86              	.L9:
+  87 004a 0A4B     		ldr	r3, .L16
+  88 004c 5868     		ldr	r0, [r3, #4]
+  89 004e C0F30144 		ubfx	r4, r0, #16, #2
+  90 0052 0134     		adds	r4, r4, #1
+  91 0054 6200     		lsls	r2, r4, #1
+  92 0056 B1FBF2F4 		udiv	r4, r1, r2
+  93 005a DBE7     		b	.L5
+  94              	.L6:
+  95 005c 094C     		ldr	r4, .L16+16
+  96 005e D9E7     		b	.L5
+  97              	.L15:
+  98 0060 0848     		ldr	r0, .L16+16
+  99 0062 6468     		ldr	r4, [r4, #4]
+ 100 0064 B0FBF2F2 		udiv	r2, r0, r2
+ 101 0068 C4F3881C 		ubfx	ip, r4, #6, #9
+ 102 006c 02FB0CF1 		mul	r1, r2, ip
+ 103 0070 EBE7     		b	.L9
+ 104              	.L17:
+ 105 0072 00BF     		.align	2
+ 106              	.L16:
+ 107 0074 00380240 		.word	1073887232
+ 108 0078 0024F400 		.word	16000000
+ 109 007c 00000000 		.word	.LANCHOR1
+ 110 0080 00000000 		.word	.LANCHOR0
+ 111 0084 40787D01 		.word	25000000
+ 112              		.cantunwind
+ 113              		.fnend
+ 114              		.size	SystemCoreClockUpdate, .-SystemCoreClockUpdate
+ARM GAS  /tmp/cchSyDxr.s 			page 4
+
+
+ 115              		.global	APBPrescTable
+ 116              		.global	AHBPrescTable
+ 117              		.global	SystemCoreClock
+ 118              		.section	.rodata.AHBPrescTable,"a",%progbits
+ 119              		.align	2
+ 120              		.set	.LANCHOR1,. + 0
+ 121              		.type	AHBPrescTable, %object
+ 122              		.size	AHBPrescTable, 16
+ 123              	AHBPrescTable:
+ 124 0000 00       		.byte	0
+ 125 0001 00       		.byte	0
+ 126 0002 00       		.byte	0
+ 127 0003 00       		.byte	0
+ 128 0004 00       		.byte	0
+ 129 0005 00       		.byte	0
+ 130 0006 00       		.byte	0
+ 131 0007 00       		.byte	0
+ 132 0008 01       		.byte	1
+ 133 0009 02       		.byte	2
+ 134 000a 03       		.byte	3
+ 135 000b 04       		.byte	4
+ 136 000c 06       		.byte	6
+ 137 000d 07       		.byte	7
+ 138 000e 08       		.byte	8
+ 139 000f 09       		.byte	9
+ 140              		.section	.rodata.APBPrescTable,"a",%progbits
+ 141              		.align	2
+ 142              		.type	APBPrescTable, %object
+ 143              		.size	APBPrescTable, 8
+ 144              	APBPrescTable:
+ 145 0000 00       		.byte	0
+ 146 0001 00       		.byte	0
+ 147 0002 00       		.byte	0
+ 148 0003 00       		.byte	0
+ 149 0004 01       		.byte	1
+ 150 0005 02       		.byte	2
+ 151 0006 03       		.byte	3
+ 152 0007 04       		.byte	4
+ 153              		.section	.data.SystemCoreClock,"aw",%progbits
+ 154              		.align	2
+ 155              		.set	.LANCHOR0,. + 0
+ 156              		.type	SystemCoreClock, %object
+ 157              		.size	SystemCoreClock, 4
+ 158              	SystemCoreClock:
+ 159 0000 0024F400 		.word	16000000
+ 160              		.ident	"GCC: (15:5.4.1+svn241155-1) 5.4.1 20160919"
+ARM GAS  /tmp/cchSyDxr.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 system_stm32f7xx.c
+     /tmp/cchSyDxr.s:18     .text.SystemInit:0000000000000000 $t
+     /tmp/cchSyDxr.s:23     .text.SystemInit:0000000000000000 SystemInit
+     /tmp/cchSyDxr.s:39     .text.SystemInit:0000000000000018 $d
+       .ARM.exidx.text.SystemInit:0000000000000000 $d
+     /tmp/cchSyDxr.s:44     .text.SystemCoreClockUpdate:0000000000000000 $t
+     /tmp/cchSyDxr.s:49     .text.SystemCoreClockUpdate:0000000000000000 SystemCoreClockUpdate
+     /tmp/cchSyDxr.s:107    .text.SystemCoreClockUpdate:0000000000000074 $d
+.ARM.exidx.text.SystemCoreClockUpdate:0000000000000000 $d
+     /tmp/cchSyDxr.s:144    .rodata.APBPrescTable:0000000000000000 APBPrescTable
+     /tmp/cchSyDxr.s:123    .rodata.AHBPrescTable:0000000000000000 AHBPrescTable
+     /tmp/cchSyDxr.s:158    .data.SystemCoreClock:0000000000000000 SystemCoreClock
+     /tmp/cchSyDxr.s:119    .rodata.AHBPrescTable:0000000000000000 $d
+     /tmp/cchSyDxr.s:141    .rodata.APBPrescTable:0000000000000000 $d
+     /tmp/cchSyDxr.s:154    .data.SystemCoreClock:0000000000000000 $d
+
+NO UNDEFINED SYMBOLS

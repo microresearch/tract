@@ -1,0 +1,11 @@
+src/rsynth_2005/holmes.c:83:1:set_trans.isra	8	static
+src/rsynth_2005/holmes.c:107:1:linear	0	static
+src/rsynth_2005/holmes.c:120:1:interpolate	12	static
+src/rsynth_2005/holmes.c:178:6:rsynth_newsay_single	16	static
+src/rsynth_2005/holmes.c:214:6:rsynth_newsay_singlex	0	static
+src/rsynth_2005/holmes.c:219:6:rsynth_newsay	16	static
+src/rsynth_2005/holmes.c:254:6:rsynth_newsay_elm	4	static
+src/rsynth_2005/holmes.c:293:9:rsynth_get_sample	72	static
+src/rsynth_2005/holmes.c:415:9:rsynth_get_sample_sing	72	static
+src/rsynth_2005/holmes.c:537:9:rsynth_get_sample_single	72	static
+src/rsynth_2005/holmes.c:646:9:rsynth_get_sample_elm	72	static

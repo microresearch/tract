@@ -1,0 +1,12 @@
+src/english2phoneme/parse.c:382:5:makeupper	0	static
+src/english2phoneme/parse.c:395:5:new_char	24	static
+src/english2phoneme/parse.c:491:6:have_special	8	static
+src/english2phoneme/parse.c:504:6:have_number	24	static
+src/english2phoneme/parse.c:648:6:abbrev	8	static
+src/english2phoneme/parse.c:602:6:have_letter	288	static
+src/english2phoneme/parse.c:466:6:xlate_file	16	static
+src/english2phoneme/parse.c:260:15:text2speech	16	static
+src/english2phoneme/parse.c:292:15:text2speechfor256	24	static
+src/english2phoneme/parse.c:316:15:text2speechforvotrax	32	static
+src/english2phoneme/parse.c:340:15:text2speechforSAM	16	static
+src/english2phoneme/parse.c:361:15:text2speechforTMS	16	static

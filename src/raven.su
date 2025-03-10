@@ -1,0 +1,14 @@
+src/raven.c:33:6:init_mindlin	0	static
+src/raven.c:58:8:calc_xdobleprime_mindlin	0	static
+src/raven.c:77:6:no_newsay	0	static
+src/raven.c:80:8:integrate	0	static
+src/raven.c:85:9:mindlin_oscillate	0	static
+src/raven.c:101:9:mindlin_get_sample	0	static
+src/raven.c:115:6:init_gardner	0	static
+src/raven.c:154:8:calc_xdobleprime_gardner	40	static
+src/raven.c:168:9:gardner_oscillate	16	static
+src/raven.c:192:9:gardner_get_sample	48	static
+src/raven.c:239:6:init_balloon	8	static
+src/raven.c:395:8:computeSample	248	static
+src/raven.c:334:9:balloon_get_sample	8	static
+src/raven.c:571:6:clearOld	4	static

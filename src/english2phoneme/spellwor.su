@@ -1,0 +1,2 @@
+src/english2phoneme/spellwor.c:15:6:say_ascii	0	static
+src/english2phoneme/spellwor.c:22:6:spell_word	16	static

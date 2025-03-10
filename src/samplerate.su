@@ -1,0 +1,3 @@
+src/samplerate.c:34:6:samplerate_init	0	static
+src/samplerate.c:81:6:new_data	0	static
+src/samplerate.c:89:6:samplerate_simple	56	static

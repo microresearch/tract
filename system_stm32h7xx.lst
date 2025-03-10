@@ -1,0 +1,281 @@
+ARM GAS  /tmp/cci2OIop.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=system_stm32h7xx.lst 
+ input file    	: /tmp/cci2OIop.s
+ output file   	: system_stm32h7xx.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:36:01.000+0100
+
+ARM GAS  /tmp/cci2OIop.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"system_stm32h7xx.c"
+  15              		.text
+  16              		.section	.text.SystemInit,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	SystemInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	SystemInit, %function
+  24              	SystemInit:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 10B4     		push	{r4}
+  29 0002 1C4C     		ldr	r4, .L5
+  30 0004 0022     		movs	r2, #0
+  31 0006 1C4B     		ldr	r3, .L5+4
+  32 0008 D4F88800 		ldr	r0, [r4, #136]
+  33 000c 1B49     		ldr	r1, .L5+8
+  34 000e 40F47000 		orr	r0, r0, #15728640
+  35 0012 C4F88800 		str	r0, [r4, #136]
+  36 0016 1868     		ldr	r0, [r3]
+  37 0018 194C     		ldr	r4, .L5+12
+  38 001a 40F00100 		orr	r0, r0, #1
+  39 001e 1860     		str	r0, [r3]
+  40 0020 1A61     		str	r2, [r3, #16]
+  41 0022 1868     		ldr	r0, [r3]
+  42 0024 0140     		ands	r1, r1, r0
+  43 0026 1960     		str	r1, [r3]
+  44 0028 9A61     		str	r2, [r3, #24]
+  45 002a DA61     		str	r2, [r3, #28]
+  46 002c 1A62     		str	r2, [r3, #32]
+  47 002e 9A62     		str	r2, [r3, #40]
+  48 0030 DA62     		str	r2, [r3, #44]
+  49 0032 1A63     		str	r2, [r3, #48]
+  50 0034 5A63     		str	r2, [r3, #52]
+  51 0036 9A63     		str	r2, [r3, #56]
+  52 0038 DA63     		str	r2, [r3, #60]
+  53 003a 1A64     		str	r2, [r3, #64]
+  54 003c 5A64     		str	r2, [r3, #68]
+  55 003e 1968     		ldr	r1, [r3]
+  56 0040 21F48021 		bic	r1, r1, #262144
+  57 0044 1960     		str	r1, [r3]
+ARM GAS  /tmp/cci2OIop.s 			page 3
+
+
+  58 0046 1A66     		str	r2, [r3, #96]
+  59 0048 2368     		ldr	r3, [r4]
+  60 004a 6FF30F03 		bfc	r3, #0, #16
+  61 004e B3F1005F 		cmp	r3, #536870912
+  62 0052 03D2     		bcs	.L2
+  63 0054 0B4B     		ldr	r3, .L5+16
+  64 0056 0122     		movs	r2, #1
+  65 0058 C3F80821 		str	r2, [r3, #264]
+  66              	.L2:
+  67 005c 0A49     		ldr	r1, .L5+20
+  68 005e 43F2D200 		movw	r0, #12498
+  69 0062 044B     		ldr	r3, .L5
+  70 0064 4FF00062 		mov	r2, #134217728
+  71 0068 0860     		str	r0, [r1]
+  72 006a 5DF8044B 		ldr	r4, [sp], #4
+  73 006e 9A60     		str	r2, [r3, #8]
+  74 0070 7047     		bx	lr
+  75              	.L6:
+  76 0072 00BF     		.align	2
+  77              	.L5:
+  78 0074 00ED00E0 		.word	-536810240
+  79 0078 00440258 		.word	1476543488
+  80 007c 7FEDF6EA 		.word	-352916097
+  81 0080 0010005C 		.word	1543507968
+  82 0084 00800051 		.word	1358987264
+  83 0088 00400052 		.word	1375748096
+  84              		.size	SystemInit, .-SystemInit
+  85              		.section	.text.SystemCoreClockUpdate,"ax",%progbits
+  86              		.align	1
+  87              		.p2align 2,,3
+  88              		.global	SystemCoreClockUpdate
+  89              		.syntax unified
+  90              		.thumb
+  91              		.thumb_func
+  92              		.type	SystemCoreClockUpdate, %function
+  93              	SystemCoreClockUpdate:
+  94              		@ args = 0, pretend = 0, frame = 0
+  95              		@ frame_needed = 0, uses_anonymous_args = 0
+  96              		@ link register save eliminated.
+  97 0000 424A     		ldr	r2, .L23
+  98 0002 1369     		ldr	r3, [r2, #16]
+  99 0004 03F03803 		and	r3, r3, #56
+ 100 0008 102B     		cmp	r3, #16
+ 101 000a 30B4     		push	{r4, r5}
+ 102 000c 5ED0     		beq	.L14
+ 103 000e 182B     		cmp	r3, #24
+ 104 0010 1BD0     		beq	.L9
+ 105 0012 A3B1     		cbz	r3, .L21
+ 106 0014 3E4B     		ldr	r3, .L23+4
+ 107              	.L8:
+ 108 0016 3D48     		ldr	r0, .L23
+ 109 0018 3E49     		ldr	r1, .L23+8
+ 110 001a 8269     		ldr	r2, [r0, #24]
+ 111 001c 3E4D     		ldr	r5, .L23+12
+ 112 001e C2F30322 		ubfx	r2, r2, #8, #4
+ 113 0022 3E4C     		ldr	r4, .L23+16
+ 114 0024 8A5C     		ldrb	r2, [r1, r2]	@ zero_extendqisi2
+ARM GAS  /tmp/cci2OIop.s 			page 4
+
+
+ 115 0026 D340     		lsrs	r3, r3, r2
+ 116 0028 2B60     		str	r3, [r5]
+ 117 002a 8269     		ldr	r2, [r0, #24]
+ 118 002c 02F00F02 		and	r2, r2, #15
+ 119 0030 8A5C     		ldrb	r2, [r1, r2]	@ zero_extendqisi2
+ 120 0032 02F01F02 		and	r2, r2, #31
+ 121 0036 D340     		lsrs	r3, r3, r2
+ 122 0038 2360     		str	r3, [r4]
+ 123 003a 30BC     		pop	{r4, r5}
+ 124 003c 7047     		bx	lr
+ 125              	.L21:
+ 126 003e 1268     		ldr	r2, [r2]
+ 127 0040 374B     		ldr	r3, .L23+20
+ 128 0042 C2F3C102 		ubfx	r2, r2, #3, #2
+ 129 0046 D340     		lsrs	r3, r3, r2
+ 130 0048 E5E7     		b	.L8
+ 131              	.L9:
+ 132 004a 906A     		ldr	r0, [r2, #40]
+ 133 004c 946A     		ldr	r4, [r2, #40]
+ 134 004e D56A     		ldr	r5, [r2, #44]
+ 135 0050 14F47C7F 		tst	r4, #1008
+ 136 0054 516B     		ldr	r1, [r2, #52]
+ 137 0056 C4F30513 		ubfx	r3, r4, #4, #6
+ 138 005a DCD0     		beq	.L8
+ 139 005c C1F3CC01 		ubfx	r1, r1, #3, #13
+ 140 0060 05F00105 		and	r5, r5, #1
+ 141 0064 00F00300 		and	r0, r0, #3
+ 142 0068 07EE903A 		vmov	s15, r3	@ int
+ 143 006c 05FB01F1 		mul	r1, r5, r1
+ 144 0070 0128     		cmp	r0, #1
+ 145 0072 F8EEE76A 		vcvt.f32.s32	s13, s15
+ 146 0076 07EE101A 		vmov	s14, r1	@ int
+ 147 007a BAEEE97A 		vcvt.f32.s32	s14, s14, #13
+ 148 007e 02D0     		beq	.L12
+ 149 0080 0228     		cmp	r0, #2
+ 150 0082 40D0     		beq	.L11
+ 151 0084 20B3     		cbz	r0, .L22
+ 152              	.L12:
+ 153 0086 DFED277A 		vldr.32	s15, .L23+24
+ 154              	.L20:
+ 155 008a 87EEA66A 		vdiv.f32	s12, s15, s13
+ 156 008e 136B     		ldr	r3, [r2, #48]
+ 157 0090 C3F30803 		ubfx	r3, r3, #0, #9
+ 158 0094 07EE903A 		vmov	s15, r3	@ int
+ 159 0098 F7EE005A 		vmov.f32	s11, #1.0e+0
+ 160 009c F8EEE77A 		vcvt.f32.s32	s15, s15
+ 161 00a0 77EE877A 		vadd.f32	s15, s15, s14
+ 162 00a4 77EEA57A 		vadd.f32	s15, s15, s11
+ 163 00a8 67EE867A 		vmul.f32	s15, s15, s12
+ 164              	.L13:
+ 165 00ac 174B     		ldr	r3, .L23
+ 166 00ae 1B6B     		ldr	r3, [r3, #48]
+ 167 00b0 C3F34623 		ubfx	r3, r3, #9, #7
+ 168 00b4 0133     		adds	r3, r3, #1
+ 169 00b6 07EE103A 		vmov	s14, r3	@ int
+ 170 00ba B8EEC77A 		vcvt.f32.s32	s14, s14
+ 171 00be C7EE876A 		vdiv.f32	s13, s15, s14
+ARM GAS  /tmp/cci2OIop.s 			page 5
+
+
+ 172 00c2 FCEEE67A 		vcvt.u32.f32	s15, s13
+ 173 00c6 17EE903A 		vmov	r3, s15	@ int
+ 174 00ca A4E7     		b	.L8
+ 175              	.L14:
+ 176 00cc 164B     		ldr	r3, .L23+28
+ 177 00ce A2E7     		b	.L8
+ 178              	.L22:
+ 179 00d0 1068     		ldr	r0, [r2]
+ 180 00d2 F7EE005A 		vmov.f32	s11, #1.0e+0
+ 181 00d6 136B     		ldr	r3, [r2, #48]
+ 182 00d8 1149     		ldr	r1, .L23+20
+ 183 00da C0F3C102 		ubfx	r2, r0, #3, #2
+ 184 00de C3F30803 		ubfx	r3, r3, #0, #9
+ 185 00e2 D140     		lsrs	r1, r1, r2
+ 186 00e4 07EE903A 		vmov	s15, r3	@ int
+ 187 00e8 06EE101A 		vmov	s12, r1	@ int
+ 188 00ec F8EEE77A 		vcvt.f32.s32	s15, s15
+ 189 00f0 B8EEC66A 		vcvt.f32.s32	s12, s12
+ 190 00f4 37EE877A 		vadd.f32	s14, s15, s14
+ 191 00f8 C6EE267A 		vdiv.f32	s15, s12, s13
+ 192 00fc 37EE257A 		vadd.f32	s14, s14, s11
+ 193 0100 67EE877A 		vmul.f32	s15, s15, s14
+ 194 0104 D2E7     		b	.L13
+ 195              	.L11:
+ 196 0106 DFED097A 		vldr.32	s15, .L23+32
+ 197 010a BEE7     		b	.L20
+ 198              	.L24:
+ 199              		.align	2
+ 200              	.L23:
+ 201 010c 00440258 		.word	1476543488
+ 202 0110 00093D00 		.word	4000000
+ 203 0114 00000000 		.word	D1CorePrescTable
+ 204 0118 00000000 		.word	SystemCoreClock
+ 205 011c 00000000 		.word	SystemD2Clock
+ 206 0120 0090D003 		.word	64000000
+ 207 0124 0024744A 		.word	1249125376
+ 208 0128 00127A00 		.word	8000000
+ 209 012c 0024F44A 		.word	1257513984
+ 210              		.size	SystemCoreClockUpdate, .-SystemCoreClockUpdate
+ 211              		.global	D1CorePrescTable
+ 212              		.section	.rodata.D1CorePrescTable,"a"
+ 213              		.align	2
+ 214              		.type	D1CorePrescTable, %object
+ 215              		.size	D1CorePrescTable, 16
+ 216              	D1CorePrescTable:
+ 217 0000 00000000 		.ascii	"\000\000\000\000\001\002\003\004\001\002\003\004\006"
+ 217      01020304 
+ 217      01020304 
+ 217      06
+ 218 000d 070809   		.ascii	"\007\010\011"
+ 219              		.global	SystemD2Clock
+ 220              		.section	.data.SystemD2Clock,"aw"
+ 221              		.align	2
+ 222              		.type	SystemD2Clock, %object
+ 223              		.size	SystemD2Clock, 4
+ 224              	SystemD2Clock:
+ 225 0000 0090D003 		.word	64000000
+ARM GAS  /tmp/cci2OIop.s 			page 6
+
+
+ 226              		.global	SystemCoreClock
+ 227              		.section	.data.SystemCoreClock,"aw"
+ 228              		.align	2
+ 229              		.type	SystemCoreClock, %object
+ 230              		.size	SystemCoreClock, 4
+ 231              	SystemCoreClock:
+ 232 0000 0090D003 		.word	64000000
+ 233              		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/cci2OIop.s 			page 7
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 system_stm32h7xx.c
+     /tmp/cci2OIop.s:17     .text.SystemInit:00000000 $t
+     /tmp/cci2OIop.s:24     .text.SystemInit:00000000 SystemInit
+     /tmp/cci2OIop.s:78     .text.SystemInit:00000074 $d
+     /tmp/cci2OIop.s:86     .text.SystemCoreClockUpdate:00000000 $t
+     /tmp/cci2OIop.s:93     .text.SystemCoreClockUpdate:00000000 SystemCoreClockUpdate
+     /tmp/cci2OIop.s:201    .text.SystemCoreClockUpdate:0000010c $d
+     /tmp/cci2OIop.s:216    .rodata.D1CorePrescTable:00000000 D1CorePrescTable
+     /tmp/cci2OIop.s:231    .data.SystemCoreClock:00000000 SystemCoreClock
+     /tmp/cci2OIop.s:224    .data.SystemD2Clock:00000000 SystemD2Clock
+     /tmp/cci2OIop.s:213    .rodata.D1CorePrescTable:00000000 $d
+     /tmp/cci2OIop.s:221    .data.SystemD2Clock:00000000 $d
+     /tmp/cci2OIop.s:228    .data.SystemCoreClock:00000000 $d
+
+NO UNDEFINED SYMBOLS

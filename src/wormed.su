@@ -1,0 +1,7 @@
+src/wormed.c:48:6:wormed_newsay	0	static
+src/wormed.c:51:9:chirp_get_sample	8	static
+src/wormed.c:73:9:votglot_get_sample	16	static
+src/wormed.c:85:9:impulsive_get_sample	8	static
+src/wormed.c:113:9:sampled_source_getsample	0	static
+src/wormed.c:164:9:natural_source_getsample	0	static
+src/wormed.c:235:9:impulsivex_get_sample	8	static

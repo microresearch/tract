@@ -1,0 +1,97 @@
+ARM GAS  /tmp/ccod5oRc.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=sys/_sbrk.lst 
+ input file    	: /tmp/ccod5oRc.s
+ output file   	: sys/_sbrk.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:36:01.000+0100
+
+ARM GAS  /tmp/ccod5oRc.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"_sbrk.c"
+  15              		.text
+  16              		.section	.text._sbrk,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_sbrk
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	_sbrk, %function
+  24              	_sbrk:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 0C4A     		ldr	r2, .L9
+  28 0002 08B5     		push	{r3, lr}
+  29 0004 0346     		mov	r3, r0
+  30 0006 1068     		ldr	r0, [r2]
+  31 0008 40B1     		cbz	r0, .L7
+  32              	.L2:
+  33 000a 0333     		adds	r3, r3, #3
+  34 000c 0A49     		ldr	r1, .L9+4
+  35 000e 23F00303 		bic	r3, r3, #3
+  36 0012 0344     		add	r3, r3, r0
+  37 0014 8B42     		cmp	r3, r1
+  38 0016 05D8     		bhi	.L8
+  39 0018 1360     		str	r3, [r2]
+  40 001a 08BD     		pop	{r3, pc}
+  41              	.L7:
+  42 001c 0749     		ldr	r1, .L9+8
+  43 001e 0846     		mov	r0, r1
+  44 0020 1160     		str	r1, [r2]
+  45 0022 F2E7     		b	.L2
+  46              	.L8:
+  47 0024 FFF7FEFF 		bl	__errno
+  48 0028 0C22     		movs	r2, #12
+  49 002a 0346     		mov	r3, r0
+  50 002c 4FF0FF30 		mov	r0, #-1
+  51 0030 1A60     		str	r2, [r3]
+  52 0032 08BD     		pop	{r3, pc}
+  53              	.L10:
+  54              		.align	2
+  55              	.L9:
+  56 0034 00000000 		.word	current_heap_end.0
+  57 0038 00010000 		.word	_end+256
+ARM GAS  /tmp/ccod5oRc.s 			page 3
+
+
+  58 003c 00000000 		.word	_end
+  59              		.size	_sbrk, .-_sbrk
+  60              		.section	.bss.current_heap_end.0,"aw",%nobits
+  61              		.align	2
+  62              		.type	current_heap_end.0, %object
+  63              		.size	current_heap_end.0, 4
+  64              	current_heap_end.0:
+  65 0000 00000000 		.space	4
+  66              		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/ccod5oRc.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 _sbrk.c
+     /tmp/ccod5oRc.s:17     .text._sbrk:00000000 $t
+     /tmp/ccod5oRc.s:24     .text._sbrk:00000000 _sbrk
+     /tmp/ccod5oRc.s:56     .text._sbrk:00000034 $d
+     /tmp/ccod5oRc.s:64     .bss.current_heap_end.0:00000000 current_heap_end.0
+     /tmp/ccod5oRc.s:61     .bss.current_heap_end.0:00000000 $d
+
+UNDEFINED SYMBOLS
+__errno
+_end

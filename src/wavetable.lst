@@ -1,0 +1,754 @@
+ARM GAS  /tmp/ccbuxd08.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/wavetable.lst 
+ input file    	: /tmp/ccbuxd08.s
+ output file   	: src/wavetable.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:35:57.000+0100
+
+ARM GAS  /tmp/ccbuxd08.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"wavetable.c"
+  15              		.text
+  16              		.section	.text.dowavetable,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	dowavetable
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	dowavetable, %function
+  24              	dowavetable:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 002A     		cmp	r2, #0
+  28 0002 58D0     		beq	.L17
+  29 0004 B1F90C30 		ldrsh	r3, [r1, #12]
+  30 0008 05EE903A 		vmov	s11, r3	@ int
+  31 000c 013B     		subs	r3, r3, #1
+  32 000e 06EE903A 		vmov	s13, r3	@ int
+  33 0012 F8EEE66A 		vcvt.f32.s32	s13, s13
+  34 0016 10B5     		push	{r4, lr}
+  35 0018 0C68     		ldr	r4, [r1]
+  36 001a 00EB820E 		add	lr, r0, r2, lsl #2
+  37              	.L9:
+  38 001e D1ED017A 		vldr.32	s15, [r1, #4]
+  39 0022 91ED027A 		vldr.32	s14, [r1, #8]
+  40 0026 60EE277A 		vmul.f32	s15, s0, s15
+  41 002a 77EE877A 		vadd.f32	s15, s15, s14
+  42 002e F4EEE76A 		vcmpe.f32	s13, s15
+  43 0032 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  44 0036 08D5     		bpl	.L3
+  45 0038 B8EEE57A 		vcvt.f32.s32	s14, s11
+  46              	.L5:
+  47 003c 77EEC77A 		vsub.f32	s15, s15, s14
+  48 0040 F4EEE76A 		vcmpe.f32	s13, s15
+  49 0044 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  50 0048 F8D4     		bmi	.L5
+  51              	.L3:
+  52 004a BDEEE77A 		vcvt.s32.f32	s14, s15
+  53 004e C1ED027A 		vstr.32	s15, [r1, #8]
+  54 0052 17EE102A 		vmov	r2, s14	@ int
+  55 0056 531C     		adds	r3, r2, #1
+  56 0058 07EE103A 		vmov	s14, r3	@ int
+  57 005c B8EEC77A 		vcvt.f32.s32	s14, s14
+ARM GAS  /tmp/ccbuxd08.s 			page 3
+
+
+  58 0060 B4EEE67A 		vcmpe.f32	s14, s13
+  59 0064 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  60 0068 08DD     		ble	.L6
+  61 006a B8EEE56A 		vcvt.f32.s32	s12, s11
+  62              	.L8:
+  63 006e 37EE467A 		vsub.f32	s14, s14, s12
+  64 0072 F4EEC76A 		vcmpe.f32	s13, s14
+  65 0076 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  66 007a F8D4     		bmi	.L8
+  67              	.L6:
+  68 007c BDEEC77A 		vcvt.s32.f32	s14, s14
+  69 0080 04EB820C 		add	ip, r4, r2, lsl #2
+  70 0084 9CED006A 		vldr.32	s12, [ip]
+  71 0088 17EE103A 		vmov	r3, s14	@ int
+  72 008c 07EE102A 		vmov	s14, r2	@ int
+  73 0090 B8EEC77A 		vcvt.f32.s32	s14, s14
+  74 0094 04EB8303 		add	r3, r4, r3, lsl #2
+  75 0098 77EEC77A 		vsub.f32	s15, s15, s14
+  76 009c 93ED007A 		vldr.32	s14, [r3]
+  77 00a0 37EE467A 		vsub.f32	s14, s14, s12
+  78 00a4 67EE277A 		vmul.f32	s15, s14, s15
+  79 00a8 77EE867A 		vadd.f32	s15, s15, s12
+  80 00ac E0EC017A 		vstmia.32	r0!, {s15}
+  81 00b0 8645     		cmp	lr, r0
+  82 00b2 B4D1     		bne	.L9
+  83 00b4 10BD     		pop	{r4, pc}
+  84              	.L17:
+  85 00b6 7047     		bx	lr
+  86              		.size	dowavetable, .-dowavetable
+  87              		.section	.text.wavetable_init,"ax",%progbits
+  88              		.align	1
+  89              		.p2align 2,,3
+  90              		.global	wavetable_init
+  91              		.syntax unified
+  92              		.thumb
+  93              		.thumb_func
+  94              		.type	wavetable_init, %function
+  95              	wavetable_init:
+  96              		@ args = 0, pretend = 0, frame = 0
+  97              		@ frame_needed = 0, uses_anonymous_args = 0
+  98              		@ link register save eliminated.
+  99 0000 07EE902A 		vmov	s15, r2	@ int
+ 100 0004 9FED067A 		vldr.32	s14, .L22
+ 101 0008 0023     		movs	r3, #0
+ 102 000a 0160     		str	r1, [r0]
+ 103 000c F8EEE76A 		vcvt.f32.s32	s13, s15
+ 104 0010 8281     		strh	r2, [r0, #12]	@ movhi
+ 105 0012 8360     		str	r3, [r0, #8]	@ float
+ 106 0014 C6EE877A 		vdiv.f32	s15, s13, s14
+ 107 0018 C0ED017A 		vstr.32	s15, [r0, #4]
+ 108 001c 7047     		bx	lr
+ 109              	.L23:
+ 110 001e 00BF     		.align	2
+ 111              	.L22:
+ 112 0020 00803B47 		.word	1195081728
+ 113              		.size	wavetable_init, .-wavetable_init
+ 114              		.section	.text.wave_get_sample1,"ax",%progbits
+ARM GAS  /tmp/ccbuxd08.s 			page 4
+
+
+ 115              		.align	1
+ 116              		.p2align 2,,3
+ 117              		.global	wave_get_sample1
+ 118              		.syntax unified
+ 119              		.thumb
+ 120              		.thumb_func
+ 121              		.type	wave_get_sample1, %function
+ 122              	wave_get_sample1:
+ 123              		@ args = 0, pretend = 0, frame = 0
+ 124              		@ frame_needed = 0, uses_anonymous_args = 0
+ 125              		@ link register save eliminated.
+ 126 0000 304B     		ldr	r3, .L35
+ 127 0002 3149     		ldr	r1, .L35+4
+ 128 0004 9FED317A 		vldr.32	s14, .L35+8
+ 129 0008 D3ED007A 		vldr.32	s15, [r3]
+ 130 000c B1F90C30 		ldrsh	r3, [r1, #12]
+ 131 0010 67EE877A 		vmul.f32	s15, s15, s14
+ 132 0014 91ED016A 		vldr.32	s12, [r1, #4]
+ 133 0018 5A1E     		subs	r2, r3, #1
+ 134 001a 91ED027A 		vldr.32	s14, [r1, #8]
+ 135 001e 67EE867A 		vmul.f32	s15, s15, s12
+ 136 0022 06EE902A 		vmov	s13, r2	@ int
+ 137 0026 F8EEE66A 		vcvt.f32.s32	s13, s13
+ 138 002a 77EE877A 		vadd.f32	s15, s15, s14
+ 139 002e F4EEE76A 		vcmpe.f32	s13, s15
+ 140 0032 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 141 0036 0AD5     		bpl	.L25
+ 142 0038 07EE103A 		vmov	s14, r3	@ int
+ 143 003c B8EEC77A 		vcvt.f32.s32	s14, s14
+ 144              	.L27:
+ 145 0040 77EEC77A 		vsub.f32	s15, s15, s14
+ 146 0044 F4EEE76A 		vcmpe.f32	s13, s15
+ 147 0048 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 148 004c F8D4     		bmi	.L27
+ 149              	.L25:
+ 150 004e BDEEE77A 		vcvt.s32.f32	s14, s15
+ 151 0052 C1ED027A 		vstr.32	s15, [r1, #8]
+ 152 0056 17EE102A 		vmov	r2, s14	@ int
+ 153 005a 501C     		adds	r0, r2, #1
+ 154 005c 07EE100A 		vmov	s14, r0	@ int
+ 155 0060 B8EEC77A 		vcvt.f32.s32	s14, s14
+ 156 0064 B4EEE67A 		vcmpe.f32	s14, s13
+ 157 0068 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 158 006c 0ADD     		ble	.L28
+ 159 006e 06EE103A 		vmov	s12, r3	@ int
+ 160 0072 B8EEC66A 		vcvt.f32.s32	s12, s12
+ 161              	.L30:
+ 162 0076 37EE467A 		vsub.f32	s14, s14, s12
+ 163 007a B4EEE67A 		vcmpe.f32	s14, s13
+ 164 007e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 165 0082 F8DC     		bgt	.L30
+ 166              	.L28:
+ 167 0084 BDEEC77A 		vcvt.s32.f32	s14, s14
+ 168 0088 0B68     		ldr	r3, [r1]
+ 169 008a 06EE902A 		vmov	s13, r2	@ int
+ 170 008e 03EB8202 		add	r2, r3, r2, lsl #2
+ 171 0092 17EE101A 		vmov	r1, s14	@ int
+ARM GAS  /tmp/ccbuxd08.s 			page 5
+
+
+ 172 0096 B8EEE66A 		vcvt.f32.s32	s12, s13
+ 173 009a D2ED006A 		vldr.32	s13, [r2]
+ 174 009e 03EB8103 		add	r3, r3, r1, lsl #2
+ 175 00a2 77EEC67A 		vsub.f32	s15, s15, s12
+ 176 00a6 93ED007A 		vldr.32	s14, [r3]
+ 177 00aa 37EE667A 		vsub.f32	s14, s14, s13
+ 178 00ae 67EE277A 		vmul.f32	s15, s14, s15
+ 179 00b2 77EEA67A 		vadd.f32	s15, s15, s13
+ 180 00b6 FEEEE87A 		vcvt.s32.f32	s15, s15, #15
+ 181 00ba 17EE903A 		vmov	r3, s15	@ int
+ 182 00be 18B2     		sxth	r0, r3
+ 183 00c0 7047     		bx	lr
+ 184              	.L36:
+ 185 00c2 00BF     		.align	2
+ 186              	.L35:
+ 187 00c4 00000000 		.word	_selz
+ 188 00c8 00000000 		.word	wavtable1
+ 189 00cc 00803B47 		.word	1195081728
+ 190              		.size	wave_get_sample1, .-wave_get_sample1
+ 191              		.section	.text.wave_get_sample2,"ax",%progbits
+ 192              		.align	1
+ 193              		.p2align 2,,3
+ 194              		.global	wave_get_sample2
+ 195              		.syntax unified
+ 196              		.thumb
+ 197              		.thumb_func
+ 198              		.type	wave_get_sample2, %function
+ 199              	wave_get_sample2:
+ 200              		@ args = 0, pretend = 0, frame = 0
+ 201              		@ frame_needed = 0, uses_anonymous_args = 0
+ 202              		@ link register save eliminated.
+ 203 0000 304B     		ldr	r3, .L48
+ 204 0002 3149     		ldr	r1, .L48+4
+ 205 0004 9FED317A 		vldr.32	s14, .L48+8
+ 206 0008 D3ED007A 		vldr.32	s15, [r3]
+ 207 000c B1F90C30 		ldrsh	r3, [r1, #12]
+ 208 0010 67EE877A 		vmul.f32	s15, s15, s14
+ 209 0014 91ED016A 		vldr.32	s12, [r1, #4]
+ 210 0018 5A1E     		subs	r2, r3, #1
+ 211 001a 91ED027A 		vldr.32	s14, [r1, #8]
+ 212 001e 67EE867A 		vmul.f32	s15, s15, s12
+ 213 0022 06EE902A 		vmov	s13, r2	@ int
+ 214 0026 F8EEE66A 		vcvt.f32.s32	s13, s13
+ 215 002a 77EE877A 		vadd.f32	s15, s15, s14
+ 216 002e F4EEE76A 		vcmpe.f32	s13, s15
+ 217 0032 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 218 0036 0AD5     		bpl	.L38
+ 219 0038 07EE103A 		vmov	s14, r3	@ int
+ 220 003c B8EEC77A 		vcvt.f32.s32	s14, s14
+ 221              	.L40:
+ 222 0040 77EEC77A 		vsub.f32	s15, s15, s14
+ 223 0044 F4EEE76A 		vcmpe.f32	s13, s15
+ 224 0048 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 225 004c F8D4     		bmi	.L40
+ 226              	.L38:
+ 227 004e BDEEE77A 		vcvt.s32.f32	s14, s15
+ 228 0052 C1ED027A 		vstr.32	s15, [r1, #8]
+ARM GAS  /tmp/ccbuxd08.s 			page 6
+
+
+ 229 0056 17EE102A 		vmov	r2, s14	@ int
+ 230 005a 501C     		adds	r0, r2, #1
+ 231 005c 07EE100A 		vmov	s14, r0	@ int
+ 232 0060 B8EEC77A 		vcvt.f32.s32	s14, s14
+ 233 0064 B4EEE67A 		vcmpe.f32	s14, s13
+ 234 0068 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 235 006c 0ADD     		ble	.L41
+ 236 006e 06EE103A 		vmov	s12, r3	@ int
+ 237 0072 B8EEC66A 		vcvt.f32.s32	s12, s12
+ 238              	.L43:
+ 239 0076 37EE467A 		vsub.f32	s14, s14, s12
+ 240 007a B4EEE67A 		vcmpe.f32	s14, s13
+ 241 007e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 242 0082 F8DC     		bgt	.L43
+ 243              	.L41:
+ 244 0084 BDEEC77A 		vcvt.s32.f32	s14, s14
+ 245 0088 0B68     		ldr	r3, [r1]
+ 246 008a 06EE902A 		vmov	s13, r2	@ int
+ 247 008e 03EB8202 		add	r2, r3, r2, lsl #2
+ 248 0092 17EE101A 		vmov	r1, s14	@ int
+ 249 0096 B8EEE66A 		vcvt.f32.s32	s12, s13
+ 250 009a D2ED006A 		vldr.32	s13, [r2]
+ 251 009e 03EB8103 		add	r3, r3, r1, lsl #2
+ 252 00a2 77EEC67A 		vsub.f32	s15, s15, s12
+ 253 00a6 93ED007A 		vldr.32	s14, [r3]
+ 254 00aa 37EE667A 		vsub.f32	s14, s14, s13
+ 255 00ae 67EE277A 		vmul.f32	s15, s14, s15
+ 256 00b2 77EEA67A 		vadd.f32	s15, s15, s13
+ 257 00b6 FEEEE87A 		vcvt.s32.f32	s15, s15, #15
+ 258 00ba 17EE903A 		vmov	r3, s15	@ int
+ 259 00be 18B2     		sxth	r0, r3
+ 260 00c0 7047     		bx	lr
+ 261              	.L49:
+ 262 00c2 00BF     		.align	2
+ 263              	.L48:
+ 264 00c4 00000000 		.word	_selz
+ 265 00c8 00000000 		.word	wavtable2
+ 266 00cc 00803B47 		.word	1195081728
+ 267              		.size	wave_get_sample2, .-wave_get_sample2
+ 268              		.section	.text.wave_get_sample3,"ax",%progbits
+ 269              		.align	1
+ 270              		.p2align 2,,3
+ 271              		.global	wave_get_sample3
+ 272              		.syntax unified
+ 273              		.thumb
+ 274              		.thumb_func
+ 275              		.type	wave_get_sample3, %function
+ 276              	wave_get_sample3:
+ 277              		@ args = 0, pretend = 0, frame = 0
+ 278              		@ frame_needed = 0, uses_anonymous_args = 0
+ 279              		@ link register save eliminated.
+ 280 0000 304B     		ldr	r3, .L61
+ 281 0002 3149     		ldr	r1, .L61+4
+ 282 0004 9FED317A 		vldr.32	s14, .L61+8
+ 283 0008 D3ED007A 		vldr.32	s15, [r3]
+ 284 000c B1F90C30 		ldrsh	r3, [r1, #12]
+ 285 0010 67EE877A 		vmul.f32	s15, s15, s14
+ARM GAS  /tmp/ccbuxd08.s 			page 7
+
+
+ 286 0014 91ED016A 		vldr.32	s12, [r1, #4]
+ 287 0018 5A1E     		subs	r2, r3, #1
+ 288 001a 91ED027A 		vldr.32	s14, [r1, #8]
+ 289 001e 67EE867A 		vmul.f32	s15, s15, s12
+ 290 0022 06EE902A 		vmov	s13, r2	@ int
+ 291 0026 F8EEE66A 		vcvt.f32.s32	s13, s13
+ 292 002a 77EE877A 		vadd.f32	s15, s15, s14
+ 293 002e F4EEE76A 		vcmpe.f32	s13, s15
+ 294 0032 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 295 0036 0AD5     		bpl	.L51
+ 296 0038 07EE103A 		vmov	s14, r3	@ int
+ 297 003c B8EEC77A 		vcvt.f32.s32	s14, s14
+ 298              	.L53:
+ 299 0040 77EEC77A 		vsub.f32	s15, s15, s14
+ 300 0044 F4EEE76A 		vcmpe.f32	s13, s15
+ 301 0048 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 302 004c F8D4     		bmi	.L53
+ 303              	.L51:
+ 304 004e BDEEE77A 		vcvt.s32.f32	s14, s15
+ 305 0052 C1ED027A 		vstr.32	s15, [r1, #8]
+ 306 0056 17EE102A 		vmov	r2, s14	@ int
+ 307 005a 501C     		adds	r0, r2, #1
+ 308 005c 07EE100A 		vmov	s14, r0	@ int
+ 309 0060 B8EEC77A 		vcvt.f32.s32	s14, s14
+ 310 0064 B4EEE67A 		vcmpe.f32	s14, s13
+ 311 0068 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 312 006c 0ADD     		ble	.L54
+ 313 006e 06EE103A 		vmov	s12, r3	@ int
+ 314 0072 B8EEC66A 		vcvt.f32.s32	s12, s12
+ 315              	.L56:
+ 316 0076 37EE467A 		vsub.f32	s14, s14, s12
+ 317 007a B4EEE67A 		vcmpe.f32	s14, s13
+ 318 007e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 319 0082 F8DC     		bgt	.L56
+ 320              	.L54:
+ 321 0084 BDEEC77A 		vcvt.s32.f32	s14, s14
+ 322 0088 0B68     		ldr	r3, [r1]
+ 323 008a 06EE902A 		vmov	s13, r2	@ int
+ 324 008e 03EB8202 		add	r2, r3, r2, lsl #2
+ 325 0092 17EE101A 		vmov	r1, s14	@ int
+ 326 0096 B8EEE66A 		vcvt.f32.s32	s12, s13
+ 327 009a D2ED006A 		vldr.32	s13, [r2]
+ 328 009e 03EB8103 		add	r3, r3, r1, lsl #2
+ 329 00a2 77EEC67A 		vsub.f32	s15, s15, s12
+ 330 00a6 93ED007A 		vldr.32	s14, [r3]
+ 331 00aa 37EE667A 		vsub.f32	s14, s14, s13
+ 332 00ae 67EE277A 		vmul.f32	s15, s14, s15
+ 333 00b2 77EEA67A 		vadd.f32	s15, s15, s13
+ 334 00b6 FEEEE87A 		vcvt.s32.f32	s15, s15, #15
+ 335 00ba 17EE903A 		vmov	r3, s15	@ int
+ 336 00be 18B2     		sxth	r0, r3
+ 337 00c0 7047     		bx	lr
+ 338              	.L62:
+ 339 00c2 00BF     		.align	2
+ 340              	.L61:
+ 341 00c4 00000000 		.word	_selz
+ 342 00c8 00000000 		.word	wavtable3
+ARM GAS  /tmp/ccbuxd08.s 			page 8
+
+
+ 343 00cc 00803B47 		.word	1195081728
+ 344              		.size	wave_get_sample3, .-wave_get_sample3
+ 345              		.section	.text.wave_get_sample4,"ax",%progbits
+ 346              		.align	1
+ 347              		.p2align 2,,3
+ 348              		.global	wave_get_sample4
+ 349              		.syntax unified
+ 350              		.thumb
+ 351              		.thumb_func
+ 352              		.type	wave_get_sample4, %function
+ 353              	wave_get_sample4:
+ 354              		@ args = 0, pretend = 0, frame = 0
+ 355              		@ frame_needed = 0, uses_anonymous_args = 0
+ 356              		@ link register save eliminated.
+ 357 0000 304B     		ldr	r3, .L74
+ 358 0002 3149     		ldr	r1, .L74+4
+ 359 0004 9FED317A 		vldr.32	s14, .L74+8
+ 360 0008 D3ED007A 		vldr.32	s15, [r3]
+ 361 000c B1F90C30 		ldrsh	r3, [r1, #12]
+ 362 0010 67EE877A 		vmul.f32	s15, s15, s14
+ 363 0014 91ED016A 		vldr.32	s12, [r1, #4]
+ 364 0018 5A1E     		subs	r2, r3, #1
+ 365 001a 91ED027A 		vldr.32	s14, [r1, #8]
+ 366 001e 67EE867A 		vmul.f32	s15, s15, s12
+ 367 0022 06EE902A 		vmov	s13, r2	@ int
+ 368 0026 F8EEE66A 		vcvt.f32.s32	s13, s13
+ 369 002a 77EE877A 		vadd.f32	s15, s15, s14
+ 370 002e F4EEE76A 		vcmpe.f32	s13, s15
+ 371 0032 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 372 0036 0AD5     		bpl	.L64
+ 373 0038 07EE103A 		vmov	s14, r3	@ int
+ 374 003c B8EEC77A 		vcvt.f32.s32	s14, s14
+ 375              	.L66:
+ 376 0040 77EEC77A 		vsub.f32	s15, s15, s14
+ 377 0044 F4EEE76A 		vcmpe.f32	s13, s15
+ 378 0048 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 379 004c F8D4     		bmi	.L66
+ 380              	.L64:
+ 381 004e BDEEE77A 		vcvt.s32.f32	s14, s15
+ 382 0052 C1ED027A 		vstr.32	s15, [r1, #8]
+ 383 0056 17EE102A 		vmov	r2, s14	@ int
+ 384 005a 501C     		adds	r0, r2, #1
+ 385 005c 07EE100A 		vmov	s14, r0	@ int
+ 386 0060 B8EEC77A 		vcvt.f32.s32	s14, s14
+ 387 0064 B4EEE67A 		vcmpe.f32	s14, s13
+ 388 0068 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 389 006c 0ADD     		ble	.L67
+ 390 006e 06EE103A 		vmov	s12, r3	@ int
+ 391 0072 B8EEC66A 		vcvt.f32.s32	s12, s12
+ 392              	.L69:
+ 393 0076 37EE467A 		vsub.f32	s14, s14, s12
+ 394 007a B4EEE67A 		vcmpe.f32	s14, s13
+ 395 007e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 396 0082 F8DC     		bgt	.L69
+ 397              	.L67:
+ 398 0084 BDEEC77A 		vcvt.s32.f32	s14, s14
+ 399 0088 0B68     		ldr	r3, [r1]
+ARM GAS  /tmp/ccbuxd08.s 			page 9
+
+
+ 400 008a 06EE902A 		vmov	s13, r2	@ int
+ 401 008e 03EB8202 		add	r2, r3, r2, lsl #2
+ 402 0092 17EE101A 		vmov	r1, s14	@ int
+ 403 0096 B8EEE66A 		vcvt.f32.s32	s12, s13
+ 404 009a D2ED006A 		vldr.32	s13, [r2]
+ 405 009e 03EB8103 		add	r3, r3, r1, lsl #2
+ 406 00a2 77EEC67A 		vsub.f32	s15, s15, s12
+ 407 00a6 93ED007A 		vldr.32	s14, [r3]
+ 408 00aa 37EE667A 		vsub.f32	s14, s14, s13
+ 409 00ae 67EE277A 		vmul.f32	s15, s14, s15
+ 410 00b2 77EEA67A 		vadd.f32	s15, s15, s13
+ 411 00b6 FEEEE87A 		vcvt.s32.f32	s15, s15, #15
+ 412 00ba 17EE903A 		vmov	r3, s15	@ int
+ 413 00be 18B2     		sxth	r0, r3
+ 414 00c0 7047     		bx	lr
+ 415              	.L75:
+ 416 00c2 00BF     		.align	2
+ 417              	.L74:
+ 418 00c4 00000000 		.word	_selz
+ 419 00c8 00000000 		.word	wavtable4
+ 420 00cc 00803B47 		.word	1195081728
+ 421              		.size	wave_get_sample4, .-wave_get_sample4
+ 422              		.section	.text.wave_get_sample5,"ax",%progbits
+ 423              		.align	1
+ 424              		.p2align 2,,3
+ 425              		.global	wave_get_sample5
+ 426              		.syntax unified
+ 427              		.thumb
+ 428              		.thumb_func
+ 429              		.type	wave_get_sample5, %function
+ 430              	wave_get_sample5:
+ 431              		@ args = 0, pretend = 0, frame = 0
+ 432              		@ frame_needed = 0, uses_anonymous_args = 0
+ 433              		@ link register save eliminated.
+ 434 0000 304B     		ldr	r3, .L87
+ 435 0002 3149     		ldr	r1, .L87+4
+ 436 0004 9FED317A 		vldr.32	s14, .L87+8
+ 437 0008 D3ED007A 		vldr.32	s15, [r3]
+ 438 000c B1F90C30 		ldrsh	r3, [r1, #12]
+ 439 0010 67EE877A 		vmul.f32	s15, s15, s14
+ 440 0014 91ED016A 		vldr.32	s12, [r1, #4]
+ 441 0018 5A1E     		subs	r2, r3, #1
+ 442 001a 91ED027A 		vldr.32	s14, [r1, #8]
+ 443 001e 67EE867A 		vmul.f32	s15, s15, s12
+ 444 0022 06EE902A 		vmov	s13, r2	@ int
+ 445 0026 F8EEE66A 		vcvt.f32.s32	s13, s13
+ 446 002a 77EE877A 		vadd.f32	s15, s15, s14
+ 447 002e F4EEE76A 		vcmpe.f32	s13, s15
+ 448 0032 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 449 0036 0AD5     		bpl	.L77
+ 450 0038 07EE103A 		vmov	s14, r3	@ int
+ 451 003c B8EEC77A 		vcvt.f32.s32	s14, s14
+ 452              	.L79:
+ 453 0040 77EEC77A 		vsub.f32	s15, s15, s14
+ 454 0044 F4EEE76A 		vcmpe.f32	s13, s15
+ 455 0048 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 456 004c F8D4     		bmi	.L79
+ARM GAS  /tmp/ccbuxd08.s 			page 10
+
+
+ 457              	.L77:
+ 458 004e BDEEE77A 		vcvt.s32.f32	s14, s15
+ 459 0052 C1ED027A 		vstr.32	s15, [r1, #8]
+ 460 0056 17EE102A 		vmov	r2, s14	@ int
+ 461 005a 501C     		adds	r0, r2, #1
+ 462 005c 07EE100A 		vmov	s14, r0	@ int
+ 463 0060 B8EEC77A 		vcvt.f32.s32	s14, s14
+ 464 0064 B4EEE67A 		vcmpe.f32	s14, s13
+ 465 0068 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 466 006c 0ADD     		ble	.L80
+ 467 006e 06EE103A 		vmov	s12, r3	@ int
+ 468 0072 B8EEC66A 		vcvt.f32.s32	s12, s12
+ 469              	.L82:
+ 470 0076 37EE467A 		vsub.f32	s14, s14, s12
+ 471 007a B4EEE67A 		vcmpe.f32	s14, s13
+ 472 007e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 473 0082 F8DC     		bgt	.L82
+ 474              	.L80:
+ 475 0084 BDEEC77A 		vcvt.s32.f32	s14, s14
+ 476 0088 0B68     		ldr	r3, [r1]
+ 477 008a 06EE902A 		vmov	s13, r2	@ int
+ 478 008e 03EB8202 		add	r2, r3, r2, lsl #2
+ 479 0092 17EE101A 		vmov	r1, s14	@ int
+ 480 0096 B8EEE66A 		vcvt.f32.s32	s12, s13
+ 481 009a D2ED006A 		vldr.32	s13, [r2]
+ 482 009e 03EB8103 		add	r3, r3, r1, lsl #2
+ 483 00a2 77EEC67A 		vsub.f32	s15, s15, s12
+ 484 00a6 93ED007A 		vldr.32	s14, [r3]
+ 485 00aa 37EE667A 		vsub.f32	s14, s14, s13
+ 486 00ae 67EE277A 		vmul.f32	s15, s14, s15
+ 487 00b2 77EEA67A 		vadd.f32	s15, s15, s13
+ 488 00b6 FEEEE87A 		vcvt.s32.f32	s15, s15, #15
+ 489 00ba 17EE903A 		vmov	r3, s15	@ int
+ 490 00be 18B2     		sxth	r0, r3
+ 491 00c0 7047     		bx	lr
+ 492              	.L88:
+ 493 00c2 00BF     		.align	2
+ 494              	.L87:
+ 495 00c4 00000000 		.word	_selz
+ 496 00c8 00000000 		.word	wavtable5
+ 497 00cc 00803B47 		.word	1195081728
+ 498              		.size	wave_get_sample5, .-wave_get_sample5
+ 499              		.section	.text.wave_get_sample6,"ax",%progbits
+ 500              		.align	1
+ 501              		.p2align 2,,3
+ 502              		.global	wave_get_sample6
+ 503              		.syntax unified
+ 504              		.thumb
+ 505              		.thumb_func
+ 506              		.type	wave_get_sample6, %function
+ 507              	wave_get_sample6:
+ 508              		@ args = 0, pretend = 0, frame = 0
+ 509              		@ frame_needed = 0, uses_anonymous_args = 0
+ 510              		@ link register save eliminated.
+ 511 0000 304B     		ldr	r3, .L100
+ 512 0002 3149     		ldr	r1, .L100+4
+ 513 0004 9FED317A 		vldr.32	s14, .L100+8
+ARM GAS  /tmp/ccbuxd08.s 			page 11
+
+
+ 514 0008 D3ED007A 		vldr.32	s15, [r3]
+ 515 000c B1F90C30 		ldrsh	r3, [r1, #12]
+ 516 0010 67EE877A 		vmul.f32	s15, s15, s14
+ 517 0014 91ED016A 		vldr.32	s12, [r1, #4]
+ 518 0018 5A1E     		subs	r2, r3, #1
+ 519 001a 91ED027A 		vldr.32	s14, [r1, #8]
+ 520 001e 67EE867A 		vmul.f32	s15, s15, s12
+ 521 0022 06EE902A 		vmov	s13, r2	@ int
+ 522 0026 F8EEE66A 		vcvt.f32.s32	s13, s13
+ 523 002a 77EE877A 		vadd.f32	s15, s15, s14
+ 524 002e F4EEE76A 		vcmpe.f32	s13, s15
+ 525 0032 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 526 0036 0AD5     		bpl	.L90
+ 527 0038 07EE103A 		vmov	s14, r3	@ int
+ 528 003c B8EEC77A 		vcvt.f32.s32	s14, s14
+ 529              	.L92:
+ 530 0040 77EEC77A 		vsub.f32	s15, s15, s14
+ 531 0044 F4EEE76A 		vcmpe.f32	s13, s15
+ 532 0048 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 533 004c F8D4     		bmi	.L92
+ 534              	.L90:
+ 535 004e BDEEE77A 		vcvt.s32.f32	s14, s15
+ 536 0052 C1ED027A 		vstr.32	s15, [r1, #8]
+ 537 0056 17EE102A 		vmov	r2, s14	@ int
+ 538 005a 501C     		adds	r0, r2, #1
+ 539 005c 07EE100A 		vmov	s14, r0	@ int
+ 540 0060 B8EEC77A 		vcvt.f32.s32	s14, s14
+ 541 0064 B4EEE67A 		vcmpe.f32	s14, s13
+ 542 0068 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 543 006c 0ADD     		ble	.L93
+ 544 006e 06EE103A 		vmov	s12, r3	@ int
+ 545 0072 B8EEC66A 		vcvt.f32.s32	s12, s12
+ 546              	.L95:
+ 547 0076 37EE467A 		vsub.f32	s14, s14, s12
+ 548 007a B4EEE67A 		vcmpe.f32	s14, s13
+ 549 007e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 550 0082 F8DC     		bgt	.L95
+ 551              	.L93:
+ 552 0084 BDEEC77A 		vcvt.s32.f32	s14, s14
+ 553 0088 0B68     		ldr	r3, [r1]
+ 554 008a 06EE902A 		vmov	s13, r2	@ int
+ 555 008e 03EB8202 		add	r2, r3, r2, lsl #2
+ 556 0092 17EE101A 		vmov	r1, s14	@ int
+ 557 0096 B8EEE66A 		vcvt.f32.s32	s12, s13
+ 558 009a D2ED006A 		vldr.32	s13, [r2]
+ 559 009e 03EB8103 		add	r3, r3, r1, lsl #2
+ 560 00a2 77EEC67A 		vsub.f32	s15, s15, s12
+ 561 00a6 93ED007A 		vldr.32	s14, [r3]
+ 562 00aa 37EE667A 		vsub.f32	s14, s14, s13
+ 563 00ae 67EE277A 		vmul.f32	s15, s14, s15
+ 564 00b2 77EEA67A 		vadd.f32	s15, s15, s13
+ 565 00b6 FEEEE87A 		vcvt.s32.f32	s15, s15, #15
+ 566 00ba 17EE903A 		vmov	r3, s15	@ int
+ 567 00be 18B2     		sxth	r0, r3
+ 568 00c0 7047     		bx	lr
+ 569              	.L101:
+ 570 00c2 00BF     		.align	2
+ARM GAS  /tmp/ccbuxd08.s 			page 12
+
+
+ 571              	.L100:
+ 572 00c4 00000000 		.word	_selz
+ 573 00c8 00000000 		.word	wavtable6
+ 574 00cc 00803B47 		.word	1195081728
+ 575              		.size	wave_get_sample6, .-wave_get_sample6
+ 576              		.section	.text.wave_newsay,"ax",%progbits
+ 577              		.align	1
+ 578              		.p2align 2,,3
+ 579              		.global	wave_newsay
+ 580              		.syntax unified
+ 581              		.thumb
+ 582              		.thumb_func
+ 583              		.type	wave_newsay, %function
+ 584              	wave_newsay:
+ 585              		@ args = 0, pretend = 0, frame = 0
+ 586              		@ frame_needed = 0, uses_anonymous_args = 0
+ 587              		@ link register save eliminated.
+ 588 0000 7047     		bx	lr
+ 589              		.size	wave_newsay, .-wave_newsay
+ 590              		.global	wavtable7
+ 591 0002 00BF     		.section	.bss.wavtable7,"aw",%nobits
+ 592              		.align	2
+ 593              		.type	wavtable7, %object
+ 594              		.size	wavtable7, 16
+ 595              	wavtable7:
+ 596 0000 00000000 		.space	16
+ 596      00000000 
+ 596      00000000 
+ 596      00000000 
+ 597              		.global	wavtable6
+ 598              		.section	.bss.wavtable6,"aw",%nobits
+ 599              		.align	2
+ 600              		.type	wavtable6, %object
+ 601              		.size	wavtable6, 16
+ 602              	wavtable6:
+ 603 0000 00000000 		.space	16
+ 603      00000000 
+ 603      00000000 
+ 603      00000000 
+ 604              		.global	wavtable5
+ 605              		.section	.bss.wavtable5,"aw",%nobits
+ 606              		.align	2
+ 607              		.type	wavtable5, %object
+ 608              		.size	wavtable5, 16
+ 609              	wavtable5:
+ 610 0000 00000000 		.space	16
+ 610      00000000 
+ 610      00000000 
+ 610      00000000 
+ 611              		.global	wavtable4
+ 612              		.section	.bss.wavtable4,"aw",%nobits
+ 613              		.align	2
+ 614              		.type	wavtable4, %object
+ 615              		.size	wavtable4, 16
+ 616              	wavtable4:
+ 617 0000 00000000 		.space	16
+ 617      00000000 
+ARM GAS  /tmp/ccbuxd08.s 			page 13
+
+
+ 617      00000000 
+ 617      00000000 
+ 618              		.global	wavtable3
+ 619              		.section	.bss.wavtable3,"aw",%nobits
+ 620              		.align	2
+ 621              		.type	wavtable3, %object
+ 622              		.size	wavtable3, 16
+ 623              	wavtable3:
+ 624 0000 00000000 		.space	16
+ 624      00000000 
+ 624      00000000 
+ 624      00000000 
+ 625              		.global	wavtable2
+ 626              		.section	.bss.wavtable2,"aw",%nobits
+ 627              		.align	2
+ 628              		.type	wavtable2, %object
+ 629              		.size	wavtable2, 16
+ 630              	wavtable2:
+ 631 0000 00000000 		.space	16
+ 631      00000000 
+ 631      00000000 
+ 631      00000000 
+ 632              		.global	wavtable1
+ 633              		.section	.bss.wavtable1,"aw",%nobits
+ 634              		.align	2
+ 635              		.type	wavtable1, %object
+ 636              		.size	wavtable1, 16
+ 637              	wavtable1:
+ 638 0000 00000000 		.space	16
+ 638      00000000 
+ 638      00000000 
+ 638      00000000 
+ 639              		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/ccbuxd08.s 			page 14
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 wavetable.c
+     /tmp/ccbuxd08.s:17     .text.dowavetable:00000000 $t
+     /tmp/ccbuxd08.s:24     .text.dowavetable:00000000 dowavetable
+     /tmp/ccbuxd08.s:88     .text.wavetable_init:00000000 $t
+     /tmp/ccbuxd08.s:95     .text.wavetable_init:00000000 wavetable_init
+     /tmp/ccbuxd08.s:112    .text.wavetable_init:00000020 $d
+     /tmp/ccbuxd08.s:115    .text.wave_get_sample1:00000000 $t
+     /tmp/ccbuxd08.s:122    .text.wave_get_sample1:00000000 wave_get_sample1
+     /tmp/ccbuxd08.s:187    .text.wave_get_sample1:000000c4 $d
+     /tmp/ccbuxd08.s:637    .bss.wavtable1:00000000 wavtable1
+     /tmp/ccbuxd08.s:192    .text.wave_get_sample2:00000000 $t
+     /tmp/ccbuxd08.s:199    .text.wave_get_sample2:00000000 wave_get_sample2
+     /tmp/ccbuxd08.s:264    .text.wave_get_sample2:000000c4 $d
+     /tmp/ccbuxd08.s:630    .bss.wavtable2:00000000 wavtable2
+     /tmp/ccbuxd08.s:269    .text.wave_get_sample3:00000000 $t
+     /tmp/ccbuxd08.s:276    .text.wave_get_sample3:00000000 wave_get_sample3
+     /tmp/ccbuxd08.s:341    .text.wave_get_sample3:000000c4 $d
+     /tmp/ccbuxd08.s:623    .bss.wavtable3:00000000 wavtable3
+     /tmp/ccbuxd08.s:346    .text.wave_get_sample4:00000000 $t
+     /tmp/ccbuxd08.s:353    .text.wave_get_sample4:00000000 wave_get_sample4
+     /tmp/ccbuxd08.s:418    .text.wave_get_sample4:000000c4 $d
+     /tmp/ccbuxd08.s:616    .bss.wavtable4:00000000 wavtable4
+     /tmp/ccbuxd08.s:423    .text.wave_get_sample5:00000000 $t
+     /tmp/ccbuxd08.s:430    .text.wave_get_sample5:00000000 wave_get_sample5
+     /tmp/ccbuxd08.s:495    .text.wave_get_sample5:000000c4 $d
+     /tmp/ccbuxd08.s:609    .bss.wavtable5:00000000 wavtable5
+     /tmp/ccbuxd08.s:500    .text.wave_get_sample6:00000000 $t
+     /tmp/ccbuxd08.s:507    .text.wave_get_sample6:00000000 wave_get_sample6
+     /tmp/ccbuxd08.s:572    .text.wave_get_sample6:000000c4 $d
+     /tmp/ccbuxd08.s:602    .bss.wavtable6:00000000 wavtable6
+     /tmp/ccbuxd08.s:577    .text.wave_newsay:00000000 $t
+     /tmp/ccbuxd08.s:584    .text.wave_newsay:00000000 wave_newsay
+     /tmp/ccbuxd08.s:595    .bss.wavtable7:00000000 wavtable7
+     /tmp/ccbuxd08.s:592    .bss.wavtable7:00000000 $d
+     /tmp/ccbuxd08.s:599    .bss.wavtable6:00000000 $d
+     /tmp/ccbuxd08.s:606    .bss.wavtable5:00000000 $d
+     /tmp/ccbuxd08.s:613    .bss.wavtable4:00000000 $d
+     /tmp/ccbuxd08.s:620    .bss.wavtable3:00000000 $d
+     /tmp/ccbuxd08.s:627    .bss.wavtable2:00000000 $d
+     /tmp/ccbuxd08.s:634    .bss.wavtable1:00000000 $d
+
+UNDEFINED SYMBOLS
+_selz

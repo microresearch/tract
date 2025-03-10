@@ -1,0 +1,7 @@
+src/english2phoneme/phoneme.c:61:5:isvowel	0	static
+src/english2phoneme/phoneme.c:68:5:isconsonant	0	static
+src/english2phoneme/phoneme.c:93:6:outnum	0	static
+src/english2phoneme/phoneme.c:160:5:leftmatch	24	static
+src/english2phoneme/phoneme.c:240:5:rightmatch	16	static
+src/english2phoneme/phoneme.c:104:5:find_rule	32	static
+src/english2phoneme/phoneme.c:74:6:xlate_word	16	static

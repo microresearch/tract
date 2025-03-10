@@ -1,0 +1,2400 @@
+ARM GAS  /tmp/ccLVtpq6.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/parwave.lst 
+ input file    	: /tmp/ccLVtpq6.s
+ output file   	: src/parwave.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:35:59.000+0100
+
+ARM GAS  /tmp/ccLVtpq6.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"parwave.c"
+  15              		.text
+  16              		.section	.text.sampled_source,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.type	sampled_source, %function
+  23              	sampled_source:
+  24              		@ args = 0, pretend = 0, frame = 0
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26              		@ link register save eliminated.
+  27 0000 C38A     		ldrh	r3, [r0, #22]
+  28 0002 93B3     		cbz	r3, .L3
+  29 0004 428A     		ldrh	r2, [r0, #18]
+  30 0006 07EE903A 		vmov	s15, r3	@ int
+  31 000a B0F94C30 		ldrsh	r3, [r0, #76]
+  32 000e 07EE102A 		vmov	s14, r2	@ int
+  33 0012 F8EEE77A 		vcvt.f32.s32	s15, s15
+  34 0016 00EE103A 		vmov	s0, r3	@ int
+  35 001a 426D     		ldr	r2, [r0, #84]
+  36 001c B8EE477A 		vcvt.f32.u32	s14, s14
+  37 0020 B8EEC00A 		vcvt.f32.s32	s0, s0
+  38 0024 C7EE276A 		vdiv.f32	s13, s14, s15
+  39 0028 20EE260A 		vmul.f32	s0, s0, s13
+  40 002c FDEEC07A 		vcvt.s32.f32	s15, s0
+  41 0030 17EE903A 		vmov	r3, s15	@ int
+  42 0034 B8EEE77A 		vcvt.f32.s32	s14, s15
+  43 0038 02EB4301 		add	r1, r2, r3, lsl #1
+  44 003c 32F91320 		ldrsh	r2, [r2, r3, lsl #1]
+  45 0040 30EE470A 		vsub.f32	s0, s0, s14
+  46 0044 B1F90230 		ldrsh	r3, [r1, #2]
+  47 0048 06EE902A 		vmov	s13, r2	@ int
+  48 004c 07EE903A 		vmov	s15, r3	@ int
+  49 0050 F8EEE66A 		vcvt.f32.s32	s13, s13
+  50 0054 F8EEE77A 		vcvt.f32.s32	s15, s15
+  51 0058 77EEE67A 		vsub.f32	s15, s15, s13
+  52 005c 20EE270A 		vmul.f32	s0, s0, s15
+  53 0060 30EE260A 		vadd.f32	s0, s0, s13
+  54 0064 30EE000A 		vadd.f32	s0, s0, s0
+  55 0068 7047     		bx	lr
+  56              	.L3:
+  57 006a 9FED010A 		vldr.32	s0, .L5
+ARM GAS  /tmp/ccLVtpq6.s 			page 3
+
+
+  58 006e 7047     		bx	lr
+  59              	.L6:
+  60              		.align	2
+  61              	.L5:
+  62 0070 00000000 		.word	0
+  63              		.size	sampled_source, .-sampled_source
+  64              		.section	.text.setabc.isra.0,"ax",%progbits
+  65              		.align	1
+  66              		.p2align 2,,3
+  67              		.syntax unified
+  68              		.thumb
+  69              		.thumb_func
+  70              		.type	setabc.isra.0, %function
+  71              	setabc.isra.0:
+  72              		@ args = 0, pretend = 0, frame = 0
+  73              		@ frame_needed = 0, uses_anonymous_args = 0
+  74 0000 10B5     		push	{r4, lr}
+  75 0002 2DED048B 		vpush.64	{d8, d9}
+  76 0006 09EE103A 		vmov	s18, r3	@ int
+  77 000a 07EE101A 		vmov	s14, r1	@ int
+  78 000e 1446     		mov	r4, r2
+  79 0010 08EE100A 		vmov	s16, r0	@ int
+  80 0014 B8EEC99B 		vcvt.f64.s32	d9, s18
+  81 0018 B8EEC77B 		vcvt.f64.s32	d7, s14
+  82 001c 9FED1A6B 		vldr.64	d6, .L9
+  83 0020 86EE090B 		vdiv.f64	d0, d6, d9
+  84 0024 20EE070B 		vmul.f64	d0, d0, d7
+  85 0028 B7EEC00B 		vcvt.f32.f64	s0, d0
+  86 002c FFF7FEFF 		bl	expf
+  87 0030 B8EEC87B 		vcvt.f64.s32	d7, s16
+  88 0034 B0EE408A 		vmov.f32	s16, s0
+  89 0038 9FED156B 		vldr.64	d6, .L9+8
+  90 003c 68EE488A 		vnmul.f32	s17, s16, s16
+  91 0040 86EE090B 		vdiv.f64	d0, d6, d9
+  92 0044 C4ED028A 		vstr.32	s17, [r4, #8]
+  93 0048 20EE070B 		vmul.f64	d0, d0, d7
+  94 004c B7EEC00B 		vcvt.f32.f64	s0, d0
+  95 0050 FFF7FEFF 		bl	cosf
+  96 0054 28EE008A 		vmul.f32	s16, s16, s0
+  97 0058 B7EE007B 		vmov.f64	d7, #1.0e+0
+  98 005c B7EEE86A 		vcvt.f64.f32	d6, s17
+  99 0060 38EE088A 		vadd.f32	s16, s16, s16
+ 100 0064 B7EEC85A 		vcvt.f64.f32	d5, s16
+ 101 0068 84ED018A 		vstr.32	s16, [r4, #4]
+ 102 006c BDEC048B 		vldm	sp!, {d8-d9}
+ 103 0070 37EE457B 		vsub.f64	d7, d7, d5
+ 104 0074 37EE467B 		vsub.f64	d7, d7, d6
+ 105 0078 B7EEC77B 		vcvt.f32.f64	s14, d7
+ 106 007c 84ED007A 		vstr.32	s14, [r4]
+ 107 0080 10BD     		pop	{r4, pc}
+ 108              	.L10:
+ 109 0082 00BFAFF3 		.align	3
+ 109      0080
+ 110              	.L9:
+ 111 0088 6E861BF0 		.word	-266631570
+ 112 008c F92109C0 		.word	-1073143303
+ 113 0090 6E861BF0 		.word	-266631570
+ARM GAS  /tmp/ccLVtpq6.s 			page 4
+
+
+ 114 0094 F9211940 		.word	1075388921
+ 115              		.size	setabc.isra.0, .-setabc.isra.0
+ 116              		.section	.text.pitch_synch_par_reset.constprop.0,"ax",%progbits
+ 117              		.align	1
+ 118              		.p2align 2,,3
+ 119              		.syntax unified
+ 120              		.thumb
+ 121              		.thumb_func
+ 122              		.type	pitch_synch_par_reset.constprop.0, %function
+ 123              	pitch_synch_par_reset.constprop.0:
+ 124              		@ args = 0, pretend = 0, frame = 0
+ 125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}
+ 127 0002 0E46     		mov	r6, r1
+ 128 0004 B1F90010 		ldrsh	r1, [r1]
+ 129 0008 0446     		mov	r4, r0
+ 130 000a 0029     		cmp	r1, #0
+ 131 000c 2DED028B 		vpush.64	{d8}
+ 132 0010 40F38E80 		ble	.L12
+ 133 0014 4388     		ldrh	r3, [r0, #2]
+ 134 0016 03EB8302 		add	r2, r3, r3, lsl #2
+ 135 001a D200     		lsls	r2, r2, #3
+ 136 001c B2FBF1F2 		udiv	r2, r2, r1
+ 137 0020 97B2     		uxth	r7, r2
+ 138 0022 C782     		strh	r7, [r0, #22]	@ movhi
+ 139 0024 B6F90210 		ldrsh	r1, [r6, #2]
+ 140 0028 88B2     		uxth	r0, r1
+ 141 002a 5728     		cmp	r0, #87
+ 142 002c 7DD8     		bhi	.L28
+ 143 002e 5C48     		ldr	r0, .L49
+ 144 0030 9FED5C7A 		vldr.32	s14, .L49+4
+ 145 0034 00EB8101 		add	r1, r0, r1, lsl #2
+ 146 0038 D1ED007A 		vldr.32	s15, [r1]
+ 147 003c 67EE877A 		vmul.f32	s15, s15, s14
+ 148              	.L13:
+ 149 0040 6783     		strh	r7, [r4, #26]	@ movhi
+ 150 0042 B6F90210 		ldrsh	r1, [r6, #2]
+ 151 0046 C4ED0D7A 		vstr.32	s15, [r4, #52]
+ 152 004a 0029     		cmp	r1, #0
+ 153 004c 01DD     		ble	.L14
+ 154 004e 7908     		lsrs	r1, r7, #1
+ 155 0050 6183     		strh	r1, [r4, #26]	@ movhi
+ 156              	.L14:
+ 157 0052 B6F92810 		ldrsh	r1, [r6, #40]
+ 158 0056 88B2     		uxth	r0, r1
+ 159 0058 5728     		cmp	r0, #87
+ 160 005a 00F29280 		bhi	.L29
+ 161 005e 5048     		ldr	r0, .L49
+ 162 0060 DFED506A 		vldr.32	s13, .L49+4
+ 163 0064 00EB8101 		add	r1, r0, r1, lsl #2
+ 164 0068 9FED4F7A 		vldr.32	s14, .L49+8
+ 165 006c D1ED007A 		vldr.32	s15, [r1]
+ 166 0070 67EEA67A 		vmul.f32	s15, s15, s13
+ 167 0074 67EE877A 		vmul.f32	s15, s15, s14
+ 168              	.L15:
+ 169 0078 F58C     		ldrh	r5, [r6, #38]
+ 170 007a 92B2     		uxth	r2, r2
+ARM GAS  /tmp/ccLVtpq6.s 			page 5
+
+
+ 171 007c A17A     		ldrb	r1, [r4, #10]	@ zero_extendqisi2
+ 172 007e AD00     		lsls	r5, r5, #2
+ 173 0080 013A     		subs	r2, r2, #1
+ 174 0082 0129     		cmp	r1, #1
+ 175 0084 C4ED117A 		vstr.32	s15, [r4, #68]
+ 176 0088 ADB2     		uxth	r5, r5
+ 177 008a 03D1     		bne	.L16
+ 178 008c 40F20711 		movw	r1, #263
+ 179 0090 8D42     		cmp	r5, r1
+ 180 0092 79D8     		bhi	.L46
+ 181              	.L16:
+ 182 0094 9542     		cmp	r5, r2
+ 183 0096 01DB     		blt	.L18
+ 184              	.L19:
+ 185 0098 BD1E     		subs	r5, r7, #2
+ 186 009a ADB2     		uxth	r5, r5
+ 187              	.L18:
+ 188 009c 272D     		cmp	r5, #39
+ 189 009e 5CD8     		bhi	.L47
+ 190 00a0 9FED427A 		vldr.32	s14, .L49+12
+ 191 00a4 2825     		movs	r5, #40
+ 192 00a6 9FED428A 		vldr.32	s16, .L49+16
+ 193 00aa DFED427A 		vldr.32	s15, .L49+20
+ 194              	.L20:
+ 195 00ae 2583     		strh	r5, [r4, #24]	@ movhi
+ 196 00b0 04F5D872 		add	r2, r4, #432
+ 197 00b4 C4ED097A 		vstr.32	s15, [r4, #36]
+ 198 00b8 0020     		movs	r0, #0
+ 199 00ba 84ED087A 		vstr.32	s14, [r4, #32]
+ 200 00be B3FBF5F1 		udiv	r1, r3, r5
+ 201 00c2 FFF7FEFF 		bl	setabc.isra.0
+ 202 00c6 DFED3C7A 		vldr.32	s15, .L49+24
+ 203 00ca 7D1B     		subs	r5, r7, r5
+ 204 00cc 94ED6C7A 		vldr.32	s14, [r4, #432]
+ 205 00d0 68EE277A 		vmul.f32	s15, s16, s15
+ 206 00d4 B6F92E30 		ldrsh	r3, [r6, #46]
+ 207 00d8 ADB2     		uxth	r5, r5
+ 208 00da 67EEA77A 		vmul.f32	s15, s15, s15
+ 209 00de AB42     		cmp	r3, r5
+ 210 00e0 67EE277A 		vmul.f32	s15, s14, s15
+ 211 00e4 C4ED6C7A 		vstr.32	s15, [r4, #432]
+ 212 00e8 34DC     		bgt	.L21
+ 213 00ea 9DB2     		uxth	r5, r3
+ 214              	.L22:
+ 215 00ec 3D44     		add	r5, r5, r7
+ 216 00ee ADB2     		uxth	r5, r5
+ 217 00f0 042D     		cmp	r5, #4
+ 218 00f2 E582     		strh	r5, [r4, #22]	@ movhi
+ 219 00f4 24D0     		beq	.L23
+ 220              	.L26:
+ 221 00f6 B6F92A30 		ldrsh	r3, [r6, #42]
+ 222 00fa 9FED307A 		vldr.32	s14, .L49+28
+ 223 00fe 07EE903A 		vmov	s15, r3	@ int
+ 224 0102 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 225 0106 67EE877A 		vmul.f32	s15, s15, s14
+ 226 010a F5EEC07A 		vcmpe.f32	s15, #0
+ 227 010e C4ED0B7A 		vstr.32	s15, [r4, #44]
+ARM GAS  /tmp/ccLVtpq6.s 			page 6
+
+
+ 228 0112 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 229 0116 17DD     		ble	.L48
+ 230 0118 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 231 011c 77EE677A 		vsub.f32	s15, s14, s15
+ 232 0120 C4ED0A7A 		vstr.32	s15, [r4, #40]
+ 233              	.L11:
+ 234 0124 BDEC028B 		vldm	sp!, {d8}
+ 235 0128 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 236              	.L28:
+ 237 012a DFED257A 		vldr.32	s15, .L49+32
+ 238 012e 87E7     		b	.L13
+ 239              	.L12:
+ 240 0130 0023     		movs	r3, #0
+ 241 0132 0422     		movs	r2, #4
+ 242 0134 4363     		str	r3, [r0, #52]	@ float
+ 243 0136 C282     		strh	r2, [r0, #22]	@ movhi
+ 244 0138 4283     		strh	r2, [r0, #26]	@ movhi
+ 245 013a 4364     		str	r3, [r0, #68]	@ float
+ 246 013c 0362     		str	r3, [r0, #32]	@ float
+ 247 013e 4362     		str	r3, [r0, #36]	@ float
+ 248              	.L23:
+ 249 0140 A38A     		ldrh	r3, [r4, #20]
+ 250 0142 002B     		cmp	r3, #0
+ 251 0144 D7D0     		beq	.L26
+ 252 0146 EDE7     		b	.L11
+ 253              	.L48:
+ 254 0148 4FF07E53 		mov	r3, #1065353216
+ 255 014c BDEC028B 		vldm	sp!, {d8}
+ 256 0150 A362     		str	r3, [r4, #40]	@ float
+ 257 0152 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 258              	.L21:
+ 259 0154 F585     		strh	r5, [r6, #46]	@ movhi
+ 260 0156 E78A     		ldrh	r7, [r4, #22]
+ 261 0158 C8E7     		b	.L22
+ 262              	.L47:
+ 263 015a 1A4A     		ldr	r2, .L49+36
+ 264 015c A5F12801 		sub	r1, r5, #40
+ 265 0160 07EE905A 		vmov	s15, r5	@ int
+ 266 0164 DFED186A 		vldr.32	s13, .L49+40
+ 267 0168 32F91120 		ldrsh	r2, [r2, r1, lsl #1]
+ 268 016c B8EEE78A 		vcvt.f32.s32	s16, s15
+ 269 0170 07EE902A 		vmov	s15, r2	@ int
+ 270 0174 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 271 0178 27EE887A 		vmul.f32	s14, s15, s16
+ 272 017c 27EE267A 		vmul.f32	s14, s14, s13
+ 273 0180 95E7     		b	.L20
+ 274              	.L29:
+ 275 0182 DFED0F7A 		vldr.32	s15, .L49+32
+ 276 0186 77E7     		b	.L15
+ 277              	.L46:
+ 278 0188 B2F5847F 		cmp	r2, #264
+ 279 018c 2183     		strh	r1, [r4, #24]	@ movhi
+ 280 018e 83DB     		blt	.L19
+ 281 0190 F3EE0B7A 		vmov.f32	s15, #2.7e+1
+ 282 0194 9FED0D7A 		vldr.32	s14, .L49+44
+ 283 0198 9FED0D8A 		vldr.32	s16, .L49+48
+ 284 019c 0D46     		mov	r5, r1
+ARM GAS  /tmp/ccLVtpq6.s 			page 7
+
+
+ 285 019e 86E7     		b	.L20
+ 286              	.L50:
+ 287              		.align	2
+ 288              	.L49:
+ 289 01a0 00000000 		.word	amptable.2
+ 290 01a4 6F12833A 		.word	981668463
+ 291 01a8 CDCCCC3D 		.word	1036831949
+ 292 01ac 00C07946 		.word	1182384128
+ 293 01b0 00002042 		.word	1109393408
+ 294 01b4 00009644 		.word	1150681088
+ 295 01b8 8D7A083C 		.word	1007188621
+ 296 01bc 022B073D 		.word	1023879938
+ 297 01c0 00000000 		.word	0
+ 298 01c4 00000000 		.word	B0.4
+ 299 01c8 FA7EAA3E 		.word	1051361018
+ 300 01cc 21CA1345 		.word	1158924833
+ 301 01d0 00808343 		.word	1132691456
+ 302              		.size	pitch_synch_par_reset.constprop.0, .-pitch_synch_par_reset.constprop.0
+ 303              		.section	.text.single_single_parwave,"ax",%progbits
+ 304              		.align	1
+ 305              		.p2align 2,,3
+ 306              		.global	single_single_parwave
+ 307              		.syntax unified
+ 308              		.thumb
+ 309              		.thumb_func
+ 310              		.type	single_single_parwave, %function
+ 311              	single_single_parwave:
+ 312              		@ args = 0, pretend = 0, frame = 0
+ 313              		@ frame_needed = 0, uses_anonymous_args = 0
+ 314 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 315 0004 2DED048B 		vpush.64	{d8, d9}
+ 316 0008 0446     		mov	r4, r0
+ 317 000a 0D46     		mov	r5, r1
+ 318 000c FFF7FEFF 		bl	rand
+ 319 0010 724B     		ldr	r3, .L92
+ 320 0012 B6EE087A 		vmov.f32	s14, #7.5e-1
+ 321 0016 668A     		ldrh	r6, [r4, #18]
+ 322 0018 83FB0032 		smull	r3, r2, r3, r0
+ 323 001c C317     		asrs	r3, r0, #31
+ 324 001e 0244     		add	r2, r2, r0
+ 325 0020 C3EB6233 		rsb	r3, r3, r2, asr #13
+ 326 0024 6E4A     		ldr	r2, .L92+4
+ 327 0026 C3EB8333 		rsb	r3, r3, r3, lsl #14
+ 328 002a 92ED009A 		vldr.32	s18, [r2]
+ 329 002e C01A     		subs	r0, r0, r3
+ 330 0030 6C4B     		ldr	r3, .L92+8
+ 331 0032 29EE079A 		vmul.f32	s18, s18, s14
+ 332 0036 0344     		add	r3, r3, r0
+ 333 0038 9BB2     		uxth	r3, r3
+ 334 003a 07EE903A 		vmov	s15, r3	@ int
+ 335 003e A383     		strh	r3, [r4, #28]	@ movhi
+ 336 0040 638B     		ldrh	r3, [r4, #26]
+ 337 0042 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 338 0046 B342     		cmp	r3, r6
+ 339 0048 39EE279A 		vadd.f32	s18, s18, s15
+ 340 004c 82ED009A 		vstr.32	s18, [r2]
+ 341 0050 03D2     		bcs	.L52
+ARM GAS  /tmp/ccLVtpq6.s 			page 8
+
+
+ 342 0052 F6EE007A 		vmov.f32	s15, #5.0e-1
+ 343 0056 29EE279A 		vmul.f32	s18, s18, s15
+ 344              	.L52:
+ 345 005a D4ED108A 		vldr.32	s17, [r4, #64]
+ 346 005e 4FF00408 		mov	r8, #4
+ 347 0062 0027     		movs	r7, #0
+ 348 0064 69EE288A 		vmul.f32	s17, s18, s17
+ 349              	.L59:
+ 350 0068 A37A     		ldrb	r3, [r4, #10]	@ zero_extendqisi2
+ 351 006a 022B     		cmp	r3, #2
+ 352 006c 00F08182 		beq	.L53
+ 353 0070 032B     		cmp	r3, #3
+ 354 0072 00F07882 		beq	.L54
+ 355 0076 012B     		cmp	r3, #1
+ 356 0078 1FD1     		bne	.L55
+ 357 007a 022E     		cmp	r6, #2
+ 358 007c 40F2A082 		bls	.L89
+ 359 0080 DFED596A 		vldr.32	s13, .L92+12
+ 360              	.L56:
+ 361 0084 94ED6F6A 		vldr.32	s12, [r4, #444]
+ 362 0088 94ED6C8A 		vldr.32	s16, [r4, #432]
+ 363 008c 94ED6D7A 		vldr.32	s14, [r4, #436]
+ 364 0090 26EE888A 		vmul.f32	s16, s13, s16
+ 365 0094 D4ED705A 		vldr.32	s11, [r4, #448]
+ 366 0098 26EE077A 		vmul.f32	s14, s12, s14
+ 367 009c D4ED6E7A 		vldr.32	s15, [r4, #440]
+ 368 00a0 524B     		ldr	r3, .L92+16
+ 369 00a2 67EEA57A 		vmul.f32	s15, s15, s11
+ 370 00a6 84ED706A 		vstr.32	s12, [r4, #448]
+ 371 00aa 38EE078A 		vadd.f32	s16, s16, s14
+ 372 00ae C3ED006A 		vstr.32	s13, [r3]
+ 373 00b2 38EE278A 		vadd.f32	s16, s16, s15
+ 374 00b6 84ED6F8A 		vstr.32	s16, [r4, #444]
+ 375              	.L55:
+ 376 00ba E18A     		ldrh	r1, [r4, #22]
+ 377 00bc B142     		cmp	r1, r6
+ 378 00be 40F24B82 		bls	.L90
+ 379              	.L58:
+ 380 00c2 D4ED746A 		vldr.32	s13, [r4, #464]
+ 381 00c6 721C     		adds	r2, r6, #1
+ 382 00c8 D4ED717A 		vldr.32	s15, [r4, #452]
+ 383 00cc 08F1FF33 		add	r3, r8, #-1
+ 384 00d0 94ED727A 		vldr.32	s14, [r4, #456]
+ 385 00d4 96B2     		uxth	r6, r2
+ 386 00d6 28EE278A 		vmul.f32	s16, s16, s15
+ 387 00da 94ED756A 		vldr.32	s12, [r4, #468]
+ 388 00de 26EE877A 		vmul.f32	s14, s13, s14
+ 389 00e2 D4ED737A 		vldr.32	s15, [r4, #460]
+ 390 00e6 13F0FF08 		ands	r8, r3, #255
+ 391 00ea C4ED756A 		vstr.32	s13, [r4, #468]
+ 392 00ee 67EE867A 		vmul.f32	s15, s15, s12
+ 393 00f2 6682     		strh	r6, [r4, #18]	@ movhi
+ 394 00f4 38EE078A 		vadd.f32	s16, s16, s14
+ 395 00f8 38EE278A 		vadd.f32	s16, s16, s15
+ 396 00fc 84ED748A 		vstr.32	s16, [r4, #464]
+ 397 0100 B2D1     		bne	.L59
+ 398 0102 3B4B     		ldr	r3, .L92+20
+ARM GAS  /tmp/ccLVtpq6.s 			page 9
+
+
+ 399 0104 D4ED0B7A 		vldr.32	s15, [r4, #44]
+ 400 0108 93ED007A 		vldr.32	s14, [r3]
+ 401 010c D4ED0A6A 		vldr.32	s13, [r4, #40]
+ 402 0110 67EE877A 		vmul.f32	s15, s15, s14
+ 403 0114 228B     		ldrh	r2, [r4, #24]
+ 404 0116 28EE268A 		vmul.f32	s16, s16, s13
+ 405 011a B242     		cmp	r2, r6
+ 406 011c 77EE887A 		vadd.f32	s15, s15, s16
+ 407 0120 C3ED007A 		vstr.32	s15, [r3]
+ 408 0124 0AD9     		bls	.L60
+ 409 0126 A38B     		ldrh	r3, [r4, #28]
+ 410 0128 D4ED116A 		vldr.32	s13, [r4, #68]
+ 411 012c 07EE103A 		vmov	s14, r3	@ int
+ 412 0130 B8EEC77A 		vcvt.f32.s32	s14, s14
+ 413 0134 27EE267A 		vmul.f32	s14, s14, s13
+ 414 0138 77EE877A 		vadd.f32	s15, s15, s14
+ 415              	.L60:
+ 416 013c 94ED0E5A 		vldr.32	s10, [r4, #56]
+ 417 0140 94ED0F7A 		vldr.32	s14, [r4, #60]
+ 418 0144 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 419 0146 27EE855A 		vmul.f32	s10, s15, s10
+ 420 014a 29EE079A 		vmul.f32	s18, s18, s14
+ 421 014e 012B     		cmp	r3, #1
+ 422 0150 35EE095A 		vadd.f32	s10, s10, s18
+ 423 0154 00F04082 		beq	.L61
+ 424 0158 D4ED0D6A 		vldr.32	s13, [r4, #52]
+ 425 015c D4ED6A3A 		vldr.32	s7, [r4, #424]
+ 426 0160 67EEA67A 		vmul.f32	s15, s15, s13
+ 427 0164 94ED677A 		vldr.32	s14, [r4, #412]
+ 428 0168 D4ED684A 		vldr.32	s9, [r4, #416]
+ 429 016c D4ED6B6A 		vldr.32	s13, [r4, #428]
+ 430 0170 77EE897A 		vadd.f32	s15, s15, s18
+ 431 0174 D4ED695A 		vldr.32	s11, [r4, #420]
+ 432 0178 63EEA44A 		vmul.f32	s9, s7, s9
+ 433 017c 94ED654A 		vldr.32	s8, [r4, #404]
+ 434 0180 65EEA65A 		vmul.f32	s11, s11, s13
+ 435 0184 94ED623A 		vldr.32	s6, [r4, #392]
+ 436 0188 27EE877A 		vmul.f32	s14, s15, s14
+ 437 018c C4ED6A7A 		vstr.32	s15, [r4, #424]
+ 438 0190 94ED636A 		vldr.32	s12, [r4, #396]
+ 439 0194 D4ED662A 		vldr.32	s5, [r4, #408]
+ 440 0198 77EE247A 		vadd.f32	s15, s14, s9
+ 441 019c D4ED646A 		vldr.32	s13, [r4, #400]
+ 442 01a0 24EE066A 		vmul.f32	s12, s8, s12
+ 443 01a4 2389     		ldrh	r3, [r4, #8]
+ 444 01a6 66EEA26A 		vmul.f32	s13, s13, s5
+ 445 01aa C4ED6B3A 		vstr.32	s7, [r4, #428]
+ 446 01ae 77EEA57A 		vadd.f32	s15, s15, s11
+ 447 01b2 013B     		subs	r3, r3, #1
+ 448 01b4 84ED664A 		vstr.32	s8, [r4, #408]
+ 449 01b8 67EE837A 		vmul.f32	s15, s15, s6
+ 450 01bc 77EE867A 		vadd.f32	s15, s15, s12
+ 451 01c0 77EEA67A 		vadd.f32	s15, s15, s13
+ 452 01c4 C4ED657A 		vstr.32	s15, [r4, #404]
+ 453 01c8 072B     		cmp	r3, #7
+ 454 01ca 00F20582 		bhi	.L61
+ 455 01ce DFE803F0 		tbb	[pc, r3]
+ARM GAS  /tmp/ccLVtpq6.s 			page 10
+
+
+ 456              	.L63:
+ 457 01d2 B9       		.byte	(.L70-.L63)/2
+ 458 01d3 A1       		.byte	(.L69-.L63)/2
+ 459 01d4 89       		.byte	(.L68-.L63)/2
+ 460 01d5 71       		.byte	(.L67-.L63)/2
+ 461 01d6 59       		.byte	(.L66-.L63)/2
+ 462 01d7 41       		.byte	(.L65-.L63)/2
+ 463 01d8 29       		.byte	(.L64-.L63)/2
+ 464 01d9 11       		.byte	(.L62-.L63)/2
+ 465              		.p2align 1
+ 466              	.L93:
+ 467 01da 00BF     		.align	2
+ 468              	.L92:
+ 469 01dc 09000280 		.word	-2147352567
+ 470 01e0 00000000 		.word	nlast.8
+ 471 01e4 01E0FFFF 		.word	-8191
+ 472 01e8 00000000 		.word	0
+ 473 01ec 00000000 		.word	vwave.6
+ 474 01f0 00000000 		.word	vlast.1
+ 475              	.L62:
+ 476 01f4 94ED606A 		vldr.32	s12, [r4, #384]
+ 477 01f8 94ED5D7A 		vldr.32	s14, [r4, #372]
+ 478 01fc D4ED5E6A 		vldr.32	s13, [r4, #376]
+ 479 0200 27EE877A 		vmul.f32	s14, s15, s14
+ 480 0204 D4ED615A 		vldr.32	s11, [r4, #388]
+ 481 0208 66EE266A 		vmul.f32	s13, s12, s13
+ 482 020c D4ED5F7A 		vldr.32	s15, [r4, #380]
+ 483 0210 84ED616A 		vstr.32	s12, [r4, #388]
+ 484 0214 67EEA57A 		vmul.f32	s15, s15, s11
+ 485 0218 37EE267A 		vadd.f32	s14, s14, s13
+ 486 021c 77EE277A 		vadd.f32	s15, s14, s15
+ 487 0220 C4ED607A 		vstr.32	s15, [r4, #384]
+ 488              	.L64:
+ 489 0224 94ED5B6A 		vldr.32	s12, [r4, #364]
+ 490 0228 94ED587A 		vldr.32	s14, [r4, #352]
+ 491 022c D4ED596A 		vldr.32	s13, [r4, #356]
+ 492 0230 27EE877A 		vmul.f32	s14, s15, s14
+ 493 0234 D4ED5C5A 		vldr.32	s11, [r4, #368]
+ 494 0238 66EE266A 		vmul.f32	s13, s12, s13
+ 495 023c D4ED5A7A 		vldr.32	s15, [r4, #360]
+ 496 0240 84ED5C6A 		vstr.32	s12, [r4, #368]
+ 497 0244 67EEA57A 		vmul.f32	s15, s15, s11
+ 498 0248 37EE267A 		vadd.f32	s14, s14, s13
+ 499 024c 77EE277A 		vadd.f32	s15, s14, s15
+ 500 0250 C4ED5B7A 		vstr.32	s15, [r4, #364]
+ 501              	.L65:
+ 502 0254 94ED566A 		vldr.32	s12, [r4, #344]
+ 503 0258 94ED537A 		vldr.32	s14, [r4, #332]
+ 504 025c D4ED546A 		vldr.32	s13, [r4, #336]
+ 505 0260 27EE877A 		vmul.f32	s14, s15, s14
+ 506 0264 D4ED575A 		vldr.32	s11, [r4, #348]
+ 507 0268 66EE266A 		vmul.f32	s13, s12, s13
+ 508 026c D4ED557A 		vldr.32	s15, [r4, #340]
+ 509 0270 84ED576A 		vstr.32	s12, [r4, #348]
+ 510 0274 67EEA57A 		vmul.f32	s15, s15, s11
+ 511 0278 37EE267A 		vadd.f32	s14, s14, s13
+ 512 027c 77EE277A 		vadd.f32	s15, s14, s15
+ARM GAS  /tmp/ccLVtpq6.s 			page 11
+
+
+ 513 0280 C4ED567A 		vstr.32	s15, [r4, #344]
+ 514              	.L66:
+ 515 0284 94ED516A 		vldr.32	s12, [r4, #324]
+ 516 0288 94ED4E7A 		vldr.32	s14, [r4, #312]
+ 517 028c D4ED4F6A 		vldr.32	s13, [r4, #316]
+ 518 0290 27EE877A 		vmul.f32	s14, s15, s14
+ 519 0294 D4ED525A 		vldr.32	s11, [r4, #328]
+ 520 0298 66EE266A 		vmul.f32	s13, s12, s13
+ 521 029c D4ED507A 		vldr.32	s15, [r4, #320]
+ 522 02a0 84ED526A 		vstr.32	s12, [r4, #328]
+ 523 02a4 67EEA57A 		vmul.f32	s15, s15, s11
+ 524 02a8 37EE267A 		vadd.f32	s14, s14, s13
+ 525 02ac 77EE277A 		vadd.f32	s15, s14, s15
+ 526 02b0 C4ED517A 		vstr.32	s15, [r4, #324]
+ 527              	.L67:
+ 528 02b4 94ED4C6A 		vldr.32	s12, [r4, #304]
+ 529 02b8 94ED497A 		vldr.32	s14, [r4, #292]
+ 530 02bc D4ED4A6A 		vldr.32	s13, [r4, #296]
+ 531 02c0 27EE877A 		vmul.f32	s14, s15, s14
+ 532 02c4 D4ED4D5A 		vldr.32	s11, [r4, #308]
+ 533 02c8 66EE266A 		vmul.f32	s13, s12, s13
+ 534 02cc D4ED4B7A 		vldr.32	s15, [r4, #300]
+ 535 02d0 84ED4D6A 		vstr.32	s12, [r4, #308]
+ 536 02d4 67EEA57A 		vmul.f32	s15, s15, s11
+ 537 02d8 37EE267A 		vadd.f32	s14, s14, s13
+ 538 02dc 77EE277A 		vadd.f32	s15, s14, s15
+ 539 02e0 C4ED4C7A 		vstr.32	s15, [r4, #304]
+ 540              	.L68:
+ 541 02e4 94ED476A 		vldr.32	s12, [r4, #284]
+ 542 02e8 94ED447A 		vldr.32	s14, [r4, #272]
+ 543 02ec D4ED456A 		vldr.32	s13, [r4, #276]
+ 544 02f0 27EE877A 		vmul.f32	s14, s15, s14
+ 545 02f4 D4ED485A 		vldr.32	s11, [r4, #288]
+ 546 02f8 66EE266A 		vmul.f32	s13, s12, s13
+ 547 02fc D4ED467A 		vldr.32	s15, [r4, #280]
+ 548 0300 84ED486A 		vstr.32	s12, [r4, #288]
+ 549 0304 67EEA57A 		vmul.f32	s15, s15, s11
+ 550 0308 37EE267A 		vadd.f32	s14, s14, s13
+ 551 030c 77EE277A 		vadd.f32	s15, s14, s15
+ 552 0310 C4ED477A 		vstr.32	s15, [r4, #284]
+ 553              	.L69:
+ 554 0314 94ED426A 		vldr.32	s12, [r4, #264]
+ 555 0318 94ED3F7A 		vldr.32	s14, [r4, #252]
+ 556 031c D4ED406A 		vldr.32	s13, [r4, #256]
+ 557 0320 27EE877A 		vmul.f32	s14, s15, s14
+ 558 0324 D4ED435A 		vldr.32	s11, [r4, #268]
+ 559 0328 66EE266A 		vmul.f32	s13, s12, s13
+ 560 032c D4ED417A 		vldr.32	s15, [r4, #260]
+ 561 0330 84ED436A 		vstr.32	s12, [r4, #268]
+ 562 0334 67EEA57A 		vmul.f32	s15, s15, s11
+ 563 0338 37EE267A 		vadd.f32	s14, s14, s13
+ 564 033c 77EE277A 		vadd.f32	s15, s14, s15
+ 565 0340 C4ED427A 		vstr.32	s15, [r4, #264]
+ 566              	.L70:
+ 567 0344 94ED3D6A 		vldr.32	s12, [r4, #244]
+ 568 0348 94ED3A7A 		vldr.32	s14, [r4, #232]
+ 569 034c D4ED3B6A 		vldr.32	s13, [r4, #236]
+ARM GAS  /tmp/ccLVtpq6.s 			page 12
+
+
+ 570 0350 67EE877A 		vmul.f32	s15, s15, s14
+ 571 0354 D4ED3E5A 		vldr.32	s11, [r4, #248]
+ 572 0358 66EE266A 		vmul.f32	s13, s12, s13
+ 573 035c 94ED3C7A 		vldr.32	s14, [r4, #240]
+ 574 0360 84ED3E6A 		vstr.32	s12, [r4, #248]
+ 575 0364 27EE257A 		vmul.f32	s14, s14, s11
+ 576 0368 77EEA67A 		vadd.f32	s15, s15, s13
+ 577 036c 77EE877A 		vadd.f32	s15, s15, s14
+ 578 0370 C4ED3D7A 		vstr.32	s15, [r4, #244]
+ 579              	.L71:
+ 580 0374 9A4B     		ldr	r3, .L94
+ 581 0376 78EE858A 		vadd.f32	s17, s17, s10
+ 582 037a D4ED1F4A 		vldr.32	s9, [r4, #124]
+ 583 037e 93ED007A 		vldr.32	s14, [r3]
+ 584 0382 94ED1A1A 		vldr.32	s2, [r4, #104]
+ 585 0386 78EEC78A 		vsub.f32	s17, s17, s14
+ 586 038a D4ED382A 		vldr.32	s5, [r4, #224]
+ 587 038e D4ED1C5A 		vldr.32	s11, [r4, #112]
+ 588 0392 94ED1D2A 		vldr.32	s4, [r4, #116]
+ 589 0396 94ED176A 		vldr.32	s12, [r4, #92]
+ 590 039a 65EE255A 		vmul.f32	s11, s10, s11
+ 591 039e D4ED183A 		vldr.32	s7, [r4, #96]
+ 592 03a2 24EE822A 		vmul.f32	s4, s9, s4
+ 593 03a6 D4ED356A 		vldr.32	s13, [r4, #212]
+ 594 03aa 25EE066A 		vmul.f32	s12, s10, s12
+ 595 03ae D4ED361A 		vldr.32	s3, [r4, #216]
+ 596 03b2 61EE233A 		vmul.f32	s7, s2, s7
+ 597 03b6 94ED333A 		vldr.32	s6, [r4, #204]
+ 598 03ba 68EEA66A 		vmul.f32	s13, s17, s13
+ 599 03be 62EEA11A 		vmul.f32	s3, s5, s3
+ 600 03c2 94ED307A 		vldr.32	s14, [r4, #192]
+ 601 03c6 94ED314A 		vldr.32	s8, [r4, #196]
+ 602 03ca 75EE825A 		vadd.f32	s11, s11, s4
+ 603 03ce 94ED200A 		vldr.32	s0, [r4, #128]
+ 604 03d2 28EE877A 		vmul.f32	s14, s17, s14
+ 605 03d6 D4ED1E0A 		vldr.32	s1, [r4, #120]
+ 606 03da 23EE044A 		vmul.f32	s8, s6, s8
+ 607 03de 94ED342A 		vldr.32	s4, [r4, #208]
+ 608 03e2 76EEA16A 		vadd.f32	s13, s13, s3
+ 609 03e6 60EE800A 		vmul.f32	s1, s1, s0
+ 610 03ea D4ED391A 		vldr.32	s3, [r4, #228]
+ 611 03ee 94ED1B0A 		vldr.32	s0, [r4, #108]
+ 612 03f2 36EE236A 		vadd.f32	s12, s12, s7
+ 613 03f6 C4ED204A 		vstr.32	s9, [r4, #128]
+ 614 03fa 37EE047A 		vadd.f32	s14, s14, s8
+ 615 03fe D4ED194A 		vldr.32	s9, [r4, #100]
+ 616 0402 75EEA05A 		vadd.f32	s11, s11, s1
+ 617 0406 D4ED323A 		vldr.32	s7, [r4, #200]
+ 618 040a 83ED005A 		vstr.32	s10, [r3]
+ 619 040e 64EE804A 		vmul.f32	s9, s9, s0
+ 620 0412 94ED375A 		vldr.32	s10, [r4, #220]
+ 621 0416 63EE823A 		vmul.f32	s7, s7, s4
+ 622 041a 94ED2E4A 		vldr.32	s8, [r4, #184]
+ 623 041e 25EE215A 		vmul.f32	s10, s10, s3
+ 624 0422 84ED1B1A 		vstr.32	s2, [r4, #108]
+ 625 0426 36EE246A 		vadd.f32	s12, s12, s9
+ 626 042a C4ED392A 		vstr.32	s5, [r4, #228]
+ARM GAS  /tmp/ccLVtpq6.s 			page 13
+
+
+ 627 042e 37EE237A 		vadd.f32	s14, s14, s7
+ 628 0432 D4ED2B4A 		vldr.32	s9, [r4, #172]
+ 629 0436 76EE856A 		vadd.f32	s13, s13, s10
+ 630 043a 84ED343A 		vstr.32	s6, [r4, #208]
+ 631 043e 37EEA55A 		vadd.f32	s10, s15, s11
+ 632 0442 84ED1A6A 		vstr.32	s12, [r4, #104]
+ 633 0446 84ED337A 		vstr.32	s14, [r4, #204]
+ 634 044a 68EEA47A 		vmul.f32	s15, s17, s9
+ 635 044e C4ED386A 		vstr.32	s13, [r4, #224]
+ 636 0452 C4ED1F5A 		vstr.32	s11, [r4, #124]
+ 637 0456 35EE066A 		vadd.f32	s12, s10, s12
+ 638 045a D4ED2C5A 		vldr.32	s11, [r4, #176]
+ 639 045e D4ED293A 		vldr.32	s7, [r4, #164]
+ 640 0462 64EE254A 		vmul.f32	s9, s8, s11
+ 641 0466 94ED2F3A 		vldr.32	s6, [r4, #188]
+ 642 046a 94ED2D2A 		vldr.32	s4, [r4, #180]
+ 643 046e 76EEC66A 		vsub.f32	s13, s13, s12
+ 644 0472 D4ED265A 		vldr.32	s11, [r4, #152]
+ 645 0476 94ED275A 		vldr.32	s10, [r4, #156]
+ 646 047a 77EEA47A 		vadd.f32	s15, s15, s9
+ 647 047e 22EE032A 		vmul.f32	s4, s4, s6
+ 648 0482 D4ED242A 		vldr.32	s5, [r4, #144]
+ 649 0486 23EE855A 		vmul.f32	s10, s7, s10
+ 650 048a D4ED2A1A 		vldr.32	s3, [r4, #168]
+ 651 048e 68EEA55A 		vmul.f32	s11, s17, s11
+ 652 0492 94ED216A 		vldr.32	s12, [r4, #132]
+ 653 0496 94ED283A 		vldr.32	s6, [r4, #160]
+ 654 049a 37EE822A 		vadd.f32	s4, s15, s4
+ 655 049e D4ED224A 		vldr.32	s9, [r4, #136]
+ 656 04a2 37EE667A 		vsub.f32	s14, s14, s13
+ 657 04a6 75EE855A 		vadd.f32	s11, s11, s10
+ 658 04aa D4ED257A 		vldr.32	s15, [r4, #148]
+ 659 04ae 23EE213A 		vmul.f32	s6, s6, s3
+ 660 04b2 94ED235A 		vldr.32	s10, [r4, #140]
+ 661 04b6 68EE866A 		vmul.f32	s13, s17, s12
+ 662 04ba 94ED761A 		vldr.32	s2, [r4, #472]
+ 663 04be 62EEA44A 		vmul.f32	s9, s5, s9
+ 664 04c2 D4ED7A1A 		vldr.32	s3, [r4, #488]
+ 665 04c6 35EE836A 		vadd.f32	s12, s11, s6
+ 666 04ca 94ED793A 		vldr.32	s6, [r4, #484]
+ 667 04ce 65EE275A 		vmul.f32	s11, s10, s15
+ 668 04d2 D4ED0C7A 		vldr.32	s15, [r4, #48]
+ 669 04d6 76EEA46A 		vadd.f32	s13, s13, s9
+ 670 04da D4ED774A 		vldr.32	s9, [r4, #476]
+ 671 04de 32EE477A 		vsub.f32	s14, s4, s14
+ 672 04e2 94ED785A 		vldr.32	s10, [r4, #480]
+ 673 04e6 68EEA77A 		vmul.f32	s15, s17, s15
+ 674 04ea 84ED2F4A 		vstr.32	s8, [r4, #188]
+ 675 04ee 76EEA56A 		vadd.f32	s13, s13, s11
+ 676 04f2 D4ED125A 		vldr.32	s11, [r4, #72]
+ 677 04f6 36EE477A 		vsub.f32	s14, s12, s14
+ 678 04fa 84ED2E2A 		vstr.32	s4, [r4, #184]
+ 679 04fe 63EE244A 		vmul.f32	s9, s6, s9
+ 680 0502 C4ED2A3A 		vstr.32	s7, [r4, #168]
+ 681 0506 25EE215A 		vmul.f32	s10, s10, s3
+ 682 050a DFED361A 		vldr.32	s3, .L94+4
+ 683 050e 36EEC77A 		vsub.f32	s14, s13, s14
+ARM GAS  /tmp/ccLVtpq6.s 			page 14
+
+
+ 684 0512 84ED296A 		vstr.32	s12, [r4, #164]
+ 685 0516 C4ED252A 		vstr.32	s5, [r4, #148]
+ 686 051a C4ED246A 		vstr.32	s13, [r4, #144]
+ 687 051e 77EEC77A 		vsub.f32	s15, s15, s14
+ 688 0522 84ED7A3A 		vstr.32	s6, [r4, #488]
+ 689 0526 67EE817A 		vmul.f32	s15, s15, s2
+ 690 052a 77EEA47A 		vadd.f32	s15, s15, s9
+ 691 052e 77EE857A 		vadd.f32	s15, s15, s10
+ 692 0532 27EEA57A 		vmul.f32	s14, s15, s11
+ 693 0536 C4ED797A 		vstr.32	s15, [r4, #484]
+ 694 053a B4EEE17A 		vcmpe.f32	s14, s3
+ 695 053e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 696 0542 2DD4     		bmi	.L74
+ 697 0544 DFED287A 		vldr.32	s15, .L94+8
+ 698 0548 B4EEE77A 		vcmpe.f32	s14, s15
+ 699 054c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 700 0550 3CDD     		ble	.L91
+ 701 0552 47F6FF70 		movw	r0, #32767
+ 702 0556 24E0     		b	.L72
+ 703              	.L90:
+ 704 0558 2946     		mov	r1, r5
+ 705 055a 2046     		mov	r0, r4
+ 706 055c 6782     		strh	r7, [r4, #18]	@ movhi
+ 707 055e FFF7FEFF 		bl	pitch_synch_par_reset.constprop.0
+ 708 0562 668A     		ldrh	r6, [r4, #18]
+ 709 0564 ADE5     		b	.L58
+ 710              	.L54:
+ 711 0566 2046     		mov	r0, r4
+ 712 0568 FFF7FEFF 		bl	sampled_source
+ 713 056c B0EE408A 		vmov.f32	s16, s0
+ 714 0570 A3E5     		b	.L55
+ 715              	.L53:
+ 716 0572 238B     		ldrh	r3, [r4, #24]
+ 717 0574 B342     		cmp	r3, r6
+ 718 0576 1BD9     		bls	.L57
+ 719 0578 94ED088A 		vldr.32	s16, [r4, #32]
+ 720 057c 94ED097A 		vldr.32	s14, [r4, #36]
+ 721 0580 1A4B     		ldr	r3, .L94+12
+ 722 0582 38EE478A 		vsub.f32	s16, s16, s14
+ 723 0586 DFED1A7A 		vldr.32	s15, .L94+16
+ 724 058a 93ED007A 		vldr.32	s14, [r3]
+ 725 058e 84ED088A 		vstr.32	s16, [r4, #32]
+ 726 0592 38EE078A 		vadd.f32	s16, s16, s14
+ 727 0596 83ED008A 		vstr.32	s16, [r3]
+ 728 059a 28EE278A 		vmul.f32	s16, s16, s15
+ 729 059e 8CE5     		b	.L55
+ 730              	.L74:
+ 731 05a0 1448     		ldr	r0, .L94+20
+ 732              	.L72:
+ 733 05a2 A38A     		ldrh	r3, [r4, #20]
+ 734 05a4 0133     		adds	r3, r3, #1
+ 735 05a6 BDEC048B 		vldm	sp!, {d8-d9}
+ 736 05aa A382     		strh	r3, [r4, #20]	@ movhi
+ 737 05ac BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 738              	.L57:
+ 739 05b0 DFED117A 		vldr.32	s15, .L94+24
+ 740 05b4 0D4B     		ldr	r3, .L94+12
+ARM GAS  /tmp/ccLVtpq6.s 			page 15
+
+
+ 741 05b6 B0EE678A 		vmov.f32	s16, s15
+ 742 05ba C3ED007A 		vstr.32	s15, [r3]
+ 743 05be 7CE5     		b	.L55
+ 744              	.L89:
+ 745 05c0 0E4B     		ldr	r3, .L94+28
+ 746 05c2 03EB8603 		add	r3, r3, r6, lsl #2
+ 747 05c6 D3ED006A 		vldr.32	s13, [r3]
+ 748 05ca 5BE5     		b	.L56
+ 749              	.L91:
+ 750 05cc BDEEC77A 		vcvt.s32.f32	s14, s14
+ 751 05d0 17EE103A 		vmov	r3, s14	@ int
+ 752 05d4 18B2     		sxth	r0, r3
+ 753 05d6 E4E7     		b	.L72
+ 754              	.L61:
+ 755 05d8 DFED077A 		vldr.32	s15, .L94+24
+ 756 05dc CAE6     		b	.L71
+ 757              	.L95:
+ 758 05de 00BF     		.align	2
+ 759              	.L94:
+ 760 05e0 00000000 		.word	glotlast.0
+ 761 05e4 00FEFFC6 		.word	-956301824
+ 762 05e8 00FEFF46 		.word	1191181824
+ 763 05ec 00000000 		.word	vwave.5
+ 764 05f0 4260E53C 		.word	1021665346
+ 765 05f4 0180FFFF 		.word	-32767
+ 766 05f8 00000000 		.word	0
+ 767 05fc 00000000 		.word	doublet.7
+ 768              		.size	single_single_parwave, .-single_single_parwave
+ 769              		.section	.text.simple_parwave_init,"ax",%progbits
+ 770              		.align	1
+ 771              		.p2align 2,,3
+ 772              		.global	simple_parwave_init
+ 773              		.syntax unified
+ 774              		.thumb
+ 775              		.thumb_func
+ 776              		.type	simple_parwave_init, %function
+ 777              	simple_parwave_init:
+ 778              		@ args = 0, pretend = 0, frame = 0
+ 779              		@ frame_needed = 0, uses_anonymous_args = 0
+ 780 0000 38B5     		push	{r3, r4, r5, lr}
+ 781 0002 40F2B632 		movw	r2, #950
+ 782 0006 4388     		ldrh	r3, [r0, #2]
+ 783 0008 40F27621 		movw	r1, #630
+ 784 000c 0446     		mov	r4, r0
+ 785 000e 324D     		ldr	r5, .L98
+ 786 0010 02FB03F0 		mul	r0, r2, r3
+ 787 0014 03FB01F1 		mul	r1, r3, r1
+ 788 0018 A5FB0020 		umull	r2, r0, r5, r0
+ 789 001c 04F5E272 		add	r2, r4, #452
+ 790 0020 A5FB0151 		umull	r5, r1, r5, r1
+ 791 0024 400B     		lsrs	r0, r0, #13
+ 792 0026 490B     		lsrs	r1, r1, #13
+ 793 0028 A080     		strh	r0, [r4, #4]	@ movhi
+ 794 002a E180     		strh	r1, [r4, #6]	@ movhi
+ 795 002c FFF7FEFF 		bl	setabc.isra.0
+ 796 0030 0023     		movs	r3, #0
+ 797 0032 0022     		movs	r2, #0
+ARM GAS  /tmp/ccLVtpq6.s 			page 16
+
+
+ 798 0034 A366     		str	r3, [r4, #104]	@ float
+ 799 0036 E367     		str	r3, [r4, #124]	@ float
+ 800 0038 6282     		strh	r2, [r4, #18]	@ movhi
+ 801 003a C4F81620 		str	r2, [r4, #22]	@ unaligned
+ 802 003e 6283     		strh	r2, [r4, #26]	@ movhi
+ 803 0040 C4F89030 		str	r3, [r4, #144]	@ float
+ 804 0044 C4F8A430 		str	r3, [r4, #164]	@ float
+ 805 0048 C4F8B830 		str	r3, [r4, #184]	@ float
+ 806 004c C4F8CC30 		str	r3, [r4, #204]	@ float
+ 807 0050 C4F8E030 		str	r3, [r4, #224]	@ float
+ 808 0054 C4F8F430 		str	r3, [r4, #244]	@ float
+ 809 0058 C4F80831 		str	r3, [r4, #264]	@ float
+ 810 005c C4F81C31 		str	r3, [r4, #284]	@ float
+ 811 0060 C4F83031 		str	r3, [r4, #304]	@ float
+ 812 0064 C4F84431 		str	r3, [r4, #324]	@ float
+ 813 0068 C4F85831 		str	r3, [r4, #344]	@ float
+ 814 006c C4F86C31 		str	r3, [r4, #364]	@ float
+ 815 0070 C4F88031 		str	r3, [r4, #384]	@ float
+ 816 0074 C4F89431 		str	r3, [r4, #404]	@ float
+ 817 0078 C4F8A831 		str	r3, [r4, #424]	@ float
+ 818 007c C4F8BC31 		str	r3, [r4, #444]	@ float
+ 819 0080 C4F8D031 		str	r3, [r4, #464]	@ float
+ 820 0084 C4F8E431 		str	r3, [r4, #484]	@ float
+ 821 0088 E366     		str	r3, [r4, #108]	@ float
+ 822 008a C4F88030 		str	r3, [r4, #128]	@ float
+ 823 008e C4F89430 		str	r3, [r4, #148]	@ float
+ 824 0092 C4F8A830 		str	r3, [r4, #168]	@ float
+ 825 0096 C4F8BC30 		str	r3, [r4, #188]	@ float
+ 826 009a C4F8D030 		str	r3, [r4, #208]	@ float
+ 827 009e C4F8E430 		str	r3, [r4, #228]	@ float
+ 828 00a2 C4F8F830 		str	r3, [r4, #248]	@ float
+ 829 00a6 C4F80C31 		str	r3, [r4, #268]	@ float
+ 830 00aa C4F82031 		str	r3, [r4, #288]	@ float
+ 831 00ae C4F83431 		str	r3, [r4, #308]	@ float
+ 832 00b2 C4F84831 		str	r3, [r4, #328]	@ float
+ 833 00b6 C4F85C31 		str	r3, [r4, #348]	@ float
+ 834 00ba C4F87031 		str	r3, [r4, #368]	@ float
+ 835 00be C4F88431 		str	r3, [r4, #388]	@ float
+ 836 00c2 C4F89831 		str	r3, [r4, #408]	@ float
+ 837 00c6 C4F8AC31 		str	r3, [r4, #428]	@ float
+ 838 00ca C4F8C031 		str	r3, [r4, #448]	@ float
+ 839 00ce C4F8D431 		str	r3, [r4, #468]	@ float
+ 840 00d2 C4F8E831 		str	r3, [r4, #488]	@ float
+ 841 00d6 38BD     		pop	{r3, r4, r5, pc}
+ 842              	.L99:
+ 843              		.align	2
+ 844              	.L98:
+ 845 00d8 5917B7D1 		.word	-776530087
+ 846              		.size	simple_parwave_init, .-simple_parwave_init
+ 847              		.section	.text.frame_init,"ax",%progbits
+ 848              		.align	1
+ 849              		.p2align 2,,3
+ 850              		.global	frame_init
+ 851              		.syntax unified
+ 852              		.thumb
+ 853              		.thumb_func
+ 854              		.type	frame_init, %function
+ARM GAS  /tmp/ccLVtpq6.s 			page 17
+
+
+ 855              	frame_init:
+ 856              		@ args = 0, pretend = 0, frame = 8
+ 857              		@ frame_needed = 0, uses_anonymous_args = 0
+ 858 0000 B1F90030 		ldrsh	r3, [r1]
+ 859 0004 D64A     		ldr	r2, .L146+16
+ 860 0006 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 861 000a 0D46     		mov	r5, r1
+ 862 000c 82FB0312 		smull	r1, r2, r2, r3
+ 863 0010 DB17     		asrs	r3, r3, #31
+ 864 0012 0446     		mov	r4, r0
+ 865 0014 C3EBA203 		rsb	r3, r3, r2, asr #2
+ 866 0018 2DED048B 		vpush.64	{d8, d9}
+ 867 001c A0F85830 		strh	r3, [r0, #88]	@ movhi
+ 868 0020 83B0     		sub	sp, sp, #12
+ 869 0022 B5F92430 		ldrsh	r3, [r5, #36]
+ 870 0026 9AB2     		uxth	r2, r3
+ 871 0028 572A     		cmp	r2, #87
+ 872 002a 00F2EF81 		bhi	.L125
+ 873 002e CD4A     		ldr	r2, .L146+20
+ 874 0030 DFEDCD6A 		vldr.32	s13, .L146+24
+ 875 0034 02EB8303 		add	r3, r2, r3, lsl #2
+ 876 0038 9FEDCC7A 		vldr.32	s14, .L146+28
+ 877 003c D3ED007A 		vldr.32	s15, [r3]
+ 878 0040 B5F92C30 		ldrsh	r3, [r5, #44]
+ 879 0044 67EEA67A 		vmul.f32	s15, s15, s13
+ 880 0048 9AB2     		uxth	r2, r3
+ 881 004a 67EE877A 		vmul.f32	s15, s15, s14
+ 882 004e 572A     		cmp	r2, #87
+ 883 0050 C4ED0F7A 		vstr.32	s15, [r4, #60]
+ 884 0054 00F2E481 		bhi	.L126
+ 885              	.L140:
+ 886 0058 C24A     		ldr	r2, .L146+20
+ 887 005a B5EE007A 		vmov.f32	s14, #2.5e-1
+ 888 005e DFEDC26A 		vldr.32	s13, .L146+24
+ 889 0062 02EB8303 		add	r3, r2, r3, lsl #2
+ 890 0066 D3ED007A 		vldr.32	s15, [r3]
+ 891 006a B5F94C30 		ldrsh	r3, [r5, #76]
+ 892 006e 67EEA67A 		vmul.f32	s15, s15, s13
+ 893 0072 9AB2     		uxth	r2, r3
+ 894 0074 67EE877A 		vmul.f32	s15, s15, s14
+ 895 0078 572A     		cmp	r2, #87
+ 896 007a C4ED107A 		vstr.32	s15, [r4, #64]
+ 897 007e 00F2D981 		bhi	.L127
+ 898              	.L141:
+ 899 0082 B84A     		ldr	r2, .L146+20
+ 900 0084 9FEDB87A 		vldr.32	s14, .L146+24
+ 901 0088 02EB8303 		add	r3, r2, r3, lsl #2
+ 902 008c D3ED007A 		vldr.32	s15, [r3]
+ 903 0090 B5F94A30 		ldrsh	r3, [r5, #74]
+ 904 0094 67EE877A 		vmul.f32	s15, s15, s14
+ 905 0098 9AB2     		uxth	r2, r3
+ 906 009a 572A     		cmp	r2, #87
+ 907 009c C4ED0E7A 		vstr.32	s15, [r4, #56]
+ 908 00a0 00F2D281 		bhi	.L128
+ 909              	.L142:
+ 910 00a4 AF4A     		ldr	r2, .L146+20
+ 911 00a6 DFEDB06A 		vldr.32	s13, .L146+24
+ARM GAS  /tmp/ccLVtpq6.s 			page 18
+
+
+ 912 00aa 02EB8303 		add	r3, r2, r3, lsl #2
+ 913 00ae 9FEDAF7A 		vldr.32	s14, .L146+28
+ 914 00b2 D3ED007A 		vldr.32	s15, [r3]
+ 915 00b6 B5F94E30 		ldrsh	r3, [r5, #78]
+ 916 00ba 67EEA67A 		vmul.f32	s15, s15, s13
+ 917 00be 9AB2     		uxth	r2, r3
+ 918 00c0 67EE877A 		vmul.f32	s15, s15, s14
+ 919 00c4 572A     		cmp	r2, #87
+ 920 00c6 C4ED0C7A 		vstr.32	s15, [r4, #48]
+ 921 00ca 00F2C781 		bhi	.L129
+ 922              	.L143:
+ 923 00ce A54A     		ldr	r2, .L146+20
+ 924 00d0 9FEDA57A 		vldr.32	s14, .L146+24
+ 925 00d4 02EB8303 		add	r3, r2, r3, lsl #2
+ 926 00d8 2789     		ldrh	r7, [r4, #8]
+ 927 00da 6688     		ldrh	r6, [r4, #2]
+ 928 00dc D3ED007A 		vldr.32	s15, [r3]
+ 929 00e0 052F     		cmp	r7, #5
+ 930 00e2 67EE877A 		vmul.f32	s15, s15, s14
+ 931 00e6 C4ED127A 		vstr.32	s15, [r4, #72]
+ 932 00ea 00F2C081 		bhi	.L139
+ 933              	.L106:
+ 934 00ee 07EE906A 		vmov	s15, r6	@ int
+ 935 00f2 B8EEE79B 		vcvt.f64.s32	d9, s15
+ 936 00f6 00F0DC81 		beq	.L122
+ 937              	.L123:
+ 938 00fa 2B8A     		ldrh	r3, [r5, #16]
+ 939 00fc 04F59272 		add	r2, r4, #292
+ 940 0100 698A     		ldrh	r1, [r5, #18]
+ 941 0102 1846     		mov	r0, r3
+ 942 0104 0093     		str	r3, [sp]
+ 943 0106 3346     		mov	r3, r6
+ 944 0108 FFF7FEFF 		bl	setabc.isra.0
+ 945 010c AB89     		ldrh	r3, [r5, #12]
+ 946 010e 04F58872 		add	r2, r4, #272
+ 947 0112 E989     		ldrh	r1, [r5, #14]
+ 948 0114 1846     		mov	r0, r3
+ 949 0116 0193     		str	r3, [sp, #4]
+ 950 0118 3346     		mov	r3, r6
+ 951 011a FFF7FEFF 		bl	setabc.isra.0
+ 952 011e 2F89     		ldrh	r7, [r5, #8]
+ 953 0120 3346     		mov	r3, r6
+ 954 0122 04F1FC02 		add	r2, r4, #252
+ 955 0126 6989     		ldrh	r1, [r5, #10]
+ 956 0128 3846     		mov	r0, r7
+ 957 012a FFF7FEFF 		bl	setabc.isra.0
+ 958 012e B5F804A0 		ldrh	r10, [r5, #4]
+ 959 0132 3346     		mov	r3, r6
+ 960 0134 04F1E802 		add	r2, r4, #232
+ 961 0138 E988     		ldrh	r1, [r5, #6]
+ 962 013a 5046     		mov	r0, r10
+ 963 013c FFF7FEFF 		bl	setabc.isra.0
+ 964 0140 B5F82080 		ldrh	r8, [r5, #32]
+ 965 0144 B5F82290 		ldrh	r9, [r5, #34]
+ 966 0148 04F5C472 		add	r2, r4, #392
+ 967 014c 4046     		mov	r0, r8
+ 968 014e 3346     		mov	r3, r6
+ARM GAS  /tmp/ccLVtpq6.s 			page 19
+
+
+ 969 0150 4946     		mov	r1, r9
+ 970 0152 FFF7FEFF 		bl	setabc.isra.0
+ 971 0156 EB8B     		ldrh	r3, [r5, #30]
+ 972 0158 B5F81CB0 		ldrh	fp, [r5, #28]
+ 973 015c 00EE103A 		vmov	s0, r3	@ int
+ 974 0160 9FED7B6B 		vldr.64	d6, .L146
+ 975 0164 B8EEC00B 		vcvt.f64.s32	d0, s0
+ 976 0168 86EE097B 		vdiv.f64	d7, d6, d9
+ 977 016c 20EE070B 		vmul.f64	d0, d0, d7
+ 978 0170 B7EEC00B 		vcvt.f32.f64	s0, d0
+ 979 0174 FFF7FEFF 		bl	expf
+ 980 0178 CBF10003 		rsb	r3, fp, #0
+ 981 017c B0EE408A 		vmov.f32	s16, s0
+ 982 0180 9FED756B 		vldr.64	d6, .L146+8
+ 983 0184 86EE097B 		vdiv.f64	d7, d6, d9
+ 984 0188 20EE009A 		vmul.f32	s18, s0, s0
+ 985 018c 00EE103A 		vmov	s0, r3	@ int
+ 986 0190 B8EEC00B 		vcvt.f64.s32	d0, s0
+ 987 0194 F1EE498A 		vneg.f32	s17, s18
+ 988 0198 C4ED698A 		vstr.32	s17, [r4, #420]
+ 989 019c 20EE070B 		vmul.f64	d0, d0, d7
+ 990 01a0 B7EEC00B 		vcvt.f32.f64	s0, d0
+ 991 01a4 FFF7FEFF 		bl	cosf
+ 992 01a8 28EE008A 		vmul.f32	s16, s16, s0
+ 993 01ac B7EE007B 		vmov.f64	d7, #1.0e+0
+ 994 01b0 B7EEE86A 		vcvt.f64.f32	d6, s17
+ 995 01b4 38EE088A 		vadd.f32	s16, s16, s16
+ 996 01b8 B7EEC85A 		vcvt.f64.f32	d5, s16
+ 997 01bc 84ED688A 		vstr.32	s16, [r4, #416]
+ 998 01c0 37EE457B 		vsub.f64	d7, d7, d5
+ 999 01c4 37EE467B 		vsub.f64	d7, d7, d6
+ 1000 01c8 B7EEC77B 		vcvt.f32.f64	s14, d7
+ 1001 01cc BBF1000F 		cmp	fp, #0
+ 1002 01d0 40F00D81 		bne	.L113
+ 1003 01d4 84ED677A 		vstr.32	s14, [r4, #412]
+ 1004              	.L114:
+ 1005 01d8 3346     		mov	r3, r6
+ 1006 01da 04F17002 		add	r2, r4, #112
+ 1007 01de 5046     		mov	r0, r10
+ 1008 01e0 698E     		ldrh	r1, [r5, #50]
+ 1009 01e2 FFF7FEFF 		bl	setabc.isra.0
+ 1010 01e6 B5F93030 		ldrsh	r3, [r5, #48]
+ 1011 01ea 9AB2     		uxth	r2, r3
+ 1012 01ec 572A     		cmp	r2, #87
+ 1013 01ee 00F27A81 		bhi	.L130
+ 1014 01f2 5C4A     		ldr	r2, .L146+20
+ 1015 01f4 DFED5C6A 		vldr.32	s13, .L146+24
+ 1016 01f8 02EB8303 		add	r3, r2, r3, lsl #2
+ 1017 01fc 9FED5C7A 		vldr.32	s14, .L146+32
+ 1018 0200 D3ED007A 		vldr.32	s15, [r3]
+ 1019 0204 67EEA67A 		vmul.f32	s15, s15, s13
+ 1020 0208 67EE877A 		vmul.f32	s15, s15, s14
+ 1021              	.L115:
+ 1022 020c 94ED1C7A 		vldr.32	s14, [r4, #112]
+ 1023 0210 3346     		mov	r3, r6
+ 1024 0212 04F15C02 		add	r2, r4, #92
+ 1025 0216 4946     		mov	r1, r9
+ARM GAS  /tmp/ccLVtpq6.s 			page 20
+
+
+ 1026 0218 67EE277A 		vmul.f32	s15, s14, s15
+ 1027 021c 4046     		mov	r0, r8
+ 1028 021e C4ED1C7A 		vstr.32	s15, [r4, #112]
+ 1029 0222 FFF7FEFF 		bl	setabc.isra.0
+ 1030 0226 B5F94830 		ldrsh	r3, [r5, #72]
+ 1031 022a 9AB2     		uxth	r2, r3
+ 1032 022c 572A     		cmp	r2, #87
+ 1033 022e 00F25781 		bhi	.L131
+ 1034 0232 4C4A     		ldr	r2, .L146+20
+ 1035 0234 DFED4C6A 		vldr.32	s13, .L146+24
+ 1036 0238 02EB8303 		add	r3, r2, r3, lsl #2
+ 1037 023c 9FED4D7A 		vldr.32	s14, .L146+36
+ 1038 0240 D3ED007A 		vldr.32	s15, [r3]
+ 1039 0244 67EEA67A 		vmul.f32	s15, s15, s13
+ 1040 0248 67EE877A 		vmul.f32	s15, s15, s14
+ 1041              	.L116:
+ 1042 024c 94ED177A 		vldr.32	s14, [r4, #92]
+ 1043 0250 3346     		mov	r3, r6
+ 1044 0252 04F18402 		add	r2, r4, #132
+ 1045 0256 3846     		mov	r0, r7
+ 1046 0258 67EE277A 		vmul.f32	s15, s14, s15
+ 1047 025c E98E     		ldrh	r1, [r5, #54]
+ 1048 025e C4ED177A 		vstr.32	s15, [r4, #92]
+ 1049 0262 FFF7FEFF 		bl	setabc.isra.0
+ 1050 0266 B5F93430 		ldrsh	r3, [r5, #52]
+ 1051 026a 9AB2     		uxth	r2, r3
+ 1052 026c 572A     		cmp	r2, #87
+ 1053 026e 00F23481 		bhi	.L132
+ 1054 0272 3C4A     		ldr	r2, .L146+20
+ 1055 0274 DFED3C6A 		vldr.32	s13, .L146+24
+ 1056 0278 02EB8303 		add	r3, r2, r3, lsl #2
+ 1057 027c 9FED3E7A 		vldr.32	s14, .L146+40
+ 1058 0280 D3ED007A 		vldr.32	s15, [r3]
+ 1059 0284 67EEA67A 		vmul.f32	s15, s15, s13
+ 1060 0288 67EE877A 		vmul.f32	s15, s15, s14
+ 1061              	.L117:
+ 1062 028c 94ED217A 		vldr.32	s14, [r4, #132]
+ 1063 0290 3346     		mov	r3, r6
+ 1064 0292 04F19802 		add	r2, r4, #152
+ 1065 0296 0198     		ldr	r0, [sp, #4]
+ 1066 0298 67EE277A 		vmul.f32	s15, s14, s15
+ 1067 029c 698F     		ldrh	r1, [r5, #58]
+ 1068 029e C4ED217A 		vstr.32	s15, [r4, #132]
+ 1069 02a2 FFF7FEFF 		bl	setabc.isra.0
+ 1070 02a6 B5F93830 		ldrsh	r3, [r5, #56]
+ 1071 02aa 9AB2     		uxth	r2, r3
+ 1072 02ac 572A     		cmp	r2, #87
+ 1073 02ae 00F21181 		bhi	.L133
+ 1074 02b2 2C4A     		ldr	r2, .L146+20
+ 1075 02b4 DFED2C6A 		vldr.32	s13, .L146+24
+ 1076 02b8 02EB8303 		add	r3, r2, r3, lsl #2
+ 1077 02bc 9FED2F7A 		vldr.32	s14, .L146+44
+ 1078 02c0 D3ED007A 		vldr.32	s15, [r3]
+ 1079 02c4 67EEA67A 		vmul.f32	s15, s15, s13
+ 1080 02c8 67EE877A 		vmul.f32	s15, s15, s14
+ 1081              	.L118:
+ 1082 02cc 94ED267A 		vldr.32	s14, [r4, #152]
+ARM GAS  /tmp/ccLVtpq6.s 			page 21
+
+
+ 1083 02d0 3346     		mov	r3, r6
+ 1084 02d2 04F1AC02 		add	r2, r4, #172
+ 1085 02d6 0098     		ldr	r0, [sp]
+ 1086 02d8 67EE277A 		vmul.f32	s15, s14, s15
+ 1087 02dc E98F     		ldrh	r1, [r5, #62]
+ 1088 02de C4ED267A 		vstr.32	s15, [r4, #152]
+ 1089 02e2 FFF7FEFF 		bl	setabc.isra.0
+ 1090 02e6 B5F93C30 		ldrsh	r3, [r5, #60]
+ 1091 02ea 9AB2     		uxth	r2, r3
+ 1092 02ec 572A     		cmp	r2, #87
+ 1093 02ee 00F2EE80 		bhi	.L134
+ 1094 02f2 1C4A     		ldr	r2, .L146+20
+ 1095 02f4 DFED1C6A 		vldr.32	s13, .L146+24
+ 1096 02f8 02EB8303 		add	r3, r2, r3, lsl #2
+ 1097 02fc 9FED207A 		vldr.32	s14, .L146+48
+ 1098 0300 D3ED007A 		vldr.32	s15, [r3]
+ 1099 0304 67EEA67A 		vmul.f32	s15, s15, s13
+ 1100 0308 67EE877A 		vmul.f32	s15, s15, s14
+ 1101              	.L119:
+ 1102 030c 94ED2B7A 		vldr.32	s14, [r4, #172]
+ 1103 0310 3346     		mov	r3, r6
+ 1104 0312 04F1C002 		add	r2, r4, #192
+ 1105 0316 B5F84210 		ldrh	r1, [r5, #66]
+ 1106 031a 67EE277A 		vmul.f32	s15, s14, s15
+ 1107 031e A88A     		ldrh	r0, [r5, #20]
+ 1108 0320 C4ED2B7A 		vstr.32	s15, [r4, #172]
+ 1109 0324 FFF7FEFF 		bl	setabc.isra.0
+ 1110 0328 B5F94030 		ldrsh	r3, [r5, #64]
+ 1111 032c 9AB2     		uxth	r2, r3
+ 1112 032e 572A     		cmp	r2, #87
+ 1113 0330 00F2CA80 		bhi	.L135
+ 1114 0334 0B4A     		ldr	r2, .L146+20
+ 1115 0336 DFED0C6A 		vldr.32	s13, .L146+24
+ 1116 033a 02EB8303 		add	r3, r2, r3, lsl #2
+ 1117 033e 9FED117A 		vldr.32	s14, .L146+52
+ 1118 0342 D3ED007A 		vldr.32	s15, [r3]
+ 1119 0346 67EEA67A 		vmul.f32	s15, s15, s13
+ 1120 034a 67EE877A 		vmul.f32	s15, s15, s14
+ 1121 034e 1BE0     		b	.L147
+ 1122              	.L148:
+ 1123              		.align	3
+ 1124              	.L146:
+ 1125 0350 6E861BF0 		.word	-266631570
+ 1126 0354 F92109C0 		.word	-1073143303
+ 1127 0358 6E861BF0 		.word	-266631570
+ 1128 035c F9211940 		.word	1075388921
+ 1129 0360 67666666 		.word	1717986919
+ 1130 0364 00000000 		.word	amptable.2
+ 1131 0368 6F12833A 		.word	981668463
+ 1132 036c CDCC4C3D 		.word	1028443341
+ 1133 0370 CDCCCC3E 		.word	1053609165
+ 1134 0374 9A99193F 		.word	1058642330
+ 1135 0378 9A99193E 		.word	1041865114
+ 1136 037c 8FC2753D 		.word	1031127695
+ 1137 0380 0AD7233D 		.word	1025758986
+ 1138 0384 5839B43C 		.word	1018444120
+ 1139              	.L147:
+ARM GAS  /tmp/ccLVtpq6.s 			page 22
+
+
+ 1140              	.L120:
+ 1141 0388 94ED307A 		vldr.32	s14, [r4, #192]
+ 1142 038c 3346     		mov	r3, r6
+ 1143 038e 04F1D402 		add	r2, r4, #212
+ 1144 0392 B5F84610 		ldrh	r1, [r5, #70]
+ 1145 0396 67EE277A 		vmul.f32	s15, s14, s15
+ 1146 039a 288B     		ldrh	r0, [r5, #24]
+ 1147 039c C4ED307A 		vstr.32	s15, [r4, #192]
+ 1148 03a0 FFF7FEFF 		bl	setabc.isra.0
+ 1149 03a4 B5F94430 		ldrsh	r3, [r5, #68]
+ 1150 03a8 9AB2     		uxth	r2, r3
+ 1151 03aa 572A     		cmp	r2, #87
+ 1152 03ac 00F28980 		bhi	.L136
+ 1153 03b0 974A     		ldr	r2, .L149+48
+ 1154 03b2 DFED986A 		vldr.32	s13, .L149+52
+ 1155 03b6 02EB8303 		add	r3, r2, r3, lsl #2
+ 1156 03ba 9FED977A 		vldr.32	s14, .L149+56
+ 1157 03be D3ED007A 		vldr.32	s15, [r3]
+ 1158 03c2 67EEA67A 		vmul.f32	s15, s15, s13
+ 1159 03c6 67EE877A 		vmul.f32	s15, s15, s14
+ 1160              	.L121:
+ 1161 03ca 94ED357A 		vldr.32	s14, [r4, #212]
+ 1162 03ce 3346     		mov	r3, r6
+ 1163 03d0 04F5EC72 		add	r2, r4, #472
+ 1164 03d4 7108     		lsrs	r1, r6, #1
+ 1165 03d6 67EE277A 		vmul.f32	s15, s14, s15
+ 1166 03da 0020     		movs	r0, #0
+ 1167 03dc C4ED357A 		vstr.32	s15, [r4, #212]
+ 1168 03e0 03B0     		add	sp, sp, #12
+ 1169              		@ sp needed
+ 1170 03e2 BDEC048B 		vldm	sp!, {d8-d9}
+ 1171 03e6 BDE8F04F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 1172 03ea FFF7FEBF 		b	setabc.isra.0
+ 1173              	.L113:
+ 1174 03ee F7EE006A 		vmov.f32	s13, #1.0e+0
+ 1175 03f2 C6EE877A 		vdiv.f32	s15, s13, s14
+ 1176 03f6 29EE279A 		vmul.f32	s18, s18, s15
+ 1177 03fa C4ED677A 		vstr.32	s15, [r4, #412]
+ 1178 03fe 27EEC88A 		vnmul.f32	s16, s15, s16
+ 1179 0402 84ED699A 		vstr.32	s18, [r4, #420]
+ 1180 0406 84ED688A 		vstr.32	s16, [r4, #416]
+ 1181 040a E5E6     		b	.L114
+ 1182              	.L125:
+ 1183 040c B5F92C30 		ldrsh	r3, [r5, #44]
+ 1184 0410 DFED827A 		vldr.32	s15, .L149+60
+ 1185 0414 9AB2     		uxth	r2, r3
+ 1186 0416 C4ED0F7A 		vstr.32	s15, [r4, #60]
+ 1187 041a 572A     		cmp	r2, #87
+ 1188 041c 7FF61CAE 		bls	.L140
+ 1189              	.L126:
+ 1190 0420 B5F94C30 		ldrsh	r3, [r5, #76]
+ 1191 0424 DFED7D7A 		vldr.32	s15, .L149+60
+ 1192 0428 9AB2     		uxth	r2, r3
+ 1193 042a C4ED107A 		vstr.32	s15, [r4, #64]
+ 1194 042e 572A     		cmp	r2, #87
+ 1195 0430 7FF627AE 		bls	.L141
+ 1196              	.L127:
+ARM GAS  /tmp/ccLVtpq6.s 			page 23
+
+
+ 1197 0434 B5F94A30 		ldrsh	r3, [r5, #74]
+ 1198 0438 DFED787A 		vldr.32	s15, .L149+60
+ 1199 043c 9AB2     		uxth	r2, r3
+ 1200 043e C4ED0E7A 		vstr.32	s15, [r4, #56]
+ 1201 0442 572A     		cmp	r2, #87
+ 1202 0444 7FF62EAE 		bls	.L142
+ 1203              	.L128:
+ 1204 0448 B5F94E30 		ldrsh	r3, [r5, #78]
+ 1205 044c DFED737A 		vldr.32	s15, .L149+60
+ 1206 0450 9AB2     		uxth	r2, r3
+ 1207 0452 C4ED0C7A 		vstr.32	s15, [r4, #48]
+ 1208 0456 572A     		cmp	r2, #87
+ 1209 0458 7FF639AE 		bls	.L143
+ 1210              	.L129:
+ 1211 045c 2789     		ldrh	r7, [r4, #8]
+ 1212 045e DFED6F7A 		vldr.32	s15, .L149+60
+ 1213 0462 052F     		cmp	r7, #5
+ 1214 0464 6688     		ldrh	r6, [r4, #2]
+ 1215 0466 C4ED127A 		vstr.32	s15, [r4, #72]
+ 1216 046a 7FF640AE 		bls	.L106
+ 1217              	.L139:
+ 1218 046e B5F81880 		ldrh	r8, [r5, #24]
+ 1219 0472 04F5A67A 		add	r10, r4, #332
+ 1220 0476 B5F81A90 		ldrh	r9, [r5, #26]
+ 1221 047a 3346     		mov	r3, r6
+ 1222 047c 4046     		mov	r0, r8
+ 1223 047e 5246     		mov	r2, r10
+ 1224 0480 4946     		mov	r1, r9
+ 1225 0482 FFF7FEFF 		bl	setabc.isra.0
+ 1226 0486 072F     		cmp	r7, #7
+ 1227 0488 40F29980 		bls	.L107
+ 1228 048c B6F57A5F 		cmp	r6, #16000
+ 1229 0490 2CD2     		bcs	.L144
+ 1230              	.L111:
+ 1231 0492 07EE906A 		vmov	s15, r6	@ int
+ 1232 0496 0623     		movs	r3, #6
+ 1233 0498 B8EEE79B 		vcvt.f64.s32	d9, s15
+ 1234 049c 2381     		strh	r3, [r4, #8]	@ movhi
+ 1235 049e B5F81880 		ldrh	r8, [r5, #24]
+ 1236 04a2 B5F81A90 		ldrh	r9, [r5, #26]
+ 1237              	.L110:
+ 1238 04a6 5246     		mov	r2, r10
+ 1239 04a8 4946     		mov	r1, r9
+ 1240 04aa 4046     		mov	r0, r8
+ 1241 04ac 3346     		mov	r3, r6
+ 1242 04ae FFF7FEFF 		bl	setabc.isra.0
+ 1243              	.L122:
+ 1244 04b2 3346     		mov	r3, r6
+ 1245 04b4 04F59C72 		add	r2, r4, #312
+ 1246 04b8 E98A     		ldrh	r1, [r5, #22]
+ 1247 04ba A88A     		ldrh	r0, [r5, #20]
+ 1248 04bc FFF7FEFF 		bl	setabc.isra.0
+ 1249 04c0 1BE6     		b	.L123
+ 1250              	.L136:
+ 1251 04c2 DFED567A 		vldr.32	s15, .L149+60
+ 1252 04c6 80E7     		b	.L121
+ 1253              	.L135:
+ARM GAS  /tmp/ccLVtpq6.s 			page 24
+
+
+ 1254 04c8 DFED547A 		vldr.32	s15, .L149+60
+ 1255 04cc 5CE7     		b	.L120
+ 1256              	.L134:
+ 1257 04ce DFED537A 		vldr.32	s15, .L149+60
+ 1258 04d2 1BE7     		b	.L119
+ 1259              	.L133:
+ 1260 04d4 DFED517A 		vldr.32	s15, .L149+60
+ 1261 04d8 F8E6     		b	.L118
+ 1262              	.L132:
+ 1263 04da DFED507A 		vldr.32	s15, .L149+60
+ 1264 04de D5E6     		b	.L117
+ 1265              	.L131:
+ 1266 04e0 DFED4E7A 		vldr.32	s15, .L149+60
+ 1267 04e4 B2E6     		b	.L116
+ 1268              	.L130:
+ 1269 04e6 DFED4D7A 		vldr.32	s15, .L149+60
+ 1270 04ea 8FE6     		b	.L115
+ 1271              	.L144:
+ 1272 04ec 07EE906A 		vmov	s15, r6	@ int
+ 1273 04f0 9FED3B6B 		vldr.64	d6, .L149
+ 1274 04f4 B8EEE79B 		vcvt.f64.s32	d9, s15
+ 1275 04f8 9FED3B7B 		vldr.64	d7, .L149+8
+ 1276 04fc 86EE090B 		vdiv.f64	d0, d6, d9
+ 1277 0500 20EE070B 		vmul.f64	d0, d0, d7
+ 1278 0504 B7EEC00B 		vcvt.f32.f64	s0, d0
+ 1279 0508 FFF7FEFF 		bl	expf
+ 1280 050c B0EE408A 		vmov.f32	s16, s0
+ 1281 0510 9FED376B 		vldr.64	d6, .L149+16
+ 1282 0514 9FED387B 		vldr.64	d7, .L149+24
+ 1283 0518 68EE488A 		vnmul.f32	s17, s16, s16
+ 1284 051c 86EE090B 		vdiv.f64	d0, d6, d9
+ 1285 0520 C4ED5F8A 		vstr.32	s17, [r4, #380]
+ 1286 0524 20EE070B 		vmul.f64	d0, d0, d7
+ 1287 0528 B7EEC00B 		vcvt.f32.f64	s0, d0
+ 1288 052c FFF7FEFF 		bl	cosf
+ 1289 0530 28EE008A 		vmul.f32	s16, s16, s0
+ 1290 0534 B7EE007B 		vmov.f64	d7, #1.0e+0
+ 1291 0538 B7EEE86A 		vcvt.f64.f32	d6, s17
+ 1292 053c 38EE088A 		vadd.f32	s16, s16, s16
+ 1293 0540 B7EEC85A 		vcvt.f64.f32	d5, s16
+ 1294 0544 84ED5E8A 		vstr.32	s16, [r4, #376]
+ 1295 0548 37EE457B 		vsub.f64	d7, d7, d5
+ 1296 054c 37EE467B 		vsub.f64	d7, d7, d6
+ 1297 0550 B7EEC77B 		vcvt.f32.f64	s14, d7
+ 1298 0554 84ED5D7A 		vstr.32	s14, [r4, #372]
+ 1299              	.L109:
+ 1300 0558 9FED216B 		vldr.64	d6, .L149
+ 1301 055c 9FED287B 		vldr.64	d7, .L149+32
+ 1302 0560 86EE090B 		vdiv.f64	d0, d6, d9
+ 1303 0564 20EE070B 		vmul.f64	d0, d0, d7
+ 1304 0568 B7EEC00B 		vcvt.f32.f64	s0, d0
+ 1305 056c FFF7FEFF 		bl	expf
+ 1306 0570 B0EE408A 		vmov.f32	s16, s0
+ 1307 0574 9FED1E6B 		vldr.64	d6, .L149+16
+ 1308 0578 9FED237B 		vldr.64	d7, .L149+40
+ 1309 057c 68EE488A 		vnmul.f32	s17, s16, s16
+ 1310 0580 86EE090B 		vdiv.f64	d0, d6, d9
+ARM GAS  /tmp/ccLVtpq6.s 			page 25
+
+
+ 1311 0584 C4ED5A8A 		vstr.32	s17, [r4, #360]
+ 1312 0588 20EE070B 		vmul.f64	d0, d0, d7
+ 1313 058c B7EEC00B 		vcvt.f32.f64	s0, d0
+ 1314 0590 FFF7FEFF 		bl	cosf
+ 1315 0594 28EE008A 		vmul.f32	s16, s16, s0
+ 1316 0598 B7EE007B 		vmov.f64	d7, #1.0e+0
+ 1317 059c B7EEE86A 		vcvt.f64.f32	d6, s17
+ 1318 05a0 38EE088A 		vadd.f32	s16, s16, s16
+ 1319 05a4 B7EEC85A 		vcvt.f64.f32	d5, s16
+ 1320 05a8 84ED598A 		vstr.32	s16, [r4, #356]
+ 1321 05ac 37EE457B 		vsub.f64	d7, d7, d5
+ 1322 05b0 37EE467B 		vsub.f64	d7, d7, d6
+ 1323 05b4 B7EEC77B 		vcvt.f32.f64	s14, d7
+ 1324 05b8 84ED587A 		vstr.32	s14, [r4, #352]
+ 1325 05bc 73E7     		b	.L110
+ 1326              	.L107:
+ 1327 05be 08D1     		bne	.L145
+ 1328 05c0 B6F57A5F 		cmp	r6, #16000
+ 1329 05c4 FFF465AF 		bcc	.L111
+ 1330 05c8 07EE906A 		vmov	s15, r6	@ int
+ 1331 05cc B8EEE79B 		vcvt.f64.s32	d9, s15
+ 1332 05d0 C2E7     		b	.L109
+ 1333              	.L145:
+ 1334 05d2 07EE906A 		vmov	s15, r6	@ int
+ 1335 05d6 B8EEE79B 		vcvt.f64.s32	d9, s15
+ 1336 05da 64E7     		b	.L110
+ 1337              	.L150:
+ 1338 05dc AFF30080 		.align	3
+ 1339              	.L149:
+ 1340 05e0 6E861BF0 		.word	-266631570
+ 1341 05e4 F92109C0 		.word	-1073143303
+ 1342 05e8 00000000 		.word	0
+ 1343 05ec 00C08240 		.word	1082310656
+ 1344 05f0 6E861BF0 		.word	-266631570
+ 1345 05f4 F9211940 		.word	1075388921
+ 1346 05f8 00000000 		.word	0
+ 1347 05fc 004CBD40 		.word	1086147584
+ 1348 0600 00000000 		.word	0
+ 1349 0604 00407F40 		.word	1082081280
+ 1350 0608 00000000 		.word	0
+ 1351 060c 0064B940 		.word	1085891584
+ 1352 0610 00000000 		.word	amptable.2
+ 1353 0614 6F12833A 		.word	981668463
+ 1354 0618 8FC2F53C 		.word	1022739087
+ 1355 061c 00000000 		.word	0
+ 1356              		.size	frame_init, .-frame_init
+ 1357              		.section	.text.single_parwave,"ax",%progbits
+ 1358              		.align	1
+ 1359              		.p2align 2,,3
+ 1360              		.global	single_parwave
+ 1361              		.syntax unified
+ 1362              		.thumb
+ 1363              		.thumb_func
+ 1364              		.type	single_parwave, %function
+ 1365              	single_parwave:
+ 1366              		@ args = 8, pretend = 0, frame = 0
+ 1367              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccLVtpq6.s 			page 26
+
+
+ 1368 0000 012A     		cmp	r2, #1
+ 1369 0002 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 1370 0006 0446     		mov	r4, r0
+ 1371 0008 0E46     		mov	r6, r1
+ 1372 000a 2DED048B 		vpush.64	{d8, d9}
+ 1373 000e 9DF83070 		ldrb	r7, [sp, #48]	@ zero_extendqisi2
+ 1374 0012 00F0EB82 		beq	.L190
+ 1375              	.L152:
+ 1376 0016 FFF7FEFF 		bl	rand
+ 1377 001a 734A     		ldr	r2, .L194
+ 1378 001c B6EE087A 		vmov.f32	s14, #7.5e-1
+ 1379 0020 658A     		ldrh	r5, [r4, #18]
+ 1380 0022 82FB0032 		smull	r3, r2, r2, r0
+ 1381 0026 C317     		asrs	r3, r0, #31
+ 1382 0028 0244     		add	r2, r2, r0
+ 1383 002a C3EB6233 		rsb	r3, r3, r2, asr #13
+ 1384 002e C3EB8333 		rsb	r3, r3, r3, lsl #14
+ 1385 0032 C01A     		subs	r0, r0, r3
+ 1386 0034 6D4B     		ldr	r3, .L194+4
+ 1387 0036 0344     		add	r3, r3, r0
+ 1388 0038 9BB2     		uxth	r3, r3
+ 1389 003a 07EE903A 		vmov	s15, r3	@ int
+ 1390 003e A383     		strh	r3, [r4, #28]	@ movhi
+ 1391 0040 6B4B     		ldr	r3, .L194+8
+ 1392 0042 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 1393 0046 93ED009A 		vldr.32	s18, [r3]
+ 1394 004a 29EE079A 		vmul.f32	s18, s18, s14
+ 1395 004e 39EE279A 		vadd.f32	s18, s18, s15
+ 1396 0052 83ED009A 		vstr.32	s18, [r3]
+ 1397 0056 638B     		ldrh	r3, [r4, #26]
+ 1398 0058 AB42     		cmp	r3, r5
+ 1399 005a 03D2     		bcs	.L153
+ 1400 005c F6EE007A 		vmov.f32	s15, #5.0e-1
+ 1401 0060 29EE279A 		vmul.f32	s18, s18, s15
+ 1402              	.L153:
+ 1403 0064 D4ED108A 		vldr.32	s17, [r4, #64]
+ 1404 0068 4FF00409 		mov	r9, #4
+ 1405 006c 4FF00008 		mov	r8, #0
+ 1406 0070 69EE288A 		vmul.f32	s17, s18, s17
+ 1407              	.L160:
+ 1408 0074 A37A     		ldrb	r3, [r4, #10]	@ zero_extendqisi2
+ 1409 0076 022B     		cmp	r3, #2
+ 1410 0078 00F08282 		beq	.L154
+ 1411 007c 032B     		cmp	r3, #3
+ 1412 007e 00F07982 		beq	.L155
+ 1413 0082 012B     		cmp	r3, #1
+ 1414 0084 1FD1     		bne	.L156
+ 1415 0086 022D     		cmp	r5, #2
+ 1416 0088 40F2A482 		bls	.L191
+ 1417 008c DFED596A 		vldr.32	s13, .L194+12
+ 1418              	.L157:
+ 1419 0090 94ED6F6A 		vldr.32	s12, [r4, #444]
+ 1420 0094 94ED6C8A 		vldr.32	s16, [r4, #432]
+ 1421 0098 94ED6D7A 		vldr.32	s14, [r4, #436]
+ 1422 009c 26EE888A 		vmul.f32	s16, s13, s16
+ 1423 00a0 D4ED705A 		vldr.32	s11, [r4, #448]
+ 1424 00a4 26EE077A 		vmul.f32	s14, s12, s14
+ARM GAS  /tmp/ccLVtpq6.s 			page 27
+
+
+ 1425 00a8 D4ED6E7A 		vldr.32	s15, [r4, #440]
+ 1426 00ac 524B     		ldr	r3, .L194+16
+ 1427 00ae 67EEA57A 		vmul.f32	s15, s15, s11
+ 1428 00b2 84ED706A 		vstr.32	s12, [r4, #448]
+ 1429 00b6 38EE078A 		vadd.f32	s16, s16, s14
+ 1430 00ba C3ED006A 		vstr.32	s13, [r3]
+ 1431 00be 38EE278A 		vadd.f32	s16, s16, s15
+ 1432 00c2 84ED6F8A 		vstr.32	s16, [r4, #444]
+ 1433              	.L156:
+ 1434 00c6 E28A     		ldrh	r2, [r4, #22]
+ 1435 00c8 AA42     		cmp	r2, r5
+ 1436 00ca 40F24B82 		bls	.L192
+ 1437              	.L159:
+ 1438 00ce D4ED746A 		vldr.32	s13, [r4, #464]
+ 1439 00d2 0135     		adds	r5, r5, #1
+ 1440 00d4 D4ED717A 		vldr.32	s15, [r4, #452]
+ 1441 00d8 09F1FF33 		add	r3, r9, #-1
+ 1442 00dc 94ED727A 		vldr.32	s14, [r4, #456]
+ 1443 00e0 ADB2     		uxth	r5, r5
+ 1444 00e2 28EE278A 		vmul.f32	s16, s16, s15
+ 1445 00e6 94ED756A 		vldr.32	s12, [r4, #468]
+ 1446 00ea 26EE877A 		vmul.f32	s14, s13, s14
+ 1447 00ee D4ED737A 		vldr.32	s15, [r4, #460]
+ 1448 00f2 13F0FF09 		ands	r9, r3, #255
+ 1449 00f6 C4ED756A 		vstr.32	s13, [r4, #468]
+ 1450 00fa 67EE867A 		vmul.f32	s15, s15, s12
+ 1451 00fe 6582     		strh	r5, [r4, #18]	@ movhi
+ 1452 0100 38EE078A 		vadd.f32	s16, s16, s14
+ 1453 0104 38EE278A 		vadd.f32	s16, s16, s15
+ 1454 0108 84ED748A 		vstr.32	s16, [r4, #464]
+ 1455 010c B2D1     		bne	.L160
+ 1456 010e 3B4B     		ldr	r3, .L194+20
+ 1457 0110 D4ED0B7A 		vldr.32	s15, [r4, #44]
+ 1458 0114 93ED007A 		vldr.32	s14, [r3]
+ 1459 0118 D4ED0A6A 		vldr.32	s13, [r4, #40]
+ 1460 011c 67EE877A 		vmul.f32	s15, s15, s14
+ 1461 0120 28EE268A 		vmul.f32	s16, s16, s13
+ 1462 0124 77EE887A 		vadd.f32	s15, s15, s16
+ 1463 0128 C3ED007A 		vstr.32	s15, [r3]
+ 1464 012c 238B     		ldrh	r3, [r4, #24]
+ 1465 012e AB42     		cmp	r3, r5
+ 1466 0130 0AD9     		bls	.L161
+ 1467 0132 A38B     		ldrh	r3, [r4, #28]
+ 1468 0134 D4ED116A 		vldr.32	s13, [r4, #68]
+ 1469 0138 07EE103A 		vmov	s14, r3	@ int
+ 1470 013c B8EEC77A 		vcvt.f32.s32	s14, s14
+ 1471 0140 27EE267A 		vmul.f32	s14, s14, s13
+ 1472 0144 77EE877A 		vadd.f32	s15, s15, s14
+ 1473              	.L161:
+ 1474 0148 94ED0E5A 		vldr.32	s10, [r4, #56]
+ 1475 014c 94ED0F7A 		vldr.32	s14, [r4, #60]
+ 1476 0150 2378     		ldrb	r3, [r4]	@ zero_extendqisi2
+ 1477 0152 27EE855A 		vmul.f32	s10, s15, s10
+ 1478 0156 29EE079A 		vmul.f32	s18, s18, s14
+ 1479 015a 012B     		cmp	r3, #1
+ 1480 015c 35EE095A 		vadd.f32	s10, s10, s18
+ 1481 0160 00F04982 		beq	.L162
+ARM GAS  /tmp/ccLVtpq6.s 			page 28
+
+
+ 1482 0164 D4ED0D6A 		vldr.32	s13, [r4, #52]
+ 1483 0168 D4ED6A3A 		vldr.32	s7, [r4, #424]
+ 1484 016c 67EEA67A 		vmul.f32	s15, s15, s13
+ 1485 0170 94ED677A 		vldr.32	s14, [r4, #412]
+ 1486 0174 D4ED684A 		vldr.32	s9, [r4, #416]
+ 1487 0178 D4ED6B6A 		vldr.32	s13, [r4, #428]
+ 1488 017c 77EE897A 		vadd.f32	s15, s15, s18
+ 1489 0180 D4ED695A 		vldr.32	s11, [r4, #420]
+ 1490 0184 63EEA44A 		vmul.f32	s9, s7, s9
+ 1491 0188 94ED654A 		vldr.32	s8, [r4, #404]
+ 1492 018c 65EEA65A 		vmul.f32	s11, s11, s13
+ 1493 0190 94ED623A 		vldr.32	s6, [r4, #392]
+ 1494 0194 27EE877A 		vmul.f32	s14, s15, s14
+ 1495 0198 C4ED6A7A 		vstr.32	s15, [r4, #424]
+ 1496 019c 94ED636A 		vldr.32	s12, [r4, #396]
+ 1497 01a0 D4ED662A 		vldr.32	s5, [r4, #408]
+ 1498 01a4 77EE247A 		vadd.f32	s15, s14, s9
+ 1499 01a8 D4ED646A 		vldr.32	s13, [r4, #400]
+ 1500 01ac 24EE066A 		vmul.f32	s12, s8, s12
+ 1501 01b0 2389     		ldrh	r3, [r4, #8]
+ 1502 01b2 66EEA26A 		vmul.f32	s13, s13, s5
+ 1503 01b6 C4ED6B3A 		vstr.32	s7, [r4, #428]
+ 1504 01ba 77EEA57A 		vadd.f32	s15, s15, s11
+ 1505 01be 013B     		subs	r3, r3, #1
+ 1506 01c0 84ED664A 		vstr.32	s8, [r4, #408]
+ 1507 01c4 67EE837A 		vmul.f32	s15, s15, s6
+ 1508 01c8 77EE867A 		vadd.f32	s15, s15, s12
+ 1509 01cc 77EEA67A 		vadd.f32	s15, s15, s13
+ 1510 01d0 C4ED657A 		vstr.32	s15, [r4, #404]
+ 1511 01d4 072B     		cmp	r3, #7
+ 1512 01d6 00F20E82 		bhi	.L162
+ 1513 01da DFE803F0 		tbb	[pc, r3]
+ 1514              	.L164:
+ 1515 01de B9       		.byte	(.L171-.L164)/2
+ 1516 01df A1       		.byte	(.L170-.L164)/2
+ 1517 01e0 89       		.byte	(.L169-.L164)/2
+ 1518 01e1 71       		.byte	(.L168-.L164)/2
+ 1519 01e2 59       		.byte	(.L167-.L164)/2
+ 1520 01e3 41       		.byte	(.L166-.L164)/2
+ 1521 01e4 29       		.byte	(.L165-.L164)/2
+ 1522 01e5 11       		.byte	(.L163-.L164)/2
+ 1523              		.p2align 1
+ 1524              	.L195:
+ 1525 01e6 00BF     		.align	2
+ 1526              	.L194:
+ 1527 01e8 09000280 		.word	-2147352567
+ 1528 01ec 01E0FFFF 		.word	-8191
+ 1529 01f0 00000000 		.word	nlast.8
+ 1530 01f4 00000000 		.word	0
+ 1531 01f8 00000000 		.word	vwave.6
+ 1532 01fc 00000000 		.word	vlast.10
+ 1533              	.L163:
+ 1534 0200 94ED606A 		vldr.32	s12, [r4, #384]
+ 1535 0204 94ED5D7A 		vldr.32	s14, [r4, #372]
+ 1536 0208 D4ED5E6A 		vldr.32	s13, [r4, #376]
+ 1537 020c 27EE877A 		vmul.f32	s14, s15, s14
+ 1538 0210 D4ED615A 		vldr.32	s11, [r4, #388]
+ARM GAS  /tmp/ccLVtpq6.s 			page 29
+
+
+ 1539 0214 66EE266A 		vmul.f32	s13, s12, s13
+ 1540 0218 D4ED5F7A 		vldr.32	s15, [r4, #380]
+ 1541 021c 84ED616A 		vstr.32	s12, [r4, #388]
+ 1542 0220 67EEA57A 		vmul.f32	s15, s15, s11
+ 1543 0224 37EE267A 		vadd.f32	s14, s14, s13
+ 1544 0228 77EE277A 		vadd.f32	s15, s14, s15
+ 1545 022c C4ED607A 		vstr.32	s15, [r4, #384]
+ 1546              	.L165:
+ 1547 0230 94ED5B6A 		vldr.32	s12, [r4, #364]
+ 1548 0234 94ED587A 		vldr.32	s14, [r4, #352]
+ 1549 0238 D4ED596A 		vldr.32	s13, [r4, #356]
+ 1550 023c 27EE877A 		vmul.f32	s14, s15, s14
+ 1551 0240 D4ED5C5A 		vldr.32	s11, [r4, #368]
+ 1552 0244 66EE266A 		vmul.f32	s13, s12, s13
+ 1553 0248 D4ED5A7A 		vldr.32	s15, [r4, #360]
+ 1554 024c 84ED5C6A 		vstr.32	s12, [r4, #368]
+ 1555 0250 67EEA57A 		vmul.f32	s15, s15, s11
+ 1556 0254 37EE267A 		vadd.f32	s14, s14, s13
+ 1557 0258 77EE277A 		vadd.f32	s15, s14, s15
+ 1558 025c C4ED5B7A 		vstr.32	s15, [r4, #364]
+ 1559              	.L166:
+ 1560 0260 94ED566A 		vldr.32	s12, [r4, #344]
+ 1561 0264 94ED537A 		vldr.32	s14, [r4, #332]
+ 1562 0268 D4ED546A 		vldr.32	s13, [r4, #336]
+ 1563 026c 27EE877A 		vmul.f32	s14, s15, s14
+ 1564 0270 D4ED575A 		vldr.32	s11, [r4, #348]
+ 1565 0274 66EE266A 		vmul.f32	s13, s12, s13
+ 1566 0278 D4ED557A 		vldr.32	s15, [r4, #340]
+ 1567 027c 84ED576A 		vstr.32	s12, [r4, #348]
+ 1568 0280 67EEA57A 		vmul.f32	s15, s15, s11
+ 1569 0284 37EE267A 		vadd.f32	s14, s14, s13
+ 1570 0288 77EE277A 		vadd.f32	s15, s14, s15
+ 1571 028c C4ED567A 		vstr.32	s15, [r4, #344]
+ 1572              	.L167:
+ 1573 0290 94ED516A 		vldr.32	s12, [r4, #324]
+ 1574 0294 94ED4E7A 		vldr.32	s14, [r4, #312]
+ 1575 0298 D4ED4F6A 		vldr.32	s13, [r4, #316]
+ 1576 029c 27EE877A 		vmul.f32	s14, s15, s14
+ 1577 02a0 D4ED525A 		vldr.32	s11, [r4, #328]
+ 1578 02a4 66EE266A 		vmul.f32	s13, s12, s13
+ 1579 02a8 D4ED507A 		vldr.32	s15, [r4, #320]
+ 1580 02ac 84ED526A 		vstr.32	s12, [r4, #328]
+ 1581 02b0 67EEA57A 		vmul.f32	s15, s15, s11
+ 1582 02b4 37EE267A 		vadd.f32	s14, s14, s13
+ 1583 02b8 77EE277A 		vadd.f32	s15, s14, s15
+ 1584 02bc C4ED517A 		vstr.32	s15, [r4, #324]
+ 1585              	.L168:
+ 1586 02c0 94ED4C6A 		vldr.32	s12, [r4, #304]
+ 1587 02c4 94ED497A 		vldr.32	s14, [r4, #292]
+ 1588 02c8 D4ED4A6A 		vldr.32	s13, [r4, #296]
+ 1589 02cc 27EE877A 		vmul.f32	s14, s15, s14
+ 1590 02d0 D4ED4D5A 		vldr.32	s11, [r4, #308]
+ 1591 02d4 66EE266A 		vmul.f32	s13, s12, s13
+ 1592 02d8 D4ED4B7A 		vldr.32	s15, [r4, #300]
+ 1593 02dc 84ED4D6A 		vstr.32	s12, [r4, #308]
+ 1594 02e0 67EEA57A 		vmul.f32	s15, s15, s11
+ 1595 02e4 37EE267A 		vadd.f32	s14, s14, s13
+ARM GAS  /tmp/ccLVtpq6.s 			page 30
+
+
+ 1596 02e8 77EE277A 		vadd.f32	s15, s14, s15
+ 1597 02ec C4ED4C7A 		vstr.32	s15, [r4, #304]
+ 1598              	.L169:
+ 1599 02f0 94ED476A 		vldr.32	s12, [r4, #284]
+ 1600 02f4 94ED447A 		vldr.32	s14, [r4, #272]
+ 1601 02f8 D4ED456A 		vldr.32	s13, [r4, #276]
+ 1602 02fc 27EE877A 		vmul.f32	s14, s15, s14
+ 1603 0300 D4ED485A 		vldr.32	s11, [r4, #288]
+ 1604 0304 66EE266A 		vmul.f32	s13, s12, s13
+ 1605 0308 D4ED467A 		vldr.32	s15, [r4, #280]
+ 1606 030c 84ED486A 		vstr.32	s12, [r4, #288]
+ 1607 0310 67EEA57A 		vmul.f32	s15, s15, s11
+ 1608 0314 37EE267A 		vadd.f32	s14, s14, s13
+ 1609 0318 77EE277A 		vadd.f32	s15, s14, s15
+ 1610 031c C4ED477A 		vstr.32	s15, [r4, #284]
+ 1611              	.L170:
+ 1612 0320 94ED426A 		vldr.32	s12, [r4, #264]
+ 1613 0324 94ED3F7A 		vldr.32	s14, [r4, #252]
+ 1614 0328 D4ED406A 		vldr.32	s13, [r4, #256]
+ 1615 032c 27EE877A 		vmul.f32	s14, s15, s14
+ 1616 0330 D4ED435A 		vldr.32	s11, [r4, #268]
+ 1617 0334 66EE266A 		vmul.f32	s13, s12, s13
+ 1618 0338 D4ED417A 		vldr.32	s15, [r4, #260]
+ 1619 033c 84ED436A 		vstr.32	s12, [r4, #268]
+ 1620 0340 67EEA57A 		vmul.f32	s15, s15, s11
+ 1621 0344 37EE267A 		vadd.f32	s14, s14, s13
+ 1622 0348 77EE277A 		vadd.f32	s15, s14, s15
+ 1623 034c C4ED427A 		vstr.32	s15, [r4, #264]
+ 1624              	.L171:
+ 1625 0350 94ED3D6A 		vldr.32	s12, [r4, #244]
+ 1626 0354 94ED3A7A 		vldr.32	s14, [r4, #232]
+ 1627 0358 D4ED3B6A 		vldr.32	s13, [r4, #236]
+ 1628 035c 67EE877A 		vmul.f32	s15, s15, s14
+ 1629 0360 D4ED3E5A 		vldr.32	s11, [r4, #248]
+ 1630 0364 66EE266A 		vmul.f32	s13, s12, s13
+ 1631 0368 94ED3C7A 		vldr.32	s14, [r4, #240]
+ 1632 036c 84ED3E6A 		vstr.32	s12, [r4, #248]
+ 1633 0370 27EE257A 		vmul.f32	s14, s14, s11
+ 1634 0374 77EEA67A 		vadd.f32	s15, s15, s13
+ 1635 0378 77EE877A 		vadd.f32	s15, s15, s14
+ 1636 037c C4ED3D7A 		vstr.32	s15, [r4, #244]
+ 1637              	.L172:
+ 1638 0380 9E4B     		ldr	r3, .L196
+ 1639 0382 78EE858A 		vadd.f32	s17, s17, s10
+ 1640 0386 D4ED1F4A 		vldr.32	s9, [r4, #124]
+ 1641 038a 93ED007A 		vldr.32	s14, [r3]
+ 1642 038e 94ED1A1A 		vldr.32	s2, [r4, #104]
+ 1643 0392 78EEC78A 		vsub.f32	s17, s17, s14
+ 1644 0396 D4ED382A 		vldr.32	s5, [r4, #224]
+ 1645 039a D4ED1C5A 		vldr.32	s11, [r4, #112]
+ 1646 039e 94ED1D2A 		vldr.32	s4, [r4, #116]
+ 1647 03a2 94ED176A 		vldr.32	s12, [r4, #92]
+ 1648 03a6 65EE255A 		vmul.f32	s11, s10, s11
+ 1649 03aa D4ED183A 		vldr.32	s7, [r4, #96]
+ 1650 03ae 24EE822A 		vmul.f32	s4, s9, s4
+ 1651 03b2 D4ED356A 		vldr.32	s13, [r4, #212]
+ 1652 03b6 25EE066A 		vmul.f32	s12, s10, s12
+ARM GAS  /tmp/ccLVtpq6.s 			page 31
+
+
+ 1653 03ba D4ED361A 		vldr.32	s3, [r4, #216]
+ 1654 03be 61EE233A 		vmul.f32	s7, s2, s7
+ 1655 03c2 94ED333A 		vldr.32	s6, [r4, #204]
+ 1656 03c6 68EEA66A 		vmul.f32	s13, s17, s13
+ 1657 03ca 62EEA11A 		vmul.f32	s3, s5, s3
+ 1658 03ce 94ED307A 		vldr.32	s14, [r4, #192]
+ 1659 03d2 94ED314A 		vldr.32	s8, [r4, #196]
+ 1660 03d6 75EE825A 		vadd.f32	s11, s11, s4
+ 1661 03da 94ED200A 		vldr.32	s0, [r4, #128]
+ 1662 03de 28EE877A 		vmul.f32	s14, s17, s14
+ 1663 03e2 D4ED1E0A 		vldr.32	s1, [r4, #120]
+ 1664 03e6 23EE044A 		vmul.f32	s8, s6, s8
+ 1665 03ea 94ED342A 		vldr.32	s4, [r4, #208]
+ 1666 03ee 76EEA16A 		vadd.f32	s13, s13, s3
+ 1667 03f2 60EE800A 		vmul.f32	s1, s1, s0
+ 1668 03f6 D4ED391A 		vldr.32	s3, [r4, #228]
+ 1669 03fa 94ED1B0A 		vldr.32	s0, [r4, #108]
+ 1670 03fe 36EE236A 		vadd.f32	s12, s12, s7
+ 1671 0402 C4ED204A 		vstr.32	s9, [r4, #128]
+ 1672 0406 37EE047A 		vadd.f32	s14, s14, s8
+ 1673 040a D4ED194A 		vldr.32	s9, [r4, #100]
+ 1674 040e 75EEA05A 		vadd.f32	s11, s11, s1
+ 1675 0412 D4ED323A 		vldr.32	s7, [r4, #200]
+ 1676 0416 83ED005A 		vstr.32	s10, [r3]
+ 1677 041a 64EE804A 		vmul.f32	s9, s9, s0
+ 1678 041e 94ED375A 		vldr.32	s10, [r4, #220]
+ 1679 0422 63EE823A 		vmul.f32	s7, s7, s4
+ 1680 0426 94ED2E4A 		vldr.32	s8, [r4, #184]
+ 1681 042a 25EE215A 		vmul.f32	s10, s10, s3
+ 1682 042e 84ED1B1A 		vstr.32	s2, [r4, #108]
+ 1683 0432 36EE246A 		vadd.f32	s12, s12, s9
+ 1684 0436 C4ED392A 		vstr.32	s5, [r4, #228]
+ 1685 043a 37EE237A 		vadd.f32	s14, s14, s7
+ 1686 043e D4ED2B4A 		vldr.32	s9, [r4, #172]
+ 1687 0442 76EE856A 		vadd.f32	s13, s13, s10
+ 1688 0446 84ED343A 		vstr.32	s6, [r4, #208]
+ 1689 044a 37EEA55A 		vadd.f32	s10, s15, s11
+ 1690 044e 84ED1A6A 		vstr.32	s12, [r4, #104]
+ 1691 0452 84ED337A 		vstr.32	s14, [r4, #204]
+ 1692 0456 68EEA47A 		vmul.f32	s15, s17, s9
+ 1693 045a C4ED386A 		vstr.32	s13, [r4, #224]
+ 1694 045e C4ED1F5A 		vstr.32	s11, [r4, #124]
+ 1695 0462 35EE066A 		vadd.f32	s12, s10, s12
+ 1696 0466 D4ED2C5A 		vldr.32	s11, [r4, #176]
+ 1697 046a D4ED293A 		vldr.32	s7, [r4, #164]
+ 1698 046e 64EE254A 		vmul.f32	s9, s8, s11
+ 1699 0472 94ED2F3A 		vldr.32	s6, [r4, #188]
+ 1700 0476 94ED2D2A 		vldr.32	s4, [r4, #180]
+ 1701 047a 76EEC66A 		vsub.f32	s13, s13, s12
+ 1702 047e D4ED265A 		vldr.32	s11, [r4, #152]
+ 1703 0482 94ED275A 		vldr.32	s10, [r4, #156]
+ 1704 0486 77EEA47A 		vadd.f32	s15, s15, s9
+ 1705 048a 22EE032A 		vmul.f32	s4, s4, s6
+ 1706 048e D4ED242A 		vldr.32	s5, [r4, #144]
+ 1707 0492 23EE855A 		vmul.f32	s10, s7, s10
+ 1708 0496 D4ED2A1A 		vldr.32	s3, [r4, #168]
+ 1709 049a 68EEA55A 		vmul.f32	s11, s17, s11
+ARM GAS  /tmp/ccLVtpq6.s 			page 32
+
+
+ 1710 049e 94ED216A 		vldr.32	s12, [r4, #132]
+ 1711 04a2 94ED283A 		vldr.32	s6, [r4, #160]
+ 1712 04a6 37EE822A 		vadd.f32	s4, s15, s4
+ 1713 04aa D4ED224A 		vldr.32	s9, [r4, #136]
+ 1714 04ae 37EE667A 		vsub.f32	s14, s14, s13
+ 1715 04b2 75EE855A 		vadd.f32	s11, s11, s10
+ 1716 04b6 D4ED257A 		vldr.32	s15, [r4, #148]
+ 1717 04ba 23EE213A 		vmul.f32	s6, s6, s3
+ 1718 04be 94ED235A 		vldr.32	s10, [r4, #140]
+ 1719 04c2 68EE866A 		vmul.f32	s13, s17, s12
+ 1720 04c6 94ED761A 		vldr.32	s2, [r4, #472]
+ 1721 04ca 62EEA44A 		vmul.f32	s9, s5, s9
+ 1722 04ce D4ED7A1A 		vldr.32	s3, [r4, #488]
+ 1723 04d2 35EE836A 		vadd.f32	s12, s11, s6
+ 1724 04d6 94ED793A 		vldr.32	s6, [r4, #484]
+ 1725 04da 65EE275A 		vmul.f32	s11, s10, s15
+ 1726 04de D4ED0C7A 		vldr.32	s15, [r4, #48]
+ 1727 04e2 76EEA46A 		vadd.f32	s13, s13, s9
+ 1728 04e6 D4ED774A 		vldr.32	s9, [r4, #476]
+ 1729 04ea 32EE477A 		vsub.f32	s14, s4, s14
+ 1730 04ee 94ED785A 		vldr.32	s10, [r4, #480]
+ 1731 04f2 68EEA77A 		vmul.f32	s15, s17, s15
+ 1732 04f6 84ED2F4A 		vstr.32	s8, [r4, #188]
+ 1733 04fa 76EEA56A 		vadd.f32	s13, s13, s11
+ 1734 04fe DFED405A 		vldr.32	s11, .L196+4
+ 1735 0502 36EE477A 		vsub.f32	s14, s12, s14
+ 1736 0506 84ED2E2A 		vstr.32	s4, [r4, #184]
+ 1737 050a 63EE244A 		vmul.f32	s9, s6, s9
+ 1738 050e C4ED2A3A 		vstr.32	s7, [r4, #168]
+ 1739 0512 25EE215A 		vmul.f32	s10, s10, s3
+ 1740 0516 DFED3B1A 		vldr.32	s3, .L196+8
+ 1741 051a 36EEC77A 		vsub.f32	s14, s13, s14
+ 1742 051e 84ED296A 		vstr.32	s12, [r4, #164]
+ 1743 0522 C4ED252A 		vstr.32	s5, [r4, #148]
+ 1744 0526 C4ED246A 		vstr.32	s13, [r4, #144]
+ 1745 052a 77EEC77A 		vsub.f32	s15, s15, s14
+ 1746 052e 84ED7A3A 		vstr.32	s6, [r4, #488]
+ 1747 0532 67EE817A 		vmul.f32	s15, s15, s2
+ 1748 0536 77EEA47A 		vadd.f32	s15, s15, s9
+ 1749 053a 77EE857A 		vadd.f32	s15, s15, s10
+ 1750 053e 27EEA57A 		vmul.f32	s14, s15, s11
+ 1751 0542 C4ED797A 		vstr.32	s15, [r4, #484]
+ 1752 0546 B4EEE17A 		vcmpe.f32	s14, s3
+ 1753 054a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 1754 054e 2ED4     		bmi	.L175
+ 1755 0550 DFED2D7A 		vldr.32	s15, .L196+12
+ 1756 0554 B4EEE77A 		vcmpe.f32	s14, s15
+ 1757 0558 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 1758 055c 40DD     		ble	.L193
+ 1759 055e 47F6FF73 		movw	r3, #32767
+ 1760 0562 25E0     		b	.L173
+ 1761              	.L192:
+ 1762 0564 3146     		mov	r1, r6
+ 1763 0566 2046     		mov	r0, r4
+ 1764 0568 A4F81280 		strh	r8, [r4, #18]	@ movhi
+ 1765 056c FFF7FEFF 		bl	pitch_synch_par_reset.constprop.0
+ 1766 0570 658A     		ldrh	r5, [r4, #18]
+ARM GAS  /tmp/ccLVtpq6.s 			page 33
+
+
+ 1767 0572 ACE5     		b	.L159
+ 1768              	.L155:
+ 1769 0574 2046     		mov	r0, r4
+ 1770 0576 FFF7FEFF 		bl	sampled_source
+ 1771 057a B0EE408A 		vmov.f32	s16, s0
+ 1772 057e A2E5     		b	.L156
+ 1773              	.L154:
+ 1774 0580 238B     		ldrh	r3, [r4, #24]
+ 1775 0582 AB42     		cmp	r3, r5
+ 1776 0584 1ED9     		bls	.L158
+ 1777 0586 94ED088A 		vldr.32	s16, [r4, #32]
+ 1778 058a 94ED097A 		vldr.32	s14, [r4, #36]
+ 1779 058e 1F4B     		ldr	r3, .L196+16
+ 1780 0590 38EE478A 		vsub.f32	s16, s16, s14
+ 1781 0594 DFED1E7A 		vldr.32	s15, .L196+20
+ 1782 0598 93ED007A 		vldr.32	s14, [r3]
+ 1783 059c 84ED088A 		vstr.32	s16, [r4, #32]
+ 1784 05a0 38EE078A 		vadd.f32	s16, s16, s14
+ 1785 05a4 83ED008A 		vstr.32	s16, [r3]
+ 1786 05a8 28EE278A 		vmul.f32	s16, s16, s15
+ 1787 05ac 8BE5     		b	.L156
+ 1788              	.L175:
+ 1789 05ae 194B     		ldr	r3, .L196+24
+ 1790              	.L173:
+ 1791 05b0 0D9A     		ldr	r2, [sp, #52]
+ 1792 05b2 22F81730 		strh	r3, [r2, r7, lsl #1]	@ movhi
+ 1793 05b6 A38A     		ldrh	r3, [r4, #20]
+ 1794 05b8 BDEC048B 		vldm	sp!, {d8-d9}
+ 1795 05bc 0133     		adds	r3, r3, #1
+ 1796 05be A382     		strh	r3, [r4, #20]	@ movhi
+ 1797 05c0 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 1798              	.L158:
+ 1799 05c4 DFED147A 		vldr.32	s15, .L196+28
+ 1800 05c8 104B     		ldr	r3, .L196+16
+ 1801 05ca B0EE678A 		vmov.f32	s16, s15
+ 1802 05ce C3ED007A 		vstr.32	s15, [r3]
+ 1803 05d2 78E5     		b	.L156
+ 1804              	.L191:
+ 1805 05d4 114B     		ldr	r3, .L196+32
+ 1806 05d6 03EB8503 		add	r3, r3, r5, lsl #2
+ 1807 05da D3ED006A 		vldr.32	s13, [r3]
+ 1808 05de 57E5     		b	.L157
+ 1809              	.L193:
+ 1810 05e0 BDEEC77A 		vcvt.s32.f32	s14, s14
+ 1811 05e4 17EE103A 		vmov	r3, s14	@ int
+ 1812 05e8 1BB2     		sxth	r3, r3
+ 1813 05ea E1E7     		b	.L173
+ 1814              	.L190:
+ 1815 05ec FFF7FEFF 		bl	frame_init
+ 1816 05f0 0023     		movs	r3, #0
+ 1817 05f2 A382     		strh	r3, [r4, #20]	@ movhi
+ 1818 05f4 0FE5     		b	.L152
+ 1819              	.L162:
+ 1820 05f6 DFED087A 		vldr.32	s15, .L196+28
+ 1821 05fa C1E6     		b	.L172
+ 1822              	.L197:
+ 1823              		.align	2
+ARM GAS  /tmp/ccLVtpq6.s 			page 34
+
+
+ 1824              	.L196:
+ 1825 05fc 00000000 		.word	glotlast.9
+ 1826 0600 00000047 		.word	1191182336
+ 1827 0604 00FEFFC6 		.word	-956301824
+ 1828 0608 00FEFF46 		.word	1191181824
+ 1829 060c 00000000 		.word	vwave.5
+ 1830 0610 4260E53C 		.word	1021665346
+ 1831 0614 0180FFFF 		.word	-32767
+ 1832 0618 00000000 		.word	0
+ 1833 061c 00000000 		.word	doublet.7
+ 1834              		.size	single_parwave, .-single_parwave
+ 1835              		.section	.bss.glotlast.0,"aw",%nobits
+ 1836              		.align	2
+ 1837              		.type	glotlast.0, %object
+ 1838              		.size	glotlast.0, 4
+ 1839              	glotlast.0:
+ 1840 0000 00000000 		.space	4
+ 1841              		.section	.bss.vlast.1,"aw",%nobits
+ 1842              		.align	2
+ 1843              		.type	vlast.1, %object
+ 1844              		.size	vlast.1, 4
+ 1845              	vlast.1:
+ 1846 0000 00000000 		.space	4
+ 1847              		.section	.rodata.amptable.2,"a"
+ 1848              		.align	2
+ 1849              		.type	amptable.2, %object
+ 1850              		.size	amptable.2, 352
+ 1851              	amptable.2:
+ 1852 0000 00000000 		.word	0
+ 1853 0004 00000000 		.word	0
+ 1854 0008 00000000 		.word	0
+ 1855 000c 00000000 		.word	0
+ 1856 0010 00000000 		.word	0
+ 1857 0014 00000000 		.word	0
+ 1858 0018 00000000 		.word	0
+ 1859 001c 00000000 		.word	0
+ 1860 0020 00000000 		.word	0
+ 1861 0024 00000000 		.word	0
+ 1862 0028 00000000 		.word	0
+ 1863 002c 00000000 		.word	0
+ 1864 0030 00000000 		.word	0
+ 1865 0034 0000C040 		.word	1086324736
+ 1866 0038 0000E040 		.word	1088421888
+ 1867 003c 00000041 		.word	1090519040
+ 1868 0040 00001041 		.word	1091567616
+ 1869 0044 00002041 		.word	1092616192
+ 1870 0048 00003041 		.word	1093664768
+ 1871 004c 00005041 		.word	1095761920
+ 1872 0050 00006041 		.word	1096810496
+ 1873 0054 00008041 		.word	1098907648
+ 1874 0058 00009041 		.word	1099956224
+ 1875 005c 0000A041 		.word	1101004800
+ 1876 0060 0000B041 		.word	1102053376
+ 1877 0064 0000C841 		.word	1103626240
+ 1878 0068 0000E041 		.word	1105199104
+ 1879 006c 00000042 		.word	1107296256
+ 1880 0070 00000C42 		.word	1108082688
+ARM GAS  /tmp/ccLVtpq6.s 			page 35
+
+
+ 1881 0074 00002042 		.word	1109393408
+ 1882 0078 00003442 		.word	1110704128
+ 1883 007c 00004C42 		.word	1112276992
+ 1884 0080 00006442 		.word	1113849856
+ 1885 0084 00008042 		.word	1115684864
+ 1886 0088 00008E42 		.word	1116602368
+ 1887 008c 0000A042 		.word	1117782016
+ 1888 0090 0000B442 		.word	1119092736
+ 1889 0094 0000CA42 		.word	1120534528
+ 1890 0098 0000E442 		.word	1122238464
+ 1891 009c 00000043 		.word	1124073472
+ 1892 00a0 00000E43 		.word	1124990976
+ 1893 00a4 00001F43 		.word	1126105088
+ 1894 00a8 00003343 		.word	1127415808
+ 1895 00ac 00004A43 		.word	1128923136
+ 1896 00b0 00006343 		.word	1130561536
+ 1897 00b4 00008043 		.word	1132462080
+ 1898 00b8 00008E43 		.word	1133379584
+ 1899 00bc 00009F43 		.word	1134493696
+ 1900 00c0 0080B343 		.word	1135837184
+ 1901 00c4 0080CA43 		.word	1137344512
+ 1902 00c8 0080E343 		.word	1138982912
+ 1903 00cc 00000044 		.word	1140850688
+ 1904 00d0 00000E44 		.word	1141768192
+ 1905 00d4 00801F44 		.word	1142915072
+ 1906 00d8 00C03344 		.word	1144242176
+ 1907 00dc 00C04A44 		.word	1145749504
+ 1908 00e0 00C06344 		.word	1147387904
+ 1909 00e4 00008044 		.word	1149239296
+ 1910 00e8 00208E44 		.word	1150164992
+ 1911 00ec 00809F44 		.word	1151303680
+ 1912 00f0 00C0B344 		.word	1152630784
+ 1913 00f4 00C0CA44 		.word	1154138112
+ 1914 00f8 00E0E344 		.word	1155784704
+ 1915 00fc 00000045 		.word	1157627904
+ 1916 0100 00100E45 		.word	1158549504
+ 1917 0104 00801F45 		.word	1159692288
+ 1918 0108 00B03345 		.word	1161015296
+ 1919 010c 00C04A45 		.word	1162526720
+ 1920 0110 00D06345 		.word	1164169216
+ 1921 0114 00008045 		.word	1166016512
+ 1922 0118 00188E45 		.word	1166940160
+ 1923 011c 00809F45 		.word	1168080896
+ 1924 0120 00B8B345 		.word	1169405952
+ 1925 0124 00C0CA45 		.word	1170915328
+ 1926 0128 00D8E345 		.word	1172559872
+ 1927 012c 00000046 		.word	1174405120
+ 1928 0130 00140E46 		.word	1175327744
+ 1929 0134 007C1F46 		.word	1176468480
+ 1930 0138 00B83346 		.word	1177794560
+ 1931 013c 00C04A46 		.word	1179303936
+ 1932 0140 00D86346 		.word	1180948480
+ 1933 0144 00008046 		.word	1182793728
+ 1934 0148 005C8F46 		.word	1183800320
+ 1935 014c 0048A146 		.word	1184974848
+ 1936 0150 000AB746 		.word	1186400768
+ 1937 0154 00CCCC46 		.word	1187826688
+ARM GAS  /tmp/ccLVtpq6.s 			page 36
+
+
+ 1938 0158 0066E646 		.word	1189504512
+ 1939 015c 00FEFF46 		.word	1191181824
+ 1940              		.section	.rodata.B0.4,"a"
+ 1941              		.align	2
+ 1942              		.type	B0.4, %object
+ 1943              		.size	B0.4, 448
+ 1944              	B0.4:
+ 1945 0000 B004     		.short	1200
+ 1946 0002 7604     		.short	1142
+ 1947 0004 4004     		.short	1088
+ 1948 0006 0E04     		.short	1038
+ 1949 0008 DF03     		.short	991
+ 1950 000a B403     		.short	948
+ 1951 000c 8B03     		.short	907
+ 1952 000e 6503     		.short	869
+ 1953 0010 4103     		.short	833
+ 1954 0012 1F03     		.short	799
+ 1955 0014 0003     		.short	768
+ 1956 0016 E202     		.short	738
+ 1957 0018 C602     		.short	710
+ 1958 001a AB02     		.short	683
+ 1959 001c 9202     		.short	658
+ 1960 001e 7A02     		.short	634
+ 1961 0020 6402     		.short	612
+ 1962 0022 4E02     		.short	590
+ 1963 0024 3A02     		.short	570
+ 1964 0026 2702     		.short	551
+ 1965 0028 1502     		.short	533
+ 1966 002a 0302     		.short	515
+ 1967 002c F301     		.short	499
+ 1968 002e E301     		.short	483
+ 1969 0030 D401     		.short	468
+ 1970 0032 C601     		.short	454
+ 1971 0034 B801     		.short	440
+ 1972 0036 AB01     		.short	427
+ 1973 0038 9F01     		.short	415
+ 1974 003a 9301     		.short	403
+ 1975 003c 8701     		.short	391
+ 1976 003e 7C01     		.short	380
+ 1977 0040 7201     		.short	370
+ 1978 0042 6801     		.short	360
+ 1979 0044 5E01     		.short	350
+ 1980 0046 5501     		.short	341
+ 1981 0048 4C01     		.short	332
+ 1982 004a 4301     		.short	323
+ 1983 004c 3B01     		.short	315
+ 1984 004e 3301     		.short	307
+ 1985 0050 2C01     		.short	300
+ 1986 0052 2401     		.short	292
+ 1987 0054 1D01     		.short	285
+ 1988 0056 1601     		.short	278
+ 1989 0058 1001     		.short	272
+ 1990 005a 0901     		.short	265
+ 1991 005c 0301     		.short	259
+ 1992 005e FD00     		.short	253
+ 1993 0060 F700     		.short	247
+ 1994 0062 F200     		.short	242
+ARM GAS  /tmp/ccLVtpq6.s 			page 37
+
+
+ 1995 0064 ED00     		.short	237
+ 1996 0066 E700     		.short	231
+ 1997 0068 E200     		.short	226
+ 1998 006a DD00     		.short	221
+ 1999 006c D900     		.short	217
+ 2000 006e D400     		.short	212
+ 2001 0070 D000     		.short	208
+ 2002 0072 CC00     		.short	204
+ 2003 0074 C700     		.short	199
+ 2004 0076 C300     		.short	195
+ 2005 0078 C000     		.short	192
+ 2006 007a BC00     		.short	188
+ 2007 007c B800     		.short	184
+ 2008 007e B400     		.short	180
+ 2009 0080 B100     		.short	177
+ 2010 0082 AE00     		.short	174
+ 2011 0084 AA00     		.short	170
+ 2012 0086 A700     		.short	167
+ 2013 0088 A400     		.short	164
+ 2014 008a A100     		.short	161
+ 2015 008c 9E00     		.short	158
+ 2016 008e 9B00     		.short	155
+ 2017 0090 9900     		.short	153
+ 2018 0092 9600     		.short	150
+ 2019 0094 9300     		.short	147
+ 2020 0096 9100     		.short	145
+ 2021 0098 8E00     		.short	142
+ 2022 009a 8C00     		.short	140
+ 2023 009c 8900     		.short	137
+ 2024 009e 8700     		.short	135
+ 2025 00a0 8500     		.short	133
+ 2026 00a2 8300     		.short	131
+ 2027 00a4 8000     		.short	128
+ 2028 00a6 7E00     		.short	126
+ 2029 00a8 7C00     		.short	124
+ 2030 00aa 7A00     		.short	122
+ 2031 00ac 7800     		.short	120
+ 2032 00ae 7700     		.short	119
+ 2033 00b0 7500     		.short	117
+ 2034 00b2 7300     		.short	115
+ 2035 00b4 7100     		.short	113
+ 2036 00b6 6F00     		.short	111
+ 2037 00b8 6E00     		.short	110
+ 2038 00ba 6C00     		.short	108
+ 2039 00bc 6A00     		.short	106
+ 2040 00be 6900     		.short	105
+ 2041 00c0 6700     		.short	103
+ 2042 00c2 6600     		.short	102
+ 2043 00c4 6400     		.short	100
+ 2044 00c6 6300     		.short	99
+ 2045 00c8 6100     		.short	97
+ 2046 00ca 6000     		.short	96
+ 2047 00cc 5F00     		.short	95
+ 2048 00ce 5D00     		.short	93
+ 2049 00d0 5C00     		.short	92
+ 2050 00d2 5B00     		.short	91
+ 2051 00d4 5A00     		.short	90
+ARM GAS  /tmp/ccLVtpq6.s 			page 38
+
+
+ 2052 00d6 5800     		.short	88
+ 2053 00d8 5700     		.short	87
+ 2054 00da 5600     		.short	86
+ 2055 00dc 5500     		.short	85
+ 2056 00de 5400     		.short	84
+ 2057 00e0 5300     		.short	83
+ 2058 00e2 5200     		.short	82
+ 2059 00e4 5000     		.short	80
+ 2060 00e6 4F00     		.short	79
+ 2061 00e8 4E00     		.short	78
+ 2062 00ea 4D00     		.short	77
+ 2063 00ec 4C00     		.short	76
+ 2064 00ee 4B00     		.short	75
+ 2065 00f0 4B00     		.short	75
+ 2066 00f2 4A00     		.short	74
+ 2067 00f4 4900     		.short	73
+ 2068 00f6 4800     		.short	72
+ 2069 00f8 4700     		.short	71
+ 2070 00fa 4600     		.short	70
+ 2071 00fc 4500     		.short	69
+ 2072 00fe 4400     		.short	68
+ 2073 0100 4400     		.short	68
+ 2074 0102 4300     		.short	67
+ 2075 0104 4200     		.short	66
+ 2076 0106 4100     		.short	65
+ 2077 0108 4000     		.short	64
+ 2078 010a 4000     		.short	64
+ 2079 010c 3F00     		.short	63
+ 2080 010e 3E00     		.short	62
+ 2081 0110 3D00     		.short	61
+ 2082 0112 3D00     		.short	61
+ 2083 0114 3C00     		.short	60
+ 2084 0116 3B00     		.short	59
+ 2085 0118 3B00     		.short	59
+ 2086 011a 3A00     		.short	58
+ 2087 011c 3900     		.short	57
+ 2088 011e 3900     		.short	57
+ 2089 0120 3800     		.short	56
+ 2090 0122 3800     		.short	56
+ 2091 0124 3700     		.short	55
+ 2092 0126 3700     		.short	55
+ 2093 0128 3600     		.short	54
+ 2094 012a 3600     		.short	54
+ 2095 012c 3500     		.short	53
+ 2096 012e 3500     		.short	53
+ 2097 0130 3400     		.short	52
+ 2098 0132 3400     		.short	52
+ 2099 0134 3300     		.short	51
+ 2100 0136 3300     		.short	51
+ 2101 0138 3200     		.short	50
+ 2102 013a 3200     		.short	50
+ 2103 013c 3100     		.short	49
+ 2104 013e 3100     		.short	49
+ 2105 0140 3000     		.short	48
+ 2106 0142 3000     		.short	48
+ 2107 0144 2F00     		.short	47
+ 2108 0146 2F00     		.short	47
+ARM GAS  /tmp/ccLVtpq6.s 			page 39
+
+
+ 2109 0148 2E00     		.short	46
+ 2110 014a 2E00     		.short	46
+ 2111 014c 2D00     		.short	45
+ 2112 014e 2D00     		.short	45
+ 2113 0150 2C00     		.short	44
+ 2114 0152 2C00     		.short	44
+ 2115 0154 2B00     		.short	43
+ 2116 0156 2B00     		.short	43
+ 2117 0158 2A00     		.short	42
+ 2118 015a 2A00     		.short	42
+ 2119 015c 2900     		.short	41
+ 2120 015e 2900     		.short	41
+ 2121 0160 2900     		.short	41
+ 2122 0162 2900     		.short	41
+ 2123 0164 2800     		.short	40
+ 2124 0166 2800     		.short	40
+ 2125 0168 2700     		.short	39
+ 2126 016a 2700     		.short	39
+ 2127 016c 2600     		.short	38
+ 2128 016e 2600     		.short	38
+ 2129 0170 2600     		.short	38
+ 2130 0172 2600     		.short	38
+ 2131 0174 2500     		.short	37
+ 2132 0176 2500     		.short	37
+ 2133 0178 2400     		.short	36
+ 2134 017a 2400     		.short	36
+ 2135 017c 2400     		.short	36
+ 2136 017e 2400     		.short	36
+ 2137 0180 2300     		.short	35
+ 2138 0182 2300     		.short	35
+ 2139 0184 2300     		.short	35
+ 2140 0186 2300     		.short	35
+ 2141 0188 2200     		.short	34
+ 2142 018a 2200     		.short	34
+ 2143 018c 2100     		.short	33
+ 2144 018e 2100     		.short	33
+ 2145 0190 2100     		.short	33
+ 2146 0192 2100     		.short	33
+ 2147 0194 2000     		.short	32
+ 2148 0196 2000     		.short	32
+ 2149 0198 2000     		.short	32
+ 2150 019a 2000     		.short	32
+ 2151 019c 1F00     		.short	31
+ 2152 019e 1F00     		.short	31
+ 2153 01a0 1F00     		.short	31
+ 2154 01a2 1F00     		.short	31
+ 2155 01a4 1E00     		.short	30
+ 2156 01a6 1E00     		.short	30
+ 2157 01a8 1E00     		.short	30
+ 2158 01aa 1E00     		.short	30
+ 2159 01ac 1D00     		.short	29
+ 2160 01ae 1D00     		.short	29
+ 2161 01b0 1D00     		.short	29
+ 2162 01b2 1D00     		.short	29
+ 2163 01b4 1C00     		.short	28
+ 2164 01b6 1C00     		.short	28
+ 2165 01b8 1C00     		.short	28
+ARM GAS  /tmp/ccLVtpq6.s 			page 40
+
+
+ 2166 01ba 1C00     		.short	28
+ 2167 01bc 1B00     		.short	27
+ 2168 01be 1B00     		.short	27
+ 2169              		.section	.bss.vwave.5,"aw",%nobits
+ 2170              		.align	2
+ 2171              		.type	vwave.5, %object
+ 2172              		.size	vwave.5, 4
+ 2173              	vwave.5:
+ 2174 0000 00000000 		.space	4
+ 2175              		.section	.bss.vwave.6,"aw",%nobits
+ 2176              		.align	2
+ 2177              		.type	vwave.6, %object
+ 2178              		.size	vwave.6, 4
+ 2179              	vwave.6:
+ 2180 0000 00000000 		.space	4
+ 2181              		.section	.rodata.doublet.7,"a"
+ 2182              		.align	2
+ 2183              		.type	doublet.7, %object
+ 2184              		.size	doublet.7, 12
+ 2185              	doublet.7:
+ 2186 0000 00000000 		.word	0
+ 2187 0004 405D464B 		.word	1262902592
+ 2188 0008 405D46CB 		.word	-884581056
+ 2189              		.section	.bss.nlast.8,"aw",%nobits
+ 2190              		.align	2
+ 2191              		.type	nlast.8, %object
+ 2192              		.size	nlast.8, 4
+ 2193              	nlast.8:
+ 2194 0000 00000000 		.space	4
+ 2195              		.section	.bss.glotlast.9,"aw",%nobits
+ 2196              		.align	2
+ 2197              		.type	glotlast.9, %object
+ 2198              		.size	glotlast.9, 4
+ 2199              	glotlast.9:
+ 2200 0000 00000000 		.space	4
+ 2201              		.section	.bss.vlast.10,"aw",%nobits
+ 2202              		.align	2
+ 2203              		.type	vlast.10, %object
+ 2204              		.size	vlast.10, 4
+ 2205              	vlast.10:
+ 2206 0000 00000000 		.space	4
+ 2207              		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/ccLVtpq6.s 			page 41
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 parwave.c
+     /tmp/ccLVtpq6.s:17     .text.sampled_source:00000000 $t
+     /tmp/ccLVtpq6.s:23     .text.sampled_source:00000000 sampled_source
+     /tmp/ccLVtpq6.s:62     .text.sampled_source:00000070 $d
+     /tmp/ccLVtpq6.s:65     .text.setabc.isra.0:00000000 $t
+     /tmp/ccLVtpq6.s:71     .text.setabc.isra.0:00000000 setabc.isra.0
+     /tmp/ccLVtpq6.s:111    .text.setabc.isra.0:00000088 $d
+     /tmp/ccLVtpq6.s:117    .text.pitch_synch_par_reset.constprop.0:00000000 $t
+     /tmp/ccLVtpq6.s:123    .text.pitch_synch_par_reset.constprop.0:00000000 pitch_synch_par_reset.constprop.0
+     /tmp/ccLVtpq6.s:289    .text.pitch_synch_par_reset.constprop.0:000001a0 $d
+     /tmp/ccLVtpq6.s:1851   .rodata.amptable.2:00000000 amptable.2
+     /tmp/ccLVtpq6.s:1944   .rodata.B0.4:00000000 B0.4
+     /tmp/ccLVtpq6.s:304    .text.single_single_parwave:00000000 $t
+     /tmp/ccLVtpq6.s:311    .text.single_single_parwave:00000000 single_single_parwave
+     /tmp/ccLVtpq6.s:457    .text.single_single_parwave:000001d2 $d
+     /tmp/ccLVtpq6.s:465    .text.single_single_parwave:000001da $t
+     /tmp/ccLVtpq6.s:469    .text.single_single_parwave:000001dc $d
+     /tmp/ccLVtpq6.s:2193   .bss.nlast.8:00000000 nlast.8
+     /tmp/ccLVtpq6.s:2179   .bss.vwave.6:00000000 vwave.6
+     /tmp/ccLVtpq6.s:1845   .bss.vlast.1:00000000 vlast.1
+     /tmp/ccLVtpq6.s:476    .text.single_single_parwave:000001f4 $t
+     /tmp/ccLVtpq6.s:760    .text.single_single_parwave:000005e0 $d
+     /tmp/ccLVtpq6.s:1839   .bss.glotlast.0:00000000 glotlast.0
+     /tmp/ccLVtpq6.s:2173   .bss.vwave.5:00000000 vwave.5
+     /tmp/ccLVtpq6.s:2185   .rodata.doublet.7:00000000 doublet.7
+     /tmp/ccLVtpq6.s:770    .text.simple_parwave_init:00000000 $t
+     /tmp/ccLVtpq6.s:777    .text.simple_parwave_init:00000000 simple_parwave_init
+     /tmp/ccLVtpq6.s:845    .text.simple_parwave_init:000000d8 $d
+     /tmp/ccLVtpq6.s:848    .text.frame_init:00000000 $t
+     /tmp/ccLVtpq6.s:855    .text.frame_init:00000000 frame_init
+     /tmp/ccLVtpq6.s:1125   .text.frame_init:00000350 $d
+     /tmp/ccLVtpq6.s:1141   .text.frame_init:00000388 $t
+     /tmp/ccLVtpq6.s:1340   .text.frame_init:000005e0 $d
+     /tmp/ccLVtpq6.s:1358   .text.single_parwave:00000000 $t
+     /tmp/ccLVtpq6.s:1365   .text.single_parwave:00000000 single_parwave
+     /tmp/ccLVtpq6.s:1515   .text.single_parwave:000001de $d
+     /tmp/ccLVtpq6.s:1523   .text.single_parwave:000001e6 $t
+     /tmp/ccLVtpq6.s:1527   .text.single_parwave:000001e8 $d
+     /tmp/ccLVtpq6.s:2205   .bss.vlast.10:00000000 vlast.10
+     /tmp/ccLVtpq6.s:1534   .text.single_parwave:00000200 $t
+     /tmp/ccLVtpq6.s:1825   .text.single_parwave:000005fc $d
+     /tmp/ccLVtpq6.s:2199   .bss.glotlast.9:00000000 glotlast.9
+     /tmp/ccLVtpq6.s:1836   .bss.glotlast.0:00000000 $d
+     /tmp/ccLVtpq6.s:1842   .bss.vlast.1:00000000 $d
+     /tmp/ccLVtpq6.s:1848   .rodata.amptable.2:00000000 $d
+     /tmp/ccLVtpq6.s:1941   .rodata.B0.4:00000000 $d
+     /tmp/ccLVtpq6.s:2170   .bss.vwave.5:00000000 $d
+     /tmp/ccLVtpq6.s:2176   .bss.vwave.6:00000000 $d
+     /tmp/ccLVtpq6.s:2182   .rodata.doublet.7:00000000 $d
+     /tmp/ccLVtpq6.s:2190   .bss.nlast.8:00000000 $d
+     /tmp/ccLVtpq6.s:2196   .bss.glotlast.9:00000000 $d
+     /tmp/ccLVtpq6.s:2202   .bss.vlast.10:00000000 $d
+
+UNDEFINED SYMBOLS
+expf
+cosf
+ARM GAS  /tmp/ccLVtpq6.s 			page 42
+
+
+rand

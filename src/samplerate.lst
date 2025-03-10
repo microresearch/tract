@@ -1,0 +1,207 @@
+ARM GAS  /tmp/cc5R383H.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/samplerate.lst 
+ input file    	: /tmp/cc5R383H.s
+ output file   	: src/samplerate.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:35:58.000+0100
+
+ARM GAS  /tmp/cc5R383H.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"samplerate.c"
+  15              		.text
+  16              		.section	.text.samplerate_init,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	samplerate_init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	samplerate_init, %function
+  24              	samplerate_init:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 7047     		bx	lr
+  29              		.size	samplerate_init, .-samplerate_init
+  30 0002 00BF     		.section	.text.new_data,"ax",%progbits
+  31              		.align	1
+  32              		.p2align 2,,3
+  33              		.global	new_data
+  34              		.syntax unified
+  35              		.thumb
+  36              		.thumb_func
+  37              		.type	new_data, %function
+  38              	new_data:
+  39              		@ args = 0, pretend = 0, frame = 0
+  40              		@ frame_needed = 0, uses_anonymous_args = 0
+  41              		@ link register save eliminated.
+  42 0000 024B     		ldr	r3, .L4
+  43 0002 5A88     		ldrh	r2, [r3, #2]
+  44 0004 5880     		strh	r0, [r3, #2]	@ movhi
+  45 0006 1A80     		strh	r2, [r3]	@ movhi
+  46 0008 7047     		bx	lr
+  47              	.L5:
+  48 000a 00BF     		.align	2
+  49              	.L4:
+  50 000c 00000000 		.word	delay_buffer
+  51              		.size	new_data, .-new_data
+  52              		.section	.text.samplerate_simple,"ax",%progbits
+  53              		.align	1
+  54              		.p2align 2,,3
+  55              		.global	samplerate_simple
+  56              		.syntax unified
+  57              		.thumb
+ARM GAS  /tmp/cc5R383H.s 			page 3
+
+
+  58              		.thumb_func
+  59              		.type	samplerate_simple, %function
+  60              	samplerate_simple:
+  61              		@ args = 4, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63 0000 2DE9F84F 		push	{r3, r4, r5, r6, r7, r8, r9, r10, fp, lr}
+  64 0004 2DED048B 		vpush.64	{d8, d9}
+  65 0008 9DF83850 		ldrb	r5, [sp, #56]	@ zero_extendqisi2
+  66 000c 60EE208A 		vmul.f32	s17, s0, s1
+  67 0010 0746     		mov	r7, r0
+  68 0012 0C46     		mov	r4, r1
+  69 0014 1646     		mov	r6, r2
+  70 0016 05B1     		cbz	r5, .L7
+  71 0018 9847     		blx	r3
+  72              	.L7:
+  73 001a 002C     		cmp	r4, #0
+  74 001c 55D0     		beq	.L6
+  75 001e B7EE009A 		vmov.f32	s18, #1.0e+0
+  76 0022 DFF8C480 		ldr	r8, .L22+8
+  77 0026 DFF8C4B0 		ldr	fp, .L22+12
+  78 002a 07EB4409 		add	r9, r7, r4, lsl #1
+  79 002e 9FED2C8A 		vldr.32	s16, .L22
+  80 0032 2C4D     		ldr	r5, .L22+4
+  81 0034 DFF8B8A0 		ldr	r10, .L22+16
+  82              	.L12:
+  83 0038 98ED007A 		vldr.32	s14, [r8]
+  84 003c B4EEC87A 		vcmpe.f32	s14, s16
+  85 0040 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  86 0044 45DC     		bgt	.L9
+  87 0046 DBF80040 		ldr	r4, [fp]
+  88 004a 07EE904A 		vmov	s15, r4	@ int
+  89 004e B8EEE76A 		vcvt.f32.s32	s12, s15
+  90 0052 37EE466A 		vsub.f32	s12, s14, s12
+  91              	.L10:
+  92 0056 B5F90030 		ldrsh	r3, [r5]
+  93 005a 38EE877A 		vadd.f32	s14, s17, s14
+  94 005e 79EE465A 		vsub.f32	s11, s18, s12
+  95 0062 07EE903A 		vmov	s15, r3	@ int
+  96 0066 B5F90230 		ldrsh	r3, [r5, #2]
+  97 006a BDEEC75A 		vcvt.s32.f32	s10, s14
+  98 006e 88ED007A 		vstr.32	s14, [r8]
+  99 0072 06EE903A 		vmov	s13, r3	@ int
+ 100 0076 F8EEE77A 		vcvt.f32.s32	s15, s15
+ 101 007a F8EEE66A 		vcvt.f32.s32	s13, s13
+ 102 007e 15EE102A 		vmov	r2, s10	@ int
+ 103 0082 67EEA57A 		vmul.f32	s15, s15, s11
+ 104 0086 8BED005A 		vstr.32	s10, [fp]	@ int
+ 105 008a 26EE867A 		vmul.f32	s14, s13, s12
+ 106 008e 77EE877A 		vadd.f32	s15, s15, s14
+ 107 0092 FDEEE77A 		vcvt.s32.f32	s15, s15
+ 108 0096 17EE903A 		vmov	r3, s15	@ int
+ 109 009a 1BB2     		sxth	r3, r3
+ 110 009c 5345     		cmp	r3, r10
+ 111 009e B8BF     		it	lt
+ 112 00a0 5346     		movlt	r3, r10
+ 113 00a2 B3F5FA4F 		cmp	r3, #32000
+ 114 00a6 A8BF     		it	ge
+ARM GAS  /tmp/cc5R383H.s 			page 4
+
+
+ 115 00a8 4FF4FA43 		movge	r3, #32000
+ 116 00ac A242     		cmp	r2, r4
+ 117 00ae 27F8023B 		strh	r3, [r7], #2	@ movhi
+ 118 00b2 08DD     		ble	.L14
+ 119              	.L11:
+ 120 00b4 B047     		blx	r6
+ 121 00b6 0134     		adds	r4, r4, #1
+ 122 00b8 DBF80030 		ldr	r3, [fp]
+ 123 00bc 6A88     		ldrh	r2, [r5, #2]
+ 124 00be A342     		cmp	r3, r4
+ 125 00c0 6880     		strh	r0, [r5, #2]	@ movhi
+ 126 00c2 2A80     		strh	r2, [r5]	@ movhi
+ 127 00c4 F6DC     		bgt	.L11
+ 128              	.L14:
+ 129 00c6 4F45     		cmp	r7, r9
+ 130 00c8 B6D1     		bne	.L12
+ 131              	.L6:
+ 132 00ca BDEC048B 		vldm	sp!, {d8-d9}
+ 133 00ce BDE8F88F 		pop	{r3, r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 134              	.L9:
+ 135 00d2 37EE487A 		vsub.f32	s14, s14, s16
+ 136 00d6 0024     		movs	r4, #0
+ 137 00d8 B0EE476A 		vmov.f32	s12, s14
+ 138 00dc BBE7     		b	.L10
+ 139              	.L23:
+ 140 00de 00BF     		.align	2
+ 141              	.L22:
+ 142 00e0 00000047 		.word	1191182336
+ 143 00e4 00000000 		.word	delay_buffer
+ 144 00e8 00000000 		.word	time_now.1
+ 145 00ec 00000000 		.word	int_time.0
+ 146 00f0 0083FFFF 		.word	-32000
+ 147              		.size	samplerate_simple, .-samplerate_simple
+ 148              		.section	.bss.int_time.0,"aw",%nobits
+ 149              		.align	2
+ 150              		.type	int_time.0, %object
+ 151              		.size	int_time.0, 4
+ 152              	int_time.0:
+ 153 0000 00000000 		.space	4
+ 154              		.section	.bss.time_now.1,"aw",%nobits
+ 155              		.align	2
+ 156              		.type	time_now.1, %object
+ 157              		.size	time_now.1, 4
+ 158              	time_now.1:
+ 159 0000 00000000 		.space	4
+ 160              		.section	.bss.delay_buffer,"aw",%nobits
+ 161              		.align	2
+ 162              		.type	delay_buffer, %object
+ 163              		.size	delay_buffer, 4
+ 164              	delay_buffer:
+ 165 0000 00000000 		.space	4
+ 166              		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/cc5R383H.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 samplerate.c
+     /tmp/cc5R383H.s:17     .text.samplerate_init:00000000 $t
+     /tmp/cc5R383H.s:24     .text.samplerate_init:00000000 samplerate_init
+     /tmp/cc5R383H.s:31     .text.new_data:00000000 $t
+     /tmp/cc5R383H.s:38     .text.new_data:00000000 new_data
+     /tmp/cc5R383H.s:50     .text.new_data:0000000c $d
+     /tmp/cc5R383H.s:164    .bss.delay_buffer:00000000 delay_buffer
+     /tmp/cc5R383H.s:53     .text.samplerate_simple:00000000 $t
+     /tmp/cc5R383H.s:60     .text.samplerate_simple:00000000 samplerate_simple
+     /tmp/cc5R383H.s:142    .text.samplerate_simple:000000e0 $d
+     /tmp/cc5R383H.s:158    .bss.time_now.1:00000000 time_now.1
+     /tmp/cc5R383H.s:152    .bss.int_time.0:00000000 int_time.0
+     /tmp/cc5R383H.s:149    .bss.int_time.0:00000000 $d
+     /tmp/cc5R383H.s:155    .bss.time_now.1:00000000 $d
+     /tmp/cc5R383H.s:161    .bss.delay_buffer:00000000 $d
+
+NO UNDEFINED SYMBOLS

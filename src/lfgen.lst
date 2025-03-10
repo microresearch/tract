@@ -1,0 +1,808 @@
+ARM GAS  /tmp/cceAeyYO.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/lfgen.lst 
+ input file    	: /tmp/cceAeyYO.s
+ output file   	: src/lfgen.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:36:00.000+0100
+
+ARM GAS  /tmp/cceAeyYO.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"lfgen.c"
+  15              		.text
+  16              		.section	.text.rosenberg_get_sample,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	rosenberg_get_sample
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	rosenberg_get_sample, %function
+  24              	rosenberg_get_sample:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 08B5     		push	{r3, lr}
+  28 0002 514B     		ldr	r3, .L18+40
+  29 0004 514A     		ldr	r2, .L18+44
+  30 0006 93ED007A 		vldr.32	s14, [r3]
+  31 000a 1388     		ldrh	r3, [r2]
+  32 000c B7EEC77A 		vcvt.f64.f32	d7, s14
+  33 0010 9FED4F4A 		vldr.32	s8, .L18+48
+  34 0014 0133     		adds	r3, r3, #1
+  35 0016 9FED423B 		vldr.64	d3, .L18
+  36 001a 9FED436B 		vldr.64	d6, .L18+8
+  37 001e 1BB2     		sxth	r3, r3
+  38 0020 07EE036B 		vmla.f64	d6, d7, d3
+  39 0024 07EE903A 		vmov	s15, r3	@ int
+  40 0028 F8EEE74A 		vcvt.f32.s32	s9, s15
+  41 002c 2DED028B 		vpush.64	{d8}
+  42 0030 B7EE008B 		vmov.f64	d8, #1.0e+0
+  43 0034 1380     		strh	r3, [r2]	@ movhi
+  44 0036 9FED3E5B 		vldr.64	d5, .L18+16
+  45 003a 88EE067B 		vdiv.f64	d7, d8, d6
+  46 003e B7EEC77B 		vcvt.f32.f64	s14, d7
+  47 0042 67EE046A 		vmul.f32	s13, s14, s8
+  48 0046 B7EEE67A 		vcvt.f64.f32	d7, s13
+  49 004a 27EE057B 		vmul.f64	d7, d7, d5
+  50 004e B7EEC77B 		vcvt.f32.f64	s14, d7
+  51 0052 B7EEC70A 		vcvt.f64.f32	d0, s14
+  52 0056 20EE050B 		vmul.f64	d0, d0, d5
+  53 005a B7EEC00B 		vcvt.f32.f64	s0, d0
+  54 005e F4EEC04A 		vcmpe.f32	s9, s0
+  55 0062 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  56 0066 21D8     		bhi	.L15
+  57 0068 013B     		subs	r3, r3, #1
+ARM GAS  /tmp/cceAeyYO.s 			page 3
+
+
+  58 006a B7EEC00A 		vcvt.f64.f32	d0, s0
+  59 006e 07EE103A 		vmov	s14, r3	@ int
+  60 0072 9FED316B 		vldr.64	d6, .L18+24
+  61 0076 B8EEC77B 		vcvt.f64.s32	d7, s14
+  62 007a 27EE067B 		vmul.f64	d7, d7, d6
+  63 007e 87EE000B 		vdiv.f64	d0, d7, d0
+  64 0082 FFF7FEFF 		bl	cos
+  65 0086 B6EE006B 		vmov.f64	d6, #5.0e-1
+  66 008a 38EE408B 		vsub.f64	d8, d8, d0
+  67 008e 9FED2C7B 		vldr.64	d7, .L18+32
+  68 0092 28EE068B 		vmul.f64	d8, d8, d6
+  69 0096 28EE078B 		vmul.f64	d8, d8, d7
+  70 009a FDEEC87B 		vcvt.s32.f64	s15, d8
+  71 009e BDEC028B 		vldm	sp!, {d8}
+  72 00a2 17EE900A 		vmov	r0, s15	@ int
+  73 00a6 4000     		lsls	r0, r0, #1
+  74 00a8 00B2     		sxth	r0, r0
+  75 00aa 08BD     		pop	{r3, pc}
+  76              	.L15:
+  77 00ac 25DD     		ble	.L5
+  78 00ae F4EEC74A 		vcmpe.f32	s9, s14
+  79 00b2 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+  80 00b6 20D8     		bhi	.L5
+  81 00b8 34EEC06A 		vsub.f32	s12, s9, s0
+  82 00bc 37EE407A 		vsub.f32	s14, s14, s0
+  83 00c0 B6EE005B 		vmov.f64	d5, #5.0e-1
+  84 00c4 B7EEC66A 		vcvt.f64.f32	d6, s12
+  85 00c8 B7EEC77A 		vcvt.f64.f32	d7, s14
+  86 00cc 9FED1A4B 		vldr.64	d4, .L18+24
+  87 00d0 26EE046B 		vmul.f64	d6, d6, d4
+  88 00d4 86EE070B 		vdiv.f64	d0, d6, d7
+  89 00d8 20EE050B 		vmul.f64	d0, d0, d5
+  90 00dc FFF7FEFF 		bl	cos
+  91 00e0 9FED177B 		vldr.64	d7, .L18+32
+  92 00e4 BDEC028B 		vldm	sp!, {d8}
+  93 00e8 20EE070B 		vmul.f64	d0, d0, d7
+  94 00ec FDEEC07B 		vcvt.s32.f64	s15, d0
+  95 00f0 17EE900A 		vmov	r0, s15	@ int
+  96 00f4 4000     		lsls	r0, r0, #1
+  97 00f6 00B2     		sxth	r0, r0
+  98 00f8 08BD     		pop	{r3, pc}
+  99              	.L5:
+ 100 00fa F4EEC74A 		vcmpe.f32	s9, s14
+ 101 00fe F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 102 0102 06DD     		ble	.L9
+ 103 0104 F4EEE64A 		vcmpe.f32	s9, s13
+ 104 0108 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 105 010c 01DB     		blt	.L9
+ 106 010e 0023     		movs	r3, #0
+ 107 0110 1380     		strh	r3, [r2]	@ movhi
+ 108              	.L9:
+ 109 0112 0020     		movs	r0, #0
+ 110 0114 BDEC028B 		vldm	sp!, {d8}
+ 111 0118 08BD     		pop	{r3, pc}
+ 112              	.L19:
+ 113 011a 00BFAFF3 		.align	3
+ 113      0080
+ARM GAS  /tmp/cceAeyYO.s 			page 4
+
+
+ 114              	.L18:
+ 115 0120 00000000 		.word	0
+ 116 0124 00408F40 		.word	1083129856
+ 117 0128 00000000 		.word	0
+ 118 012c 00005940 		.word	1079574528
+ 119 0130 CDCCCCCC 		.word	-858993459
+ 120 0134 CCCCEC3F 		.word	1072483532
+ 121 0138 EA2E4454 		.word	1413754602
+ 122 013c FB210940 		.word	1074340347
+ 123 0140 00000000 		.word	0
+ 124 0144 0040DF40 		.word	1088372736
+ 125 0148 00000000 		.word	_selz
+ 126 014c 00000000 		.word	kkk.0
+ 127 0150 00803B47 		.word	1195081728
+ 128              		.size	rosenberg_get_sample, .-rosenberg_get_sample
+ 129              		.section	.text.LF_calc,"ax",%progbits
+ 130              		.align	1
+ 131              		.p2align 2,,3
+ 132              		.global	LF_calc
+ 133              		.syntax unified
+ 134              		.thumb
+ 135              		.thumb_func
+ 136              		.type	LF_calc, %function
+ 137              	LF_calc:
+ 138              		@ args = 0, pretend = 0, frame = 0
+ 139              		@ frame_needed = 0, uses_anonymous_args = 0
+ 140 0000 38B5     		push	{r3, r4, r5, lr}
+ 141 0002 056E     		ldr	r5, [r0, #96]
+ 142 0004 0446     		mov	r4, r0
+ 143 0006 07EE905A 		vmov	s15, r5	@ int
+ 144 000a 90ED025B 		vldr.64	d5, [r0, #8]
+ 145 000e B8EEE76B 		vcvt.f64.s32	d6, s15
+ 146 0012 D0ED047A 		vldr.32	s15, [r0, #16]	@ int
+ 147 0016 B8EEE77B 		vcvt.f64.s32	d7, s15
+ 148 001a 26EE056B 		vmul.f64	d6, d6, d5
+ 149 001e 2DED0C8B 		vpush.64	{d8, d9, d10, d11, d12, d13}
+ 150 0022 90ED06AB 		vldr.64	d10, [r0, #24]
+ 151 0026 86EE079B 		vdiv.f64	d9, d6, d7
+ 152 002a B4EECA9B 		vcmpe.f64	d9, d10
+ 153 002e 80ED009B 		vstr.64	d9, [r0]
+ 154 0032 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 155 0036 46D4     		bmi	.L32
+ 156 0038 1ADA     		bge	.L24
+ 157 003a 90ED16BB 		vldr.64	d11, [r0, #88]
+ 158              	.L23:
+ 159 003e B4EECB9B 		vcmpe.f64	d9, d11
+ 160 0042 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 161 0046 38DC     		bgt	.L26
+ 162              	.L34:
+ 163 0048 0135     		adds	r5, r5, #1
+ 164 004a 9FED317B 		vldr.64	d7, .L35
+ 165 004e B4EEC70B 		vcmpe.f64	d0, d7
+ 166 0052 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 167 0056 4DDC     		bgt	.L27
+ 168 0058 9FED2F7B 		vldr.64	d7, .L35+8
+ 169 005c B4EEC70B 		vcmpe.f64	d0, d7
+ 170 0060 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ARM GAS  /tmp/cceAeyYO.s 			page 5
+
+
+ 171 0064 4BD5     		bpl	.L33
+ 172 0066 0020     		movs	r0, #0
+ 173 0068 2566     		str	r5, [r4, #96]
+ 174 006a BDEC0C8B 		vldm	sp!, {d8-d13}
+ 175 006e 38BD     		pop	{r3, r4, r5, pc}
+ 176              	.L24:
+ 177 0070 90ED10DB 		vldr.64	d13, [r0, #64]
+ 178 0074 90ED126B 		vldr.64	d6, [r0, #72]
+ 179 0078 90ED0E7B 		vldr.64	d7, [r0, #56]
+ 180 007c 39EE4A0B 		vsub.f64	d0, d9, d10
+ 181 0080 2DEE066B 		vmul.f64	d6, d13, d6
+ 182 0084 20EE0D0B 		vmul.f64	d0, d0, d13
+ 183 0088 87EE06CB 		vdiv.f64	d12, d7, d6
+ 184 008c FFF7FEFF 		bl	exp
+ 185 0090 B0EE408B 		vmov.f64	d8, d0
+ 186 0094 94ED16BB 		vldr.64	d11, [r4, #88]
+ 187 0098 3BEE4A0B 		vsub.f64	d0, d11, d10
+ 188 009c 2DEE400B 		vnmul.f64	d0, d13, d0
+ 189 00a0 FFF7FEFF 		bl	exp
+ 190 00a4 B4EECB9B 		vcmpe.f64	d9, d11
+ 191 00a8 38EE400B 		vsub.f64	d0, d8, d0
+ 192 00ac F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 193 00b0 B1EE4CCB 		vneg.f64	d12, d12
+ 194 00b4 20EE0C0B 		vmul.f64	d0, d0, d12
+ 195 00b8 C6DD     		ble	.L34
+ 196              	.L26:
+ 197 00ba 0020     		movs	r0, #0
+ 198 00bc 0125     		movs	r5, #1
+ 199              	.L25:
+ 200 00be 2566     		str	r5, [r4, #96]
+ 201 00c0 BDEC0C8B 		vldm	sp!, {d8-d13}
+ 202 00c4 38BD     		pop	{r3, r4, r5, pc}
+ 203              	.L32:
+ 204 00c6 90ED0A0B 		vldr.64	d0, [r0, #40]
+ 205 00ca 90ED088B 		vldr.64	d8, [r0, #32]
+ 206 00ce 29EE000B 		vmul.f64	d0, d9, d0
+ 207 00d2 FFF7FEFF 		bl	exp
+ 208 00d6 B0EE40AB 		vmov.f64	d10, d0
+ 209 00da 94ED0C7B 		vldr.64	d7, [r4, #48]
+ 210 00de 28EE0A8B 		vmul.f64	d8, d8, d10
+ 211 00e2 29EE070B 		vmul.f64	d0, d9, d7
+ 212 00e6 FFF7FEFF 		bl	sin
+ 213 00ea 28EE000B 		vmul.f64	d0, d8, d0
+ 214 00ee 94ED16BB 		vldr.64	d11, [r4, #88]
+ 215 00f2 A4E7     		b	.L23
+ 216              	.L27:
+ 217 00f4 BDEC0C8B 		vldm	sp!, {d8-d13}
+ 218 00f8 0948     		ldr	r0, .L35+16
+ 219 00fa 2566     		str	r5, [r4, #96]
+ 220 00fc 38BD     		pop	{r3, r4, r5, pc}
+ 221              	.L33:
+ 222 00fe BCEEC00B 		vcvt.u32.f64	s0, d0
+ 223 0102 10EE103A 		vmov	r3, s0	@ int
+ 224 0106 18B2     		sxth	r0, r3
+ 225 0108 D9E7     		b	.L25
+ 226              	.L36:
+ 227 010a 00BFAFF3 		.align	3
+ARM GAS  /tmp/cceAeyYO.s 			page 6
+
+
+ 227      0080
+ 228              	.L35:
+ 229 0110 00000000 		.word	0
+ 230 0114 0000E040 		.word	1088421888
+ 231 0118 00000000 		.word	0
+ 232 011c 0000E0C0 		.word	-1059061760
+ 233 0120 0080FFFF 		.word	-32768
+ 234              		.size	LF_calc, .-LF_calc
+ 235              		.section	.text.initLF,"ax",%progbits
+ 236              		.align	1
+ 237              		.p2align 2,,3
+ 238              		.global	initLF
+ 239              		.syntax unified
+ 240              		.thumb
+ 241              		.thumb_func
+ 242              		.type	initLF, %function
+ 243              	initLF:
+ 244              		@ args = 0, pretend = 0, frame = 48
+ 245              		@ frame_needed = 0, uses_anonymous_args = 0
+ 246 0000 10B5     		push	{r4, lr}
+ 247 0002 9349     		ldr	r1, .L65+48
+ 248 0004 934C     		ldr	r4, .L65+52
+ 249 0006 944A     		ldr	r2, .L65+56
+ 250 0008 944B     		ldr	r3, .L65+60
+ 251 000a 92ED003B 		vldr.64	d3, [r2]
+ 252 000e 94ED004B 		vldr.64	d4, [r4]
+ 253 0012 91ED007B 		vldr.64	d7, [r1]
+ 254 0016 93ED006B 		vldr.64	d6, [r3]
+ 255 001a 04EE034B 		vmla.f64	d4, d4, d3
+ 256 001e 9049     		ldr	r1, .L65+64
+ 257 0020 0022     		movs	r2, #0
+ 258 0022 904B     		ldr	r3, .L65+68
+ 259 0024 0446     		mov	r4, r0
+ 260 0026 07EE037B 		vmla.f64	d7, d7, d3
+ 261 002a 06EE436B 		vmls.f64	d6, d6, d3
+ 262 002e 9FED7C5B 		vldr.64	d5, .L65
+ 263 0032 2DED108B 		vpush.64	{d8, d9, d10, d11, d12, d13, d14, d15}
+ 264 0036 91ED008B 		vldr.64	d8, [r1]
+ 265 003a 24EE05DB 		vmul.f64	d13, d4, d5
+ 266 003e 8CB0     		sub	sp, sp, #48
+ 267 0040 27EE057B 		vmul.f64	d7, d7, d5
+ 268 0044 26EE056B 		vmul.f64	d6, d6, d5
+ 269 0048 28EE058B 		vmul.f64	d8, d8, d5
+ 270 004c B4EEC7DB 		vcmpe.f64	d13, d7
+ 271 0050 80ED025B 		vstr.64	d5, [r0, #8]
+ 272 0054 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 273 0058 C0E90E23 		strd	r2, [r0, #56]
+ 274 005c 8DED026B 		vstr.64	d6, [sp, #8]
+ 275 0060 80ED168B 		vstr.64	d8, [r0, #88]
+ 276 0064 80ED06DB 		vstr.64	d13, [r0, #24]
+ 277 0068 80ED147B 		vstr.64	d7, [r0, #80]
+ 278 006c 80ED126B 		vstr.64	d6, [r0, #72]
+ 279 0070 05D8     		bhi	.L38
+ 280 0072 B0EE47DB 		vmov.f64	d13, d7
+ 281 0076 07EE05DB 		vmla.f64	d13, d7, d5
+ 282 007a 80ED06DB 		vstr.64	d13, [r0, #24]
+ 283              	.L38:
+ARM GAS  /tmp/cceAeyYO.s 			page 7
+
+
+ 284 007e 9DED026B 		vldr.64	d6, [sp, #8]
+ 285 0082 38EE466B 		vsub.f64	d6, d8, d6
+ 286 0086 B4EECD6B 		vcmpe.f64	d6, d13
+ 287 008a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 288 008e 07D8     		bhi	.L40
+ 289 0090 9FED635B 		vldr.64	d5, .L65
+ 290 0094 06EE456B 		vmls.f64	d6, d6, d5
+ 291 0098 B0EE46DB 		vmov.f64	d13, d6
+ 292 009c 84ED066B 		vstr.64	d6, [r4, #24]
+ 293              	.L40:
+ 294 00a0 B7EE00AB 		vmov.f64	d10, #1.0e+0
+ 295 00a4 0022     		movs	r2, #0
+ 296 00a6 6F4B     		ldr	r3, .L65+68
+ 297 00a8 38EE4D8B 		vsub.f64	d8, d8, d13
+ 298 00ac 9FED5E6B 		vldr.64	d6, .L65+8
+ 299 00b0 9DED025B 		vldr.64	d5, [sp, #8]
+ 300 00b4 9FED5ECB 		vldr.64	d12, .L65+16
+ 301 00b8 86EE07EB 		vdiv.f64	d14, d6, d7
+ 302 00bc 8AEE059B 		vdiv.f64	d9, d10, d5
+ 303 00c0 9FED5DBB 		vldr.64	d11, .L65+24
+ 304 00c4 C4E90823 		strd	r2, [r4, #32]
+ 305 00c8 84ED0CEB 		vstr.64	d14, [r4, #48]
+ 306 00cc B0EE49FB 		vmov.f64	d15, d9
+ 307 00d0 09E0     		b	.L47
+ 308              	.L62:
+ 309 00d2 24DD     		ble	.L45
+ 310 00d4 87EE0CFB 		vdiv.f64	d15, d7, d12
+ 311 00d8 B4EECB7B 		vcmpe.f64	d7, d11
+ 312 00dc F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 313 00e0 36EE4FFB 		vsub.f64	d15, d6, d15
+ 314 00e4 1BDD     		ble	.L45
+ 315              	.L47:
+ 316 00e6 2FEE480B 		vnmul.f64	d0, d15, d8
+ 317 00ea FFF7FEFF 		bl	exp
+ 318 00ee 3AEE406B 		vsub.f64	d6, d10, d0
+ 319 00f2 26EE096B 		vmul.f64	d6, d6, d9
+ 320 00f6 36EE4FFB 		vsub.f64	d15, d6, d15
+ 321 00fa 84ED106B 		vstr.64	d6, [r4, #64]
+ 322 00fe B5EEC0FB 		vcmpe.f64	d15, #0
+ 323 0102 B0EECF7B 		vabs.f64	d7, d15
+ 324 0106 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 325 010a E2D5     		bpl	.L62
+ 326 010c 87EE0CFB 		vdiv.f64	d15, d7, d12
+ 327 0110 B4EECB7B 		vcmpe.f64	d7, d11
+ 328 0114 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 329 0118 3FEE06FB 		vadd.f64	d15, d15, d6
+ 330 011c E3DC     		bgt	.L47
+ 331              	.L45:
+ 332 011e 2EEE0D7B 		vmul.f64	d7, d14, d13
+ 333 0122 BFEE009B 		vmov.f64	d9, #-1.0e+0
+ 334 0126 B7EE00AB 		vmov.f64	d10, #1.0e+0
+ 335 012a B0EE470B 		vmov.f64	d0, d7
+ 336 012e 8DED006B 		vstr.64	d6, [sp]	@ int
+ 337 0132 8DED047B 		vstr.64	d7, [sp, #16]
+ 338 0136 FFF7FEFF 		bl	sin
+ 339 013a 9DED006B 		vldr.64	d6, [sp]	@ int
+ 340 013e 8DED060B 		vstr.64	d0, [sp, #24]
+ARM GAS  /tmp/cceAeyYO.s 			page 8
+
+
+ 341 0142 26EE067B 		vmul.f64	d7, d6, d6
+ 342 0146 26EE488B 		vnmul.f64	d8, d6, d8
+ 343 014a 8DED0A7B 		vstr.64	d7, [sp, #40]
+ 344 014e 2EEE0E7B 		vmul.f64	d7, d14, d14
+ 345 0152 8DED087B 		vstr.64	d7, [sp, #32]
+ 346              	.L50:
+ 347 0156 9DED067B 		vldr.64	d7, [sp, #24]
+ 348 015a 27EE090B 		vmul.f64	d0, d7, d9
+ 349 015e 8AEE000B 		vdiv.f64	d0, d10, d0
+ 350 0162 FFF7FEFF 		bl	log
+ 351 0166 80EE0DCB 		vdiv.f64	d12, d0, d13
+ 352 016a 2CEE0D0B 		vmul.f64	d0, d12, d13
+ 353 016e 84ED0ACB 		vstr.64	d12, [r4, #40]
+ 354 0172 FFF7FEFF 		bl	exp
+ 355 0176 20EE09FB 		vmul.f64	d15, d0, d9
+ 356 017a 8EEE0C0B 		vdiv.f64	d0, d14, d12
+ 357 017e 9DED08BB 		vldr.64	d11, [sp, #32]
+ 358 0182 0CEE0CBB 		vmla.f64	d11, d12, d12
+ 359 0186 B1EECB7B 		vsqrt.f64	d7, d11
+ 360 018a 8DED007B 		vstr.64	d7, [sp]	@ int
+ 361 018e FFF7FEFF 		bl	atan
+ 362 0192 9DED047B 		vldr.64	d7, [sp, #16]
+ 363 0196 37EE400B 		vsub.f64	d0, d7, d0
+ 364 019a FFF7FEFF 		bl	sin
+ 365 019e B0EE40CB 		vmov.f64	d12, d0
+ 366 01a2 3AEE480B 		vsub.f64	d0, d10, d8
+ 367 01a6 20EE080B 		vmul.f64	d0, d0, d8
+ 368 01aa FFF7FEFF 		bl	exp
+ 369 01ae 2EEE094B 		vmul.f64	d4, d14, d9
+ 370 01b2 3AEE400B 		vsub.f64	d0, d10, d0
+ 371 01b6 9DED007B 		vldr.64	d7, [sp]	@ int
+ 372 01ba 9DED0A6B 		vldr.64	d6, [sp, #40]
+ 373 01be 8FEE075B 		vdiv.f64	d5, d15, d7
+ 374 01c2 84EE0B7B 		vdiv.f64	d7, d4, d11
+ 375 01c6 05EE0C7B 		vmla.f64	d7, d5, d12
+ 376 01ca 9DED025B 		vldr.64	d5, [sp, #8]
+ 377 01ce 26EE055B 		vmul.f64	d5, d6, d5
+ 378 01d2 8AEE056B 		vdiv.f64	d6, d10, d5
+ 379 01d6 06EE007B 		vmla.f64	d7, d6, d0
+ 380 01da B5EEC07B 		vcmpe.f64	d7, #0
+ 381 01de F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 382 01e2 12DD     		ble	.L63
+ 383 01e4 9FED166B 		vldr.64	d6, .L65+32
+ 384 01e8 07EE469B 		vmls.f64	d9, d7, d6
+ 385 01ec 9FED166B 		vldr.64	d6, .L65+40
+ 386 01f0 B4EEC67B 		vcmpe.f64	d7, d6
+ 387 01f4 84ED089B 		vstr.64	d9, [r4, #32]
+ 388 01f8 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 389 01fc ABDC     		bgt	.L50
+ 390              	.L51:
+ 391 01fe 5023     		movs	r3, #80
+ 392 0200 2361     		str	r3, [r4, #16]
+ 393 0202 0CB0     		add	sp, sp, #48
+ 394              		@ sp needed
+ 395 0204 BDEC108B 		vldm	sp!, {d8-d15}
+ 396 0208 10BD     		pop	{r4, pc}
+ 397              	.L63:
+ARM GAS  /tmp/cceAeyYO.s 			page 9
+
+
+ 398 020a F8D5     		bpl	.L51
+ 399 020c 9FED0C6B 		vldr.64	d6, .L65+32
+ 400 0210 07EE069B 		vmla.f64	d9, d7, d6
+ 401 0214 84ED089B 		vstr.64	d9, [r4, #32]
+ 402 0218 F1E7     		b	.L51
+ 403              	.L66:
+ 404 021a 00BFAFF3 		.align	3
+ 404      0080
+ 405              	.L65:
+ 406 0220 7B14AE47 		.word	1202590843
+ 407 0224 E17A843F 		.word	1065646817
+ 408 0228 EA2E4454 		.word	1413754602
+ 409 022c FB210940 		.word	1074340347
+ 410 0230 00000000 		.word	0
+ 411 0234 00005940 		.word	1079574528
+ 412 0238 9A999999 		.word	-1717986918
+ 413 023c 9999B93F 		.word	1069128089
+ 414 0240 00000000 		.word	0
+ 415 0244 006AF840 		.word	1090021888
+ 416 0248 9B2BA186 		.word	-2036257893
+ 417 024c 9B84063D 		.word	1023837339
+ 418 0250 00000000 		.word	_tpVal
+ 419 0254 00000000 		.word	_teVal
+ 420 0258 00000000 		.word	vocalTension
+ 421 025c 00000000 		.word	_taVal
+ 422 0260 00000000 		.word	_tcVal
+ 423 0264 0000F0BF 		.word	-1074790400
+ 424              		.size	initLF, .-initLF
+ 425              		.section	.text.initLFF,"ax",%progbits
+ 426              		.align	1
+ 427              		.p2align 2,,3
+ 428              		.global	initLFF
+ 429              		.syntax unified
+ 430              		.thumb
+ 431              		.thumb_func
+ 432              		.type	initLFF, %function
+ 433              	initLFF:
+ 434              		@ args = 0, pretend = 0, frame = 56
+ 435              		@ frame_needed = 0, uses_anonymous_args = 0
+ 436 0000 A34B     		ldr	r3, .L95+64
+ 437 0002 B3EE042B 		vmov.f64	d2, #2.0e+1
+ 438 0006 A34A     		ldr	r2, .L95+68
+ 439 0008 B7EE003B 		vmov.f64	d3, #1.0e+0
+ 440 000c 93ED006A 		vldr.32	s12, [r3]
+ 441 0010 A149     		ldr	r1, .L95+72
+ 442 0012 B7EEC66A 		vcvt.f64.f32	d6, s12
+ 443 0016 A14B     		ldr	r3, .L95+76
+ 444 0018 9FED8D1B 		vldr.64	d1, .L95
+ 445 001c 92ED004B 		vldr.64	d4, [r2]
+ 446 0020 9F4A     		ldr	r2, .L95+80
+ 447 0022 06EE012B 		vmla.f64	d2, d6, d1
+ 448 0026 93ED005B 		vldr.64	d5, [r3]
+ 449 002a 92ED006B 		vldr.64	d6, [r2]
+ 450 002e 91ED007B 		vldr.64	d7, [r1]
+ 451 0032 10B5     		push	{r4, lr}
+ 452 0034 04EE064B 		vmla.f64	d4, d4, d6
+ 453 0038 9A4B     		ldr	r3, .L95+84
+ARM GAS  /tmp/cceAeyYO.s 			page 10
+
+
+ 454 003a 0022     		movs	r2, #0
+ 455 003c 0446     		mov	r4, r0
+ 456 003e 07EE067B 		vmla.f64	d7, d7, d6
+ 457 0042 05EE465B 		vmls.f64	d5, d5, d6
+ 458 0046 83EE026B 		vdiv.f64	d6, d3, d2
+ 459 004a 2DED108B 		vpush.64	{d8, d9, d10, d11, d12, d13, d14, d15}
+ 460 004e 93ED008B 		vldr.64	d8, [r3]
+ 461 0052 8EB0     		sub	sp, sp, #56
+ 462 0054 944B     		ldr	r3, .L95+88
+ 463 0056 C0E90E23 		strd	r2, [r0, #56]
+ 464 005a 24EE06DB 		vmul.f64	d13, d4, d6
+ 465 005e 27EE067B 		vmul.f64	d7, d7, d6
+ 466 0062 25EE065B 		vmul.f64	d5, d5, d6
+ 467 0066 26EE088B 		vmul.f64	d8, d6, d8
+ 468 006a B4EEC7DB 		vcmpe.f64	d13, d7
+ 469 006e 8DED0C6B 		vstr.64	d6, [sp, #48]
+ 470 0072 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 471 0076 8DED025B 		vstr.64	d5, [sp, #8]
+ 472 007a 80ED026B 		vstr.64	d6, [r0, #8]
+ 473 007e 80ED168B 		vstr.64	d8, [r0, #88]
+ 474 0082 80ED06DB 		vstr.64	d13, [r0, #24]
+ 475 0086 80ED147B 		vstr.64	d7, [r0, #80]
+ 476 008a 80ED125B 		vstr.64	d5, [r0, #72]
+ 477 008e 07D8     		bhi	.L68
+ 478 0090 B0EE47DB 		vmov.f64	d13, d7
+ 479 0094 9FED706B 		vldr.64	d6, .L95+8
+ 480 0098 07EE06DB 		vmla.f64	d13, d7, d6
+ 481 009c 80ED06DB 		vstr.64	d13, [r0, #24]
+ 482              	.L68:
+ 483 00a0 9DED026B 		vldr.64	d6, [sp, #8]
+ 484 00a4 38EE466B 		vsub.f64	d6, d8, d6
+ 485 00a8 B4EECD6B 		vcmpe.f64	d6, d13
+ 486 00ac F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 487 00b0 07D8     		bhi	.L70
+ 488 00b2 9FED695B 		vldr.64	d5, .L95+8
+ 489 00b6 06EE456B 		vmls.f64	d6, d6, d5
+ 490 00ba B0EE46DB 		vmov.f64	d13, d6
+ 491 00be 84ED066B 		vstr.64	d6, [r4, #24]
+ 492              	.L70:
+ 493 00c2 B7EE00AB 		vmov.f64	d10, #1.0e+0
+ 494 00c6 0022     		movs	r2, #0
+ 495 00c8 774B     		ldr	r3, .L95+88
+ 496 00ca 38EE4D8B 		vsub.f64	d8, d8, d13
+ 497 00ce 9FED646B 		vldr.64	d6, .L95+16
+ 498 00d2 9DED025B 		vldr.64	d5, [sp, #8]
+ 499 00d6 9FED64CB 		vldr.64	d12, .L95+24
+ 500 00da 86EE07EB 		vdiv.f64	d14, d6, d7
+ 501 00de 8AEE059B 		vdiv.f64	d9, d10, d5
+ 502 00e2 9FED63BB 		vldr.64	d11, .L95+32
+ 503 00e6 C4E90823 		strd	r2, [r4, #32]
+ 504 00ea 84ED0CEB 		vstr.64	d14, [r4, #48]
+ 505 00ee B0EE49FB 		vmov.f64	d15, d9
+ 506 00f2 09E0     		b	.L77
+ 507              	.L92:
+ 508 00f4 24DD     		ble	.L75
+ 509 00f6 87EE0CFB 		vdiv.f64	d15, d7, d12
+ 510 00fa B4EECB7B 		vcmpe.f64	d7, d11
+ARM GAS  /tmp/cceAeyYO.s 			page 11
+
+
+ 511 00fe F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 512 0102 36EE4FFB 		vsub.f64	d15, d6, d15
+ 513 0106 1BDD     		ble	.L75
+ 514              	.L77:
+ 515 0108 2FEE480B 		vnmul.f64	d0, d15, d8
+ 516 010c FFF7FEFF 		bl	exp
+ 517 0110 3AEE406B 		vsub.f64	d6, d10, d0
+ 518 0114 26EE096B 		vmul.f64	d6, d6, d9
+ 519 0118 36EE4FFB 		vsub.f64	d15, d6, d15
+ 520 011c 84ED106B 		vstr.64	d6, [r4, #64]
+ 521 0120 B5EEC0FB 		vcmpe.f64	d15, #0
+ 522 0124 B0EECF7B 		vabs.f64	d7, d15
+ 523 0128 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 524 012c E2D5     		bpl	.L92
+ 525 012e 87EE0CFB 		vdiv.f64	d15, d7, d12
+ 526 0132 B4EECB7B 		vcmpe.f64	d7, d11
+ 527 0136 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 528 013a 3FEE06FB 		vadd.f64	d15, d15, d6
+ 529 013e E3DC     		bgt	.L77
+ 530              	.L75:
+ 531 0140 2EEE0D7B 		vmul.f64	d7, d14, d13
+ 532 0144 BFEE009B 		vmov.f64	d9, #-1.0e+0
+ 533 0148 B7EE00AB 		vmov.f64	d10, #1.0e+0
+ 534 014c B0EE470B 		vmov.f64	d0, d7
+ 535 0150 8DED006B 		vstr.64	d6, [sp]	@ int
+ 536 0154 8DED047B 		vstr.64	d7, [sp, #16]
+ 537 0158 FFF7FEFF 		bl	sin
+ 538 015c 9DED006B 		vldr.64	d6, [sp]	@ int
+ 539 0160 8DED060B 		vstr.64	d0, [sp, #24]
+ 540 0164 26EE067B 		vmul.f64	d7, d6, d6
+ 541 0168 26EE488B 		vnmul.f64	d8, d6, d8
+ 542 016c 8DED0A7B 		vstr.64	d7, [sp, #40]
+ 543 0170 2EEE0E7B 		vmul.f64	d7, d14, d14
+ 544 0174 8DED087B 		vstr.64	d7, [sp, #32]
+ 545              	.L80:
+ 546 0178 9DED067B 		vldr.64	d7, [sp, #24]
+ 547 017c 27EE090B 		vmul.f64	d0, d7, d9
+ 548 0180 8AEE000B 		vdiv.f64	d0, d10, d0
+ 549 0184 FFF7FEFF 		bl	log
+ 550 0188 80EE0DCB 		vdiv.f64	d12, d0, d13
+ 551 018c 2CEE0D0B 		vmul.f64	d0, d12, d13
+ 552 0190 84ED0ACB 		vstr.64	d12, [r4, #40]
+ 553 0194 FFF7FEFF 		bl	exp
+ 554 0198 20EE09FB 		vmul.f64	d15, d0, d9
+ 555 019c 8EEE0C0B 		vdiv.f64	d0, d14, d12
+ 556 01a0 9DED08BB 		vldr.64	d11, [sp, #32]
+ 557 01a4 0CEE0CBB 		vmla.f64	d11, d12, d12
+ 558 01a8 B1EECB7B 		vsqrt.f64	d7, d11
+ 559 01ac 8DED007B 		vstr.64	d7, [sp]	@ int
+ 560 01b0 FFF7FEFF 		bl	atan
+ 561 01b4 9DED047B 		vldr.64	d7, [sp, #16]
+ 562 01b8 37EE400B 		vsub.f64	d0, d7, d0
+ 563 01bc FFF7FEFF 		bl	sin
+ 564 01c0 B0EE40CB 		vmov.f64	d12, d0
+ 565 01c4 3AEE480B 		vsub.f64	d0, d10, d8
+ 566 01c8 20EE080B 		vmul.f64	d0, d0, d8
+ 567 01cc FFF7FEFF 		bl	exp
+ARM GAS  /tmp/cceAeyYO.s 			page 12
+
+
+ 568 01d0 2EEE094B 		vmul.f64	d4, d14, d9
+ 569 01d4 3AEE400B 		vsub.f64	d0, d10, d0
+ 570 01d8 9DED007B 		vldr.64	d7, [sp]	@ int
+ 571 01dc 9DED0A6B 		vldr.64	d6, [sp, #40]
+ 572 01e0 8FEE075B 		vdiv.f64	d5, d15, d7
+ 573 01e4 84EE0B7B 		vdiv.f64	d7, d4, d11
+ 574 01e8 05EE0C7B 		vmla.f64	d7, d5, d12
+ 575 01ec 9DED025B 		vldr.64	d5, [sp, #8]
+ 576 01f0 26EE055B 		vmul.f64	d5, d6, d5
+ 577 01f4 8AEE056B 		vdiv.f64	d6, d10, d5
+ 578 01f8 06EE007B 		vmla.f64	d7, d6, d0
+ 579 01fc B5EEC07B 		vcmpe.f64	d7, #0
+ 580 0200 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 581 0204 1CDD     		ble	.L93
+ 582 0206 9FED1C6B 		vldr.64	d6, .L95+40
+ 583 020a 07EE469B 		vmls.f64	d9, d7, d6
+ 584 020e 9FED1C6B 		vldr.64	d6, .L95+48
+ 585 0212 B4EEC67B 		vcmpe.f64	d7, d6
+ 586 0216 84ED089B 		vstr.64	d9, [r4, #32]
+ 587 021a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 588 021e ABDC     		bgt	.L80
+ 589              	.L81:
+ 590 0220 9DED0C6B 		vldr.64	d6, [sp, #48]
+ 591 0224 9FED187B 		vldr.64	d7, .L95+56
+ 592 0228 26EE077B 		vmul.f64	d7, d6, d7
+ 593 022c BBFE477B 		vrintm.f64	d7, d7
+ 594 0230 BDEEC77B 		vcvt.s32.f64	s14, d7
+ 595 0234 84ED047A 		vstr.32	s14, [r4, #16]	@ int
+ 596 0238 0EB0     		add	sp, sp, #56
+ 597              		@ sp needed
+ 598 023a BDEC108B 		vldm	sp!, {d8-d15}
+ 599 023e 10BD     		pop	{r4, pc}
+ 600              	.L93:
+ 601 0240 EED5     		bpl	.L81
+ 602 0242 9FED0D6B 		vldr.64	d6, .L95+40
+ 603 0246 07EE069B 		vmla.f64	d9, d7, d6
+ 604 024a 84ED089B 		vstr.64	d9, [r4, #32]
+ 605 024e E7E7     		b	.L81
+ 606              	.L96:
+ 607              		.align	3
+ 608              	.L95:
+ 609 0250 00000000 		.word	0
+ 610 0254 00007940 		.word	1081671680
+ 611 0258 7B14AE47 		.word	1202590843
+ 612 025c E17A843F 		.word	1065646817
+ 613 0260 EA2E4454 		.word	1413754602
+ 614 0264 FB210940 		.word	1074340347
+ 615 0268 00000000 		.word	0
+ 616 026c 00005940 		.word	1079574528
+ 617 0270 9A999999 		.word	-1717986918
+ 618 0274 9999B93F 		.word	1069128089
+ 619 0278 00000000 		.word	0
+ 620 027c 006AF840 		.word	1090021888
+ 621 0280 9B2BA186 		.word	-2036257893
+ 622 0284 9B84063D 		.word	1023837339
+ 623 0288 00000000 		.word	0
+ 624 028c 0040BF40 		.word	1086275584
+ARM GAS  /tmp/cceAeyYO.s 			page 13
+
+
+ 625 0290 00000000 		.word	_selz
+ 626 0294 00000000 		.word	_teVal
+ 627 0298 00000000 		.word	_tpVal
+ 628 029c 00000000 		.word	_taVal
+ 629 02a0 00000000 		.word	vocalTension
+ 630 02a4 00000000 		.word	_tcVal
+ 631 02a8 0000F0BF 		.word	-1074790400
+ 632              		.size	initLFF, .-initLFF
+ 633              		.section	.text.LF_get_sample,"ax",%progbits
+ 634              		.align	1
+ 635              		.p2align 2,,3
+ 636              		.global	LF_get_sample
+ 637              		.syntax unified
+ 638              		.thumb
+ 639              		.thumb_func
+ 640              		.type	LF_get_sample, %function
+ 641              	LF_get_sample:
+ 642              		@ args = 0, pretend = 0, frame = 0
+ 643              		@ frame_needed = 0, uses_anonymous_args = 0
+ 644 0000 10B5     		push	{r4, lr}
+ 645 0002 044C     		ldr	r4, .L99
+ 646 0004 2046     		mov	r0, r4
+ 647 0006 FFF7FEFF 		bl	initLFF
+ 648 000a 2046     		mov	r0, r4
+ 649 000c BDE81040 		pop	{r4, lr}
+ 650 0010 FFF7FEBF 		b	LF_calc
+ 651              	.L100:
+ 652              		.align	2
+ 653              	.L99:
+ 654 0014 00000000 		.word	LFxx
+ 655              		.size	LF_get_sample, .-LF_get_sample
+ 656              		.section	.bss.kkk.0,"aw",%nobits
+ 657              		.align	1
+ 658              		.type	kkk.0, %object
+ 659              		.size	kkk.0, 2
+ 660              	kkk.0:
+ 661 0000 0000     		.space	2
+ 662              		.global	vocalTension
+ 663              		.section	.bss.vocalTension,"aw",%nobits
+ 664              		.align	3
+ 665              		.type	vocalTension, %object
+ 666              		.size	vocalTension, 8
+ 667              	vocalTension:
+ 668 0000 00000000 		.space	8
+ 668      00000000 
+ 669              		.global	_taVal
+ 670              		.section	.data._taVal,"aw"
+ 671              		.align	3
+ 672              		.type	_taVal, %object
+ 673              		.size	_taVal, 8
+ 674              	_taVal:
+ 675 0000 FCA9F1D2 		.word	-755914244
+ 676 0004 4D62803F 		.word	1065378381
+ 677              		.global	_tpVal
+ 678              		.section	.data._tpVal,"aw"
+ 679              		.align	3
+ 680              		.type	_tpVal, %object
+ARM GAS  /tmp/cceAeyYO.s 			page 14
+
+
+ 681              		.size	_tpVal, 8
+ 682              	_tpVal:
+ 683 0000 52B81E85 		.word	-2061584302
+ 684 0004 EB51C83F 		.word	1070092779
+ 685              		.global	_teVal
+ 686              		.section	.data._teVal,"aw"
+ 687              		.align	3
+ 688              		.type	_teVal, %object
+ 689              		.size	_teVal, 8
+ 690              	_teVal:
+ 691 0000 AAF1D24D 		.word	1305670058
+ 692 0004 6210D03F 		.word	1070600290
+ 693              		.global	_tcVal
+ 694              		.section	.data._tcVal,"aw"
+ 695              		.align	3
+ 696              		.type	_tcVal, %object
+ 697              		.size	_tcVal, 8
+ 698              	_tcVal:
+ 699 0000 00000000 		.word	0
+ 700 0004 0000F03F 		.word	1072693248
+ 701              		.global	LFxx
+ 702              		.section	.bss.LFxx,"aw",%nobits
+ 703              		.align	3
+ 704              		.type	LFxx, %object
+ 705              		.size	LFxx, 104
+ 706              	LFxx:
+ 707 0000 00000000 		.space	104
+ 707      00000000 
+ 707      00000000 
+ 707      00000000 
+ 707      00000000 
+ 708              		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/cceAeyYO.s 			page 15
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 lfgen.c
+     /tmp/cceAeyYO.s:17     .text.rosenberg_get_sample:00000000 $t
+     /tmp/cceAeyYO.s:24     .text.rosenberg_get_sample:00000000 rosenberg_get_sample
+     /tmp/cceAeyYO.s:115    .text.rosenberg_get_sample:00000120 $d
+     /tmp/cceAeyYO.s:660    .bss.kkk.0:00000000 kkk.0
+     /tmp/cceAeyYO.s:130    .text.LF_calc:00000000 $t
+     /tmp/cceAeyYO.s:137    .text.LF_calc:00000000 LF_calc
+     /tmp/cceAeyYO.s:229    .text.LF_calc:00000110 $d
+     /tmp/cceAeyYO.s:236    .text.initLF:00000000 $t
+     /tmp/cceAeyYO.s:243    .text.initLF:00000000 initLF
+     /tmp/cceAeyYO.s:406    .text.initLF:00000220 $d
+     /tmp/cceAeyYO.s:682    .data._tpVal:00000000 _tpVal
+     /tmp/cceAeyYO.s:690    .data._teVal:00000000 _teVal
+     /tmp/cceAeyYO.s:667    .bss.vocalTension:00000000 vocalTension
+     /tmp/cceAeyYO.s:674    .data._taVal:00000000 _taVal
+     /tmp/cceAeyYO.s:698    .data._tcVal:00000000 _tcVal
+     /tmp/cceAeyYO.s:426    .text.initLFF:00000000 $t
+     /tmp/cceAeyYO.s:433    .text.initLFF:00000000 initLFF
+     /tmp/cceAeyYO.s:609    .text.initLFF:00000250 $d
+     /tmp/cceAeyYO.s:634    .text.LF_get_sample:00000000 $t
+     /tmp/cceAeyYO.s:641    .text.LF_get_sample:00000000 LF_get_sample
+     /tmp/cceAeyYO.s:654    .text.LF_get_sample:00000014 $d
+     /tmp/cceAeyYO.s:706    .bss.LFxx:00000000 LFxx
+     /tmp/cceAeyYO.s:657    .bss.kkk.0:00000000 $d
+     /tmp/cceAeyYO.s:664    .bss.vocalTension:00000000 $d
+     /tmp/cceAeyYO.s:671    .data._taVal:00000000 $d
+     /tmp/cceAeyYO.s:679    .data._tpVal:00000000 $d
+     /tmp/cceAeyYO.s:687    .data._teVal:00000000 $d
+     /tmp/cceAeyYO.s:695    .data._tcVal:00000000 $d
+     /tmp/cceAeyYO.s:703    .bss.LFxx:00000000 $d
+
+UNDEFINED SYMBOLS
+cos
+_selz
+exp
+sin
+log
+atan

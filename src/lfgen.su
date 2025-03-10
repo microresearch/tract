@@ -1,0 +1,5 @@
+src/lfgen.c:78:9:rosenberg_get_sample	16	static
+src/lfgen.c:111:9:LF_calc	64	static
+src/lfgen.c:140:6:initLF	120	static
+src/lfgen.c:264:6:initLFF	128	static
+src/lfgen.c:391:9:LF_get_sample	8	static

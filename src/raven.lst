@@ -1,0 +1,1557 @@
+ARM GAS  /tmp/ccXrjZKA.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/raven.lst 
+ input file    	: /tmp/ccXrjZKA.s
+ output file   	: src/raven.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:36:00.000+0100
+
+ARM GAS  /tmp/ccXrjZKA.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"raven.c"
+  15              		.text
+  16              		.section	.text.init_mindlin,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	init_mindlin
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	init_mindlin, %function
+  24              	init_mindlin:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 13A3     		adr	r3, .L3+16
+  29 0002 D3E90023 		ldrd	r2, [r3]
+  30 0006 9FED0E7B 		vldr.64	d7, .L3
+  31 000a C0E90023 		strd	r2, [r0]
+  32 000e 0022     		movs	r2, #0
+  33 0010 0023     		movs	r3, #0
+  34 0012 80ED107B 		vstr.64	d7, [r0, #64]
+  35 0016 9FED0C7B 		vldr.64	d7, .L3+8
+  36 001a C0E90423 		strd	r2, [r0, #16]
+  37 001e 0EA3     		adr	r3, .L3+24
+  38 0020 D3E90023 		ldrd	r2, [r3]
+  39 0024 80ED080B 		vstr.64	d0, [r0, #32]
+  40 0028 80ED061B 		vstr.64	d1, [r0, #24]
+  41 002c 80ED0A2B 		vstr.64	d2, [r0, #40]
+  42 0030 80ED0C7B 		vstr.64	d7, [r0, #48]
+  43 0034 C0E90E23 		strd	r2, [r0, #56]
+  44 0038 7047     		bx	lr
+  45              	.L4:
+  46 003a 00BFAFF3 		.align	3
+  46      0080
+  47              	.L3:
+  48 0040 00000000 		.word	0
+  49 0044 006AF840 		.word	1090021888
+  50 0048 00000000 		.word	0
+  51 004c 00409F40 		.word	1084178432
+  52 0050 7B14AE47 		.word	1202590843
+  53 0054 E17A843F 		.word	1065646817
+  54 0058 A5E2ECC3 		.word	-1007885659
+  55 005c 67D8F53E 		.word	1056299111
+  56              		.size	init_mindlin, .-init_mindlin
+ARM GAS  /tmp/ccXrjZKA.s 			page 3
+
+
+  57              		.section	.text.calc_xdobleprime_mindlin,"ax",%progbits
+  58              		.align	1
+  59              		.p2align 2,,3
+  60              		.global	calc_xdobleprime_mindlin
+  61              		.syntax unified
+  62              		.thumb
+  63              		.thumb_func
+  64              		.type	calc_xdobleprime_mindlin, %function
+  65              	calc_xdobleprime_mindlin:
+  66              		@ args = 0, pretend = 0, frame = 0
+  67              		@ frame_needed = 0, uses_anonymous_args = 0
+  68              		@ link register save eliminated.
+  69 0000 90ED007B 		vldr.64	d7, [r0]
+  70 0004 90ED0A2B 		vldr.64	d2, [r0, #40]
+  71 0008 90ED026B 		vldr.64	d6, [r0, #8]
+  72 000c 27EE070B 		vmul.f64	d0, d7, d7
+  73 0010 90ED063B 		vldr.64	d3, [r0, #24]
+  74 0014 90ED084B 		vldr.64	d4, [r0, #32]
+  75 0018 20EE020B 		vmul.f64	d0, d0, d2
+  76 001c 90ED0C5B 		vldr.64	d5, [r0, #48]
+  77 0020 20EE060B 		vmul.f64	d0, d0, d6
+  78 0024 13EE470B 		vnmla.f64	d0, d3, d7
+  79 0028 06EE040B 		vmla.f64	d0, d6, d4
+  80 002c 30EE450B 		vsub.f64	d0, d0, d5
+  81 0030 7047     		bx	lr
+  82              		.size	calc_xdobleprime_mindlin, .-calc_xdobleprime_mindlin
+  83 0032 00BF     		.section	.text.no_newsay,"ax",%progbits
+  84              		.align	1
+  85              		.p2align 2,,3
+  86              		.global	no_newsay
+  87              		.syntax unified
+  88              		.thumb
+  89              		.thumb_func
+  90              		.type	no_newsay, %function
+  91              	no_newsay:
+  92              		@ args = 0, pretend = 0, frame = 0
+  93              		@ frame_needed = 0, uses_anonymous_args = 0
+  94              		@ link register save eliminated.
+  95 0000 7047     		bx	lr
+  96              		.size	no_newsay, .-no_newsay
+  97 0002 00BF     		.section	.text.integrate,"ax",%progbits
+  98              		.align	1
+  99              		.p2align 2,,3
+ 100              		.global	integrate
+ 101              		.syntax unified
+ 102              		.thumb
+ 103              		.thumb_func
+ 104              		.type	integrate, %function
+ 105              	integrate:
+ 106              		@ args = 0, pretend = 0, frame = 0
+ 107              		@ frame_needed = 0, uses_anonymous_args = 0
+ 108              		@ link register save eliminated.
+ 109 0000 B6EE007B 		vmov.f64	d7, #5.0e-1
+ 110 0004 30EE010B 		vadd.f64	d0, d0, d1
+ 111 0008 22EE072B 		vmul.f64	d2, d2, d7
+ 112 000c 20EE020B 		vmul.f64	d0, d0, d2
+ 113 0010 7047     		bx	lr
+ARM GAS  /tmp/ccXrjZKA.s 			page 4
+
+
+ 114              		.size	integrate, .-integrate
+ 115 0012 00BF     		.section	.text.mindlin_oscillate,"ax",%progbits
+ 116              		.align	1
+ 117              		.p2align 2,,3
+ 118              		.global	mindlin_oscillate
+ 119              		.syntax unified
+ 120              		.thumb
+ 121              		.thumb_func
+ 122              		.type	mindlin_oscillate, %function
+ 123              	mindlin_oscillate:
+ 124              		@ args = 0, pretend = 0, frame = 0
+ 125              		@ frame_needed = 0, uses_anonymous_args = 0
+ 126              		@ link register save eliminated.
+ 127 0000 274B     		ldr	r3, .L9+16
+ 128 0002 B6EE000B 		vmov.f64	d0, #5.0e-1
+ 129 0006 DFED277A 		vldr.32	s15, .L9+20
+ 130 000a 93ED005A 		vldr.32	s10, [r3]
+ 131 000e 90ED003B 		vldr.64	d3, [r0]
+ 132 0012 25EE275A 		vmul.f32	s10, s10, s15
+ 133 0016 9FED1E4B 		vldr.64	d4, .L9
+ 134 001a 23EE037B 		vmul.f64	d7, d3, d3
+ 135 001e B7EEC55A 		vcvt.f64.f32	d5, s10
+ 136 0022 90ED022B 		vldr.64	d2, [r0, #8]
+ 137 0026 35EE045B 		vadd.f64	d5, d5, d4
+ 138 002a 90ED066B 		vldr.64	d6, [r0, #24]
+ 139 002e 27EE057B 		vmul.f64	d7, d7, d5
+ 140 0032 90ED084B 		vldr.64	d4, [r0, #32]
+ 141 0036 80ED0A5B 		vstr.64	d5, [r0, #40]
+ 142 003a 27EE027B 		vmul.f64	d7, d7, d2
+ 143 003e 90ED0C5B 		vldr.64	d5, [r0, #48]
+ 144 0042 9FED151B 		vldr.64	d1, .L9+8
+ 145 0046 16EE437B 		vnmla.f64	d7, d6, d3
+ 146 004a 90ED0E6B 		vldr.64	d6, [r0, #56]
+ 147 004e 26EE000B 		vmul.f64	d0, d6, d0
+ 148 0052 02EE047B 		vmla.f64	d7, d2, d4
+ 149 0056 90ED046B 		vldr.64	d6, [r0, #16]
+ 150 005a 37EE457B 		vsub.f64	d7, d7, d5
+ 151 005e 37EE066B 		vadd.f64	d6, d7, d6
+ 152 0062 80ED047B 		vstr.64	d7, [r0, #16]
+ 153 0066 B0EE427B 		vmov.f64	d7, d2
+ 154 006a 06EE007B 		vmla.f64	d7, d6, d0
+ 155 006e 37EE022B 		vadd.f64	d2, d7, d2
+ 156 0072 80ED027B 		vstr.64	d7, [r0, #8]
+ 157 0076 02EE003B 		vmla.f64	d3, d2, d0
+ 158 007a 23EE011B 		vmul.f64	d1, d3, d1
+ 159 007e 80ED003B 		vstr.64	d3, [r0]
+ 160 0082 BDEEC11B 		vcvt.s32.f64	s2, d1
+ 161 0086 11EE103A 		vmov	r3, s2	@ int
+ 162 008a 18B2     		sxth	r0, r3
+ 163 008c 7047     		bx	lr
+ 164              	.L10:
+ 165 008e 00BF     		.align	3
+ 166              	.L9:
+ 167 0090 00000000 		.word	0
+ 168 0094 00006940 		.word	1080623104
+ 169 0098 00000000 		.word	0
+ 170 009c 0000E040 		.word	1088421888
+ARM GAS  /tmp/ccXrjZKA.s 			page 5
+
+
+ 171 00a0 00000000 		.word	_selz
+ 172 00a4 0000FA44 		.word	1157234688
+ 173              		.size	mindlin_oscillate, .-mindlin_oscillate
+ 174              		.section	.text.mindlin_get_sample,"ax",%progbits
+ 175              		.align	1
+ 176              		.p2align 2,,3
+ 177              		.global	mindlin_get_sample
+ 178              		.syntax unified
+ 179              		.thumb
+ 180              		.thumb_func
+ 181              		.type	mindlin_get_sample, %function
+ 182              	mindlin_get_sample:
+ 183              		@ args = 0, pretend = 0, frame = 0
+ 184              		@ frame_needed = 0, uses_anonymous_args = 0
+ 185              		@ link register save eliminated.
+ 186 0000 0148     		ldr	r0, .L12
+ 187 0002 FFF7FEBF 		b	mindlin_oscillate
+ 188              	.L13:
+ 189 0006 00BF     		.align	2
+ 190              	.L12:
+ 191 0008 00000000 		.word	syrinxM
+ 192              		.size	mindlin_get_sample, .-mindlin_get_sample
+ 193              		.section	.text.init_gardner,"ax",%progbits
+ 194              		.align	1
+ 195              		.p2align 2,,3
+ 196              		.global	init_gardner
+ 197              		.syntax unified
+ 198              		.thumb
+ 199              		.thumb_func
+ 200              		.type	init_gardner, %function
+ 201              	init_gardner:
+ 202              		@ args = 0, pretend = 0, frame = 0
+ 203              		@ frame_needed = 0, uses_anonymous_args = 0
+ 204              		@ link register save eliminated.
+ 205 0000 07EE102A 		vmov	s14, r2	@ int
+ 206 0004 364B     		ldr	r3, .L15+72
+ 207 0006 0022     		movs	r2, #0
+ 208 0008 06EE101A 		vmov	s12, r1	@ int
+ 209 000c B8EEC77B 		vcvt.f64.s32	d7, s14
+ 210 0010 B8EEC66B 		vcvt.f64.s32	d6, s12
+ 211 0014 80ED0A7B 		vstr.64	d7, [r0, #40]
+ 212 0018 9FED1F7B 		vldr.64	d7, .L15
+ 213 001c C0E90223 		strd	r2, [r0, #8]
+ 214 0020 C0E91423 		strd	r2, [r0, #80]
+ 215 0024 C0E91E23 		strd	r2, [r0, #120]
+ 216 0028 1DA3     		adr	r3, .L15+8
+ 217 002a D3E90023 		ldrd	r2, [r3]
+ 218 002e 80ED207B 		vstr.64	d7, [r0, #128]
+ 219 0032 9FED1D7B 		vldr.64	d7, .L15+16
+ 220 0036 C0E90E23 		strd	r2, [r0, #56]
+ 221 003a 1DA3     		adr	r3, .L15+24
+ 222 003c D3E90023 		ldrd	r2, [r3]
+ 223 0040 9FED1D5B 		vldr.64	d5, .L15+32
+ 224 0044 80ED227B 		vstr.64	d7, [r0, #136]
+ 225 0048 C0E91023 		strd	r2, [r0, #64]
+ 226 004c 9FED1C7B 		vldr.64	d7, .L15+40
+ 227 0050 1DA3     		adr	r3, .L15+48
+ARM GAS  /tmp/ccXrjZKA.s 			page 6
+
+
+ 228 0052 D3E90023 		ldrd	r2, [r3]
+ 229 0056 80ED005B 		vstr.64	d5, [r0]
+ 230 005a C0E91223 		strd	r2, [r0, #72]
+ 231 005e 0022     		movs	r2, #0
+ 232 0060 204B     		ldr	r3, .L15+76
+ 233 0062 80ED065B 		vstr.64	d5, [r0, #24]
+ 234 0066 80ED247B 		vstr.64	d7, [r0, #144]
+ 235 006a 9FED195B 		vldr.64	d5, .L15+56
+ 236 006e B1EE047B 		vmov.f64	d7, #5.0e+0
+ 237 0072 C0E91623 		strd	r2, [r0, #88]
+ 238 0076 C0E91823 		strd	r2, [r0, #96]
+ 239 007a 17A3     		adr	r3, .L15+64
+ 240 007c D3E90023 		ldrd	r2, [r3]
+ 241 0080 80ED086B 		vstr.64	d6, [r0, #32]
+ 242 0084 80ED0C5B 		vstr.64	d5, [r0, #48]
+ 243 0088 80ED1A7B 		vstr.64	d7, [r0, #104]
+ 244 008c C0E91C23 		strd	r2, [r0, #112]
+ 245 0090 7047     		bx	lr
+ 246              	.L16:
+ 247 0092 00BFAFF3 		.align	3
+ 247      0080
+ 248              	.L15:
+ 249 0098 A5E2ECC3 		.word	-1007885659
+ 250 009c 67D8F53E 		.word	1056299111
+ 251 00a0 7B14AE47 		.word	1202590843
+ 252 00a4 E17AB43F 		.word	1068792545
+ 253 00a8 00000000 		.word	0
+ 254 00ac 00005940 		.word	1079574528
+ 255 00b0 61325530 		.word	810889825
+ 256 00b4 2AA9233F 		.word	1059301674
+ 257 00b8 00000000 		.word	0
+ 258 00bc 00000000 		.word	0
+ 259 00c0 00000000 		.word	0
+ 260 00c4 00006940 		.word	1080623104
+ 261 00c8 7B14AE47 		.word	1202590843
+ 262 00cc E17A743F 		.word	1064598241
+ 263 00d0 7B14AE47 		.word	1202590843
+ 264 00d4 E17A943F 		.word	1066695393
+ 265 00d8 FCA9F1D2 		.word	-755914244
+ 266 00dc 4D62503F 		.word	1062232653
+ 267 00e0 0000F03F 		.word	1072693248
+ 268 00e4 00408F40 		.word	1083129856
+ 269              		.size	init_gardner, .-init_gardner
+ 270              		.section	.text.calc_xdobleprime_gardner,"ax",%progbits
+ 271              		.align	1
+ 272              		.p2align 2,,3
+ 273              		.global	calc_xdobleprime_gardner
+ 274              		.syntax unified
+ 275              		.thumb
+ 276              		.thumb_func
+ 277              		.type	calc_xdobleprime_gardner, %function
+ 278              	calc_xdobleprime_gardner:
+ 279              		@ args = 0, pretend = 0, frame = 0
+ 280              		@ frame_needed = 0, uses_anonymous_args = 0
+ 281 0000 10B5     		push	{r4, lr}
+ 282 0002 90ED0E2B 		vldr.64	d2, [r0, #56]
+ 283 0006 2DED088B 		vpush.64	{d8, d9, d10, d11}
+ARM GAS  /tmp/ccXrjZKA.s 			page 7
+
+
+ 284 000a 90ED008B 		vldr.64	d8, [r0]
+ 285 000e 90ED02BB 		vldr.64	d11, [r0, #8]
+ 286 0012 90ED103B 		vldr.64	d3, [r0, #64]
+ 287 0016 38EE026B 		vadd.f64	d6, d8, d2
+ 288 001a 0446     		mov	r4, r0
+ 289 001c B0EE4B0B 		vmov.f64	d0, d11
+ 290 0020 33EE034B 		vadd.f64	d4, d3, d3
+ 291 0024 03EE0B6B 		vmla.f64	d6, d3, d11
+ 292 0028 24EE0B4B 		vmul.f64	d4, d4, d11
+ 293 002c B0EE081B 		vmov.f64	d1, #3.0e+0
+ 294 0030 90ED0C5B 		vldr.64	d5, [r0, #48]
+ 295 0034 84EE069B 		vdiv.f64	d9, d4, d6
+ 296 0038 35EE425B 		vsub.f64	d5, d5, d2
+ 297 003c 90ED086B 		vldr.64	d6, [r0, #32]
+ 298 0040 90ED0A7B 		vldr.64	d7, [r0, #40]
+ 299 0044 90ED1CAB 		vldr.64	d10, [r0, #112]
+ 300 0048 28EE068B 		vmul.f64	d8, d8, d6
+ 301 004c 39EE059B 		vadd.f64	d9, d9, d5
+ 302 0050 29EE079B 		vmul.f64	d9, d9, d7
+ 303 0054 FFF7FEFF 		bl	pow
+ 304 0058 0AEE008B 		vmla.f64	d8, d10, d0
+ 305 005c 94ED1A7B 		vldr.64	d7, [r4, #104]
+ 306 0060 94ED120B 		vldr.64	d0, [r4, #72]
+ 307 0064 0BEE078B 		vmla.f64	d8, d11, d7
+ 308 0068 39EE489B 		vsub.f64	d9, d9, d8
+ 309 006c 89EE000B 		vdiv.f64	d0, d9, d0
+ 310 0070 BDEC088B 		vldm	sp!, {d8-d11}
+ 311 0074 10BD     		pop	{r4, pc}
+ 312              		.size	calc_xdobleprime_gardner, .-calc_xdobleprime_gardner
+ 313 0076 00BF     		.section	.text.gardner_oscillate,"ax",%progbits
+ 314              		.align	1
+ 315              		.p2align 2,,3
+ 316              		.global	gardner_oscillate
+ 317              		.syntax unified
+ 318              		.thumb
+ 319              		.thumb_func
+ 320              		.type	gardner_oscillate, %function
+ 321              	gardner_oscillate:
+ 322              		@ args = 0, pretend = 0, frame = 0
+ 323              		@ frame_needed = 0, uses_anonymous_args = 0
+ 324 0000 10B5     		push	{r4, lr}
+ 325 0002 0446     		mov	r4, r0
+ 326 0004 2DED028B 		vpush.64	{d8}
+ 327 0008 FFF7FEFF 		bl	calc_xdobleprime_gardner
+ 328 000c B6EE003B 		vmov.f64	d3, #5.0e-1
+ 329 0010 214B     		ldr	r3, .L23+16
+ 330 0012 224A     		ldr	r2, .L23+20
+ 331 0014 94ED205B 		vldr.64	d5, [r4, #128]
+ 332 0018 94ED026B 		vldr.64	d6, [r4, #8]
+ 333 001c 94ED062B 		vldr.64	d2, [r4, #24]
+ 334 0020 25EE033B 		vmul.f64	d3, d5, d3
+ 335 0024 93ED005A 		vldr.32	s10, [r3]
+ 336 0028 1388     		ldrh	r3, [r2]
+ 337 002a B0EE461B 		vmov.f64	d1, d6
+ 338 002e 0133     		adds	r3, r3, #1
+ 339 0030 30EE022B 		vadd.f64	d2, d0, d2
+ 340 0034 B7EEC55A 		vcvt.f64.f32	d5, s10
+ARM GAS  /tmp/ccXrjZKA.s 			page 8
+
+
+ 341 0038 1BB2     		sxth	r3, r3
+ 342 003a 02EE031B 		vmla.f64	d1, d2, d3
+ 343 003e B3F5FA4F 		cmp	r3, #32000
+ 344 0042 C8BF     		it	gt
+ 345 0044 0023     		movgt	r3, #0
+ 346 0046 1380     		strh	r3, [r2]	@ movhi
+ 347 0048 94ED004B 		vldr.64	d4, [r4]
+ 348 004c 84ED046B 		vstr.64	d6, [r4, #16]
+ 349 0050 9FED0D7B 		vldr.64	d7, .L23
+ 350 0054 9FED0E8B 		vldr.64	d8, .L23+8
+ 351 0058 36EE016B 		vadd.f64	d6, d6, d1
+ 352 005c 25EE085B 		vmul.f64	d5, d5, d8
+ 353 0060 06EE034B 		vmla.f64	d4, d6, d3
+ 354 0064 BDEC028B 		vldm	sp!, {d8}
+ 355 0068 84ED060B 		vstr.64	d0, [r4, #24]
+ 356 006c 84ED085B 		vstr.64	d5, [r4, #32]
+ 357 0070 84ED021B 		vstr.64	d1, [r4, #8]
+ 358 0074 24EE077B 		vmul.f64	d7, d4, d7
+ 359 0078 84ED004B 		vstr.64	d4, [r4]
+ 360 007c BDEEC77B 		vcvt.s32.f64	s14, d7
+ 361 0080 17EE103A 		vmov	r3, s14	@ int
+ 362 0084 18B2     		sxth	r0, r3
+ 363 0086 10BD     		pop	{r4, pc}
+ 364              	.L24:
+ 365              		.align	3
+ 366              	.L23:
+ 367 0088 00000000 		.word	0
+ 368 008c 00004941 		.word	1095303168
+ 369 0090 00000000 		.word	0
+ 370 0094 0040AF40 		.word	1085227008
+ 371 0098 00000000 		.word	_selz
+ 372 009c 00000000 		.word	i.2
+ 373              		.size	gardner_oscillate, .-gardner_oscillate
+ 374              		.section	.text.gardner_get_sample,"ax",%progbits
+ 375              		.align	1
+ 376              		.p2align 2,,3
+ 377              		.global	gardner_get_sample
+ 378              		.syntax unified
+ 379              		.thumb
+ 380              		.thumb_func
+ 381              		.type	gardner_get_sample, %function
+ 382              	gardner_get_sample:
+ 383              		@ args = 0, pretend = 0, frame = 0
+ 384              		@ frame_needed = 0, uses_anonymous_args = 0
+ 385 0000 10B5     		push	{r4, lr}
+ 386 0002 3D4C     		ldr	r4, .L29+16
+ 387 0004 B0EE081B 		vmov.f64	d1, #3.0e+0
+ 388 0008 2DED0A8B 		vpush.64	{d8, d9, d10, d11, d12}
+ 389 000c 94ED0E2B 		vldr.64	d2, [r4, #56]
+ 390 0010 94ED00BB 		vldr.64	d11, [r4]
+ 391 0014 94ED028B 		vldr.64	d8, [r4, #8]
+ 392 0018 94ED103B 		vldr.64	d3, [r4, #64]
+ 393 001c 3BEE025B 		vadd.f64	d5, d11, d2
+ 394 0020 B0EE480B 		vmov.f64	d0, d8
+ 395 0024 33EE034B 		vadd.f64	d4, d3, d3
+ 396 0028 03EE085B 		vmla.f64	d5, d3, d8
+ 397 002c 24EE084B 		vmul.f64	d4, d4, d8
+ARM GAS  /tmp/ccXrjZKA.s 			page 9
+
+
+ 398 0030 94ED0C6B 		vldr.64	d6, [r4, #48]
+ 399 0034 94ED08AB 		vldr.64	d10, [r4, #32]
+ 400 0038 84EE059B 		vdiv.f64	d9, d4, d5
+ 401 003c 36EE426B 		vsub.f64	d6, d6, d2
+ 402 0040 2BEE0AAB 		vmul.f64	d10, d11, d10
+ 403 0044 94ED0A7B 		vldr.64	d7, [r4, #40]
+ 404 0048 94ED1CCB 		vldr.64	d12, [r4, #112]
+ 405 004c 39EE069B 		vadd.f64	d9, d9, d6
+ 406 0050 29EE079B 		vmul.f64	d9, d9, d7
+ 407 0054 FFF7FEFF 		bl	pow
+ 408 0058 2849     		ldr	r1, .L29+20
+ 409 005a 294A     		ldr	r2, .L29+24
+ 410 005c 0CEE00AB 		vmla.f64	d10, d12, d0
+ 411 0060 D1ED003A 		vldr.32	s7, [r1]
+ 412 0064 1388     		ldrh	r3, [r2]
+ 413 0066 0133     		adds	r3, r3, #1
+ 414 0068 B6EE004B 		vmov.f64	d4, #5.0e-1
+ 415 006c 1BB2     		sxth	r3, r3
+ 416 006e 94ED1A6B 		vldr.64	d6, [r4, #104]
+ 417 0072 94ED125B 		vldr.64	d5, [r4, #72]
+ 418 0076 94ED207B 		vldr.64	d7, [r4, #128]
+ 419 007a 08EE06AB 		vmla.f64	d10, d8, d6
+ 420 007e B3F5FA4F 		cmp	r3, #32000
+ 421 0082 C8BF     		it	gt
+ 422 0084 0023     		movgt	r3, #0
+ 423 0086 27EE044B 		vmul.f64	d4, d7, d4
+ 424 008a 1380     		strh	r3, [r2]	@ movhi
+ 425 008c 94ED067B 		vldr.64	d7, [r4, #24]
+ 426 0090 84ED048B 		vstr.64	d8, [r4, #16]
+ 427 0094 39EE4A9B 		vsub.f64	d9, d9, d10
+ 428 0098 9FED136B 		vldr.64	d6, .L29
+ 429 009c 89EE052B 		vdiv.f64	d2, d9, d5
+ 430 00a0 B7EEE35A 		vcvt.f64.f32	d5, s7
+ 431 00a4 9FED123B 		vldr.64	d3, .L29+8
+ 432 00a8 25EE035B 		vmul.f64	d5, d5, d3
+ 433 00ac 84ED085B 		vstr.64	d5, [r4, #32]
+ 434 00b0 B0EE485B 		vmov.f64	d5, d8
+ 435 00b4 32EE077B 		vadd.f64	d7, d2, d7
+ 436 00b8 84ED062B 		vstr.64	d2, [r4, #24]
+ 437 00bc 07EE045B 		vmla.f64	d5, d7, d4
+ 438 00c0 35EE088B 		vadd.f64	d8, d5, d8
+ 439 00c4 84ED025B 		vstr.64	d5, [r4, #8]
+ 440 00c8 08EE04BB 		vmla.f64	d11, d8, d4
+ 441 00cc 2BEE067B 		vmul.f64	d7, d11, d6
+ 442 00d0 84ED00BB 		vstr.64	d11, [r4]
+ 443 00d4 BDEC0A8B 		vldm	sp!, {d8-d12}
+ 444 00d8 BDEEC77B 		vcvt.s32.f64	s14, d7
+ 445 00dc 17EE103A 		vmov	r3, s14	@ int
+ 446 00e0 18B2     		sxth	r0, r3
+ 447 00e2 10BD     		pop	{r4, pc}
+ 448              	.L30:
+ 449 00e4 AFF30080 		.align	3
+ 450              	.L29:
+ 451 00e8 00000000 		.word	0
+ 452 00ec 00004941 		.word	1095303168
+ 453 00f0 00000000 		.word	0
+ 454 00f4 0040AF40 		.word	1085227008
+ARM GAS  /tmp/ccXrjZKA.s 			page 10
+
+
+ 455 00f8 00000000 		.word	syrinx
+ 456 00fc 00000000 		.word	_selz
+ 457 0100 00000000 		.word	i.2
+ 458              		.size	gardner_get_sample, .-gardner_get_sample
+ 459              		.section	.text.init_balloon,"ax",%progbits
+ 460              		.align	1
+ 461              		.p2align 2,,3
+ 462              		.global	init_balloon
+ 463              		.syntax unified
+ 464              		.thumb
+ 465              		.thumb_func
+ 466              		.type	init_balloon, %function
+ 467              	init_balloon:
+ 468              		@ args = 0, pretend = 0, frame = 0
+ 469              		@ frame_needed = 0, uses_anonymous_args = 0
+ 470              		@ link register save eliminated.
+ 471 0000 30B4     		push	{r4, r5}
+ 472 0002 60A3     		adr	r3, .L33+172
+ 473 0004 D3E90023 		ldrd	r2, [r3]
+ 474 0008 454C     		ldr	r4, .L33+72
+ 475 000a C4E90023 		strd	r2, [r4]
+ 476 000e 454C     		ldr	r4, .L33+76
+ 477 0010 31A1     		adr	r1, .L33
+ 478 0012 D1E90001 		ldrd	r0, [r1]
+ 479 0016 C4E90023 		strd	r2, [r4]
+ 480 001a 434C     		ldr	r4, .L33+80
+ 481 001c C4E90001 		strd	r0, [r4]
+ 482 0020 424C     		ldr	r4, .L33+84
+ 483 0022 2FA3     		adr	r3, .L33+8
+ 484 0024 D3E90023 		ldrd	r2, [r3]
+ 485 0028 C4E90001 		strd	r0, [r4]
+ 486 002c 4049     		ldr	r1, .L33+88
+ 487 002e C1E90023 		strd	r2, [r1]
+ 488 0032 4049     		ldr	r1, .L33+92
+ 489 0034 9FED2C7B 		vldr.64	d7, .L33+16
+ 490 0038 C1E90023 		strd	r2, [r1]
+ 491 003c 3E49     		ldr	r1, .L33+96
+ 492 003e 2CA5     		adr	r5, .L33+24
+ 493 0040 D5E90045 		ldrd	r4, [r5]
+ 494 0044 81ED007B 		vstr.64	d7, [r1]
+ 495 0048 3C49     		ldr	r1, .L33+100
+ 496 004a 2BA3     		adr	r3, .L33+32
+ 497 004c D3E90023 		ldrd	r2, [r3]
+ 498 0050 C1E90045 		strd	r4, [r1]
+ 499 0054 3A49     		ldr	r1, .L33+104
+ 500 0056 3B4D     		ldr	r5, .L33+108
+ 501 0058 3B4C     		ldr	r4, .L33+112
+ 502 005a C1E90023 		strd	r2, [r1]
+ 503 005e 3B49     		ldr	r1, .L33+116
+ 504 0060 C1E90023 		strd	r2, [r1]
+ 505 0064 26A1     		adr	r1, .L33+40
+ 506 0066 D1E90001 		ldrd	r0, [r1]
+ 507 006a 0022     		movs	r2, #0
+ 508 006c 0023     		movs	r3, #0
+ 509 006e C5E90001 		strd	r0, [r5]
+ 510 0072 374D     		ldr	r5, .L33+120
+ 511 0074 C5E90001 		strd	r0, [r5]
+ARM GAS  /tmp/ccXrjZKA.s 			page 11
+
+
+ 512 0078 3648     		ldr	r0, .L33+124
+ 513 007a 3749     		ldr	r1, .L33+128
+ 514 007c C0E90023 		strd	r2, [r0]
+ 515 0080 C1E90023 		strd	r2, [r1]
+ 516 0084 3548     		ldr	r0, .L33+132
+ 517 0086 3649     		ldr	r1, .L33+136
+ 518 0088 C0E90023 		strd	r2, [r0]
+ 519 008c C1E90023 		strd	r2, [r1]
+ 520 0090 3448     		ldr	r0, .L33+140
+ 521 0092 3549     		ldr	r1, .L33+144
+ 522 0094 9FED1C6B 		vldr.64	d6, .L33+48
+ 523 0098 C0E90023 		strd	r2, [r0]
+ 524 009c C1E90023 		strd	r2, [r1]
+ 525 00a0 3248     		ldr	r0, .L33+148
+ 526 00a2 3349     		ldr	r1, .L33+152
+ 527 00a4 9FED1A7B 		vldr.64	d7, .L33+56
+ 528 00a8 84ED006B 		vstr.64	d6, [r4]
+ 529 00ac C0E90023 		strd	r2, [r0]
+ 530 00b0 C1E90023 		strd	r2, [r1]
+ 531 00b4 2F4C     		ldr	r4, .L33+156
+ 532 00b6 0020     		movs	r0, #0
+ 533 00b8 2F4B     		ldr	r3, .L33+160
+ 534 00ba 3049     		ldr	r1, .L33+164
+ 535 00bc 84ED007B 		vstr.64	d7, [r4]
+ 536 00c0 C3E90001 		strd	r0, [r3]
+ 537 00c4 2E4C     		ldr	r4, .L33+168
+ 538 00c6 14A3     		adr	r3, .L33+64
+ 539 00c8 D3E90023 		ldrd	r2, [r3]
+ 540 00cc C4E90023 		strd	r2, [r4]
+ 541 00d0 30BC     		pop	{r4, r5}
+ 542 00d2 7047     		bx	lr
+ 543              	.L34:
+ 544 00d4 AFF30080 		.align	3
+ 545              	.L33:
+ 546 00d8 8DEDB5A0 		.word	-1598689907
+ 547 00dc F7C6B03E 		.word	1051772663
+ 548 00e0 79E92631 		.word	824633721
+ 549 00e4 08AC8C3F 		.word	1066183688
+ 550 00e8 2D431CEB 		.word	-350469331
+ 551 00ec E2360A3F 		.word	1057634018
+ 552 00f0 00000000 		.word	0
+ 553 00f4 D0126341 		.word	1097011920
+ 554 00f8 B81E85EB 		.word	-343597384
+ 555 00fc 51B88E3F 		.word	1066317905
+ 556 0100 76830DF4 		.word	-200440970
+ 557 0104 F521943E 		.word	1049895413
+ 558 0108 79E92631 		.word	824633721
+ 559 010c 08AC7C3F 		.word	1065135112
+ 560 0110 00000000 		.word	0
+ 561 0114 00007940 		.word	1081671680
+ 562 0118 FCA9F1D2 		.word	-755914244
+ 563 011c 4D62403F 		.word	1061184077
+ 564 0120 00000000 		.word	r1
+ 565 0124 00000000 		.word	r2
+ 566 0128 00000000 		.word	m1
+ 567 012c 00000000 		.word	m2
+ 568 0130 00000000 		.word	k1
+ARM GAS  /tmp/ccXrjZKA.s 			page 12
+
+
+ 569 0134 00000000 		.word	k2
+ 570 0138 00000000 		.word	k12
+ 571 013c 00000000 		.word	aida
+ 572 0140 00000000 		.word	d1
+ 573 0144 00000000 		.word	Ag01
+ 574 0148 00000000 		.word	lg
+ 575 014c 00000000 		.word	d2
+ 576 0150 00000000 		.word	Ag02
+ 577 0154 00000000 		.word	x1Prev
+ 578 0158 00000000 		.word	x1PrevPrev
+ 579 015c 00000000 		.word	x2Prev
+ 580 0160 00000000 		.word	x2PrevPrev
+ 581 0164 00000000 		.word	pm1Prev
+ 582 0168 00000000 		.word	pm2Prev
+ 583 016c 00000000 		.word	uPrev
+ 584 0170 00000000 		.word	ps
+ 585 0174 00000000 		.word	gain
+ 586 0178 00000000 		.word	Fs
+ 587 017c 0040DF40 		.word	1088372736
+ 588 0180 00000000 		.word	S
+ 589 0184 79818BB6 		.word	-1232371335
+ 590 0188 E790E43E 		.word	1055166695
+ 591              		.size	init_balloon, .-init_balloon
+ 592              		.section	.text.computeSample,"ax",%progbits
+ 593              		.align	1
+ 594              		.p2align 2,,3
+ 595              		.global	computeSample
+ 596              		.syntax unified
+ 597              		.thumb
+ 598              		.thumb_func
+ 599              		.type	computeSample, %function
+ 600              	computeSample:
+ 601              		@ args = 0, pretend = 0, frame = 144
+ 602              		@ frame_needed = 0, uses_anonymous_args = 0
+ 603 0000 F14B     		ldr	r3, .L85+24
+ 604 0002 B7EE005B 		vmov.f64	d5, #1.0e+0
+ 605 0006 F148     		ldr	r0, .L85+28
+ 606 0008 B6EE006B 		vmov.f64	d6, #5.0e-1
+ 607 000c F049     		ldr	r1, .L85+32
+ 608 000e DFF8F8C3 		ldr	ip, .L85+88
+ 609 0012 F04A     		ldr	r2, .L85+36
+ 610 0014 93ED004B 		vldr.64	d4, [r3]
+ 611 0018 EF4B     		ldr	r3, .L85+40
+ 612 001a 85EE045B 		vdiv.f64	d5, d5, d4
+ 613 001e 2DE9F04F 		push	{r4, r5, r6, r7, r8, r9, r10, fp, lr}
+ 614 0022 2DED108B 		vpush.64	{d8, d9, d10, d11, d12, d13, d14, d15}
+ 615 0026 93ED008B 		vldr.64	d8, [r3]
+ 616 002a EC4B     		ldr	r3, .L85+44
+ 617 002c A5B0     		sub	sp, sp, #148
+ 618 002e DFF8DC93 		ldr	r9, .L85+92
+ 619 0032 B0EE40FB 		vmov.f64	d15, d0
+ 620 0036 DFF8D8E3 		ldr	lr, .L85+96
+ 621 003a E94F     		ldr	r7, .L85+48
+ 622 003c DFF8D4A3 		ldr	r10, .L85+100
+ 623 0040 DFF8D483 		ldr	r8, .L85+104
+ 624 0044 E74C     		ldr	r4, .L85+52
+ 625 0046 E84D     		ldr	r5, .L85+56
+ARM GAS  /tmp/ccXrjZKA.s 			page 13
+
+
+ 626 0048 DFF8D0B3 		ldr	fp, .L85+108
+ 627 004c E74E     		ldr	r6, .L85+60
+ 628 004e 93ED001B 		vldr.64	d1, [r3]
+ 629 0052 9FEDD74B 		vldr.64	d4, .L85
+ 630 0056 90ED007B 		vldr.64	d7, [r0]
+ 631 005a 92ED00DB 		vldr.64	d13, [r2]
+ 632 005e 28EE042B 		vmul.f64	d2, d8, d4
+ 633 0062 E34A     		ldr	r2, .L85+64
+ 634 0064 E348     		ldr	r0, .L85+68
+ 635 0066 E44B     		ldr	r3, .L85+72
+ 636 0068 21EE044B 		vmul.f64	d4, d1, d4
+ 637 006c 22EE072B 		vmul.f64	d2, d2, d7
+ 638 0070 24EE074B 		vmul.f64	d4, d4, d7
+ 639 0074 22EE073B 		vmul.f64	d3, d2, d7
+ 640 0078 24EE074B 		vmul.f64	d4, d4, d7
+ 641 007c 27EE011B 		vmul.f64	d1, d7, d1
+ 642 0080 28EE07AB 		vmul.f64	d10, d8, d7
+ 643 0084 91ED002B 		vldr.64	d2, [r1]
+ 644 0088 8DED0E4B 		vstr.64	d4, [sp, #56]
+ 645 008c 8DED101B 		vstr.64	d1, [sp, #64]
+ 646 0090 82EE054B 		vdiv.f64	d4, d2, d5
+ 647 0094 D949     		ldr	r1, .L85+76
+ 648 0096 99ED002B 		vldr.64	d2, [r9]
+ 649 009a 92ED00CB 		vldr.64	d12, [r2]
+ 650 009e 98ED000B 		vldr.64	d0, [r8]
+ 651 00a2 8DED062B 		vstr.64	d2, [sp, #24]
+ 652 00a6 9EED002B 		vldr.64	d2, [lr]
+ 653 00aa 8DED0C3B 		vstr.64	d3, [sp, #48]
+ 654 00ae 9AED003B 		vldr.64	d3, [r10]
+ 655 00b2 8DED080B 		vstr.64	d0, [sp, #32]
+ 656 00b6 93ED00BB 		vldr.64	d11, [r3]
+ 657 00ba 8DED003B 		vstr.64	d3, [sp]
+ 658 00be 94ED003B 		vldr.64	d3, [r4]
+ 659 00c2 9BED008B 		vldr.64	d8, [fp]
+ 660 00c6 8DED1EAB 		vstr.64	d10, [sp, #120]
+ 661 00ca 8DED123B 		vstr.64	d3, [sp, #72]
+ 662 00ce 84EE051B 		vdiv.f64	d1, d4, d5
+ 663 00d2 82EE054B 		vdiv.f64	d4, d2, d5
+ 664 00d6 9CED002B 		vldr.64	d2, [ip]
+ 665 00da 82EE059B 		vdiv.f64	d9, d2, d5
+ 666 00de 97ED002B 		vldr.64	d2, [r7]
+ 667 00e2 82EE052B 		vdiv.f64	d2, d2, d5
+ 668 00e6 8DED201B 		vstr.64	d1, [sp, #128]
+ 669 00ea 84EE054B 		vdiv.f64	d4, d4, d5
+ 670 00ee 2DEE065B 		vmul.f64	d5, d13, d6
+ 671 00f2 2CEE066B 		vmul.f64	d6, d12, d6
+ 672 00f6 85EE07EB 		vdiv.f64	d14, d5, d7
+ 673 00fa 86EE070B 		vdiv.f64	d0, d6, d7
+ 674 00fe 90ED006B 		vldr.64	d6, [r0]
+ 675 0102 8DED229B 		vstr.64	d9, [sp, #136]
+ 676 0106 8DED042B 		vstr.64	d2, [sp, #16]
+ 677 010a 8DED166B 		vstr.64	d6, [sp, #88]
+ 678 010e B0EE462B 		vmov.f64	d2, d6
+ 679 0112 8DED024B 		vstr.64	d4, [sp, #8]
+ 680 0116 91ED004B 		vldr.64	d4, [r1]
+ 681 011a 95ED006B 		vldr.64	d6, [r5]
+ 682 011e 9DED105B 		vldr.64	d5, [sp, #64]
+ARM GAS  /tmp/ccXrjZKA.s 			page 14
+
+
+ 683 0122 8DED0A6B 		vstr.64	d6, [sp, #40]
+ 684 0126 3BEE0B6B 		vadd.f64	d6, d11, d11
+ 685 012a B0EE463B 		vmov.f64	d3, d6
+ 686 012e 8DED186B 		vstr.64	d6, [sp, #96]
+ 687 0132 96ED006B 		vldr.64	d6, [r6]
+ 688 0136 25EE066B 		vmul.f64	d6, d5, d6
+ 689 013a 32EE435B 		vsub.f64	d5, d2, d3
+ 690 013e 9DED123B 		vldr.64	d3, [sp, #72]
+ 691 0142 25EE015B 		vmul.f64	d5, d5, d1
+ 692 0146 31EE091B 		vadd.f64	d1, d1, d9
+ 693 014a 9DED042B 		vldr.64	d2, [sp, #16]
+ 694 014e 1AEE035B 		vnmls.f64	d5, d10, d3
+ 695 0152 22EE442B 		vnmul.f64	d2, d2, d4
+ 696 0156 B1EE4EAB 		vneg.f64	d10, d14
+ 697 015a 34EE043B 		vadd.f64	d3, d4, d4
+ 698 015e 8DED122B 		vstr.64	d2, [sp, #72]
+ 699 0162 28EE4B2B 		vnmul.f64	d2, d8, d11
+ 700 0166 09EE0B5B 		vmla.f64	d5, d9, d11
+ 701 016a B4EECABB 		vcmpe.f64	d11, d10
+ 702 016e 8DED1C2B 		vstr.64	d2, [sp, #112]
+ 703 0172 9DED0A2B 		vldr.64	d2, [sp, #40]
+ 704 0176 9DED029B 		vldr.64	d9, [sp, #8]
+ 705 017a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 706 017e 32EE432B 		vsub.f64	d2, d2, d3
+ 707 0182 08EE045B 		vmla.f64	d5, d8, d4
+ 708 0186 22EE092B 		vmul.f64	d2, d2, d9
+ 709 018a 8DED1A3B 		vstr.64	d3, [sp, #104]
+ 710 018e 8DED14AB 		vstr.64	d10, [sp, #80]
+ 711 0192 C0F2E581 		blt	.L74
+ 712 0196 9DED003B 		vldr.64	d3, [sp]
+ 713 019a 23EE0B9B 		vmul.f64	d9, d3, d11
+ 714 019e B7EE003B 		vmov.f64	d3, #1.0e+0
+ 715 01a2 09EE0B3B 		vmla.f64	d3, d9, d11
+ 716 01a6 9DED069B 		vldr.64	d9, [sp, #24]
+ 717 01aa 03EE091B 		vmla.f64	d1, d3, d9
+ 718 01ae 31EE081B 		vadd.f64	d1, d1, d8
+ 719 01b2 85EE01AB 		vdiv.f64	d10, d5, d1
+ 720              	.L38:
+ 721 01b6 36EE426B 		vsub.f64	d6, d6, d2
+ 722 01ba 9DED125B 		vldr.64	d5, [sp, #72]
+ 723 01be 9DED023B 		vldr.64	d3, [sp, #8]
+ 724 01c2 9DED042B 		vldr.64	d2, [sp, #16]
+ 725 01c6 36EE456B 		vsub.f64	d6, d6, d5
+ 726 01ca 28EE4B5B 		vnmul.f64	d5, d8, d11
+ 727 01ce 33EE023B 		vadd.f64	d3, d3, d2
+ 728 01d2 36EE456B 		vsub.f64	d6, d6, d5
+ 729 01d6 B1EE405B 		vneg.f64	d5, d0
+ 730 01da B4EEC54B 		vcmpe.f64	d4, d5
+ 731 01de 8DED1C5B 		vstr.64	d5, [sp, #112]
+ 732 01e2 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 733 01e6 C0F2A481 		blt	.L75
+ 734 01ea 9DED005B 		vldr.64	d5, [sp]
+ 735 01ee 25EE042B 		vmul.f64	d2, d5, d4
+ 736 01f2 B7EE005B 		vmov.f64	d5, #1.0e+0
+ 737 01f6 02EE045B 		vmla.f64	d5, d2, d4
+ 738 01fa 9DED082B 		vldr.64	d2, [sp, #32]
+ 739 01fe 05EE023B 		vmla.f64	d3, d5, d2
+ARM GAS  /tmp/ccXrjZKA.s 			page 15
+
+
+ 740 0202 33EE083B 		vadd.f64	d3, d3, d8
+ 741 0206 86EE035B 		vdiv.f64	d5, d6, d3
+ 742              	.L41:
+ 743 020a 07EE0ADB 		vmla.f64	d13, d7, d10
+ 744 020e B0EE4C6B 		vmov.f64	d6, d12
+ 745 0212 07EE056B 		vmla.f64	d6, d7, d5
+ 746 0216 B5EEC0DB 		vcmpe.f64	d13, #0
+ 747 021a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 748 021e 40F2DC81 		bls	.L59
+ 749 0222 2DEE0D9B 		vmul.f64	d9, d13, d13
+ 750 0226 9FED643B 		vldr.64	d3, .L85+8
+ 751 022a 2DEE09EB 		vmul.f64	d14, d13, d9
+ 752 022e 83EE097B 		vdiv.f64	d7, d3, d9
+ 753 0232 B7EE003B 		vmov.f64	d3, #1.0e+0
+ 754 0236 83EE092B 		vdiv.f64	d2, d3, d9
+ 755              	.L42:
+ 756 023a B5EEC06B 		vcmpe.f64	d6, #0
+ 757 023e F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 758 0242 40F2B981 		bls	.L60
+ 759 0246 26EE06CB 		vmul.f64	d12, d6, d6
+ 760 024a B7EE001B 		vmov.f64	d1, #1.0e+0
+ 761 024e 9FED5C0B 		vldr.64	d0, .L85+16
+ 762 0252 81EE0C3B 		vdiv.f64	d3, d1, d12
+ 763 0256 80EE0C1B 		vdiv.f64	d1, d0, d12
+ 764 025a 26EE0C0B 		vmul.f64	d0, d6, d12
+ 765 025e 8DED120B 		vstr.64	d0, [sp, #72]
+ 766 0262 36EE060B 		vadd.f64	d0, d6, d6
+ 767 0266 B0EE40DB 		vmov.f64	d13, d0
+ 768              	.L43:
+ 769 026a 654A     		ldr	r2, .L85+80
+ 770 026c 33EE423B 		vsub.f64	d3, d3, d2
+ 771 0270 92ED002B 		vldr.64	d2, [r2]
+ 772 0274 86EE020B 		vdiv.f64	d0, d6, d2
+ 773 0278 B0EE4D6B 		vmov.f64	d6, d13
+ 774 027c 86EE02DB 		vdiv.f64	d13, d6, d2
+ 775 0280 9FED4F2B 		vldr.64	d2, .L85+16
+ 776 0284 9DED0C6B 		vldr.64	d6, [sp, #48]
+ 777 0288 03EE027B 		vmla.f64	d7, d3, d2
+ 778 028c 86EE0E3B 		vdiv.f64	d3, d6, d14
+ 779 0290 9DED122B 		vldr.64	d2, [sp, #72]
+ 780 0294 9DED0E6B 		vldr.64	d6, [sp, #56]
+ 781 0298 86EE022B 		vdiv.f64	d2, d6, d2
+ 782 029c B1EE006B 		vmov.f64	d6, #4.0e+0
+ 783 02a0 33EE023B 		vadd.f64	d3, d3, d2
+ 784 02a4 B7EE002B 		vmov.f64	d2, #1.0e+0
+ 785 02a8 32EE402B 		vsub.f64	d2, d2, d0
+ 786 02ac 22EE0DDB 		vmul.f64	d13, d2, d13
+ 787 02b0 0DEE017B 		vmla.f64	d7, d13, d1
+ 788 02b4 27EE066B 		vmul.f64	d6, d7, d6
+ 789 02b8 37EE072B 		vadd.f64	d2, d7, d7
+ 790 02bc B1EE437B 		vneg.f64	d7, d3
+ 791 02c0 2FEE466B 		vnmul.f64	d6, d15, d6
+ 792 02c4 13EE036B 		vnmls.f64	d6, d3, d3
+ 793 02c8 B5EEC06B 		vcmpe.f64	d6, #0
+ 794 02cc F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 795 02d0 80F26781 		bge	.L82
+ 796 02d4 87EE026B 		vdiv.f64	d6, d7, d2
+ARM GAS  /tmp/ccXrjZKA.s 			page 16
+
+
+ 797 02d8 B0EE467B 		vmov.f64	d7, d6
+ 798              	.L46:
+ 799 02dc 494A     		ldr	r2, .L85+84
+ 800 02de 92ED003B 		vldr.64	d3, [r2]
+ 801 02e2 37EE432B 		vsub.f64	d2, d7, d3
+ 802 02e6 36EE433B 		vsub.f64	d3, d6, d3
+ 803 02ea B7EEC22B 		vcvt.f32.f64	s4, d2
+ 804 02ee B7EEC33B 		vcvt.f32.f64	s6, d3
+ 805 02f2 B0EEC22A 		vabs.f32	s4, s4
+ 806 02f6 B0EEC33A 		vabs.f32	s6, s6
+ 807 02fa B4EE423A 		vcmp.f32	s6, s4
+ 808 02fe F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 809 0302 48BF     		it	mi
+ 810 0304 B0EE467B 		vmovmi.f64	d7, d6
+ 811 0308 9DED146B 		vldr.64	d6, [sp, #80]
+ 812 030c B4EECA6B 		vcmpe.f64	d6, d10
+ 813 0310 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 814 0314 00F2FF80 		bhi	.L77
+ 815 0318 9DED186B 		vldr.64	d6, [sp, #96]
+ 816 031c 9DED221B 		vldr.64	d1, [sp, #136]
+ 817 0320 3AEE462B 		vsub.f64	d2, d10, d6
+ 818 0324 9DED166B 		vldr.64	d6, [sp, #88]
+ 819 0328 32EE062B 		vadd.f64	d2, d2, d6
+ 820 032c 9DED066B 		vldr.64	d6, [sp, #24]
+ 821 0330 26EE0A3B 		vmul.f64	d3, d6, d10
+ 822 0334 9DED0C6B 		vldr.64	d6, [sp, #48]
+ 823 0338 27EE066B 		vmul.f64	d6, d7, d6
+ 824 033c 86EE0E6B 		vdiv.f64	d6, d6, d14
+ 825 0340 B7EE00EB 		vmov.f64	d14, #1.0e+0
+ 826 0344 8DED066B 		vstr.64	d6, [sp, #24]
+ 827 0348 3AEE4B6B 		vsub.f64	d6, d10, d11
+ 828 034c 26EE016B 		vmul.f64	d6, d6, d1
+ 829 0350 9DED201B 		vldr.64	d1, [sp, #128]
+ 830 0354 02EE016B 		vmla.f64	d6, d2, d1
+ 831 0358 B0EE4E1B 		vmov.f64	d1, d14
+ 832 035c 9DED002B 		vldr.64	d2, [sp]
+ 833 0360 22EE0A0B 		vmul.f64	d0, d2, d10
+ 834 0364 3AEE452B 		vsub.f64	d2, d10, d5
+ 835 0368 00EE0A1B 		vmla.f64	d1, d0, d10
+ 836 036c 22EE088B 		vmul.f64	d8, d2, d8
+ 837 0370 9DED060B 		vldr.64	d0, [sp, #24]
+ 838 0374 01EE036B 		vmla.f64	d6, d1, d3
+ 839 0378 9FED0F1B 		vldr.64	d1, .L85+8
+ 840 037c 27EE011B 		vmul.f64	d1, d7, d1
+ 841 0380 21EE071B 		vmul.f64	d1, d1, d7
+ 842 0384 81EE093B 		vdiv.f64	d3, d1, d9
+ 843 0388 36EE081B 		vadd.f64	d1, d6, d8
+ 844 038c 9DED1E9B 		vldr.64	d9, [sp, #120]
+ 845 0390 81EE096B 		vdiv.f64	d6, d1, d9
+ 846 0394 B6EE001B 		vmov.f64	d1, #5.0e-1
+ 847 0398 3FEE433B 		vsub.f64	d3, d15, d3
+ 848 039c 00EE413B 		vmls.f64	d3, d0, d1
+ 849 03a0 26EE016B 		vmul.f64	d6, d6, d1
+ 850 03a4 03EE016B 		vmla.f64	d6, d3, d1
+ 851 03a8 9DED1C3B 		vldr.64	d3, [sp, #112]
+ 852 03ac 38E0     		b	.L86
+ 853              	.L87:
+ARM GAS  /tmp/ccXrjZKA.s 			page 17
+
+
+ 854 03ae 00BF     		.align	3
+ 855              	.L85:
+ 856 03b0 0088BB7A 		.word	2059110400
+ 857 03b4 15192D3F 		.word	1059920149
+ 858 03b8 3F1361C3 		.word	-1017048257
+ 859 03bc D32BE93F 		.word	1072245715
+ 860 03c0 3D0AD7A3 		.word	-1546188227
+ 861 03c4 703DE23F 		.word	1071791472
+ 862 03c8 00000000 		.word	Fs
+ 863 03cc 00000000 		.word	lg
+ 864 03d0 00000000 		.word	m1
+ 865 03d4 00000000 		.word	Ag01
+ 866 03d8 00000000 		.word	d1
+ 867 03dc 00000000 		.word	d2
+ 868 03e0 00000000 		.word	r2
+ 869 03e4 00000000 		.word	pm1Prev
+ 870 03e8 00000000 		.word	x2PrevPrev
+ 871 03ec 00000000 		.word	pm2Prev
+ 872 03f0 00000000 		.word	Ag02
+ 873 03f4 00000000 		.word	x1PrevPrev
+ 874 03f8 00000000 		.word	x1Prev
+ 875 03fc 00000000 		.word	x2Prev
+ 876 0400 00000000 		.word	S
+ 877 0404 00000000 		.word	uPrev
+ 878 0408 00000000 		.word	r1
+ 879 040c 00000000 		.word	k1
+ 880 0410 00000000 		.word	m2
+ 881 0414 00000000 		.word	aida
+ 882 0418 00000000 		.word	k2
+ 883 041c 00000000 		.word	k12
+ 884              	.L86:
+ 885 0420 B4EEC53B 		vcmpe.f64	d3, d5
+ 886 0424 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 887 0428 00F2B680 		bhi	.L78
+ 888 042c B4EE46FB 		vcmp.f64	d15, d6
+ 889 0430 9DED002B 		vldr.64	d2, [sp]
+ 890 0434 9DED120B 		vldr.64	d0, [sp, #72]
+ 891 0438 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 892 043c 22EE053B 		vmul.f64	d3, d2, d5
+ 893 0440 48BF     		it	mi
+ 894 0442 B0EE4F6B 		vmovmi.f64	d6, d15
+ 895 0446 03EE05EB 		vmla.f64	d14, d3, d5
+ 896 044a 9DED1A3B 		vldr.64	d3, [sp, #104]
+ 897 044e 35EE432B 		vsub.f64	d2, d5, d3
+ 898 0452 9DED0A3B 		vldr.64	d3, [sp, #40]
+ 899 0456 32EE039B 		vadd.f64	d9, d2, d3
+ 900 045a 9DED083B 		vldr.64	d3, [sp, #32]
+ 901 045e 9DED042B 		vldr.64	d2, [sp, #16]
+ 902 0462 23EE053B 		vmul.f64	d3, d3, d5
+ 903 0466 8DED003B 		vstr.64	d3, [sp]
+ 904 046a 9DED0E3B 		vldr.64	d3, [sp, #56]
+ 905 046e 27EE033B 		vmul.f64	d3, d7, d3
+ 906 0472 83EE000B 		vdiv.f64	d0, d3, d0
+ 907 0476 35EE443B 		vsub.f64	d3, d5, d4
+ 908 047a 23EE023B 		vmul.f64	d3, d3, d2
+ 909 047e 9DED022B 		vldr.64	d2, [sp, #8]
+ 910 0482 09EE023B 		vmla.f64	d3, d9, d2
+ARM GAS  /tmp/ccXrjZKA.s 			page 18
+
+
+ 911 0486 9DED002B 		vldr.64	d2, [sp]
+ 912 048a 0EEE023B 		vmla.f64	d3, d14, d2
+ 913 048e 9DED102B 		vldr.64	d2, [sp, #64]
+ 914 0492 20EE010B 		vmul.f64	d0, d0, d1
+ 915 0496 33EE483B 		vsub.f64	d3, d3, d8
+ 916 049a 83EE022B 		vdiv.f64	d2, d3, d2
+ 917 049e 22EE013B 		vmul.f64	d3, d2, d1
+ 918 04a2 9FED572B 		vldr.64	d2, .L88
+ 919 04a6 27EE022B 		vmul.f64	d2, d7, d2
+ 920 04aa 22EE072B 		vmul.f64	d2, d2, d7
+ 921 04ae 82EE0C8B 		vdiv.f64	d8, d2, d12
+ 922 04b2 08EE0D0B 		vmla.f64	d0, d8, d13
+ 923 04b6 00EE013B 		vmla.f64	d3, d0, d1
+ 924 04ba B4EE43FB 		vcmp.f64	d15, d3
+ 925 04be F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 926 04c2 48BF     		it	mi
+ 927 04c4 B0EE4F3B 		vmovmi.f64	d3, d15
+ 928              	.L51:
+ 929 04c8 B5EEC06B 		vcmpe.f64	d6, #0
+ 930 04cc F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 931 04d0 00F18F80 		bmi	.L83
+ 932              	.L54:
+ 933 04d4 B5EEC03B 		vcmpe.f64	d3, #0
+ 934 04d8 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 935 04dc 00F18680 		bmi	.L84
+ 936              	.L56:
+ 937 04e0 84ED006B 		vstr.64	d6, [r4]
+ 938 04e4 584C     		ldr	r4, .L88+72
+ 939 04e6 94ED000B 		vldr.64	d0, [r4]
+ 940 04ea 80ED00BB 		vstr.64	d11, [r0]
+ 941 04ee 5748     		ldr	r0, .L88+76
+ 942 04f0 27EE000B 		vmul.f64	d0, d7, d0
+ 943 04f4 86ED003B 		vstr.64	d3, [r6]
+ 944 04f8 80ED00FB 		vstr.64	d15, [r0]
+ 945 04fc 83ED00AB 		vstr.64	d10, [r3]
+ 946 0500 85ED004B 		vstr.64	d4, [r5]
+ 947 0504 81ED005B 		vstr.64	d5, [r1]
+ 948 0508 82ED007B 		vstr.64	d7, [r2]
+ 949 050c 25B0     		add	sp, sp, #148
+ 950              		@ sp needed
+ 951 050e BDEC108B 		vldm	sp!, {d8-d15}
+ 952 0512 BDE8F08F 		pop	{r4, r5, r6, r7, r8, r9, r10, fp, pc}
+ 953              	.L77:
+ 954 0516 B5EEC0FB 		vcmpe.f64	d15, #0
+ 955 051a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 956 051e 36D5     		bpl	.L80
+ 957 0520 B7EECF6B 		vcvt.f32.f64	s12, d15
+ 958 0524 9FED383B 		vldr.64	d3, .L88+8
+ 959 0528 B0EEC66A 		vabs.f32	s12, s12
+ 960 052c B7EEC66A 		vcvt.f64.f32	d6, s12
+ 961 0530 D6E7     		b	.L56
+ 962              	.L75:
+ 963 0532 34EE002B 		vadd.f64	d2, d4, d0
+ 964 0536 B7EE005B 		vmov.f64	d5, #1.0e+0
+ 965 053a 9DED001B 		vldr.64	d1, [sp]
+ 966 053e 21EE021B 		vmul.f64	d1, d1, d2
+ 967 0542 01EE025B 		vmla.f64	d5, d1, d2
+ARM GAS  /tmp/ccXrjZKA.s 			page 19
+
+
+ 968 0546 9DED082B 		vldr.64	d2, [sp, #32]
+ 969 054a 25EE025B 		vmul.f64	d5, d5, d2
+ 970 054e 00EE456B 		vmls.f64	d6, d0, d5
+ 971 0552 35EE033B 		vadd.f64	d3, d5, d3
+ 972 0556 33EE083B 		vadd.f64	d3, d3, d8
+ 973 055a 86EE035B 		vdiv.f64	d5, d6, d3
+ 974 055e 54E6     		b	.L41
+ 975              	.L74:
+ 976 0560 3BEE0E9B 		vadd.f64	d9, d11, d14
+ 977 0564 9DED003B 		vldr.64	d3, [sp]
+ 978 0568 23EE09AB 		vmul.f64	d10, d3, d9
+ 979 056c B7EE003B 		vmov.f64	d3, #1.0e+0
+ 980 0570 0AEE093B 		vmla.f64	d3, d10, d9
+ 981 0574 9DED069B 		vldr.64	d9, [sp, #24]
+ 982 0578 23EE093B 		vmul.f64	d3, d3, d9
+ 983 057c 0EEE435B 		vmls.f64	d5, d14, d3
+ 984 0580 33EE013B 		vadd.f64	d3, d3, d1
+ 985 0584 33EE083B 		vadd.f64	d3, d3, d8
+ 986 0588 85EE03AB 		vdiv.f64	d10, d5, d3
+ 987 058c 13E6     		b	.L38
+ 988              	.L80:
+ 989 058e 9FED1E3B 		vldr.64	d3, .L88+8
+ 990 0592 B0EE4F6B 		vmov.f64	d6, d15
+ 991 0596 A3E7     		b	.L56
+ 992              	.L78:
+ 993 0598 B0EE4F6B 		vmov.f64	d6, d15
+ 994 059c B0EE4F3B 		vmov.f64	d3, d15
+ 995 05a0 92E7     		b	.L51
+ 996              	.L82:
+ 997 05a2 B1EEC61B 		vsqrt.f64	d1, d6
+ 998 05a6 31EE433B 		vsub.f64	d3, d1, d3
+ 999 05aa 37EE411B 		vsub.f64	d1, d7, d1
+ 1000 05ae 83EE026B 		vdiv.f64	d6, d3, d2
+ 1001 05b2 81EE027B 		vdiv.f64	d7, d1, d2
+ 1002 05b6 91E6     		b	.L46
+ 1003              	.L60:
+ 1004 05b8 9FED156B 		vldr.64	d6, .L88+16
+ 1005 05bc 9FED161B 		vldr.64	d1, .L88+24
+ 1006 05c0 9FED173B 		vldr.64	d3, .L88+32
+ 1007 05c4 8DED126B 		vstr.64	d6, [sp, #72]
+ 1008 05c8 9FED176B 		vldr.64	d6, .L88+40
+ 1009 05cc 9FED18CB 		vldr.64	d12, .L88+48
+ 1010 05d0 B0EE46DB 		vmov.f64	d13, d6
+ 1011 05d4 9FED186B 		vldr.64	d6, .L88+56
+ 1012 05d8 47E6     		b	.L43
+ 1013              	.L59:
+ 1014 05da 9FED0DEB 		vldr.64	d14, .L88+16
+ 1015 05de 9FED102B 		vldr.64	d2, .L88+32
+ 1016 05e2 9FED177B 		vldr.64	d7, .L88+64
+ 1017 05e6 9FED129B 		vldr.64	d9, .L88+48
+ 1018 05ea 26E6     		b	.L42
+ 1019              	.L84:
+ 1020 05ec 9FED063B 		vldr.64	d3, .L88+8
+ 1021 05f0 76E7     		b	.L56
+ 1022              	.L83:
+ 1023 05f2 B7EEC66B 		vcvt.f32.f64	s12, d6
+ 1024 05f6 B0EEC66A 		vabs.f32	s12, s12
+ARM GAS  /tmp/ccXrjZKA.s 			page 20
+
+
+ 1025 05fa B7EEC66A 		vcvt.f64.f32	d6, s12
+ 1026 05fe 69E7     		b	.L54
+ 1027              	.L89:
+ 1028              		.align	3
+ 1029              	.L88:
+ 1030 0600 3D0AD7A3 		.word	-1546188227
+ 1031 0604 703DE23F 		.word	1071791472
+ 1032 0608 00000000 		.word	0
+ 1033 060c 00000000 		.word	0
+ 1034 0610 C7E768E4 		.word	-462886969
+ 1035 0614 8CA4BD2F 		.word	800957580
+ 1036 0618 3123C94F 		.word	1338581809
+ 1037 061c 3278AE4A 		.word	1252948018
+ 1038 0620 307D9514 		.word	345341232
+ 1039 0624 47BABA4A 		.word	1253751367
+ 1040 0628 14CBAEC4 		.word	-995177708
+ 1041 062c 40C2983A 		.word	983089728
+ 1042 0630 700FDA58 		.word	1490685808
+ 1043 0634 FC272335 		.word	891496444
+ 1044 0638 14CBAEC4 		.word	-995177708
+ 1045 063c 40C2883A 		.word	982041152
+ 1046 0640 48580DB7 		.word	-1223862200
+ 1047 0644 2206B54A 		.word	1253377570
+ 1048 0648 00000000 		.word	gain
+ 1049 064c 00000000 		.word	ps
+ 1050              		.size	computeSample, .-computeSample
+ 1051              		.section	.text.balloon_get_sample,"ax",%progbits
+ 1052              		.align	1
+ 1053              		.p2align 2,,3
+ 1054              		.global	balloon_get_sample
+ 1055              		.syntax unified
+ 1056              		.thumb
+ 1057              		.thumb_func
+ 1058              		.type	balloon_get_sample, %function
+ 1059              	balloon_get_sample:
+ 1060              		@ args = 0, pretend = 0, frame = 0
+ 1061              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1062 0000 134A     		ldr	r2, .L94+16
+ 1063 0002 1449     		ldr	r1, .L94+20
+ 1064 0004 08B5     		push	{r3, lr}
+ 1065 0006 1388     		ldrh	r3, [r2]
+ 1066 0008 91ED007A 		vldr.32	s14, [r1]
+ 1067 000c 0133     		adds	r3, r3, #1
+ 1068 000e B7EEC77A 		vcvt.f64.f32	d7, s14
+ 1069 0012 1BB2     		sxth	r3, r3
+ 1070 0014 9FED0A0B 		vldr.64	d0, .L94
+ 1071 0018 B3F5FA4F 		cmp	r3, #32000
+ 1072 001c C8BF     		it	gt
+ 1073 001e 0023     		movgt	r3, #0
+ 1074 0020 27EE000B 		vmul.f64	d0, d7, d0
+ 1075 0024 1380     		strh	r3, [r2]	@ movhi
+ 1076 0026 FFF7FEFF 		bl	computeSample
+ 1077 002a 9FED077B 		vldr.64	d7, .L94+8
+ 1078 002e 20EE070B 		vmul.f64	d0, d0, d7
+ 1079 0032 BDEEC00B 		vcvt.s32.f64	s0, d0
+ 1080 0036 10EE103A 		vmov	r3, s0	@ int
+ 1081 003a 18B2     		sxth	r0, r3
+ARM GAS  /tmp/ccXrjZKA.s 			page 21
+
+
+ 1082 003c 08BD     		pop	{r3, pc}
+ 1083              	.L95:
+ 1084 003e 00BF     		.align	3
+ 1085              	.L94:
+ 1086 0040 00000000 		.word	0
+ 1087 0044 00408F40 		.word	1083129856
+ 1088 0048 00000000 		.word	0
+ 1089 004c 0000E040 		.word	1088421888
+ 1090 0050 00000000 		.word	i.1
+ 1091 0054 00000000 		.word	_selz
+ 1092              		.size	balloon_get_sample, .-balloon_get_sample
+ 1093              		.section	.text.clearOld,"ax",%progbits
+ 1094              		.align	1
+ 1095              		.p2align 2,,3
+ 1096              		.global	clearOld
+ 1097              		.syntax unified
+ 1098              		.thumb
+ 1099              		.thumb_func
+ 1100              		.type	clearOld, %function
+ 1101              	clearOld:
+ 1102              		@ args = 0, pretend = 0, frame = 0
+ 1103              		@ frame_needed = 0, uses_anonymous_args = 0
+ 1104              		@ link register save eliminated.
+ 1105 0000 0022     		movs	r2, #0
+ 1106 0002 0023     		movs	r3, #0
+ 1107 0004 0D49     		ldr	r1, .L98
+ 1108 0006 0E48     		ldr	r0, .L98+4
+ 1109 0008 10B4     		push	{r4}
+ 1110 000a C1E90023 		strd	r2, [r1]
+ 1111 000e 0D49     		ldr	r1, .L98+8
+ 1112 0010 0D4C     		ldr	r4, .L98+12
+ 1113 0012 C1E90023 		strd	r2, [r1]
+ 1114 0016 0D49     		ldr	r1, .L98+16
+ 1115 0018 C4E90023 		strd	r2, [r4]
+ 1116 001c C0E90023 		strd	r2, [r0]
+ 1117 0020 0B4C     		ldr	r4, .L98+20
+ 1118 0022 0C48     		ldr	r0, .L98+24
+ 1119 0024 C1E90023 		strd	r2, [r1]
+ 1120 0028 0B49     		ldr	r1, .L98+28
+ 1121 002a C4E90023 		strd	r2, [r4]
+ 1122 002e C0E90023 		strd	r2, [r0]
+ 1123 0032 5DF8044B 		ldr	r4, [sp], #4
+ 1124 0036 C1E90023 		strd	r2, [r1]
+ 1125 003a 7047     		bx	lr
+ 1126              	.L99:
+ 1127              		.align	2
+ 1128              	.L98:
+ 1129 003c 00000000 		.word	x1PrevPrev
+ 1130 0040 00000000 		.word	x2Prev
+ 1131 0044 00000000 		.word	x2PrevPrev
+ 1132 0048 00000000 		.word	x1Prev
+ 1133 004c 00000000 		.word	pm2Prev
+ 1134 0050 00000000 		.word	pm1Prev
+ 1135 0054 00000000 		.word	uPrev
+ 1136 0058 00000000 		.word	ps
+ 1137              		.size	clearOld, .-clearOld
+ 1138              		.section	.bss.i.1,"aw",%nobits
+ARM GAS  /tmp/ccXrjZKA.s 			page 22
+
+
+ 1139              		.align	1
+ 1140              		.type	i.1, %object
+ 1141              		.size	i.1, 2
+ 1142              	i.1:
+ 1143 0000 0000     		.space	2
+ 1144              		.section	.bss.i.2,"aw",%nobits
+ 1145              		.align	1
+ 1146              		.type	i.2, %object
+ 1147              		.size	i.2, 2
+ 1148              	i.2:
+ 1149 0000 0000     		.space	2
+ 1150              		.global	Fs
+ 1151              		.section	.bss.Fs,"aw",%nobits
+ 1152              		.align	3
+ 1153              		.type	Fs, %object
+ 1154              		.size	Fs, 8
+ 1155              	Fs:
+ 1156 0000 00000000 		.space	8
+ 1156      00000000 
+ 1157              		.global	uPrev
+ 1158              		.section	.bss.uPrev,"aw",%nobits
+ 1159              		.align	3
+ 1160              		.type	uPrev, %object
+ 1161              		.size	uPrev, 8
+ 1162              	uPrev:
+ 1163 0000 00000000 		.space	8
+ 1163      00000000 
+ 1164              		.global	gain
+ 1165              		.section	.bss.gain,"aw",%nobits
+ 1166              		.align	3
+ 1167              		.type	gain, %object
+ 1168              		.size	gain, 8
+ 1169              	gain:
+ 1170 0000 00000000 		.space	8
+ 1170      00000000 
+ 1171              		.global	x2PrevPrev
+ 1172              		.section	.bss.x2PrevPrev,"aw",%nobits
+ 1173              		.align	3
+ 1174              		.type	x2PrevPrev, %object
+ 1175              		.size	x2PrevPrev, 8
+ 1176              	x2PrevPrev:
+ 1177 0000 00000000 		.space	8
+ 1177      00000000 
+ 1178              		.global	x2Prev
+ 1179              		.section	.bss.x2Prev,"aw",%nobits
+ 1180              		.align	3
+ 1181              		.type	x2Prev, %object
+ 1182              		.size	x2Prev, 8
+ 1183              	x2Prev:
+ 1184 0000 00000000 		.space	8
+ 1184      00000000 
+ 1185              		.global	x1PrevPrev
+ 1186              		.section	.bss.x1PrevPrev,"aw",%nobits
+ 1187              		.align	3
+ 1188              		.type	x1PrevPrev, %object
+ 1189              		.size	x1PrevPrev, 8
+ 1190              	x1PrevPrev:
+ARM GAS  /tmp/ccXrjZKA.s 			page 23
+
+
+ 1191 0000 00000000 		.space	8
+ 1191      00000000 
+ 1192              		.global	x1Prev
+ 1193              		.section	.bss.x1Prev,"aw",%nobits
+ 1194              		.align	3
+ 1195              		.type	x1Prev, %object
+ 1196              		.size	x1Prev, 8
+ 1197              	x1Prev:
+ 1198 0000 00000000 		.space	8
+ 1198      00000000 
+ 1199              		.global	pm2Prev
+ 1200              		.section	.bss.pm2Prev,"aw",%nobits
+ 1201              		.align	3
+ 1202              		.type	pm2Prev, %object
+ 1203              		.size	pm2Prev, 8
+ 1204              	pm2Prev:
+ 1205 0000 00000000 		.space	8
+ 1205      00000000 
+ 1206              		.global	pm1Prev
+ 1207              		.section	.bss.pm1Prev,"aw",%nobits
+ 1208              		.align	3
+ 1209              		.type	pm1Prev, %object
+ 1210              		.size	pm1Prev, 8
+ 1211              	pm1Prev:
+ 1212 0000 00000000 		.space	8
+ 1212      00000000 
+ 1213              		.global	Ag02
+ 1214              		.section	.bss.Ag02,"aw",%nobits
+ 1215              		.align	3
+ 1216              		.type	Ag02, %object
+ 1217              		.size	Ag02, 8
+ 1218              	Ag02:
+ 1219 0000 00000000 		.space	8
+ 1219      00000000 
+ 1220              		.global	Ag01
+ 1221              		.section	.bss.Ag01,"aw",%nobits
+ 1222              		.align	3
+ 1223              		.type	Ag01, %object
+ 1224              		.size	Ag01, 8
+ 1225              	Ag01:
+ 1226 0000 00000000 		.space	8
+ 1226      00000000 
+ 1227              		.global	S
+ 1228              		.section	.bss.S,"aw",%nobits
+ 1229              		.align	3
+ 1230              		.type	S, %object
+ 1231              		.size	S, 8
+ 1232              	S:
+ 1233 0000 00000000 		.space	8
+ 1233      00000000 
+ 1234              		.global	aida
+ 1235              		.section	.bss.aida,"aw",%nobits
+ 1236              		.align	3
+ 1237              		.type	aida, %object
+ 1238              		.size	aida, 8
+ 1239              	aida:
+ 1240 0000 00000000 		.space	8
+ARM GAS  /tmp/ccXrjZKA.s 			page 24
+
+
+ 1240      00000000 
+ 1241              		.global	lg
+ 1242              		.section	.bss.lg,"aw",%nobits
+ 1243              		.align	3
+ 1244              		.type	lg, %object
+ 1245              		.size	lg, 8
+ 1246              	lg:
+ 1247 0000 00000000 		.space	8
+ 1247      00000000 
+ 1248              		.global	d2
+ 1249              		.section	.bss.d2,"aw",%nobits
+ 1250              		.align	3
+ 1251              		.type	d2, %object
+ 1252              		.size	d2, 8
+ 1253              	d2:
+ 1254 0000 00000000 		.space	8
+ 1254      00000000 
+ 1255              		.global	d1
+ 1256              		.section	.bss.d1,"aw",%nobits
+ 1257              		.align	3
+ 1258              		.type	d1, %object
+ 1259              		.size	d1, 8
+ 1260              	d1:
+ 1261 0000 00000000 		.space	8
+ 1261      00000000 
+ 1262              		.global	k12
+ 1263              		.section	.bss.k12,"aw",%nobits
+ 1264              		.align	3
+ 1265              		.type	k12, %object
+ 1266              		.size	k12, 8
+ 1267              	k12:
+ 1268 0000 00000000 		.space	8
+ 1268      00000000 
+ 1269              		.global	k2
+ 1270              		.section	.bss.k2,"aw",%nobits
+ 1271              		.align	3
+ 1272              		.type	k2, %object
+ 1273              		.size	k2, 8
+ 1274              	k2:
+ 1275 0000 00000000 		.space	8
+ 1275      00000000 
+ 1276              		.global	k1
+ 1277              		.section	.bss.k1,"aw",%nobits
+ 1278              		.align	3
+ 1279              		.type	k1, %object
+ 1280              		.size	k1, 8
+ 1281              	k1:
+ 1282 0000 00000000 		.space	8
+ 1282      00000000 
+ 1283              		.global	m2
+ 1284              		.section	.bss.m2,"aw",%nobits
+ 1285              		.align	3
+ 1286              		.type	m2, %object
+ 1287              		.size	m2, 8
+ 1288              	m2:
+ 1289 0000 00000000 		.space	8
+ 1289      00000000 
+ARM GAS  /tmp/ccXrjZKA.s 			page 25
+
+
+ 1290              		.global	m1
+ 1291              		.section	.bss.m1,"aw",%nobits
+ 1292              		.align	3
+ 1293              		.type	m1, %object
+ 1294              		.size	m1, 8
+ 1295              	m1:
+ 1296 0000 00000000 		.space	8
+ 1296      00000000 
+ 1297              		.global	r2
+ 1298              		.section	.bss.r2,"aw",%nobits
+ 1299              		.align	3
+ 1300              		.type	r2, %object
+ 1301              		.size	r2, 8
+ 1302              	r2:
+ 1303 0000 00000000 		.space	8
+ 1303      00000000 
+ 1304              		.global	r1
+ 1305              		.section	.bss.r1,"aw",%nobits
+ 1306              		.align	3
+ 1307              		.type	r1, %object
+ 1308              		.size	r1, 8
+ 1309              	r1:
+ 1310 0000 00000000 		.space	8
+ 1310      00000000 
+ 1311              		.global	ps
+ 1312              		.section	.bss.ps,"aw",%nobits
+ 1313              		.align	3
+ 1314              		.type	ps, %object
+ 1315              		.size	ps, 8
+ 1316              	ps:
+ 1317 0000 00000000 		.space	8
+ 1317      00000000 
+ 1318              		.global	syrinx
+ 1319              		.section	.bss.syrinx,"aw",%nobits
+ 1320              		.align	3
+ 1321              		.type	syrinx, %object
+ 1322              		.size	syrinx, 152
+ 1323              	syrinx:
+ 1324 0000 00000000 		.space	152
+ 1324      00000000 
+ 1324      00000000 
+ 1324      00000000 
+ 1324      00000000 
+ 1325              		.global	syrinxM
+ 1326              		.section	.bss.syrinxM,"aw",%nobits
+ 1327              		.align	3
+ 1328              		.type	syrinxM, %object
+ 1329              		.size	syrinxM, 72
+ 1330              	syrinxM:
+ 1331 0000 00000000 		.space	72
+ 1331      00000000 
+ 1331      00000000 
+ 1331      00000000 
+ 1331      00000000 
+ 1332              		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/ccXrjZKA.s 			page 26
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 raven.c
+     /tmp/ccXrjZKA.s:17     .text.init_mindlin:00000000 $t
+     /tmp/ccXrjZKA.s:24     .text.init_mindlin:00000000 init_mindlin
+     /tmp/ccXrjZKA.s:48     .text.init_mindlin:00000040 $d
+     /tmp/ccXrjZKA.s:58     .text.calc_xdobleprime_mindlin:00000000 $t
+     /tmp/ccXrjZKA.s:65     .text.calc_xdobleprime_mindlin:00000000 calc_xdobleprime_mindlin
+     /tmp/ccXrjZKA.s:84     .text.no_newsay:00000000 $t
+     /tmp/ccXrjZKA.s:91     .text.no_newsay:00000000 no_newsay
+     /tmp/ccXrjZKA.s:98     .text.integrate:00000000 $t
+     /tmp/ccXrjZKA.s:105    .text.integrate:00000000 integrate
+     /tmp/ccXrjZKA.s:116    .text.mindlin_oscillate:00000000 $t
+     /tmp/ccXrjZKA.s:123    .text.mindlin_oscillate:00000000 mindlin_oscillate
+     /tmp/ccXrjZKA.s:167    .text.mindlin_oscillate:00000090 $d
+     /tmp/ccXrjZKA.s:175    .text.mindlin_get_sample:00000000 $t
+     /tmp/ccXrjZKA.s:182    .text.mindlin_get_sample:00000000 mindlin_get_sample
+     /tmp/ccXrjZKA.s:191    .text.mindlin_get_sample:00000008 $d
+     /tmp/ccXrjZKA.s:1330   .bss.syrinxM:00000000 syrinxM
+     /tmp/ccXrjZKA.s:194    .text.init_gardner:00000000 $t
+     /tmp/ccXrjZKA.s:201    .text.init_gardner:00000000 init_gardner
+     /tmp/ccXrjZKA.s:249    .text.init_gardner:00000098 $d
+     /tmp/ccXrjZKA.s:271    .text.calc_xdobleprime_gardner:00000000 $t
+     /tmp/ccXrjZKA.s:278    .text.calc_xdobleprime_gardner:00000000 calc_xdobleprime_gardner
+     /tmp/ccXrjZKA.s:314    .text.gardner_oscillate:00000000 $t
+     /tmp/ccXrjZKA.s:321    .text.gardner_oscillate:00000000 gardner_oscillate
+     /tmp/ccXrjZKA.s:367    .text.gardner_oscillate:00000088 $d
+     /tmp/ccXrjZKA.s:1148   .bss.i.2:00000000 i.2
+     /tmp/ccXrjZKA.s:375    .text.gardner_get_sample:00000000 $t
+     /tmp/ccXrjZKA.s:382    .text.gardner_get_sample:00000000 gardner_get_sample
+     /tmp/ccXrjZKA.s:451    .text.gardner_get_sample:000000e8 $d
+     /tmp/ccXrjZKA.s:1323   .bss.syrinx:00000000 syrinx
+     /tmp/ccXrjZKA.s:460    .text.init_balloon:00000000 $t
+     /tmp/ccXrjZKA.s:467    .text.init_balloon:00000000 init_balloon
+     /tmp/ccXrjZKA.s:546    .text.init_balloon:000000d8 $d
+     /tmp/ccXrjZKA.s:1309   .bss.r1:00000000 r1
+     /tmp/ccXrjZKA.s:1302   .bss.r2:00000000 r2
+     /tmp/ccXrjZKA.s:1295   .bss.m1:00000000 m1
+     /tmp/ccXrjZKA.s:1288   .bss.m2:00000000 m2
+     /tmp/ccXrjZKA.s:1281   .bss.k1:00000000 k1
+     /tmp/ccXrjZKA.s:1274   .bss.k2:00000000 k2
+     /tmp/ccXrjZKA.s:1267   .bss.k12:00000000 k12
+     /tmp/ccXrjZKA.s:1239   .bss.aida:00000000 aida
+     /tmp/ccXrjZKA.s:1260   .bss.d1:00000000 d1
+     /tmp/ccXrjZKA.s:1225   .bss.Ag01:00000000 Ag01
+     /tmp/ccXrjZKA.s:1246   .bss.lg:00000000 lg
+     /tmp/ccXrjZKA.s:1253   .bss.d2:00000000 d2
+     /tmp/ccXrjZKA.s:1218   .bss.Ag02:00000000 Ag02
+     /tmp/ccXrjZKA.s:1197   .bss.x1Prev:00000000 x1Prev
+     /tmp/ccXrjZKA.s:1190   .bss.x1PrevPrev:00000000 x1PrevPrev
+     /tmp/ccXrjZKA.s:1183   .bss.x2Prev:00000000 x2Prev
+     /tmp/ccXrjZKA.s:1176   .bss.x2PrevPrev:00000000 x2PrevPrev
+     /tmp/ccXrjZKA.s:1211   .bss.pm1Prev:00000000 pm1Prev
+     /tmp/ccXrjZKA.s:1204   .bss.pm2Prev:00000000 pm2Prev
+     /tmp/ccXrjZKA.s:1162   .bss.uPrev:00000000 uPrev
+     /tmp/ccXrjZKA.s:1316   .bss.ps:00000000 ps
+     /tmp/ccXrjZKA.s:1169   .bss.gain:00000000 gain
+     /tmp/ccXrjZKA.s:1155   .bss.Fs:00000000 Fs
+ARM GAS  /tmp/ccXrjZKA.s 			page 27
+
+
+     /tmp/ccXrjZKA.s:1232   .bss.S:00000000 S
+     /tmp/ccXrjZKA.s:593    .text.computeSample:00000000 $t
+     /tmp/ccXrjZKA.s:600    .text.computeSample:00000000 computeSample
+     /tmp/ccXrjZKA.s:856    .text.computeSample:000003b0 $d
+     /tmp/ccXrjZKA.s:885    .text.computeSample:00000420 $t
+     /tmp/ccXrjZKA.s:1030   .text.computeSample:00000600 $d
+     /tmp/ccXrjZKA.s:1052   .text.balloon_get_sample:00000000 $t
+     /tmp/ccXrjZKA.s:1059   .text.balloon_get_sample:00000000 balloon_get_sample
+     /tmp/ccXrjZKA.s:1086   .text.balloon_get_sample:00000040 $d
+     /tmp/ccXrjZKA.s:1142   .bss.i.1:00000000 i.1
+     /tmp/ccXrjZKA.s:1094   .text.clearOld:00000000 $t
+     /tmp/ccXrjZKA.s:1101   .text.clearOld:00000000 clearOld
+     /tmp/ccXrjZKA.s:1129   .text.clearOld:0000003c $d
+     /tmp/ccXrjZKA.s:1139   .bss.i.1:00000000 $d
+     /tmp/ccXrjZKA.s:1145   .bss.i.2:00000000 $d
+     /tmp/ccXrjZKA.s:1152   .bss.Fs:00000000 $d
+     /tmp/ccXrjZKA.s:1159   .bss.uPrev:00000000 $d
+     /tmp/ccXrjZKA.s:1166   .bss.gain:00000000 $d
+     /tmp/ccXrjZKA.s:1173   .bss.x2PrevPrev:00000000 $d
+     /tmp/ccXrjZKA.s:1180   .bss.x2Prev:00000000 $d
+     /tmp/ccXrjZKA.s:1187   .bss.x1PrevPrev:00000000 $d
+     /tmp/ccXrjZKA.s:1194   .bss.x1Prev:00000000 $d
+     /tmp/ccXrjZKA.s:1201   .bss.pm2Prev:00000000 $d
+     /tmp/ccXrjZKA.s:1208   .bss.pm1Prev:00000000 $d
+     /tmp/ccXrjZKA.s:1215   .bss.Ag02:00000000 $d
+     /tmp/ccXrjZKA.s:1222   .bss.Ag01:00000000 $d
+     /tmp/ccXrjZKA.s:1229   .bss.S:00000000 $d
+     /tmp/ccXrjZKA.s:1236   .bss.aida:00000000 $d
+     /tmp/ccXrjZKA.s:1243   .bss.lg:00000000 $d
+     /tmp/ccXrjZKA.s:1250   .bss.d2:00000000 $d
+     /tmp/ccXrjZKA.s:1257   .bss.d1:00000000 $d
+     /tmp/ccXrjZKA.s:1264   .bss.k12:00000000 $d
+     /tmp/ccXrjZKA.s:1271   .bss.k2:00000000 $d
+     /tmp/ccXrjZKA.s:1278   .bss.k1:00000000 $d
+     /tmp/ccXrjZKA.s:1285   .bss.m2:00000000 $d
+     /tmp/ccXrjZKA.s:1292   .bss.m1:00000000 $d
+     /tmp/ccXrjZKA.s:1299   .bss.r2:00000000 $d
+     /tmp/ccXrjZKA.s:1306   .bss.r1:00000000 $d
+     /tmp/ccXrjZKA.s:1313   .bss.ps:00000000 $d
+     /tmp/ccXrjZKA.s:1320   .bss.syrinx:00000000 $d
+     /tmp/ccXrjZKA.s:1327   .bss.syrinxM:00000000 $d
+
+UNDEFINED SYMBOLS
+_selz
+pow

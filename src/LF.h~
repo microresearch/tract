@@ -1,0 +1,19 @@
+typedef struct LF_ {
+  double t;
+  double period; //= fxs->_period;
+  int dataLength; //= fxs->_dataLength;
+  double te; //= fxs->_te;
+  double Eo; //= fxs->_Eo;
+  double alpham; //= fxs->_alpha;
+  double wg; //= fxs->_wg;
+  double Ee; // = fxs->_Ee;
+  double epsilon; //= fxs->_epsilon;
+  double ta,tppp; //= fxs->_ta;
+  double tc; //= fxs->_tc;
+  int k; //= fxs->_k;
+}LF;
+
+void initLF(LF* lf);
+
+int16_t rosenberg_get_sample();
+int16_t LF_get_sample();

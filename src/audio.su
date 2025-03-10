@@ -1,0 +1,4 @@
+src/audio.c:258:13:Codec_HandleBlock	64	static
+src/audio.c:309:6:HAL_SAI_TxHalfCpltCallback	0	static
+src/audio.c:324:6:HAL_SAI_TxCpltCallback	0	static
+src/audio.c:334:6:Codec_StartDMA	8	static

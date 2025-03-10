@@ -1,0 +1,10 @@
+src/rsynth-2.0-port/holmes.c:138:14:interpolate.isra	0	static
+src/rsynth-2.0-port/holmes.c:96:13:set_trans.isra	4	static
+src/rsynth-2.0-port/holmes.c:188:6:klatt_newsay_single	24	static
+src/rsynth-2.0-port/holmes.c:239:9:klatt_get_sample_single	152	static
+src/rsynth-2.0-port/holmes.c:412:9:klatt_get_sample_single_sing	144	static
+src/rsynth-2.0-port/holmes.c:588:6:klatt_newsay	16	static
+src/rsynth-2.0-port/holmes.c:638:9:klatt_get_sample	160	static
+src/rsynth-2.0-port/holmes.c:813:6:klatt_newsay_vocab	24	static
+src/rsynth-2.0-port/holmes.c:852:9:klatt_get_sample_vocab	144	static
+src/rsynth-2.0-port/holmes.c:1021:9:klatt_get_sample_vocab_sing	136	static

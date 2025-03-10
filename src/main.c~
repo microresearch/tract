@@ -1,0 +1,570 @@
+#include <stdbool.h>
+#include <stdint.h>
+#include <stdio.h>
+#include <main.h>
+//#include "stm32h7xx_nucleo_144.h"
+#include "stm32h7xx_hal.h"
+#include "stm32h7xx_hal_pwr.h"
+#include "stm32h7xx_hal_pwr_ex.h"
+#include "stm32h7xx_hal_rcc.h"
+#include "stm32h7xx_hal_rcc_ex.h"
+#include "stm32h7xx_hal_i2s.h"
+#include "stm32h7xx_hal_conf.h"
+#include "stm32h7xx_hal_gpio.h"
+#include "stm32h7xx_hal_adc.h"
+
+#include "say.h"
+#include "samplerate.h"
+#include "klatt_phoneme.h"
+#include "nsynth.h"
+#include "elements.h"
+#include "holmes.h"
+#include "sp0256.h"
+#include "tms5200x.h"
+#include "nvp.h"
+#include "rs.h"
+#include "vot.h"
+#include "parwave.h"
+#include "wavetable.h"
+#include "wavetables.h"
+#include "arm_math.h" 
+#include "tube.h"
+#include "raven.h"
+#include "LF.h"
+
+#define USB_OverCurrent_Pin GPIO_PIN_7
+#define USB_OverCurrent_GPIO_Port GPIOG
+//#define D_CACHE_DISABLED
+
+void rsynth_init(long sr, float ms_per_frame);
+
+extern char TTSinarray[17];
+extern Mindlin syrinxM;
+extern Gardner syrinx;
+extern LF LFxx;
+
+char TTStester[16]={'w','o','r','m',' ','s', 'p', 'e','e','c','h',' ','w', 'o', 'r', 'm'};
+
+
+//arm_rfft_fast_instance_f32 instance; // from arm_math
+
+u8 test_elm[51]={44, 8, 0, 54, 16, 0, 20, 8, 0, 1, 6, 0, 1, 6, 0, 25, 12, 0, 2, 8, 0, 3, 1, 0, 4, 2, 0, 53, 9, 0, 8, 8, 0, 9, 1, 0, 10, 4, 0, 46, 7, 0, 22, 8, 0, 1, 6, 0, 1, 6, 0}; // worm speaking = we use ~/rsync2016/projects/ERD_modules/worm/docs/rsynth-2-un/rsynth-2.0 - glitchy
+
+u8 test_elm_rsynthy[108]={30, 4, 72, 4, 1, 6, 41, 8, 75, 16, 21, 8, 1, 6, 41, 8, 82, 6, 32, 4, 1, 6, 27, 12, 82, 6, 26, 10, 1, 6, 72, 4, 1, 6, 38, 8, 82, 6, 23, 8, 1, 6, 8, 6, 9, 1, 10, 2, 47, 6, 45, 6, 21, 8, 1, 6, 11, 8, 12, 1, 13, 1, 45, 6, 32, 4, 47, 6, 45, 6, 25, 11, 72, 4, 31, 12, 1, 6, 8, 6, 9, 1, 10, 2, 62, 9, 1, 6, 31, 12, 2, 8, 3, 1, 4, 2, 57, 7, 14, 8, 15, 1, 16, 4, 1, 6, 1, 6}; // length 106 and we keep last 1 and 6 as end so... 104 105
+
+float exy[64][240]; 
+
+
+SAI_HandleTypeDef hsai_BlockA1;
+DMA_HandleTypeDef hdma_sai1_a;
+
+void Error_Handler(void);
+void Codec_StartDMA(void);
+
+static void MX_SAI1_Init(void)
+{
+
+  /* USER CODE BEGIN SAI1_Init 0 */
+
+  /* USER CODE END SAI1_Init 0 */
+
+  /* USER CODE BEGIN SAI1_Init 1 */
+
+  /* USER CODE END SAI1_Init 1 */
+  hsai_BlockA1.Instance = SAI1_Block_A;
+  hsai_BlockA1.Init.AudioMode = SAI_MODEMASTER_TX; // was RX but now no RX
+  hsai_BlockA1.Init.Synchro = SAI_ASYNCHRONOUS; // needs tobe async
+  hsai_BlockA1.Init.OutputDrive = SAI_OUTPUTDRIVE_DISABLE;
+  hsai_BlockA1.Init.NoDivider = SAI_MASTERDIVIDER_ENABLE;
+  hsai_BlockA1.Init.FIFOThreshold = SAI_FIFOTHRESHOLD_EMPTY;
+  hsai_BlockA1.Init.AudioFrequency = SAI_AUDIO_FREQUENCY_48K;
+  hsai_BlockA1.Init.SynchroExt = SAI_SYNCEXT_DISABLE;
+  hsai_BlockA1.Init.MonoStereoMode = SAI_STEREOMODE;
+  hsai_BlockA1.Init.CompandingMode = SAI_NOCOMPANDING;
+  hsai_BlockA1.Init.TriState = SAI_OUTPUT_NOTRELEASED;
+  if (HAL_SAI_InitProtocol(&hsai_BlockA1, SAI_I2S_STANDARD, SAI_PROTOCOL_DATASIZE_16BIT, 2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN SAI1_Init 2 */
+    __HAL_SAI_ENABLE(&hsai_BlockA1);
+
+  /* USER CODE END SAI1_Init 2 */
+
+}
+
+static void MX_DMA_Init(void)
+{
+
+  /* DMA controller clock enable */
+  __HAL_RCC_DMA1_CLK_ENABLE();
+
+  /* DMA interrupt init */
+  /* DMA1_Stream0_IRQn interrupt configuration */
+  HAL_NVIC_SetPriority(DMA1_Stream0_IRQn, 0, 0);
+  HAL_NVIC_EnableIRQ(DMA1_Stream0_IRQn);
+
+}
+
+
+// for ADC test
+#define ADCx                            ADC1
+#define ADCx_CLK_ENABLE()               __HAL_RCC_ADC12_CLK_ENABLE()
+#define ADCx_CHANNEL_GPIO_CLK_ENABLE()  __HAL_RCC_GPIOA_CLK_ENABLE()
+
+#define DMAx_CHANNELx_CLK_ENABLE()      __HAL_RCC_DMA1_CLK_ENABLE()
+
+#define ADCx_FORCE_RESET()              __HAL_RCC_ADC12_FORCE_RESET()
+#define ADCx_RELEASE_RESET()            __HAL_RCC_ADC12_RELEASE_RESET()
+
+/* Definition for ADCx Channel Pin */
+#define ADCx_CHANNEL_PIN_CLK_ENABLE()   __HAL_RCC_GPIOA_CLK_ENABLE()
+#define ADCx_CHANNEL_PIN                GPIO_PIN_6
+#define ADCx_CHANNEL_GPIO_PORT          GPIOA
+#define ADCx_CHANNEL                    ADC_CHANNEL_3
+
+#define ADC_CONVERTED_DATA_BUFFER_SIZE   ((uint32_t)  32)   /* Size of array aADCxConvertedData[] */
+
+/* Private macro -------------------------------------------------------------*/
+/* Private variables ---------------------------------------------------------*/
+/* ADC handle declaration */
+ADC_HandleTypeDef             AdcHandle;
+
+/* ADC channel configuration structure declaration */
+ADC_ChannelConfTypeDef        sConfig;
+
+/* Variable containing ADC conversions data */
+uint16_t   aADCxConvertedData[ADC_CONVERTED_DATA_BUFFER_SIZE] __attribute__((section(".dma_buffer"))) __attribute__((aligned(0x20)));
+
+/*
+
+Porting now to PCM5102
+
+*/
+
+typedef uint8_t uchar;
+
+#define GPIO_SetBits(PORT,PINS) { (PORT)->BSRR = (PINS); }
+#define GPIO_ResetBits(PORT,PINS) { (PORT)->BSRR = (PINS) << 16U; }
+
+static void SystemClock_Config(void);
+void Error_Handler(void);
+static void MPU_Config(void);
+static void MPU_Configx(void);
+
+uint16_t Hw_I2C_WriteRegister(I2C_HandleTypeDef* hi2c, uchar I2CAddr,uint16_t addr,uint16_t addr_size, uchar RegisterValue)
+{
+	//    return UhsdrHw_I2C_WriteRegister(hi2c, CODEC_ADDRESS, Byte1, 1, Byte2);
+
+	HAL_StatusTypeDef i2cRet = HAL_I2C_Mem_Write(hi2c,I2CAddr,addr,addr_size,&RegisterValue,1,100);
+
+    return  i2cRet != HAL_OK?0xFF00:0;
+}
+
+static uint32_t Codec_WriteRegister(I2C_HandleTypeDef* hi2c, uint8_t RegisterAddr, uint16_t RegisterValue)
+{
+    // Assemble 2-byte data in WM8731 format
+    uint8_t Byte1 = ((RegisterAddr<<1)&0xFE) | ((RegisterValue>>8)&0x01);
+    uint8_t Byte2 = RegisterValue&0xFF;
+    return Hw_I2C_WriteRegister(hi2c, (0x1A)<<1, Byte1, 1, Byte2);
+    //    HAL_StatusTypeDef HAL_I2C_Slave_Transmit_IT(I2C_HandleTypeDef *hi2c, uint8_t *pData, uint16_t Size)
+    //    HAL_I2C_Master_Transmit_IT(hi2c, (0x1A)<<1, Byte1, 1);
+    //    HAL_I2C_Master_Transmit_IT(hi2c, (0x1A)<<1, Byte2, 1);
+    
+    //return 1;
+}
+
+extern Wavetable wavtable;
+
+int main(void)
+{
+  uint16_t x, xx;
+
+  
+// set up controller (in main maybe) to right speeds/PLL/system clock? do we need to?
+
+  /* MPU Configuration----------------------------------------------------------*/
+ MPU_Config();
+
+  /* Enable I-Cache-------------------------------------------------------------*/
+ SCB_EnableICache();
+
+  /* Enable D-Cache-------------------------------------------------------------*/
+ SCB_EnableDCache();
+    
+  /* MCU Configuration----------------------------------------------------------*/
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  //__HAL_RCC_PWR_CLK_ENABLE();
+   __HAL_RCC_SYSCFG_CLK_ENABLE();
+
+   // activate SRAM1\2\3
+   //  RCC->AHB2ENR |= (0x7 << 29);   
+
+ HAL_Init();
+
+
+  /* Ensure we have a clock configuration as in reset state, i.e. PLL clock is off and we are using HSI */
+  HAL_RCC_DeInit(); 
+
+  /* Configure the system clock */
+  SystemClock_Config();
+
+
+    HAL_SYSTICK_Config(HAL_RCC_GetHCLKFreq()/1000);
+
+    /**Configure the Systick 
+    */
+      HAL_SYSTICK_CLKSourceConfig(SYSTICK_CLKSOURCE_HCLK);
+
+  /* SysTick_IRQn interrupt configuration */
+    HAL_NVIC_SetPriority(SysTick_IRQn, 0, 0);
+
+  /* GPIO Ports Clock Enable */
+  __HAL_RCC_GPIOE_CLK_ENABLE();
+  __HAL_RCC_GPIOC_CLK_ENABLE();
+  __HAL_RCC_GPIOF_CLK_ENABLE();
+  __HAL_RCC_GPIOH_CLK_ENABLE();
+  __HAL_RCC_GPIOA_CLK_ENABLE();
+  __HAL_RCC_GPIOB_CLK_ENABLE();
+  __HAL_RCC_GPIOD_CLK_ENABLE();
+  __HAL_RCC_GPIOG_CLK_ENABLE();
+
+  __HAL_RCC_SAI1_CLK_ENABLE();
+  // how do we init all/audio codec
+  // do we use SAI or i2c? or is it both as codec references i2c (setup?)
+__HAL_RCC_D2SRAM1_CLK_ENABLE();
+__HAL_RCC_D2SRAM2_CLK_ENABLE();
+__HAL_RCC_D2SRAM3_CLK_ENABLE();
+
+/// from other PCM main.c
+ MX_DMA_Init();
+ MX_SAI1_Init();
+
+//ADC stuff
+    GPIO_InitTypeDef GPIO_InitStruct = {0};
+    AdcHandle.Instance          = ADCx;
+  
+  if (HAL_ADC_DeInit(&AdcHandle) != HAL_OK)
+  {
+    /* ADC de-initialization Error */
+    Error_Handler();
+  }
+  
+  AdcHandle.Init.ClockPrescaler           = ADC_CLOCK_ASYNC_DIV2;          /* Asynchronous clock mode, input ADC clock divided by 2*/
+  AdcHandle.Init.Resolution               = ADC_RESOLUTION_16B;            /* 16-bit resolution for converted data */
+  AdcHandle.Init.ScanConvMode             = DISABLE;                       /* Sequencer disabled (ADC conversion on only 1 channel: channel set on rank 1) */
+  AdcHandle.Init.EOCSelection             = ADC_EOC_SINGLE_CONV;           /* EOC flag picked-up to indicate conversion end */
+  AdcHandle.Init.LowPowerAutoWait         = DISABLE;                       /* Auto-delayed conversion feature disabled */
+  AdcHandle.Init.ContinuousConvMode       = DISABLE;                       /* Continuous mode disabled to have only 1 conversion at each conversion trig */
+  AdcHandle.Init.NbrOfConversion          = 1;                             /* Parameter discarded because sequencer is disabled */
+  AdcHandle.Init.DiscontinuousConvMode    = DISABLE;                       /* Parameter discarded because sequencer is disabled */
+  AdcHandle.Init.NbrOfDiscConversion      = 1;                             /* Parameter discarded because sequencer is disabled */
+  AdcHandle.Init.ExternalTrigConv         = ADC_SOFTWARE_START;            /* Software start to trig the 1st conversion manually, without external event */
+  AdcHandle.Init.ExternalTrigConvEdge     = ADC_EXTERNALTRIGCONVEDGE_NONE; /* Parameter discarded because software trigger chosen */
+  AdcHandle.Init.ConversionDataManagement = ADC_CONVERSIONDATA_DR;         /* Regular Conversion data stored in DR register only */
+  AdcHandle.Init.Overrun                  = ADC_OVR_DATA_OVERWRITTEN;      /* DR register is overwritten with the last conversion result in case of overrun */
+  AdcHandle.Init.OversamplingMode         = DISABLE;                       /* No oversampling */
+
+  if (HAL_ADC_Init(&AdcHandle) != HAL_OK)
+  {
+    /* ADC initialization Error */
+    Error_Handler();
+  }
+
+  /*##-2- Configure ADC regular channel ######################################*/
+  sConfig.Channel      =  ADC_CHANNEL_7;                /* Sampled channel number */
+  sConfig.Rank         = ADC_REGULAR_RANK_1;          /* Rank of sampled channel number ADCx_CHANNEL */
+  sConfig.SamplingTime = ADC_SAMPLETIME_8CYCLES_5;    /* Sampling time (number of clock cycles unit) */
+  sConfig.SingleDiff   = ADC_SINGLE_ENDED;            /* Single-ended input channel */
+  sConfig.OffsetNumber = ADC_OFFSET_NONE;             /* No offset subtraction */ 
+  sConfig.Offset = 0;                                 /* Parameter discarded because offset correction is disabled */
+
+  if (HAL_ADC_ConfigChannel(&AdcHandle, &sConfig) != HAL_OK)
+  {
+    /* Channel Configuration Error */
+    Error_Handler();
+  }
+
+  /* Run the ADC calibration in single-ended mode */
+  if (HAL_ADCEx_Calibration_Start(&AdcHandle, ADC_CALIB_OFFSET_LINEARITY, ADC_SINGLE_ENDED) != HAL_OK)
+  {
+    /* Calibration Error */
+    Error_Handler();
+  }
+
+  for (x=0;x<240;x++){
+    for (xx=0;xx<64;xx++){
+    exy[xx][x]=0.4f; // this is midway when we do invert it.. = 1.0f approx
+    }
+  }
+
+  // tables are:
+  // table_kahrs000 159, table_fletcher000[99], plaguetable_simplesir[328], plaguetable_simplesir_002[493], crowtable[142], crowtable_slower[283], ourtable[512]
+  
+  wavetable_init(&wavtable, crowtable_slower, 283); // now last arg as length of table=less than 512 
+  tms_init();
+  votrax_init();
+  sp0256_init(); 
+  samplerate_init();
+  nvp_init();
+  klatt_init(); 
+  parwave_init(&klatt_global); // klatt_global is in def_pars //parwave_init in nsynth.c
+  rsynth_init(8000, 10.0f); //void rsynth_init(long sr, float ms_per_frame)
+  rsynth_newsay();
+  klatt_newsay();
+  simpleklatt_init();
+  tube_init();
+  init_balloon();
+  init_gardner(&syrinx, 1000, 800); // OLD NOTES: Gardner - can't seem to get it to oscillate any more? WHY??? what were our settings for this; now around: ./raven 1000 800 0 > testy 
+  init_mindlin(&syrinxM, 600, 40000, 1200); // guessing these... /raven 1000 12000 1000 0 > testplot // oscillates
+  initLF(&LFxx);
+  //////////////
+  Codec_StartDMA();
+
+
+  
+  for(;;)
+    {
+      //      HAL_Delay(500);
+      //      HAL_SAI_Transmit(&hsai_BlockA1, (uint8_t*)signal, 48000, HAL_MAX_DELAY); // this works
+    }
+
+	return 0;
+}
+
+/*
+static void SystemClock_Config(void)
+{
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  HAL_StatusTypeDef ret = HAL_OK;
+
+  HAL_PWREx_ConfigSupply(PWR_LDO_SUPPLY);
+
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE0);
+
+  while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
+
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.HSEState = RCC_HSE_BYPASS;
+  RCC_OscInitStruct.HSIState = RCC_HSI_OFF;
+  RCC_OscInitStruct.CSIState = RCC_CSI_OFF;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+
+  RCC_OscInitStruct.PLL.PLLM = 4;
+  RCC_OscInitStruct.PLL.PLLN = 260;
+  RCC_OscInitStruct.PLL.PLLFRACN = 0;
+  RCC_OscInitStruct.PLL.PLLP = 1;
+  RCC_OscInitStruct.PLL.PLLR = 2;
+  RCC_OscInitStruct.PLL.PLLQ = 4;
+
+  RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
+  RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_1;
+  ret = HAL_RCC_OscConfig(&RCC_OscInitStruct);
+  if(ret != HAL_OK)
+  {
+    while(1);
+  }
+
+  RCC_ClkInitStruct.ClockType = (RCC_CLOCKTYPE_SYSCLK | RCC_CLOCKTYPE_HCLK | RCC_CLOCKTYPE_D1PCLK1 | RCC_CLOCKTYPE_PCLK1 | \
+                                 RCC_CLOCKTYPE_PCLK2  | RCC_CLOCKTYPE_D3PCLK1);
+
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.SYSCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV2;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV2;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;
+  RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
+  ret = HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_3);
+  if(ret != HAL_OK)
+  {
+    while(1);
+  }
+}
+*/
+
+
+// orginal 743
+void SystemClock_Config(void)
+{
+  RCC_OscInitTypeDef RCC_OscInitStruct = {0};
+  RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
+  RCC_PeriphCLKInitTypeDef PeriphClkInitStruct = {0};
+
+  HAL_PWREx_ConfigSupply(PWR_LDO_SUPPLY);
+  __HAL_PWR_VOLTAGESCALING_CONFIG(PWR_REGULATOR_VOLTAGE_SCALE1);
+
+  while(!__HAL_PWR_GET_FLAG(PWR_FLAG_VOSRDY)) {}
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSI|RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.HSEState = RCC_HSE_ON;
+  RCC_OscInitStruct.HSIState = RCC_HSI_DIV1;
+  RCC_OscInitStruct.HSICalibrationValue = RCC_HSICALIBRATION_DEFAULT;
+  RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
+  RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
+  RCC_OscInitStruct.PLL.PLLM = 5;
+  RCC_OscInitStruct.PLL.PLLN = 384;
+  RCC_OscInitStruct.PLL.PLLP = 2;
+  RCC_OscInitStruct.PLL.PLLQ = 25;
+  RCC_OscInitStruct.PLL.PLLR = 2;
+  RCC_OscInitStruct.PLL.PLLRGE = RCC_PLL1VCIRANGE_0;
+  RCC_OscInitStruct.PLL.PLLVCOSEL = RCC_PLL1VCOWIDE;
+  RCC_OscInitStruct.PLL.PLLFRACN = 0;
+  if (HAL_RCC_OscConfig(&RCC_OscInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
+                              |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2
+                              |RCC_CLOCKTYPE_D3PCLK1|RCC_CLOCKTYPE_D1PCLK1;
+  RCC_ClkInitStruct.SYSCLKSource = RCC_SYSCLKSOURCE_PLLCLK;
+  RCC_ClkInitStruct.SYSCLKDivider = RCC_SYSCLK_DIV1;
+  RCC_ClkInitStruct.AHBCLKDivider = RCC_HCLK_DIV2;
+  RCC_ClkInitStruct.APB3CLKDivider = RCC_APB3_DIV2;
+  RCC_ClkInitStruct.APB1CLKDivider = RCC_APB1_DIV2;
+  RCC_ClkInitStruct.APB2CLKDivider = RCC_APB2_DIV2;
+  RCC_ClkInitStruct.APB4CLKDivider = RCC_APB4_DIV2;
+
+  if (HAL_RCC_ClockConfig(&RCC_ClkInitStruct, FLASH_LATENCY_2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  PeriphClkInitStruct.PeriphClockSelection = RCC_PERIPHCLK_USART3|RCC_PERIPHCLK_SAI1
+                              |RCC_PERIPHCLK_I2C2;
+  PeriphClkInitStruct.Sai1ClockSelection = RCC_SAI1CLKSOURCE_PLL; // we have this
+  PeriphClkInitStruct.Usart234578ClockSelection = RCC_USART234578CLKSOURCE_D2PCLK1;
+  PeriphClkInitStruct.I2c123ClockSelection = RCC_I2C123CLKSOURCE_HSI;
+  PeriphClkInitStruct.TIMPresSelection = RCC_TIMPRES_ACTIVATED;
+
+  PeriphClkInitStruct.AdcClockSelection = RCC_ADCCLKSOURCE_PLL2;
+
+  if (HAL_RCCEx_PeriphCLKConfig(&PeriphClkInitStruct) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  //  HAL_RCC_MCOConfig(RCC_MCO1, RCC_MCO1SOURCE_HSI, RCC_MCODIV_1);
+  //  HAL_RCC_MCOConfig(RCC_MCO2, RCC_MCO2SOURCE_SYSCLK, RCC_MCODIV_1);
+  
+}
+
+
+
+/* MPU Configuration */
+
+/*
+static void MPU_Config(void) // 273
+{
+  MPU_Region_InitTypeDef MPU_InitStruct;
+
+  HAL_MPU_Disable();
+
+  MPU_InitStruct.Enable = MPU_REGION_ENABLE;
+  MPU_InitStruct.BaseAddress = 0x00;
+  MPU_InitStruct.Size = MPU_REGION_SIZE_4GB;
+  MPU_InitStruct.AccessPermission = MPU_REGION_NO_ACCESS;
+  MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
+  MPU_InitStruct.IsCacheable = MPU_ACCESS_NOT_CACHEABLE;
+  MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
+  MPU_InitStruct.Number = MPU_REGION_NUMBER0;
+  MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
+  MPU_InitStruct.SubRegionDisable = 0x87;
+  MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_DISABLE;
+
+  HAL_MPU_ConfigRegion(&MPU_InitStruct);
+
+  HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);
+}
+*/
+
+
+void MPU_Config(void)  // H743
+{
+  MPU_Region_InitTypeDef MPU_InitStruct;
+
+  HAL_MPU_Disable();
+  MPU_InitStruct.Enable = MPU_REGION_ENABLE;
+  MPU_InitStruct.Number = MPU_REGION_NUMBER0;
+  MPU_InitStruct.BaseAddress = 0x30000000;
+  MPU_InitStruct.Size = MPU_REGION_SIZE_128KB;
+  MPU_InitStruct.SubRegionDisable = 0x0;
+  MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
+  MPU_InitStruct.AccessPermission = MPU_REGION_FULL_ACCESS;
+  MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
+  MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
+  MPU_InitStruct.IsCacheable = MPU_ACCESS_NOT_CACHEABLE;
+  MPU_InitStruct.IsBufferable = MPU_ACCESS_BUFFERABLE;
+
+  HAL_MPU_ConfigRegion(&MPU_InitStruct);
+
+  /*  
+  MPU_InitStruct.Enable = MPU_REGION_ENABLE;
+  MPU_InitStruct.Number = MPU_REGION_NUMBER1;
+  MPU_InitStruct.BaseAddress = 0x30000000;
+  MPU_InitStruct.Size = MPU_REGION_SIZE_128KB;
+  MPU_InitStruct.SubRegionDisable = 0x0;
+  MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
+  MPU_InitStruct.AccessPermission = MPU_REGION_FULL_ACCESS;
+  MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_ENABLE;
+  MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
+  MPU_InitStruct.IsCacheable = MPU_ACCESS_CACHEABLE;
+  MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
+
+  HAL_MPU_ConfigRegion(&MPU_InitStruct);
+  */
+  HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);
+}
+
+static void MPU_Configx(void)
+{
+  MPU_Region_InitTypeDef MPU_InitStruct;
+
+  /* Disable the MPU */
+  HAL_MPU_Disable();
+
+  /* Configure the MPU as Strongly ordered for not defined regions */
+  MPU_InitStruct.Enable = MPU_REGION_ENABLE;
+  MPU_InitStruct.BaseAddress = 0x00;
+  MPU_InitStruct.Size = MPU_REGION_SIZE_4GB;
+  MPU_InitStruct.AccessPermission = MPU_REGION_NO_ACCESS;
+  MPU_InitStruct.IsBufferable = MPU_ACCESS_NOT_BUFFERABLE;
+  MPU_InitStruct.IsCacheable = MPU_ACCESS_NOT_CACHEABLE;
+  MPU_InitStruct.IsShareable = MPU_ACCESS_SHAREABLE;
+  MPU_InitStruct.Number = MPU_REGION_NUMBER0;
+  MPU_InitStruct.TypeExtField = MPU_TEX_LEVEL0;
+  MPU_InitStruct.SubRegionDisable = 0x87;
+  MPU_InitStruct.DisableExec = MPU_INSTRUCTION_ACCESS_DISABLE;
+
+  HAL_MPU_ConfigRegion(&MPU_InitStruct);
+
+  /* Enable the MPU */
+  HAL_MPU_Enable(MPU_PRIVILEGED_DEFAULT);
+}
+
+
+void Error_Handler()
+{
+  /* USER CODE BEGIN Error_Handler_Debug */
+  /* User can add his own implementation to report the HAL error return state */
+  while(1) 
+  {
+  }
+  /* USER CODE END Error_Handler_Debug */ 
+}
+
+void HAL_ADC_ConvHalfCpltCallback(ADC_HandleTypeDef* hadc)
+{
+  /* Invalidate Data Cache to get the updated content of the SRAM on the first half of the ADC converted data buffer: 32 bytes */
+  //  SCB_InvalidateDCache_by_Addr((uint32_t *) &aADCxConvertedData[0], ADC_CONVERTED_DATA_BUFFER_SIZE);
+}
+
+/**
+  * @brief  Conversion DMA half-transfer callback in non-blocking mode
+  * @param  hadc: ADC handle
+  * @retval None
+  */
+void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc)
+{
+   /* Invalidate Data Cache to get the updated content of the SRAM on the second half of the ADC converted data buffer: 32 bytes */
+  //  SCB_InvalidateDCache_by_Addr((uint32_t *) &aADCxConvertedData[ADC_CONVERTED_DATA_BUFFER_SIZE/2], ADC_CONVERTED_DATA_BUFFER_SIZE);
+}

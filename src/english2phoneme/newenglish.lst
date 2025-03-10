@@ -1,0 +1,3514 @@
+ARM GAS  /tmp/ccDMOhBF.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/english2phoneme/newenglish.lst 
+ input file    	: /tmp/ccDMOhBF.s
+ output file   	: src/english2phoneme/newenglish.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:36:00.000+0100
+
+ARM GAS  /tmp/ccDMOhBF.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"newenglish.c"
+  15              		.text
+  16              		.global	Rules
+  17              		.section	.data.Rules,"aw"
+  18              		.align	2
+  19              		.type	Rules, %object
+  20              		.size	Rules, 108
+  21              	Rules:
+  22 0000 00000000 		.word	punct_rules
+  23 0004 00000000 		.word	A_rules
+  24 0008 00000000 		.word	B_rules
+  25 000c 00000000 		.word	C_rules
+  26 0010 00000000 		.word	D_rules
+  27 0014 00000000 		.word	E_rules
+  28 0018 00000000 		.word	F_rules
+  29 001c 00000000 		.word	G_rules
+  30 0020 00000000 		.word	H_rules
+  31 0024 00000000 		.word	I_rules
+  32 0028 00000000 		.word	J_rules
+  33 002c 00000000 		.word	K_rules
+  34 0030 00000000 		.word	L_rules
+  35 0034 00000000 		.word	M_rules
+  36 0038 00000000 		.word	N_rules
+  37 003c 00000000 		.word	O_rules
+  38 0040 00000000 		.word	P_rules
+  39 0044 00000000 		.word	Q_rules
+  40 0048 00000000 		.word	R_rules
+  41 004c 00000000 		.word	S_rules
+  42 0050 00000000 		.word	T_rules
+  43 0054 00000000 		.word	U_rules
+  44 0058 00000000 		.word	V_rules
+  45 005c 00000000 		.word	W_rules
+  46 0060 00000000 		.word	X_rules
+  47 0064 00000000 		.word	Y_rules
+  48 0068 00000000 		.word	Z_rules
+  49              		.global	Z_rules
+  50              		.section	.rodata.str1.4,"aMS",%progbits,1
+  51              		.align	2
+  52              	.LC0:
+  53 0000 5A00     		.ascii	"Z\000"
+  54              		.section	.flash,"a"
+  55              		.align	2
+  56              		.type	Z_rules, %object
+  57              		.size	Z_rules, 40
+ARM GAS  /tmp/ccDMOhBF.s 			page 3
+
+
+  58              	Z_rules:
+  59 0000 00000000 		.word	Anything
+  60 0004 00000000 		.word	.LC0
+  61 0008 00000000 		.word	Anything
+  62 000c 1BFF00   		.ascii	"\033\377\000"
+  63 000f 00000000 		.space	5
+  63      00
+  64 0014 00000000 		.word	Anything
+  65 0018 00000000 		.word	0
+  66 001c 00000000 		.word	Anything
+  67 0020 FE00     		.ascii	"\376\000"
+  68 0022 00000000 		.space	6
+  68      0000
+  69              		.global	X_rules
+  70              		.section	.rodata.str1.4
+  71 0002 0000     		.align	2
+  72              	.LC1:
+  73 0004 5800     		.ascii	"X\000"
+  74              		.section	.flash
+  75              		.align	2
+  76              		.type	X_rules, %object
+  77              		.size	X_rules, 40
+  78              	X_rules:
+  79 0028 00000000 		.word	Anything
+  80 002c 04000000 		.word	.LC1
+  81 0030 00000000 		.word	Anything
+  82 0034 141AFF00 		.ascii	"\024\032\377\000"
+  83 0038 00000000 		.space	4
+  84 003c 00000000 		.word	Anything
+  85 0040 00000000 		.word	0
+  86 0044 00000000 		.word	Anything
+  87 0048 FE00     		.ascii	"\376\000"
+  88 004a 00000000 		.space	6
+  88      0000
+  89              		.global	Y_rules
+  90              		.section	.rodata.str1.4
+  91 0006 0000     		.align	2
+  92              	.LC2:
+  93 0008 594F554E 		.ascii	"YOUNG\000"
+  93      4700
+  94 000e 0000     		.align	2
+  95              	.LC3:
+  96 0010 594F5500 		.ascii	"YOU\000"
+  97              		.align	2
+  98              	.LC4:
+  99 0014 59455300 		.ascii	"YES\000"
+ 100              		.align	2
+ 101              	.LC5:
+ 102 0018 5900     		.ascii	"Y\000"
+ 103 001a 0000     		.align	2
+ 104              	.LC6:
+ 105 001c 233A5E00 		.ascii	"#:^\000"
+ 106              		.align	2
+ 107              	.LC7:
+ 108 0020 4900     		.ascii	"I\000"
+ 109 0022 0000     		.align	2
+ 110              	.LC8:
+ARM GAS  /tmp/ccDMOhBF.s 			page 4
+
+
+ 111 0024 203A00   		.ascii	" :\000"
+ 112 0027 00       		.align	2
+ 113              	.LC9:
+ 114 0028 2300     		.ascii	"#\000"
+ 115 002a 0000     		.align	2
+ 116              	.LC10:
+ 117 002c 5E2B3A23 		.ascii	"^+:#\000"
+ 117      00
+ 118 0031 000000   		.align	2
+ 119              	.LC11:
+ 120 0034 5E2300   		.ascii	"^#\000"
+ 121              		.section	.flash
+ 122              		.align	2
+ 123              		.type	Y_rules, %object
+ 124              		.size	Y_rules, 240
+ 125              	Y_rules:
+ 126 0050 00000000 		.word	Anything
+ 127 0054 08000000 		.word	.LC2
+ 128 0058 00000000 		.word	Anything
+ 129 005c 240C21FF 		.ascii	"$\014!\377\000"
+ 129      00
+ 130 0061 000000   		.space	3
+ 131 0064 00000000 		.word	Nothing
+ 132 0068 10000000 		.word	.LC3
+ 133 006c 00000000 		.word	Anything
+ 134 0070 2409FF00 		.ascii	"$\011\377\000"
+ 135 0074 00000000 		.space	4
+ 136 0078 00000000 		.word	Nothing
+ 137 007c 14000000 		.word	.LC4
+ 138 0080 00000000 		.word	Anything
+ 139 0084 24031AFF 		.ascii	"$\003\032\377\000"
+ 139      00
+ 140 0089 000000   		.space	3
+ 141 008c 00000000 		.word	Nothing
+ 142 0090 18000000 		.word	.LC5
+ 143 0094 00000000 		.word	Anything
+ 144 0098 24FF00   		.ascii	"$\377\000"
+ 145 009b 00000000 		.space	5
+ 145      00
+ 146 00a0 1C000000 		.word	.LC6
+ 147 00a4 18000000 		.word	.LC5
+ 148 00a8 00000000 		.word	Nothing
+ 149 00ac 00FF00   		.ascii	"\000\377\000"
+ 150 00af 00000000 		.space	5
+ 150      00
+ 151 00b4 1C000000 		.word	.LC6
+ 152 00b8 18000000 		.word	.LC5
+ 153 00bc 20000000 		.word	.LC7
+ 154 00c0 00FF00   		.ascii	"\000\377\000"
+ 155 00c3 00000000 		.space	5
+ 155      00
+ 156 00c8 24000000 		.word	.LC8
+ 157 00cc 18000000 		.word	.LC5
+ 158 00d0 00000000 		.word	Nothing
+ 159 00d4 0DFF00   		.ascii	"\015\377\000"
+ 160 00d7 00000000 		.space	5
+ 160      00
+ARM GAS  /tmp/ccDMOhBF.s 			page 5
+
+
+ 161 00dc 24000000 		.word	.LC8
+ 162 00e0 18000000 		.word	.LC5
+ 163 00e4 28000000 		.word	.LC9
+ 164 00e8 0DFF00   		.ascii	"\015\377\000"
+ 165 00eb 00000000 		.space	5
+ 165      00
+ 166 00f0 24000000 		.word	.LC8
+ 167 00f4 18000000 		.word	.LC5
+ 168 00f8 2C000000 		.word	.LC10
+ 169 00fc 01FF00   		.ascii	"\001\377\000"
+ 170 00ff 00000000 		.space	5
+ 170      00
+ 171 0104 24000000 		.word	.LC8
+ 172 0108 18000000 		.word	.LC5
+ 173 010c 34000000 		.word	.LC11
+ 174 0110 0DFF00   		.ascii	"\015\377\000"
+ 175 0113 00000000 		.space	5
+ 175      00
+ 176 0118 00000000 		.word	Anything
+ 177 011c 18000000 		.word	.LC5
+ 178 0120 00000000 		.word	Anything
+ 179 0124 01FF00   		.ascii	"\001\377\000"
+ 180 0127 00000000 		.space	5
+ 180      00
+ 181 012c 00000000 		.word	Anything
+ 182 0130 00000000 		.word	0
+ 183 0134 00000000 		.word	Anything
+ 184 0138 FE00     		.ascii	"\376\000"
+ 185 013a 00000000 		.space	6
+ 185      0000
+ 186              		.global	V_rules
+ 187              		.section	.rodata.str1.4
+ 188 0037 00       		.align	2
+ 189              	.LC12:
+ 190 0038 56494557 		.ascii	"VIEW\000"
+ 190      00
+ 191 003d 000000   		.align	2
+ 192              	.LC13:
+ 193 0040 5600     		.ascii	"V\000"
+ 194              		.section	.flash
+ 195              		.align	2
+ 196              		.type	V_rules, %object
+ 197              		.size	V_rules, 60
+ 198              	V_rules:
+ 199 0140 00000000 		.word	Anything
+ 200 0144 38000000 		.word	.LC12
+ 201 0148 00000000 		.word	Anything
+ 202 014c 172409FF 		.ascii	"\027$\011\377\000"
+ 202      00
+ 203 0151 000000   		.space	3
+ 204 0154 00000000 		.word	Anything
+ 205 0158 40000000 		.word	.LC13
+ 206 015c 00000000 		.word	Anything
+ 207 0160 17FF00   		.ascii	"\027\377\000"
+ 208 0163 00000000 		.space	5
+ 208      00
+ 209 0168 00000000 		.word	Anything
+ARM GAS  /tmp/ccDMOhBF.s 			page 6
+
+
+ 210 016c 00000000 		.word	0
+ 211 0170 00000000 		.word	Anything
+ 212 0174 FE00     		.ascii	"\376\000"
+ 213 0176 00000000 		.space	6
+ 213      0000
+ 214              		.global	W_rules
+ 215              		.section	.rodata.str1.4
+ 216 0042 0000     		.align	2
+ 217              	.LC14:
+ 218 0044 57455245 		.ascii	"WERE\000"
+ 218      00
+ 219 0049 000000   		.align	2
+ 220              	.LC15:
+ 221 004c 574100   		.ascii	"WA\000"
+ 222 004f 00       		.align	2
+ 223              	.LC16:
+ 224 0050 5300     		.ascii	"S\000"
+ 225 0052 0000     		.align	2
+ 226              	.LC17:
+ 227 0054 5400     		.ascii	"T\000"
+ 228 0056 0000     		.align	2
+ 229              	.LC18:
+ 230 0058 57484552 		.ascii	"WHERE\000"
+ 230      4500
+ 231 005e 0000     		.align	2
+ 232              	.LC19:
+ 233 0060 57484154 		.ascii	"WHAT\000"
+ 233      00
+ 234 0065 000000   		.align	2
+ 235              	.LC20:
+ 236 0068 57484F4C 		.ascii	"WHOL\000"
+ 236      00
+ 237 006d 000000   		.align	2
+ 238              	.LC21:
+ 239 0070 57484F00 		.ascii	"WHO\000"
+ 240              		.align	2
+ 241              	.LC22:
+ 242 0074 574800   		.ascii	"WH\000"
+ 243 0077 00       		.align	2
+ 244              	.LC23:
+ 245 0078 57415200 		.ascii	"WAR\000"
+ 246              		.align	2
+ 247              	.LC24:
+ 248 007c 574F5200 		.ascii	"WOR\000"
+ 249              		.align	2
+ 250              	.LC25:
+ 251 0080 5E00     		.ascii	"^\000"
+ 252 0082 0000     		.align	2
+ 253              	.LC26:
+ 254 0084 575200   		.ascii	"WR\000"
+ 255 0087 00       		.align	2
+ 256              	.LC27:
+ 257 0088 5700     		.ascii	"W\000"
+ 258              		.section	.flash
+ 259              		.align	2
+ 260              		.type	W_rules, %object
+ 261              		.size	W_rules, 260
+ARM GAS  /tmp/ccDMOhBF.s 			page 7
+
+
+ 262              	W_rules:
+ 263 017c 00000000 		.word	Nothing
+ 264 0180 44000000 		.word	.LC14
+ 265 0184 00000000 		.word	Anything
+ 266 0188 230AFF00 		.ascii	"#\012\377\000"
+ 267 018c 00000000 		.space	4
+ 268 0190 00000000 		.word	Anything
+ 269 0194 4C000000 		.word	.LC15
+ 270 0198 50000000 		.word	.LC16
+ 271 019c 2305FF00 		.ascii	"#\005\377\000"
+ 272 01a0 00000000 		.space	4
+ 273 01a4 00000000 		.word	Anything
+ 274 01a8 4C000000 		.word	.LC15
+ 275 01ac 54000000 		.word	.LC17
+ 276 01b0 2305FF00 		.ascii	"#\005\377\000"
+ 277 01b4 00000000 		.space	4
+ 278 01b8 00000000 		.word	Anything
+ 279 01bc 58000000 		.word	.LC18
+ 280 01c0 00000000 		.word	Anything
+ 281 01c4 280325FF 		.ascii	"(\003%\377\000"
+ 281      00
+ 282 01c9 000000   		.space	3
+ 283 01cc 00000000 		.word	Anything
+ 284 01d0 60000000 		.word	.LC19
+ 285 01d4 00000000 		.word	Anything
+ 286 01d8 280512FF 		.ascii	"(\005\022\377\000"
+ 286      00
+ 287 01dd 000000   		.space	3
+ 288 01e0 00000000 		.word	Anything
+ 289 01e4 68000000 		.word	.LC20
+ 290 01e8 00000000 		.word	Anything
+ 291 01ec 1E0722FF 		.ascii	"\036\007\"\377\000"
+ 291      00
+ 292 01f1 000000   		.space	3
+ 293 01f4 00000000 		.word	Anything
+ 294 01f8 70000000 		.word	.LC21
+ 295 01fc 00000000 		.word	Anything
+ 296 0200 1E09FF00 		.ascii	"\036\011\377\000"
+ 297 0204 00000000 		.space	4
+ 298 0208 00000000 		.word	Anything
+ 299 020c 74000000 		.word	.LC22
+ 300 0210 00000000 		.word	Anything
+ 301 0214 28FF00   		.ascii	"(\377\000"
+ 302 0217 00000000 		.space	5
+ 302      00
+ 303 021c 00000000 		.word	Anything
+ 304 0220 78000000 		.word	.LC23
+ 305 0224 00000000 		.word	Anything
+ 306 0228 230625FF 		.ascii	"#\006%\377\000"
+ 306      00
+ 307 022d 000000   		.space	3
+ 308 0230 00000000 		.word	Anything
+ 309 0234 7C000000 		.word	.LC24
+ 310 0238 80000000 		.word	.LC25
+ 311 023c 230AFF00 		.ascii	"#\012\377\000"
+ 312 0240 00000000 		.space	4
+ 313 0244 00000000 		.word	Anything
+ARM GAS  /tmp/ccDMOhBF.s 			page 8
+
+
+ 314 0248 84000000 		.word	.LC26
+ 315 024c 00000000 		.word	Anything
+ 316 0250 25FF00   		.ascii	"%\377\000"
+ 317 0253 00000000 		.space	5
+ 317      00
+ 318 0258 00000000 		.word	Anything
+ 319 025c 88000000 		.word	.LC27
+ 320 0260 00000000 		.word	Anything
+ 321 0264 23FF00   		.ascii	"#\377\000"
+ 322 0267 00000000 		.space	5
+ 322      00
+ 323 026c 00000000 		.word	Anything
+ 324 0270 00000000 		.word	0
+ 325 0274 00000000 		.word	Anything
+ 326 0278 FE00     		.ascii	"\376\000"
+ 327 027a 00000000 		.space	6
+ 327      0000
+ 328              		.global	T_rules
+ 329              		.section	.rodata.str1.4
+ 330 008a 0000     		.align	2
+ 331              	.LC28:
+ 332 008c 54484500 		.ascii	"THE\000"
+ 333              		.align	2
+ 334              	.LC29:
+ 335 0090 544F00   		.ascii	"TO\000"
+ 336 0093 00       		.align	2
+ 337              	.LC30:
+ 338 0094 54484154 		.ascii	"THAT\000"
+ 338      00
+ 339 0099 000000   		.align	2
+ 340              	.LC31:
+ 341 009c 54484953 		.ascii	"THIS\000"
+ 341      00
+ 342 00a1 000000   		.align	2
+ 343              	.LC32:
+ 344 00a4 54484559 		.ascii	"THEY\000"
+ 344      00
+ 345 00a9 000000   		.align	2
+ 346              	.LC33:
+ 347 00ac 54484552 		.ascii	"THERE\000"
+ 347      4500
+ 348 00b2 0000     		.align	2
+ 349              	.LC34:
+ 350 00b4 54484552 		.ascii	"THER\000"
+ 350      00
+ 351 00b9 000000   		.align	2
+ 352              	.LC35:
+ 353 00bc 54484549 		.ascii	"THEIR\000"
+ 353      5200
+ 354 00c2 0000     		.align	2
+ 355              	.LC36:
+ 356 00c4 5448414E 		.ascii	"THAN\000"
+ 356      00
+ 357 00c9 000000   		.align	2
+ 358              	.LC37:
+ 359 00cc 5448454D 		.ascii	"THEM\000"
+ 359      00
+ARM GAS  /tmp/ccDMOhBF.s 			page 9
+
+
+ 360 00d1 000000   		.align	2
+ 361              	.LC38:
+ 362 00d4 54484553 		.ascii	"THESE\000"
+ 362      4500
+ 363 00da 0000     		.align	2
+ 364              	.LC39:
+ 365 00dc 5448454E 		.ascii	"THEN\000"
+ 365      00
+ 366 00e1 000000   		.align	2
+ 367              	.LC40:
+ 368 00e4 5448524F 		.ascii	"THROUGH\000"
+ 368      55474800 
+ 369              		.align	2
+ 370              	.LC41:
+ 371 00ec 54484F53 		.ascii	"THOSE\000"
+ 371      4500
+ 372 00f2 0000     		.align	2
+ 373              	.LC42:
+ 374 00f4 54484F55 		.ascii	"THOUGH\000"
+ 374      474800
+ 375 00fb 00       		.align	2
+ 376              	.LC43:
+ 377 00fc 54485553 		.ascii	"THUS\000"
+ 377      00
+ 378 0101 000000   		.align	2
+ 379              	.LC44:
+ 380 0104 544800   		.ascii	"TH\000"
+ 381 0107 00       		.align	2
+ 382              	.LC45:
+ 383 0108 233A00   		.ascii	"#:\000"
+ 384 010b 00       		.align	2
+ 385              	.LC46:
+ 386 010c 54454400 		.ascii	"TED\000"
+ 387              		.align	2
+ 388              	.LC47:
+ 389 0110 544900   		.ascii	"TI\000"
+ 390 0113 00       		.align	2
+ 391              	.LC48:
+ 392 0114 234E00   		.ascii	"#N\000"
+ 393 0117 00       		.align	2
+ 394              	.LC49:
+ 395 0118 4F00     		.ascii	"O\000"
+ 396 011a 0000     		.align	2
+ 397              	.LC50:
+ 398 011c 4100     		.ascii	"A\000"
+ 399 011e 0000     		.align	2
+ 400              	.LC51:
+ 401 0120 5449454E 		.ascii	"TIEN\000"
+ 401      00
+ 402 0125 000000   		.align	2
+ 403              	.LC52:
+ 404 0128 54555200 		.ascii	"TUR\000"
+ 405              		.align	2
+ 406              	.LC53:
+ 407 012c 545500   		.ascii	"TU\000"
+ 408 012f 00       		.align	2
+ 409              	.LC54:
+ARM GAS  /tmp/ccDMOhBF.s 			page 10
+
+
+ 410 0130 54574F00 		.ascii	"TWO\000"
+ 411              		.section	.flash
+ 412              		.align	2
+ 413              		.type	T_rules, %object
+ 414              		.size	T_rules, 540
+ 415              	T_rules:
+ 416 0280 00000000 		.word	Nothing
+ 417 0284 8C000000 		.word	.LC28
+ 418 0288 00000000 		.word	Nothing
+ 419 028c 190BFF00 		.ascii	"\031\013\377\000"
+ 420 0290 00000000 		.space	4
+ 421 0294 00000000 		.word	Anything
+ 422 0298 90000000 		.word	.LC29
+ 423 029c 00000000 		.word	Nothing
+ 424 02a0 1209FF00 		.ascii	"\022\011\377\000"
+ 425 02a4 00000000 		.space	4
+ 426 02a8 00000000 		.word	Anything
+ 427 02ac 94000000 		.word	.LC30
+ 428 02b0 00000000 		.word	Nothing
+ 429 02b4 190412FF 		.ascii	"\031\004\022\377\000"
+ 429      00
+ 430 02b9 000000   		.space	3
+ 431 02bc 00000000 		.word	Nothing
+ 432 02c0 9C000000 		.word	.LC31
+ 433 02c4 00000000 		.word	Nothing
+ 434 02c8 19011AFF 		.ascii	"\031\001\032\377\000"
+ 434      00
+ 435 02cd 000000   		.space	3
+ 436 02d0 00000000 		.word	Nothing
+ 437 02d4 A4000000 		.word	.LC32
+ 438 02d8 00000000 		.word	Anything
+ 439 02dc 1902FF00 		.ascii	"\031\002\377\000"
+ 440 02e0 00000000 		.space	4
+ 441 02e4 00000000 		.word	Nothing
+ 442 02e8 AC000000 		.word	.LC33
+ 443 02ec 00000000 		.word	Anything
+ 444 02f0 190325FF 		.ascii	"\031\003%\377\000"
+ 444      00
+ 445 02f5 000000   		.space	3
+ 446 02f8 00000000 		.word	Anything
+ 447 02fc B4000000 		.word	.LC34
+ 448 0300 00000000 		.word	Anything
+ 449 0304 190AFF00 		.ascii	"\031\012\377\000"
+ 450 0308 00000000 		.space	4
+ 451 030c 00000000 		.word	Anything
+ 452 0310 BC000000 		.word	.LC35
+ 453 0314 00000000 		.word	Anything
+ 454 0318 190325FF 		.ascii	"\031\003%\377\000"
+ 454      00
+ 455 031d 000000   		.space	3
+ 456 0320 00000000 		.word	Nothing
+ 457 0324 C4000000 		.word	.LC36
+ 458 0328 00000000 		.word	Nothing
+ 459 032c 190420FF 		.ascii	"\031\004 \377\000"
+ 459      00
+ 460 0331 000000   		.space	3
+ 461 0334 00000000 		.word	Nothing
+ARM GAS  /tmp/ccDMOhBF.s 			page 11
+
+
+ 462 0338 CC000000 		.word	.LC37
+ 463 033c 00000000 		.word	Nothing
+ 464 0340 19031FFF 		.ascii	"\031\003\037\377\000"
+ 464      00
+ 465 0345 000000   		.space	3
+ 466 0348 00000000 		.word	Anything
+ 467 034c D4000000 		.word	.LC38
+ 468 0350 00000000 		.word	Nothing
+ 469 0354 19001BFF 		.ascii	"\031\000\033\377\000"
+ 469      00
+ 470 0359 000000   		.space	3
+ 471 035c 00000000 		.word	Nothing
+ 472 0360 DC000000 		.word	.LC39
+ 473 0364 00000000 		.word	Anything
+ 474 0368 190320FF 		.ascii	"\031\003 \377\000"
+ 474      00
+ 475 036d 000000   		.space	3
+ 476 0370 00000000 		.word	Anything
+ 477 0374 E4000000 		.word	.LC40
+ 478 0378 00000000 		.word	Anything
+ 479 037c 182509FF 		.ascii	"\030%\011\377\000"
+ 479      00
+ 480 0381 000000   		.space	3
+ 481 0384 00000000 		.word	Anything
+ 482 0388 EC000000 		.word	.LC41
+ 483 038c 00000000 		.word	Anything
+ 484 0390 19071BFF 		.ascii	"\031\007\033\377\000"
+ 484      00
+ 485 0395 000000   		.space	3
+ 486 0398 00000000 		.word	Anything
+ 487 039c F4000000 		.word	.LC42
+ 488 03a0 00000000 		.word	Nothing
+ 489 03a4 1907FF00 		.ascii	"\031\007\377\000"
+ 490 03a8 00000000 		.space	4
+ 491 03ac 00000000 		.word	Nothing
+ 492 03b0 FC000000 		.word	.LC43
+ 493 03b4 00000000 		.word	Anything
+ 494 03b8 190C1AFF 		.ascii	"\031\014\032\377\000"
+ 494      00
+ 495 03bd 000000   		.space	3
+ 496 03c0 00000000 		.word	Anything
+ 497 03c4 04010000 		.word	.LC44
+ 498 03c8 00000000 		.word	Anything
+ 499 03cc 18FF00   		.ascii	"\030\377\000"
+ 500 03cf 00000000 		.space	5
+ 500      00
+ 501 03d4 08010000 		.word	.LC45
+ 502 03d8 0C010000 		.word	.LC46
+ 503 03dc 00000000 		.word	Nothing
+ 504 03e0 120113FF 		.ascii	"\022\001\023\377\000"
+ 504      00
+ 505 03e5 000000   		.space	3
+ 506 03e8 50000000 		.word	.LC16
+ 507 03ec 10010000 		.word	.LC47
+ 508 03f0 14010000 		.word	.LC48
+ 509 03f4 26FF00   		.ascii	"&\377\000"
+ 510 03f7 00000000 		.space	5
+ARM GAS  /tmp/ccDMOhBF.s 			page 12
+
+
+ 510      00
+ 511 03fc 00000000 		.word	Anything
+ 512 0400 10010000 		.word	.LC47
+ 513 0404 18010000 		.word	.LC49
+ 514 0408 1CFF00   		.ascii	"\034\377\000"
+ 515 040b 00000000 		.space	5
+ 515      00
+ 516 0410 00000000 		.word	Anything
+ 517 0414 10010000 		.word	.LC47
+ 518 0418 1C010000 		.word	.LC50
+ 519 041c 1CFF00   		.ascii	"\034\377\000"
+ 520 041f 00000000 		.space	5
+ 520      00
+ 521 0424 00000000 		.word	Anything
+ 522 0428 20010000 		.word	.LC51
+ 523 042c 00000000 		.word	Anything
+ 524 0430 1C0B20FF 		.ascii	"\034\013 \377\000"
+ 524      00
+ 525 0435 000000   		.space	3
+ 526 0438 00000000 		.word	Anything
+ 527 043c 28010000 		.word	.LC52
+ 528 0440 28000000 		.word	.LC9
+ 529 0444 260AFF00 		.ascii	"&\012\377\000"
+ 530 0448 00000000 		.space	4
+ 531 044c 00000000 		.word	Anything
+ 532 0450 2C010000 		.word	.LC53
+ 533 0454 1C010000 		.word	.LC50
+ 534 0458 2609FF00 		.ascii	"&\011\377\000"
+ 535 045c 00000000 		.space	4
+ 536 0460 00000000 		.word	Nothing
+ 537 0464 30010000 		.word	.LC54
+ 538 0468 00000000 		.word	Anything
+ 539 046c 1209FF00 		.ascii	"\022\011\377\000"
+ 540 0470 00000000 		.space	4
+ 541 0474 00000000 		.word	Anything
+ 542 0478 54000000 		.word	.LC17
+ 543 047c 00000000 		.word	Anything
+ 544 0480 12FF00   		.ascii	"\022\377\000"
+ 545 0483 00000000 		.space	5
+ 545      00
+ 546 0488 00000000 		.word	Anything
+ 547 048c 00000000 		.word	0
+ 548 0490 00000000 		.word	Anything
+ 549 0494 FE00     		.ascii	"\376\000"
+ 550 0496 00000000 		.space	6
+ 550      0000
+ 551              		.global	U_rules
+ 552              		.section	.rodata.str1.4
+ 553              		.align	2
+ 554              	.LC55:
+ 555 0134 554E00   		.ascii	"UN\000"
+ 556 0137 00       		.align	2
+ 557              	.LC56:
+ 558 0138 55504F4E 		.ascii	"UPON\000"
+ 558      00
+ 559 013d 000000   		.align	2
+ 560              	.LC57:
+ARM GAS  /tmp/ccDMOhBF.s 			page 13
+
+
+ 561 0140 555200   		.ascii	"UR\000"
+ 562 0143 00       		.align	2
+ 563              	.LC58:
+ 564 0144 5200     		.ascii	"R\000"
+ 565 0146 0000     		.align	2
+ 566              	.LC59:
+ 567 0148 4400     		.ascii	"D\000"
+ 568 014a 0000     		.align	2
+ 569              	.LC60:
+ 570 014c 4C00     		.ascii	"L\000"
+ 571 014e 0000     		.align	2
+ 572              	.LC61:
+ 573 0150 4E00     		.ascii	"N\000"
+ 574 0152 0000     		.align	2
+ 575              	.LC62:
+ 576 0154 4A00     		.ascii	"J\000"
+ 577 0156 0000     		.align	2
+ 578              	.LC63:
+ 579 0158 434800   		.ascii	"CH\000"
+ 580 015b 00       		.align	2
+ 581              	.LC64:
+ 582 015c 534800   		.ascii	"SH\000"
+ 583 015f 00       		.align	2
+ 584              	.LC65:
+ 585 0160 5500     		.ascii	"U\000"
+ 586 0162 0000     		.align	2
+ 587              	.LC66:
+ 588 0164 5E2000   		.ascii	"^ \000"
+ 589 0167 00       		.align	2
+ 590              	.LC67:
+ 591 0168 5E5E00   		.ascii	"^^\000"
+ 592 016b 00       		.align	2
+ 593              	.LC68:
+ 594 016c 555900   		.ascii	"UY\000"
+ 595 016f 00       		.align	2
+ 596              	.LC69:
+ 597 0170 204700   		.ascii	" G\000"
+ 598 0173 00       		.align	2
+ 599              	.LC70:
+ 600 0174 4700     		.ascii	"G\000"
+ 601 0176 0000     		.align	2
+ 602              	.LC71:
+ 603 0178 2500     		.ascii	"%\000"
+ 604              		.section	.flash
+ 605              		.align	2
+ 606              		.type	U_rules, %object
+ 607              		.size	U_rules, 720
+ 608              	U_rules:
+ 609 049c 00000000 		.word	Nothing
+ 610 04a0 34010000 		.word	.LC55
+ 611 04a4 20000000 		.word	.LC7
+ 612 04a8 240920FF 		.ascii	"$\011 \377\000"
+ 612      00
+ 613 04ad 000000   		.space	3
+ 614 04b0 00000000 		.word	Nothing
+ 615 04b4 34010000 		.word	.LC55
+ 616 04b8 00000000 		.word	Anything
+ARM GAS  /tmp/ccDMOhBF.s 			page 14
+
+
+ 617 04bc 0C20FF00 		.ascii	"\014 \377\000"
+ 618 04c0 00000000 		.space	4
+ 619 04c4 00000000 		.word	Nothing
+ 620 04c8 38010000 		.word	.LC56
+ 621 04cc 00000000 		.word	Anything
+ 622 04d0 0B100620 		.ascii	"\013\020\006 \377\000"
+ 622      FF00
+ 623 04d6 0000     		.space	2
+ 624 04d8 54000000 		.word	.LC17
+ 625 04dc 40010000 		.word	.LC57
+ 626 04e0 28000000 		.word	.LC9
+ 627 04e4 0825FF00 		.ascii	"\010%\377\000"
+ 628 04e8 00000000 		.space	4
+ 629 04ec 50000000 		.word	.LC16
+ 630 04f0 40010000 		.word	.LC57
+ 631 04f4 28000000 		.word	.LC9
+ 632 04f8 0825FF00 		.ascii	"\010%\377\000"
+ 633 04fc 00000000 		.space	4
+ 634 0500 44010000 		.word	.LC58
+ 635 0504 40010000 		.word	.LC57
+ 636 0508 28000000 		.word	.LC9
+ 637 050c 0825FF00 		.ascii	"\010%\377\000"
+ 638 0510 00000000 		.space	4
+ 639 0514 48010000 		.word	.LC59
+ 640 0518 40010000 		.word	.LC57
+ 641 051c 28000000 		.word	.LC9
+ 642 0520 0825FF00 		.ascii	"\010%\377\000"
+ 643 0524 00000000 		.space	4
+ 644 0528 4C010000 		.word	.LC60
+ 645 052c 40010000 		.word	.LC57
+ 646 0530 28000000 		.word	.LC9
+ 647 0534 0825FF00 		.ascii	"\010%\377\000"
+ 648 0538 00000000 		.space	4
+ 649 053c 00000000 		.word	.LC0
+ 650 0540 40010000 		.word	.LC57
+ 651 0544 28000000 		.word	.LC9
+ 652 0548 0825FF00 		.ascii	"\010%\377\000"
+ 653 054c 00000000 		.space	4
+ 654 0550 50010000 		.word	.LC61
+ 655 0554 40010000 		.word	.LC57
+ 656 0558 28000000 		.word	.LC9
+ 657 055c 0825FF00 		.ascii	"\010%\377\000"
+ 658 0560 00000000 		.space	4
+ 659 0564 54010000 		.word	.LC62
+ 660 0568 40010000 		.word	.LC57
+ 661 056c 28000000 		.word	.LC9
+ 662 0570 0825FF00 		.ascii	"\010%\377\000"
+ 663 0574 00000000 		.space	4
+ 664 0578 04010000 		.word	.LC44
+ 665 057c 40010000 		.word	.LC57
+ 666 0580 28000000 		.word	.LC9
+ 667 0584 0825FF00 		.ascii	"\010%\377\000"
+ 668 0588 00000000 		.space	4
+ 669 058c 58010000 		.word	.LC63
+ 670 0590 40010000 		.word	.LC57
+ 671 0594 28000000 		.word	.LC9
+ 672 0598 0825FF00 		.ascii	"\010%\377\000"
+ARM GAS  /tmp/ccDMOhBF.s 			page 15
+
+
+ 673 059c 00000000 		.space	4
+ 674 05a0 5C010000 		.word	.LC64
+ 675 05a4 40010000 		.word	.LC57
+ 676 05a8 28000000 		.word	.LC9
+ 677 05ac 0825FF00 		.ascii	"\010%\377\000"
+ 678 05b0 00000000 		.space	4
+ 679 05b4 00000000 		.word	Anything
+ 680 05b8 40010000 		.word	.LC57
+ 681 05bc 28000000 		.word	.LC9
+ 682 05c0 240825FF 		.ascii	"$\010%\377\000"
+ 682      00
+ 683 05c5 000000   		.space	3
+ 684 05c8 00000000 		.word	Anything
+ 685 05cc 40010000 		.word	.LC57
+ 686 05d0 00000000 		.word	Anything
+ 687 05d4 0AFF00   		.ascii	"\012\377\000"
+ 688 05d7 00000000 		.space	5
+ 688      00
+ 689 05dc 00000000 		.word	Anything
+ 690 05e0 60010000 		.word	.LC65
+ 691 05e4 64010000 		.word	.LC66
+ 692 05e8 0CFF00   		.ascii	"\014\377\000"
+ 693 05eb 00000000 		.space	5
+ 693      00
+ 694 05f0 00000000 		.word	Anything
+ 695 05f4 60010000 		.word	.LC65
+ 696 05f8 68010000 		.word	.LC67
+ 697 05fc 0CFF00   		.ascii	"\014\377\000"
+ 698 05ff 00000000 		.space	5
+ 698      00
+ 699 0604 00000000 		.word	Anything
+ 700 0608 6C010000 		.word	.LC68
+ 701 060c 00000000 		.word	Anything
+ 702 0610 0DFF00   		.ascii	"\015\377\000"
+ 703 0613 00000000 		.space	5
+ 703      00
+ 704 0618 70010000 		.word	.LC69
+ 705 061c 60010000 		.word	.LC65
+ 706 0620 28000000 		.word	.LC9
+ 707 0624 FF00     		.ascii	"\377\000"
+ 708 0626 00000000 		.space	6
+ 708      0000
+ 709 062c 74010000 		.word	.LC70
+ 710 0630 60010000 		.word	.LC65
+ 711 0634 78010000 		.word	.LC71
+ 712 0638 FF00     		.ascii	"\377\000"
+ 713 063a 00000000 		.space	6
+ 713      0000
+ 714 0640 74010000 		.word	.LC70
+ 715 0644 60010000 		.word	.LC65
+ 716 0648 28000000 		.word	.LC9
+ 717 064c 23FF00   		.ascii	"#\377\000"
+ 718 064f 00000000 		.space	5
+ 718      00
+ 719 0654 14010000 		.word	.LC48
+ 720 0658 60010000 		.word	.LC65
+ 721 065c 00000000 		.word	Anything
+ARM GAS  /tmp/ccDMOhBF.s 			page 16
+
+
+ 722 0660 2409FF00 		.ascii	"$\011\377\000"
+ 723 0664 00000000 		.space	4
+ 724 0668 54000000 		.word	.LC17
+ 725 066c 60010000 		.word	.LC65
+ 726 0670 00000000 		.word	Anything
+ 727 0674 09FF00   		.ascii	"\011\377\000"
+ 728 0677 00000000 		.space	5
+ 728      00
+ 729 067c 50000000 		.word	.LC16
+ 730 0680 60010000 		.word	.LC65
+ 731 0684 00000000 		.word	Anything
+ 732 0688 09FF00   		.ascii	"\011\377\000"
+ 733 068b 00000000 		.space	5
+ 733      00
+ 734 0690 44010000 		.word	.LC58
+ 735 0694 60010000 		.word	.LC65
+ 736 0698 00000000 		.word	Anything
+ 737 069c 09FF00   		.ascii	"\011\377\000"
+ 738 069f 00000000 		.space	5
+ 738      00
+ 739 06a4 48010000 		.word	.LC59
+ 740 06a8 60010000 		.word	.LC65
+ 741 06ac 00000000 		.word	Anything
+ 742 06b0 09FF00   		.ascii	"\011\377\000"
+ 743 06b3 00000000 		.space	5
+ 743      00
+ 744 06b8 4C010000 		.word	.LC60
+ 745 06bc 60010000 		.word	.LC65
+ 746 06c0 00000000 		.word	Anything
+ 747 06c4 09FF00   		.ascii	"\011\377\000"
+ 748 06c7 00000000 		.space	5
+ 748      00
+ 749 06cc 00000000 		.word	.LC0
+ 750 06d0 60010000 		.word	.LC65
+ 751 06d4 00000000 		.word	Anything
+ 752 06d8 09FF00   		.ascii	"\011\377\000"
+ 753 06db 00000000 		.space	5
+ 753      00
+ 754 06e0 50010000 		.word	.LC61
+ 755 06e4 60010000 		.word	.LC65
+ 756 06e8 00000000 		.word	Anything
+ 757 06ec 09FF00   		.ascii	"\011\377\000"
+ 758 06ef 00000000 		.space	5
+ 758      00
+ 759 06f4 54010000 		.word	.LC62
+ 760 06f8 60010000 		.word	.LC65
+ 761 06fc 00000000 		.word	Anything
+ 762 0700 09FF00   		.ascii	"\011\377\000"
+ 763 0703 00000000 		.space	5
+ 763      00
+ 764 0708 04010000 		.word	.LC44
+ 765 070c 60010000 		.word	.LC65
+ 766 0710 00000000 		.word	Anything
+ 767 0714 09FF00   		.ascii	"\011\377\000"
+ 768 0717 00000000 		.space	5
+ 768      00
+ 769 071c 58010000 		.word	.LC63
+ARM GAS  /tmp/ccDMOhBF.s 			page 17
+
+
+ 770 0720 60010000 		.word	.LC65
+ 771 0724 00000000 		.word	Anything
+ 772 0728 09FF00   		.ascii	"\011\377\000"
+ 773 072b 00000000 		.space	5
+ 773      00
+ 774 0730 5C010000 		.word	.LC64
+ 775 0734 60010000 		.word	.LC65
+ 776 0738 00000000 		.word	Anything
+ 777 073c 09FF00   		.ascii	"\011\377\000"
+ 778 073f 00000000 		.space	5
+ 778      00
+ 779 0744 00000000 		.word	Anything
+ 780 0748 60010000 		.word	.LC65
+ 781 074c 00000000 		.word	Anything
+ 782 0750 2409FF00 		.ascii	"$\011\377\000"
+ 783 0754 00000000 		.space	4
+ 784 0758 00000000 		.word	Anything
+ 785 075c 00000000 		.word	0
+ 786 0760 00000000 		.word	Anything
+ 787 0764 FE00     		.ascii	"\376\000"
+ 788 0766 00000000 		.space	6
+ 788      0000
+ 789              		.global	R_rules
+ 790              		.section	.rodata.str1.4
+ 791 017a 0000     		.align	2
+ 792              	.LC72:
+ 793 017c 524500   		.ascii	"RE\000"
+ 794              		.section	.flash
+ 795              		.align	2
+ 796              		.type	R_rules, %object
+ 797              		.size	R_rules, 60
+ 798              	R_rules:
+ 799 076c 00000000 		.word	Nothing
+ 800 0770 7C010000 		.word	.LC72
+ 801 0774 34000000 		.word	.LC11
+ 802 0778 2500FF00 		.ascii	"%\000\377\000"
+ 803 077c 00000000 		.space	4
+ 804 0780 00000000 		.word	Anything
+ 805 0784 44010000 		.word	.LC58
+ 806 0788 00000000 		.word	Anything
+ 807 078c 25FF00   		.ascii	"%\377\000"
+ 808 078f 00000000 		.space	5
+ 808      00
+ 809 0794 00000000 		.word	Anything
+ 810 0798 00000000 		.word	0
+ 811 079c 00000000 		.word	Anything
+ 812 07a0 FE00     		.ascii	"\376\000"
+ 813 07a2 00000000 		.space	6
+ 813      0000
+ 814              		.global	S_rules
+ 815              		.section	.rodata.str1.4
+ 816 017f 00       		.align	2
+ 817              	.LC73:
+ 818 0180 53494F4E 		.ascii	"SION\000"
+ 818      00
+ 819 0185 000000   		.align	2
+ 820              	.LC74:
+ARM GAS  /tmp/ccDMOhBF.s 			page 18
+
+
+ 821 0188 534F4D45 		.ascii	"SOME\000"
+ 821      00
+ 822 018d 000000   		.align	2
+ 823              	.LC75:
+ 824 0190 53555200 		.ascii	"SUR\000"
+ 825              		.align	2
+ 826              	.LC76:
+ 827 0194 535500   		.ascii	"SU\000"
+ 828 0197 00       		.align	2
+ 829              	.LC77:
+ 830 0198 53535500 		.ascii	"SSU\000"
+ 831              		.align	2
+ 832              	.LC78:
+ 833 019c 53454400 		.ascii	"SED\000"
+ 834              		.align	2
+ 835              	.LC79:
+ 836 01a0 53414944 		.ascii	"SAID\000"
+ 836      00
+ 837 01a5 000000   		.align	2
+ 838              	.LC80:
+ 839 01a8 2E00     		.ascii	".\000"
+ 840 01aa 0000     		.align	2
+ 841              	.LC81:
+ 842 01ac 233A2E45 		.ascii	"#:.E\000"
+ 842      00
+ 843 01b1 000000   		.align	2
+ 844              	.LC82:
+ 845 01b4 233A5E23 		.ascii	"#:^##\000"
+ 845      2300
+ 846 01ba 0000     		.align	2
+ 847              	.LC83:
+ 848 01bc 233A5E23 		.ascii	"#:^#\000"
+ 848      00
+ 849 01c1 000000   		.align	2
+ 850              	.LC84:
+ 851 01c4 203A2300 		.ascii	" :#\000"
+ 852              		.align	2
+ 853              	.LC85:
+ 854 01c8 53434800 		.ascii	"SCH\000"
+ 855              		.align	2
+ 856              	.LC86:
+ 857 01cc 432B00   		.ascii	"C+\000"
+ 858 01cf 00       		.align	2
+ 859              	.LC87:
+ 860 01d0 534D00   		.ascii	"SM\000"
+ 861 01d3 00       		.align	2
+ 862              	.LC88:
+ 863 01d4 534E00   		.ascii	"SN\000"
+ 864 01d7 00       		.align	2
+ 865              	.LC89:
+ 866 01d8 2700     		.ascii	"'\000"
+ 867              		.section	.flash
+ 868              		.align	2
+ 869              		.type	S_rules, %object
+ 870              		.size	S_rules, 480
+ 871              	S_rules:
+ 872 07a8 00000000 		.word	Anything
+ARM GAS  /tmp/ccDMOhBF.s 			page 19
+
+
+ 873 07ac 5C010000 		.word	.LC64
+ 874 07b0 00000000 		.word	Anything
+ 875 07b4 1CFF00   		.ascii	"\034\377\000"
+ 876 07b7 00000000 		.space	5
+ 876      00
+ 877 07bc 28000000 		.word	.LC9
+ 878 07c0 80010000 		.word	.LC73
+ 879 07c4 00000000 		.word	Anything
+ 880 07c8 1D0B20FF 		.ascii	"\035\013 \377\000"
+ 880      00
+ 881 07cd 000000   		.space	3
+ 882 07d0 00000000 		.word	Anything
+ 883 07d4 88010000 		.word	.LC74
+ 884 07d8 00000000 		.word	Anything
+ 885 07dc 1A0C1FFF 		.ascii	"\032\014\037\377\000"
+ 885      00
+ 886 07e1 000000   		.space	3
+ 887 07e4 28000000 		.word	.LC9
+ 888 07e8 90010000 		.word	.LC75
+ 889 07ec 28000000 		.word	.LC9
+ 890 07f0 1D0AFF00 		.ascii	"\035\012\377\000"
+ 891 07f4 00000000 		.space	4
+ 892 07f8 00000000 		.word	Anything
+ 893 07fc 90010000 		.word	.LC75
+ 894 0800 28000000 		.word	.LC9
+ 895 0804 1C0AFF00 		.ascii	"\034\012\377\000"
+ 896 0808 00000000 		.space	4
+ 897 080c 28000000 		.word	.LC9
+ 898 0810 94010000 		.word	.LC76
+ 899 0814 28000000 		.word	.LC9
+ 900 0818 1D09FF00 		.ascii	"\035\011\377\000"
+ 901 081c 00000000 		.space	4
+ 902 0820 28000000 		.word	.LC9
+ 903 0824 98010000 		.word	.LC77
+ 904 0828 28000000 		.word	.LC9
+ 905 082c 1C09FF00 		.ascii	"\034\011\377\000"
+ 906 0830 00000000 		.space	4
+ 907 0834 28000000 		.word	.LC9
+ 908 0838 9C010000 		.word	.LC78
+ 909 083c 00000000 		.word	Nothing
+ 910 0840 1B13FF00 		.ascii	"\033\023\377\000"
+ 911 0844 00000000 		.space	4
+ 912 0848 28000000 		.word	.LC9
+ 913 084c 50000000 		.word	.LC16
+ 914 0850 28000000 		.word	.LC9
+ 915 0854 1BFF00   		.ascii	"\033\377\000"
+ 916 0857 00000000 		.space	5
+ 916      00
+ 917 085c 00000000 		.word	Anything
+ 918 0860 A0010000 		.word	.LC79
+ 919 0864 00000000 		.word	Anything
+ 920 0868 1A0313FF 		.ascii	"\032\003\023\377\000"
+ 920      00
+ 921 086d 000000   		.space	3
+ 922 0870 80000000 		.word	.LC25
+ 923 0874 80010000 		.word	.LC73
+ 924 0878 00000000 		.word	Anything
+ARM GAS  /tmp/ccDMOhBF.s 			page 20
+
+
+ 925 087c 1C0B20FF 		.ascii	"\034\013 \377\000"
+ 925      00
+ 926 0881 000000   		.space	3
+ 927 0884 00000000 		.word	Anything
+ 928 0888 50000000 		.word	.LC16
+ 929 088c 50000000 		.word	.LC16
+ 930 0890 FF00     		.ascii	"\377\000"
+ 931 0892 00000000 		.space	6
+ 931      0000
+ 932 0898 A8010000 		.word	.LC80
+ 933 089c 50000000 		.word	.LC16
+ 934 08a0 00000000 		.word	Nothing
+ 935 08a4 1BFF00   		.ascii	"\033\377\000"
+ 936 08a7 00000000 		.space	5
+ 936      00
+ 937 08ac AC010000 		.word	.LC81
+ 938 08b0 50000000 		.word	.LC16
+ 939 08b4 00000000 		.word	Nothing
+ 940 08b8 1BFF00   		.ascii	"\033\377\000"
+ 941 08bb 00000000 		.space	5
+ 941      00
+ 942 08c0 B4010000 		.word	.LC82
+ 943 08c4 50000000 		.word	.LC16
+ 944 08c8 00000000 		.word	Nothing
+ 945 08cc 1BFF00   		.ascii	"\033\377\000"
+ 946 08cf 00000000 		.space	5
+ 946      00
+ 947 08d4 BC010000 		.word	.LC83
+ 948 08d8 50000000 		.word	.LC16
+ 949 08dc 00000000 		.word	Nothing
+ 950 08e0 1AFF00   		.ascii	"\032\377\000"
+ 951 08e3 00000000 		.space	5
+ 951      00
+ 952 08e8 60010000 		.word	.LC65
+ 953 08ec 50000000 		.word	.LC16
+ 954 08f0 00000000 		.word	Nothing
+ 955 08f4 1AFF00   		.ascii	"\032\377\000"
+ 956 08f7 00000000 		.space	5
+ 956      00
+ 957 08fc C4010000 		.word	.LC84
+ 958 0900 50000000 		.word	.LC16
+ 959 0904 00000000 		.word	Nothing
+ 960 0908 1BFF00   		.ascii	"\033\377\000"
+ 961 090b 00000000 		.space	5
+ 961      00
+ 962 0910 00000000 		.word	Nothing
+ 963 0914 C8010000 		.word	.LC85
+ 964 0918 00000000 		.word	Anything
+ 965 091c 1A14FF00 		.ascii	"\032\024\377\000"
+ 966 0920 00000000 		.space	4
+ 967 0924 00000000 		.word	Anything
+ 968 0928 50000000 		.word	.LC16
+ 969 092c CC010000 		.word	.LC86
+ 970 0930 FF00     		.ascii	"\377\000"
+ 971 0932 00000000 		.space	6
+ 971      0000
+ 972 0938 28000000 		.word	.LC9
+ARM GAS  /tmp/ccDMOhBF.s 			page 21
+
+
+ 973 093c D0010000 		.word	.LC87
+ 974 0940 00000000 		.word	Anything
+ 975 0944 1B1FFF00 		.ascii	"\033\037\377\000"
+ 976 0948 00000000 		.space	4
+ 977 094c 28000000 		.word	.LC9
+ 978 0950 D4010000 		.word	.LC88
+ 979 0954 D8010000 		.word	.LC89
+ 980 0958 1B0B20FF 		.ascii	"\033\013 \377\000"
+ 980      00
+ 981 095d 000000   		.space	3
+ 982 0960 00000000 		.word	Anything
+ 983 0964 50000000 		.word	.LC16
+ 984 0968 00000000 		.word	Anything
+ 985 096c 1AFF00   		.ascii	"\032\377\000"
+ 986 096f 00000000 		.space	5
+ 986      00
+ 987 0974 00000000 		.word	Anything
+ 988 0978 00000000 		.word	0
+ 989 097c 00000000 		.word	Anything
+ 990 0980 FE00     		.ascii	"\376\000"
+ 991 0982 00000000 		.space	6
+ 991      0000
+ 992              		.global	P_rules
+ 993              		.section	.rodata.str1.4
+ 994 01da 0000     		.align	2
+ 995              	.LC90:
+ 996 01dc 504800   		.ascii	"PH\000"
+ 997 01df 00       		.align	2
+ 998              	.LC91:
+ 999 01e0 50454F50 		.ascii	"PEOP\000"
+ 999      00
+ 1000 01e5 000000   		.align	2
+ 1001              	.LC92:
+ 1002 01e8 504F5700 		.ascii	"POW\000"
+ 1003              		.align	2
+ 1004              	.LC93:
+ 1005 01ec 50555400 		.ascii	"PUT\000"
+ 1006              		.align	2
+ 1007              	.LC94:
+ 1008 01f0 5000     		.ascii	"P\000"
+ 1009              		.section	.flash
+ 1010              		.align	2
+ 1011              		.type	P_rules, %object
+ 1012              		.size	P_rules, 120
+ 1013              	P_rules:
+ 1014 0988 00000000 		.word	Anything
+ 1015 098c DC010000 		.word	.LC90
+ 1016 0990 00000000 		.word	Anything
+ 1017 0994 16FF00   		.ascii	"\026\377\000"
+ 1018 0997 00000000 		.space	5
+ 1018      00
+ 1019 099c 00000000 		.word	Anything
+ 1020 09a0 E0010000 		.word	.LC91
+ 1021 09a4 00000000 		.word	Anything
+ 1022 09a8 100010FF 		.ascii	"\020\000\020\377\000"
+ 1022      00
+ 1023 09ad 000000   		.space	3
+ARM GAS  /tmp/ccDMOhBF.s 			page 22
+
+
+ 1024 09b0 00000000 		.word	Anything
+ 1025 09b4 E8010000 		.word	.LC92
+ 1026 09b8 00000000 		.word	Anything
+ 1027 09bc 100EFF00 		.ascii	"\020\016\377\000"
+ 1028 09c0 00000000 		.space	4
+ 1029 09c4 00000000 		.word	Anything
+ 1030 09c8 EC010000 		.word	.LC93
+ 1031 09cc 00000000 		.word	Nothing
+ 1032 09d0 100812FF 		.ascii	"\020\010\022\377\000"
+ 1032      00
+ 1033 09d5 000000   		.space	3
+ 1034 09d8 00000000 		.word	Anything
+ 1035 09dc F0010000 		.word	.LC94
+ 1036 09e0 00000000 		.word	Anything
+ 1037 09e4 10FF00   		.ascii	"\020\377\000"
+ 1038 09e7 00000000 		.space	5
+ 1038      00
+ 1039 09ec 00000000 		.word	Anything
+ 1040 09f0 00000000 		.word	0
+ 1041 09f4 00000000 		.word	Anything
+ 1042 09f8 FE00     		.ascii	"\376\000"
+ 1043 09fa 00000000 		.space	6
+ 1043      0000
+ 1044              		.global	Q_rules
+ 1045              		.section	.rodata.str1.4
+ 1046 01f2 0000     		.align	2
+ 1047              	.LC95:
+ 1048 01f4 51554152 		.ascii	"QUAR\000"
+ 1048      00
+ 1049 01f9 000000   		.align	2
+ 1050              	.LC96:
+ 1051 01fc 515500   		.ascii	"QU\000"
+ 1052 01ff 00       		.align	2
+ 1053              	.LC97:
+ 1054 0200 5100     		.ascii	"Q\000"
+ 1055              		.section	.flash
+ 1056              		.align	2
+ 1057              		.type	Q_rules, %object
+ 1058              		.size	Q_rules, 80
+ 1059              	Q_rules:
+ 1060 0a00 00000000 		.word	Anything
+ 1061 0a04 F4010000 		.word	.LC95
+ 1062 0a08 00000000 		.word	Anything
+ 1063 0a0c 14230625 		.ascii	"\024#\006%\377\000"
+ 1063      FF00
+ 1064 0a12 0000     		.space	2
+ 1065 0a14 00000000 		.word	Anything
+ 1066 0a18 FC010000 		.word	.LC96
+ 1067 0a1c 00000000 		.word	Anything
+ 1068 0a20 1423FF00 		.ascii	"\024#\377\000"
+ 1069 0a24 00000000 		.space	4
+ 1070 0a28 00000000 		.word	Anything
+ 1071 0a2c 00020000 		.word	.LC97
+ 1072 0a30 00000000 		.word	Anything
+ 1073 0a34 14FF00   		.ascii	"\024\377\000"
+ 1074 0a37 00000000 		.space	5
+ 1074      00
+ARM GAS  /tmp/ccDMOhBF.s 			page 23
+
+
+ 1075 0a3c 00000000 		.word	Anything
+ 1076 0a40 00000000 		.word	0
+ 1077 0a44 00000000 		.word	Anything
+ 1078 0a48 FE00     		.ascii	"\376\000"
+ 1079 0a4a 00000000 		.space	6
+ 1079      0000
+ 1080              		.global	N_rules
+ 1081              		.section	.rodata.str1.4
+ 1082 0202 0000     		.align	2
+ 1083              	.LC98:
+ 1084 0204 4500     		.ascii	"E\000"
+ 1085 0206 0000     		.align	2
+ 1086              	.LC99:
+ 1087 0208 4E4700   		.ascii	"NG\000"
+ 1088 020b 00       		.align	2
+ 1089              	.LC100:
+ 1090 020c 2B00     		.ascii	"+\000"
+ 1091 020e 0000     		.align	2
+ 1092              	.LC101:
+ 1093 0210 4E474C00 		.ascii	"NGL\000"
+ 1094              		.align	2
+ 1095              	.LC102:
+ 1096 0214 4E4B00   		.ascii	"NK\000"
+ 1097 0217 00       		.align	2
+ 1098              	.LC103:
+ 1099 0218 4E4F5700 		.ascii	"NOW\000"
+ 1100              		.section	.flash
+ 1101              		.align	2
+ 1102              		.type	N_rules, %object
+ 1103              		.size	N_rules, 180
+ 1104              	N_rules:
+ 1105 0a50 04020000 		.word	.LC98
+ 1106 0a54 08020000 		.word	.LC99
+ 1107 0a58 0C020000 		.word	.LC100
+ 1108 0a5c 2027FF00 		.ascii	" '\377\000"
+ 1109 0a60 00000000 		.space	4
+ 1110 0a64 00000000 		.word	Anything
+ 1111 0a68 08020000 		.word	.LC99
+ 1112 0a6c 44010000 		.word	.LC58
+ 1113 0a70 2115FF00 		.ascii	"!\025\377\000"
+ 1114 0a74 00000000 		.space	4
+ 1115 0a78 00000000 		.word	Anything
+ 1116 0a7c 08020000 		.word	.LC99
+ 1117 0a80 28000000 		.word	.LC9
+ 1118 0a84 2115FF00 		.ascii	"!\025\377\000"
+ 1119 0a88 00000000 		.space	4
+ 1120 0a8c 00000000 		.word	Anything
+ 1121 0a90 10020000 		.word	.LC101
+ 1122 0a94 78010000 		.word	.LC71
+ 1123 0a98 21150B22 		.ascii	"!\025\013\"\377\000"
+ 1123      FF00
+ 1124 0a9e 0000     		.space	2
+ 1125 0aa0 00000000 		.word	Anything
+ 1126 0aa4 08020000 		.word	.LC99
+ 1127 0aa8 00000000 		.word	Anything
+ 1128 0aac 21FF00   		.ascii	"!\377\000"
+ 1129 0aaf 00000000 		.space	5
+ARM GAS  /tmp/ccDMOhBF.s 			page 24
+
+
+ 1129      00
+ 1130 0ab4 00000000 		.word	Anything
+ 1131 0ab8 14020000 		.word	.LC102
+ 1132 0abc 00000000 		.word	Anything
+ 1133 0ac0 2114FF00 		.ascii	"!\024\377\000"
+ 1134 0ac4 00000000 		.space	4
+ 1135 0ac8 00000000 		.word	Nothing
+ 1136 0acc 18020000 		.word	.LC103
+ 1137 0ad0 00000000 		.word	Nothing
+ 1138 0ad4 200EFF00 		.ascii	" \016\377\000"
+ 1139 0ad8 00000000 		.space	4
+ 1140 0adc 00000000 		.word	Anything
+ 1141 0ae0 50010000 		.word	.LC61
+ 1142 0ae4 00000000 		.word	Anything
+ 1143 0ae8 20FF00   		.ascii	" \377\000"
+ 1144 0aeb 00000000 		.space	5
+ 1144      00
+ 1145 0af0 00000000 		.word	Anything
+ 1146 0af4 00000000 		.word	0
+ 1147 0af8 00000000 		.word	Anything
+ 1148 0afc FE00     		.ascii	"\376\000"
+ 1149 0afe 00000000 		.space	6
+ 1149      0000
+ 1150              		.global	O_rules
+ 1151              		.section	.rodata.str1.4
+ 1152              		.align	2
+ 1153              	.LC104:
+ 1154 021c 4F4600   		.ascii	"OF\000"
+ 1155 021f 00       		.align	2
+ 1156              	.LC105:
+ 1157 0220 4F524F55 		.ascii	"OROUGH\000"
+ 1157      474800
+ 1158 0227 00       		.align	2
+ 1159              	.LC106:
+ 1160 0228 4F5200   		.ascii	"OR\000"
+ 1161 022b 00       		.align	2
+ 1162              	.LC107:
+ 1163 022c 4F525300 		.ascii	"ORS\000"
+ 1164              		.align	2
+ 1165              	.LC108:
+ 1166 0230 4F4E4500 		.ascii	"ONE\000"
+ 1167              		.align	2
+ 1168              	.LC109:
+ 1169 0234 4F5700   		.ascii	"OW\000"
+ 1170 0237 00       		.align	2
+ 1171              	.LC110:
+ 1172 0238 4F564552 		.ascii	"OVER\000"
+ 1172      00
+ 1173 023d 000000   		.align	2
+ 1174              	.LC111:
+ 1175 0240 4F5600   		.ascii	"OV\000"
+ 1176 0243 00       		.align	2
+ 1177              	.LC112:
+ 1178 0244 5E2500   		.ascii	"^%\000"
+ 1179 0247 00       		.align	2
+ 1180              	.LC113:
+ 1181 0248 5E454E00 		.ascii	"^EN\000"
+ARM GAS  /tmp/ccDMOhBF.s 			page 25
+
+
+ 1182              		.align	2
+ 1183              	.LC114:
+ 1184 024c 5E492300 		.ascii	"^I#\000"
+ 1185              		.align	2
+ 1186              	.LC115:
+ 1187 0250 4F4C00   		.ascii	"OL\000"
+ 1188 0253 00       		.align	2
+ 1189              	.LC116:
+ 1190 0254 4F554748 		.ascii	"OUGHT\000"
+ 1190      5400
+ 1191 025a 0000     		.align	2
+ 1192              	.LC117:
+ 1193 025c 4F554748 		.ascii	"OUGH\000"
+ 1193      00
+ 1194 0261 000000   		.align	2
+ 1195              	.LC118:
+ 1196 0264 4F5500   		.ascii	"OU\000"
+ 1197 0267 00       		.align	2
+ 1198              	.LC119:
+ 1199 0268 4800     		.ascii	"H\000"
+ 1200 026a 0000     		.align	2
+ 1201              	.LC120:
+ 1202 026c 532300   		.ascii	"S#\000"
+ 1203 026f 00       		.align	2
+ 1204              	.LC121:
+ 1205 0270 4F555300 		.ascii	"OUS\000"
+ 1206              		.align	2
+ 1207              	.LC122:
+ 1208 0274 4F555200 		.ascii	"OUR\000"
+ 1209              		.align	2
+ 1210              	.LC123:
+ 1211 0278 4F554C44 		.ascii	"OULD\000"
+ 1211      00
+ 1212 027d 000000   		.align	2
+ 1213              	.LC124:
+ 1214 0280 5E4C00   		.ascii	"^L\000"
+ 1215 0283 00       		.align	2
+ 1216              	.LC125:
+ 1217 0284 4F555000 		.ascii	"OUP\000"
+ 1218              		.align	2
+ 1219              	.LC126:
+ 1220 0288 4F5900   		.ascii	"OY\000"
+ 1221 028b 00       		.align	2
+ 1222              	.LC127:
+ 1223 028c 4F494E47 		.ascii	"OING\000"
+ 1223      00
+ 1224 0291 000000   		.align	2
+ 1225              	.LC128:
+ 1226 0294 4F4900   		.ascii	"OI\000"
+ 1227 0297 00       		.align	2
+ 1228              	.LC129:
+ 1229 0298 4F4F5200 		.ascii	"OOR\000"
+ 1230              		.align	2
+ 1231              	.LC130:
+ 1232 029c 4F4F4B00 		.ascii	"OOK\000"
+ 1233              		.align	2
+ 1234              	.LC131:
+ARM GAS  /tmp/ccDMOhBF.s 			page 26
+
+
+ 1235 02a0 4F4F4400 		.ascii	"OOD\000"
+ 1236              		.align	2
+ 1237              	.LC132:
+ 1238 02a4 4F4F00   		.ascii	"OO\000"
+ 1239 02a7 00       		.align	2
+ 1240              	.LC133:
+ 1241 02a8 4F4100   		.ascii	"OA\000"
+ 1242 02ab 00       		.align	2
+ 1243              	.LC134:
+ 1244 02ac 4F4E4C59 		.ascii	"ONLY\000"
+ 1244      00
+ 1245 02b1 000000   		.align	2
+ 1246              	.LC135:
+ 1247 02b4 4F4E4345 		.ascii	"ONCE\000"
+ 1247      00
+ 1248 02b9 000000   		.align	2
+ 1249              	.LC136:
+ 1250 02bc 4F4E2754 		.ascii	"ON'T\000"
+ 1250      00
+ 1251 02c1 000000   		.align	2
+ 1252              	.LC137:
+ 1253 02c4 4300     		.ascii	"C\000"
+ 1254 02c6 0000     		.align	2
+ 1255              	.LC138:
+ 1256 02c8 203A5E00 		.ascii	" :^\000"
+ 1257              		.align	2
+ 1258              	.LC139:
+ 1259 02cc 4F4E00   		.ascii	"ON\000"
+ 1260 02cf 00       		.align	2
+ 1261              	.LC140:
+ 1262 02d0 235E00   		.ascii	"#^\000"
+ 1263 02d3 00       		.align	2
+ 1264              	.LC141:
+ 1265 02d4 53542000 		.ascii	"ST \000"
+ 1266              		.align	2
+ 1267              	.LC142:
+ 1268 02d8 4F544845 		.ascii	"OTHER\000"
+ 1268      5200
+ 1269 02de 0000     		.align	2
+ 1270              	.LC143:
+ 1271 02e0 4F535300 		.ascii	"OSS\000"
+ 1272              		.align	2
+ 1273              	.LC144:
+ 1274 02e4 4F4D00   		.ascii	"OM\000"
+ 1275              		.section	.flash
+ 1276              		.align	2
+ 1277              		.type	O_rules, %object
+ 1278              		.size	O_rules, 1000
+ 1279              	O_rules:
+ 1280 0b04 00000000 		.word	Anything
+ 1281 0b08 1C020000 		.word	.LC104
+ 1282 0b0c 00000000 		.word	Nothing
+ 1283 0b10 0B17FF00 		.ascii	"\013\027\377\000"
+ 1284 0b14 00000000 		.space	4
+ 1285 0b18 00000000 		.word	Anything
+ 1286 0b1c 20020000 		.word	.LC105
+ 1287 0b20 00000000 		.word	Anything
+ARM GAS  /tmp/ccDMOhBF.s 			page 27
+
+
+ 1288 0b24 0A07FF00 		.ascii	"\012\007\377\000"
+ 1289 0b28 00000000 		.space	4
+ 1290 0b2c 08010000 		.word	.LC45
+ 1291 0b30 28020000 		.word	.LC106
+ 1292 0b34 00000000 		.word	Nothing
+ 1293 0b38 0AFF00   		.ascii	"\012\377\000"
+ 1294 0b3b 00000000 		.space	5
+ 1294      00
+ 1295 0b40 08010000 		.word	.LC45
+ 1296 0b44 2C020000 		.word	.LC107
+ 1297 0b48 00000000 		.word	Nothing
+ 1298 0b4c 0A1BFF00 		.ascii	"\012\033\377\000"
+ 1299 0b50 00000000 		.space	4
+ 1300 0b54 00000000 		.word	Anything
+ 1301 0b58 28020000 		.word	.LC106
+ 1302 0b5c 00000000 		.word	Anything
+ 1303 0b60 0625FF00 		.ascii	"\006%\377\000"
+ 1304 0b64 00000000 		.space	4
+ 1305 0b68 00000000 		.word	Nothing
+ 1306 0b6c 30020000 		.word	.LC108
+ 1307 0b70 00000000 		.word	Anything
+ 1308 0b74 230C20FF 		.ascii	"#\014 \377\000"
+ 1308      00
+ 1309 0b79 000000   		.space	3
+ 1310 0b7c 00000000 		.word	Nothing
+ 1311 0b80 34020000 		.word	.LC109
+ 1312 0b84 00000000 		.word	Anything
+ 1313 0b88 07FF00   		.ascii	"\007\377\000"
+ 1314 0b8b 00000000 		.space	5
+ 1314      00
+ 1315 0b90 00000000 		.word	Anything
+ 1316 0b94 34020000 		.word	.LC109
+ 1317 0b98 00000000 		.word	Anything
+ 1318 0b9c 07FF00   		.ascii	"\007\377\000"
+ 1319 0b9f 00000000 		.space	5
+ 1319      00
+ 1320 0ba4 00000000 		.word	Nothing
+ 1321 0ba8 38020000 		.word	.LC110
+ 1322 0bac 00000000 		.word	Anything
+ 1323 0bb0 07170AFF 		.ascii	"\007\027\012\377\000"
+ 1323      00
+ 1324 0bb5 000000   		.space	3
+ 1325 0bb8 00000000 		.word	Anything
+ 1326 0bbc 40020000 		.word	.LC111
+ 1327 0bc0 00000000 		.word	Anything
+ 1328 0bc4 0C17FF00 		.ascii	"\014\027\377\000"
+ 1329 0bc8 00000000 		.space	4
+ 1330 0bcc 00000000 		.word	Anything
+ 1331 0bd0 18010000 		.word	.LC49
+ 1332 0bd4 44020000 		.word	.LC112
+ 1333 0bd8 07FF00   		.ascii	"\007\377\000"
+ 1334 0bdb 00000000 		.space	5
+ 1334      00
+ 1335 0be0 00000000 		.word	Anything
+ 1336 0be4 18010000 		.word	.LC49
+ 1337 0be8 48020000 		.word	.LC113
+ 1338 0bec 07FF00   		.ascii	"\007\377\000"
+ARM GAS  /tmp/ccDMOhBF.s 			page 28
+
+
+ 1339 0bef 00000000 		.space	5
+ 1339      00
+ 1340 0bf4 00000000 		.word	Anything
+ 1341 0bf8 18010000 		.word	.LC49
+ 1342 0bfc 4C020000 		.word	.LC114
+ 1343 0c00 07FF00   		.ascii	"\007\377\000"
+ 1344 0c03 00000000 		.space	5
+ 1344      00
+ 1345 0c08 00000000 		.word	Anything
+ 1346 0c0c 50020000 		.word	.LC115
+ 1347 0c10 48010000 		.word	.LC59
+ 1348 0c14 0722FF00 		.ascii	"\007\"\377\000"
+ 1349 0c18 00000000 		.space	4
+ 1350 0c1c 00000000 		.word	Anything
+ 1351 0c20 54020000 		.word	.LC116
+ 1352 0c24 00000000 		.word	Anything
+ 1353 0c28 0612FF00 		.ascii	"\006\022\377\000"
+ 1354 0c2c 00000000 		.space	4
+ 1355 0c30 00000000 		.word	Anything
+ 1356 0c34 5C020000 		.word	.LC117
+ 1357 0c38 00000000 		.word	Anything
+ 1358 0c3c 0C16FF00 		.ascii	"\014\026\377\000"
+ 1359 0c40 00000000 		.space	4
+ 1360 0c44 00000000 		.word	Nothing
+ 1361 0c48 64020000 		.word	.LC118
+ 1362 0c4c 00000000 		.word	Anything
+ 1363 0c50 0EFF00   		.ascii	"\016\377\000"
+ 1364 0c53 00000000 		.space	5
+ 1364      00
+ 1365 0c58 68020000 		.word	.LC119
+ 1366 0c5c 64020000 		.word	.LC118
+ 1367 0c60 6C020000 		.word	.LC120
+ 1368 0c64 0EFF00   		.ascii	"\016\377\000"
+ 1369 0c67 00000000 		.space	5
+ 1369      00
+ 1370 0c6c 00000000 		.word	Anything
+ 1371 0c70 70020000 		.word	.LC121
+ 1372 0c74 00000000 		.word	Anything
+ 1373 0c78 0B1AFF00 		.ascii	"\013\032\377\000"
+ 1374 0c7c 00000000 		.space	4
+ 1375 0c80 00000000 		.word	Anything
+ 1376 0c84 74020000 		.word	.LC122
+ 1377 0c88 00000000 		.word	Anything
+ 1378 0c8c 0625FF00 		.ascii	"\006%\377\000"
+ 1379 0c90 00000000 		.space	4
+ 1380 0c94 00000000 		.word	Anything
+ 1381 0c98 78020000 		.word	.LC123
+ 1382 0c9c 00000000 		.word	Anything
+ 1383 0ca0 0813FF00 		.ascii	"\010\023\377\000"
+ 1384 0ca4 00000000 		.space	4
+ 1385 0ca8 80000000 		.word	.LC25
+ 1386 0cac 64020000 		.word	.LC118
+ 1387 0cb0 80020000 		.word	.LC124
+ 1388 0cb4 0CFF00   		.ascii	"\014\377\000"
+ 1389 0cb7 00000000 		.space	5
+ 1389      00
+ 1390 0cbc 00000000 		.word	Anything
+ARM GAS  /tmp/ccDMOhBF.s 			page 29
+
+
+ 1391 0cc0 84020000 		.word	.LC125
+ 1392 0cc4 00000000 		.word	Anything
+ 1393 0cc8 0910FF00 		.ascii	"\011\020\377\000"
+ 1394 0ccc 00000000 		.space	4
+ 1395 0cd0 00000000 		.word	Anything
+ 1396 0cd4 64020000 		.word	.LC118
+ 1397 0cd8 00000000 		.word	Anything
+ 1398 0cdc 0EFF00   		.ascii	"\016\377\000"
+ 1399 0cdf 00000000 		.space	5
+ 1399      00
+ 1400 0ce4 00000000 		.word	Anything
+ 1401 0ce8 88020000 		.word	.LC126
+ 1402 0cec 00000000 		.word	Anything
+ 1403 0cf0 0FFF00   		.ascii	"\017\377\000"
+ 1404 0cf3 00000000 		.space	5
+ 1404      00
+ 1405 0cf8 00000000 		.word	Anything
+ 1406 0cfc 8C020000 		.word	.LC127
+ 1407 0d00 00000000 		.word	Anything
+ 1408 0d04 070121FF 		.ascii	"\007\001!\377\000"
+ 1408      00
+ 1409 0d09 000000   		.space	3
+ 1410 0d0c 00000000 		.word	Anything
+ 1411 0d10 94020000 		.word	.LC128
+ 1412 0d14 00000000 		.word	Anything
+ 1413 0d18 0FFF00   		.ascii	"\017\377\000"
+ 1414 0d1b 00000000 		.space	5
+ 1414      00
+ 1415 0d20 00000000 		.word	Anything
+ 1416 0d24 98020000 		.word	.LC129
+ 1417 0d28 00000000 		.word	Anything
+ 1418 0d2c 0625FF00 		.ascii	"\006%\377\000"
+ 1419 0d30 00000000 		.space	4
+ 1420 0d34 00000000 		.word	Anything
+ 1421 0d38 9C020000 		.word	.LC130
+ 1422 0d3c 00000000 		.word	Anything
+ 1423 0d40 0814FF00 		.ascii	"\010\024\377\000"
+ 1424 0d44 00000000 		.space	4
+ 1425 0d48 00000000 		.word	Anything
+ 1426 0d4c A0020000 		.word	.LC131
+ 1427 0d50 00000000 		.word	Anything
+ 1428 0d54 0813FF00 		.ascii	"\010\023\377\000"
+ 1429 0d58 00000000 		.space	4
+ 1430 0d5c 00000000 		.word	Anything
+ 1431 0d60 A4020000 		.word	.LC132
+ 1432 0d64 00000000 		.word	Anything
+ 1433 0d68 09FF00   		.ascii	"\011\377\000"
+ 1434 0d6b 00000000 		.space	5
+ 1434      00
+ 1435 0d70 00000000 		.word	Anything
+ 1436 0d74 18010000 		.word	.LC49
+ 1437 0d78 04020000 		.word	.LC98
+ 1438 0d7c 07FF00   		.ascii	"\007\377\000"
+ 1439 0d7f 00000000 		.space	5
+ 1439      00
+ 1440 0d84 00000000 		.word	Anything
+ 1441 0d88 18010000 		.word	.LC49
+ARM GAS  /tmp/ccDMOhBF.s 			page 30
+
+
+ 1442 0d8c 00000000 		.word	Nothing
+ 1443 0d90 07FF00   		.ascii	"\007\377\000"
+ 1444 0d93 00000000 		.space	5
+ 1444      00
+ 1445 0d98 00000000 		.word	Anything
+ 1446 0d9c A8020000 		.word	.LC133
+ 1447 0da0 00000000 		.word	Anything
+ 1448 0da4 07FF00   		.ascii	"\007\377\000"
+ 1449 0da7 00000000 		.space	5
+ 1449      00
+ 1450 0dac 00000000 		.word	Nothing
+ 1451 0db0 AC020000 		.word	.LC134
+ 1452 0db4 00000000 		.word	Anything
+ 1453 0db8 07202200 		.ascii	"\007 \"\000\377\000"
+ 1453      FF00
+ 1454 0dbe 0000     		.space	2
+ 1455 0dc0 00000000 		.word	Nothing
+ 1456 0dc4 B4020000 		.word	.LC135
+ 1457 0dc8 00000000 		.word	Anything
+ 1458 0dcc 230C201A 		.ascii	"#\014 \032\377\000"
+ 1458      FF00
+ 1459 0dd2 0000     		.space	2
+ 1460 0dd4 00000000 		.word	Anything
+ 1461 0dd8 BC020000 		.word	.LC136
+ 1462 0ddc 00000000 		.word	Anything
+ 1463 0de0 072012FF 		.ascii	"\007 \022\377\000"
+ 1463      00
+ 1464 0de5 000000   		.space	3
+ 1465 0de8 C4020000 		.word	.LC137
+ 1466 0dec 18010000 		.word	.LC49
+ 1467 0df0 50010000 		.word	.LC61
+ 1468 0df4 05FF00   		.ascii	"\005\377\000"
+ 1469 0df7 00000000 		.space	5
+ 1469      00
+ 1470 0dfc 00000000 		.word	Anything
+ 1471 0e00 18010000 		.word	.LC49
+ 1472 0e04 08020000 		.word	.LC99
+ 1473 0e08 06FF00   		.ascii	"\006\377\000"
+ 1474 0e0b 00000000 		.space	5
+ 1474      00
+ 1475 0e10 C8020000 		.word	.LC138
+ 1476 0e14 18010000 		.word	.LC49
+ 1477 0e18 50010000 		.word	.LC61
+ 1478 0e1c 0CFF00   		.ascii	"\014\377\000"
+ 1479 0e1f 00000000 		.space	5
+ 1479      00
+ 1480 0e24 20000000 		.word	.LC7
+ 1481 0e28 CC020000 		.word	.LC139
+ 1482 0e2c 00000000 		.word	Anything
+ 1483 0e30 0B20FF00 		.ascii	"\013 \377\000"
+ 1484 0e34 00000000 		.space	4
+ 1485 0e38 08010000 		.word	.LC45
+ 1486 0e3c CC020000 		.word	.LC139
+ 1487 0e40 00000000 		.word	Nothing
+ 1488 0e44 0B20FF00 		.ascii	"\013 \377\000"
+ 1489 0e48 00000000 		.space	4
+ 1490 0e4c D0020000 		.word	.LC140
+ARM GAS  /tmp/ccDMOhBF.s 			page 31
+
+
+ 1491 0e50 CC020000 		.word	.LC139
+ 1492 0e54 00000000 		.word	Anything
+ 1493 0e58 0B20FF00 		.ascii	"\013 \377\000"
+ 1494 0e5c 00000000 		.space	4
+ 1495 0e60 00000000 		.word	Anything
+ 1496 0e64 18010000 		.word	.LC49
+ 1497 0e68 D4020000 		.word	.LC141
+ 1498 0e6c 07FF00   		.ascii	"\007\377\000"
+ 1499 0e6f 00000000 		.space	5
+ 1499      00
+ 1500 0e74 00000000 		.word	Anything
+ 1501 0e78 1C020000 		.word	.LC104
+ 1502 0e7c 80000000 		.word	.LC25
+ 1503 0e80 0616FF00 		.ascii	"\006\026\377\000"
+ 1504 0e84 00000000 		.space	4
+ 1505 0e88 00000000 		.word	Anything
+ 1506 0e8c D8020000 		.word	.LC142
+ 1507 0e90 00000000 		.word	Anything
+ 1508 0e94 0C190AFF 		.ascii	"\014\031\012\377\000"
+ 1508      00
+ 1509 0e99 000000   		.space	3
+ 1510 0e9c 00000000 		.word	Anything
+ 1511 0ea0 E0020000 		.word	.LC143
+ 1512 0ea4 00000000 		.word	Nothing
+ 1513 0ea8 061AFF00 		.ascii	"\006\032\377\000"
+ 1514 0eac 00000000 		.space	4
+ 1515 0eb0 1C000000 		.word	.LC6
+ 1516 0eb4 E4020000 		.word	.LC144
+ 1517 0eb8 00000000 		.word	Anything
+ 1518 0ebc 0C1FFF00 		.ascii	"\014\037\377\000"
+ 1519 0ec0 00000000 		.space	4
+ 1520 0ec4 00000000 		.word	Anything
+ 1521 0ec8 18010000 		.word	.LC49
+ 1522 0ecc 00000000 		.word	Anything
+ 1523 0ed0 05FF00   		.ascii	"\005\377\000"
+ 1524 0ed3 00000000 		.space	5
+ 1524      00
+ 1525 0ed8 00000000 		.word	Anything
+ 1526 0edc 00000000 		.word	0
+ 1527 0ee0 00000000 		.word	Anything
+ 1528 0ee4 FE00     		.ascii	"\376\000"
+ 1529 0ee6 00000000 		.space	6
+ 1529      0000
+ 1530              		.global	L_rules
+ 1531              		.section	.rodata.str1.4
+ 1532 02e7 00       		.align	2
+ 1533              	.LC145:
+ 1534 02e8 4C4F00   		.ascii	"LO\000"
+ 1535 02eb 00       		.align	2
+ 1536              	.LC146:
+ 1537 02ec 432300   		.ascii	"C#\000"
+ 1538 02ef 00       		.align	2
+ 1539              	.LC147:
+ 1540 02f0 4C454144 		.ascii	"LEAD\000"
+ 1540      00
+ 1541              		.section	.flash
+ 1542              		.align	2
+ARM GAS  /tmp/ccDMOhBF.s 			page 32
+
+
+ 1543              		.type	L_rules, %object
+ 1544              		.size	L_rules, 120
+ 1545              	L_rules:
+ 1546 0eec 00000000 		.word	Anything
+ 1547 0ef0 E8020000 		.word	.LC145
+ 1548 0ef4 EC020000 		.word	.LC146
+ 1549 0ef8 2207FF00 		.ascii	"\"\007\377\000"
+ 1550 0efc 00000000 		.space	4
+ 1551 0f00 4C010000 		.word	.LC60
+ 1552 0f04 4C010000 		.word	.LC60
+ 1553 0f08 00000000 		.word	Anything
+ 1554 0f0c FF00     		.ascii	"\377\000"
+ 1555 0f0e 00000000 		.space	6
+ 1555      0000
+ 1556 0f14 1C000000 		.word	.LC6
+ 1557 0f18 4C010000 		.word	.LC60
+ 1558 0f1c 78010000 		.word	.LC71
+ 1559 0f20 0B22FF00 		.ascii	"\013\"\377\000"
+ 1560 0f24 00000000 		.space	4
+ 1561 0f28 00000000 		.word	Anything
+ 1562 0f2c F0020000 		.word	.LC147
+ 1563 0f30 00000000 		.word	Anything
+ 1564 0f34 220013FF 		.ascii	"\"\000\023\377\000"
+ 1564      00
+ 1565 0f39 000000   		.space	3
+ 1566 0f3c 00000000 		.word	Anything
+ 1567 0f40 4C010000 		.word	.LC60
+ 1568 0f44 00000000 		.word	Anything
+ 1569 0f48 22FF00   		.ascii	"\"\377\000"
+ 1570 0f4b 00000000 		.space	5
+ 1570      00
+ 1571 0f50 00000000 		.word	Anything
+ 1572 0f54 00000000 		.word	0
+ 1573 0f58 00000000 		.word	Anything
+ 1574 0f5c FE00     		.ascii	"\376\000"
+ 1575 0f5e 00000000 		.space	6
+ 1575      0000
+ 1576              		.global	M_rules
+ 1577              		.section	.rodata.str1.4
+ 1578 02f5 000000   		.align	2
+ 1579              	.LC148:
+ 1580 02f8 4D4F5600 		.ascii	"MOV\000"
+ 1581              		.align	2
+ 1582              	.LC149:
+ 1583 02fc 4D00     		.ascii	"M\000"
+ 1584              		.section	.flash
+ 1585              		.align	2
+ 1586              		.type	M_rules, %object
+ 1587              		.size	M_rules, 60
+ 1588              	M_rules:
+ 1589 0f64 00000000 		.word	Anything
+ 1590 0f68 F8020000 		.word	.LC148
+ 1591 0f6c 00000000 		.word	Anything
+ 1592 0f70 1F0917FF 		.ascii	"\037\011\027\377\000"
+ 1592      00
+ 1593 0f75 000000   		.space	3
+ 1594 0f78 00000000 		.word	Anything
+ARM GAS  /tmp/ccDMOhBF.s 			page 33
+
+
+ 1595 0f7c FC020000 		.word	.LC149
+ 1596 0f80 00000000 		.word	Anything
+ 1597 0f84 1FFF00   		.ascii	"\037\377\000"
+ 1598 0f87 00000000 		.space	5
+ 1598      00
+ 1599 0f8c 00000000 		.word	Anything
+ 1600 0f90 00000000 		.word	0
+ 1601 0f94 00000000 		.word	Anything
+ 1602 0f98 FE00     		.ascii	"\376\000"
+ 1603 0f9a 00000000 		.space	6
+ 1603      0000
+ 1604              		.global	J_rules
+ 1605              		.align	2
+ 1606              		.type	J_rules, %object
+ 1607              		.size	J_rules, 40
+ 1608              	J_rules:
+ 1609 0fa0 00000000 		.word	Anything
+ 1610 0fa4 54010000 		.word	.LC62
+ 1611 0fa8 00000000 		.word	Anything
+ 1612 0fac 27FF00   		.ascii	"'\377\000"
+ 1613 0faf 00000000 		.space	5
+ 1613      00
+ 1614 0fb4 00000000 		.word	Anything
+ 1615 0fb8 00000000 		.word	0
+ 1616 0fbc 00000000 		.word	Anything
+ 1617 0fc0 FE00     		.ascii	"\376\000"
+ 1618 0fc2 00000000 		.space	6
+ 1618      0000
+ 1619              		.global	K_rules
+ 1620              		.section	.rodata.str1.4
+ 1621 02fe 0000     		.align	2
+ 1622              	.LC150:
+ 1623 0300 4B00     		.ascii	"K\000"
+ 1624              		.section	.flash
+ 1625              		.align	2
+ 1626              		.type	K_rules, %object
+ 1627              		.size	K_rules, 60
+ 1628              	K_rules:
+ 1629 0fc8 00000000 		.word	Nothing
+ 1630 0fcc 00030000 		.word	.LC150
+ 1631 0fd0 50010000 		.word	.LC61
+ 1632 0fd4 FF00     		.ascii	"\377\000"
+ 1633 0fd6 00000000 		.space	6
+ 1633      0000
+ 1634 0fdc 00000000 		.word	Anything
+ 1635 0fe0 00030000 		.word	.LC150
+ 1636 0fe4 00000000 		.word	Anything
+ 1637 0fe8 14FF00   		.ascii	"\024\377\000"
+ 1638 0feb 00000000 		.space	5
+ 1638      00
+ 1639 0ff0 00000000 		.word	Anything
+ 1640 0ff4 00000000 		.word	0
+ 1641 0ff8 00000000 		.word	Anything
+ 1642 0ffc FE00     		.ascii	"\376\000"
+ 1643 0ffe 00000000 		.space	6
+ 1643      0000
+ 1644              		.global	H_rules
+ARM GAS  /tmp/ccDMOhBF.s 			page 34
+
+
+ 1645              		.section	.rodata.str1.4
+ 1646 0302 0000     		.align	2
+ 1647              	.LC151:
+ 1648 0304 48415600 		.ascii	"HAV\000"
+ 1649              		.align	2
+ 1650              	.LC152:
+ 1651 0308 48455245 		.ascii	"HERE\000"
+ 1651      00
+ 1652 030d 000000   		.align	2
+ 1653              	.LC153:
+ 1654 0310 484F5552 		.ascii	"HOUR\000"
+ 1654      00
+ 1655 0315 000000   		.align	2
+ 1656              	.LC154:
+ 1657 0318 484F5700 		.ascii	"HOW\000"
+ 1658              		.section	.flash
+ 1659              		.align	2
+ 1660              		.type	H_rules, %object
+ 1661              		.size	H_rules, 140
+ 1662              	H_rules:
+ 1663 1004 00000000 		.word	Nothing
+ 1664 1008 04030000 		.word	.LC151
+ 1665 100c 00000000 		.word	Anything
+ 1666 1010 1E0417FF 		.ascii	"\036\004\027\377\000"
+ 1666      00
+ 1667 1015 000000   		.space	3
+ 1668 1018 00000000 		.word	Nothing
+ 1669 101c 08030000 		.word	.LC152
+ 1670 1020 00000000 		.word	Anything
+ 1671 1024 1E0025FF 		.ascii	"\036\000%\377\000"
+ 1671      00
+ 1672 1029 000000   		.space	3
+ 1673 102c 00000000 		.word	Nothing
+ 1674 1030 10030000 		.word	.LC153
+ 1675 1034 00000000 		.word	Anything
+ 1676 1038 0E0AFF00 		.ascii	"\016\012\377\000"
+ 1677 103c 00000000 		.space	4
+ 1678 1040 00000000 		.word	Anything
+ 1679 1044 18030000 		.word	.LC154
+ 1680 1048 00000000 		.word	Anything
+ 1681 104c 1E0EFF00 		.ascii	"\036\016\377\000"
+ 1682 1050 00000000 		.space	4
+ 1683 1054 00000000 		.word	Anything
+ 1684 1058 68020000 		.word	.LC119
+ 1685 105c 28000000 		.word	.LC9
+ 1686 1060 1EFF00   		.ascii	"\036\377\000"
+ 1687 1063 00000000 		.space	5
+ 1687      00
+ 1688 1068 00000000 		.word	Anything
+ 1689 106c 68020000 		.word	.LC119
+ 1690 1070 00000000 		.word	Anything
+ 1691 1074 FF00     		.ascii	"\377\000"
+ 1692 1076 00000000 		.space	6
+ 1692      0000
+ 1693 107c 00000000 		.word	Anything
+ 1694 1080 00000000 		.word	0
+ 1695 1084 00000000 		.word	Anything
+ARM GAS  /tmp/ccDMOhBF.s 			page 35
+
+
+ 1696 1088 FE00     		.ascii	"\376\000"
+ 1697 108a 00000000 		.space	6
+ 1697      0000
+ 1698              		.global	I_rules
+ 1699              		.section	.rodata.str1.4
+ 1700              		.align	2
+ 1701              	.LC155:
+ 1702 031c 494E00   		.ascii	"IN\000"
+ 1703 031f 00       		.align	2
+ 1704              	.LC156:
+ 1705 0320 49455200 		.ascii	"IER\000"
+ 1706              		.align	2
+ 1707              	.LC157:
+ 1708 0324 233A5200 		.ascii	"#:R\000"
+ 1709              		.align	2
+ 1710              	.LC158:
+ 1711 0328 49454400 		.ascii	"IED\000"
+ 1712              		.align	2
+ 1713              	.LC159:
+ 1714 032c 49454E00 		.ascii	"IEN\000"
+ 1715              		.align	2
+ 1716              	.LC160:
+ 1717 0330 494500   		.ascii	"IE\000"
+ 1718 0333 00       		.align	2
+ 1719              	.LC161:
+ 1720 0334 495200   		.ascii	"IR\000"
+ 1721 0337 00       		.align	2
+ 1722              	.LC162:
+ 1723 0338 495A00   		.ascii	"IZ\000"
+ 1724 033b 00       		.align	2
+ 1725              	.LC163:
+ 1726 033c 495300   		.ascii	"IS\000"
+ 1727 033f 00       		.align	2
+ 1728              	.LC164:
+ 1729 0340 442500   		.ascii	"D%\000"
+ 1730 0343 00       		.align	2
+ 1731              	.LC165:
+ 1732 0344 2B5E00   		.ascii	"+^\000"
+ 1733 0347 00       		.align	2
+ 1734              	.LC166:
+ 1735 0348 5E2B00   		.ascii	"^+\000"
+ 1736 034b 00       		.align	2
+ 1737              	.LC167:
+ 1738 034c 542500   		.ascii	"T%\000"
+ 1739 034f 00       		.align	2
+ 1740              	.LC168:
+ 1741 0350 49474800 		.ascii	"IGH\000"
+ 1742              		.align	2
+ 1743              	.LC169:
+ 1744 0354 494C4400 		.ascii	"ILD\000"
+ 1745              		.align	2
+ 1746              	.LC170:
+ 1747 0358 49474E00 		.ascii	"IGN\000"
+ 1748              		.align	2
+ 1749              	.LC171:
+ 1750 035c 49515545 		.ascii	"IQUE\000"
+ 1750      00
+ARM GAS  /tmp/ccDMOhBF.s 			page 36
+
+
+ 1751              		.section	.flash
+ 1752              		.align	2
+ 1753              		.type	I_rules, %object
+ 1754              		.size	I_rules, 580
+ 1755              	I_rules:
+ 1756 1090 00000000 		.word	Nothing
+ 1757 1094 1C030000 		.word	.LC155
+ 1758 1098 00000000 		.word	Anything
+ 1759 109c 0120FF00 		.ascii	"\001 \377\000"
+ 1760 10a0 00000000 		.space	4
+ 1761 10a4 00000000 		.word	Nothing
+ 1762 10a8 20000000 		.word	.LC7
+ 1763 10ac 00000000 		.word	Nothing
+ 1764 10b0 0DFF00   		.ascii	"\015\377\000"
+ 1765 10b3 00000000 		.space	5
+ 1765      00
+ 1766 10b8 00000000 		.word	Anything
+ 1767 10bc 1C030000 		.word	.LC155
+ 1768 10c0 48010000 		.word	.LC59
+ 1769 10c4 0D20FF00 		.ascii	"\015 \377\000"
+ 1770 10c8 00000000 		.space	4
+ 1771 10cc 00000000 		.word	Anything
+ 1772 10d0 20030000 		.word	.LC156
+ 1773 10d4 00000000 		.word	Anything
+ 1774 10d8 000AFF00 		.ascii	"\000\012\377\000"
+ 1775 10dc 00000000 		.space	4
+ 1776 10e0 24030000 		.word	.LC157
+ 1777 10e4 28030000 		.word	.LC158
+ 1778 10e8 00000000 		.word	Anything
+ 1779 10ec 0013FF00 		.ascii	"\000\023\377\000"
+ 1780 10f0 00000000 		.space	4
+ 1781 10f4 00000000 		.word	Anything
+ 1782 10f8 28030000 		.word	.LC158
+ 1783 10fc 00000000 		.word	Nothing
+ 1784 1100 0D13FF00 		.ascii	"\015\023\377\000"
+ 1785 1104 00000000 		.space	4
+ 1786 1108 00000000 		.word	Anything
+ 1787 110c 2C030000 		.word	.LC159
+ 1788 1110 00000000 		.word	Anything
+ 1789 1114 000320FF 		.ascii	"\000\003 \377\000"
+ 1789      00
+ 1790 1119 000000   		.space	3
+ 1791 111c 00000000 		.word	Anything
+ 1792 1120 30030000 		.word	.LC160
+ 1793 1124 54000000 		.word	.LC17
+ 1794 1128 0D03FF00 		.ascii	"\015\003\377\000"
+ 1795 112c 00000000 		.space	4
+ 1796 1130 24000000 		.word	.LC8
+ 1797 1134 20000000 		.word	.LC7
+ 1798 1138 78010000 		.word	.LC71
+ 1799 113c 0DFF00   		.ascii	"\015\377\000"
+ 1800 113f 00000000 		.space	5
+ 1800      00
+ 1801 1144 00000000 		.word	Anything
+ 1802 1148 20000000 		.word	.LC7
+ 1803 114c 78010000 		.word	.LC71
+ 1804 1150 00FF00   		.ascii	"\000\377\000"
+ARM GAS  /tmp/ccDMOhBF.s 			page 37
+
+
+ 1805 1153 00000000 		.space	5
+ 1805      00
+ 1806 1158 00000000 		.word	Anything
+ 1807 115c 30030000 		.word	.LC160
+ 1808 1160 00000000 		.word	Anything
+ 1809 1164 00FF00   		.ascii	"\000\377\000"
+ 1810 1167 00000000 		.space	5
+ 1810      00
+ 1811 116c 00000000 		.word	Anything
+ 1812 1170 20000000 		.word	.LC7
+ 1813 1174 2C000000 		.word	.LC10
+ 1814 1178 01FF00   		.ascii	"\001\377\000"
+ 1815 117b 00000000 		.space	5
+ 1815      00
+ 1816 1180 00000000 		.word	Anything
+ 1817 1184 34030000 		.word	.LC161
+ 1818 1188 28000000 		.word	.LC9
+ 1819 118c 0D25FF00 		.ascii	"\015%\377\000"
+ 1820 1190 00000000 		.space	4
+ 1821 1194 00000000 		.word	Anything
+ 1822 1198 38030000 		.word	.LC162
+ 1823 119c 78010000 		.word	.LC71
+ 1824 11a0 0D1BFF00 		.ascii	"\015\033\377\000"
+ 1825 11a4 00000000 		.space	4
+ 1826 11a8 00000000 		.word	Anything
+ 1827 11ac 3C030000 		.word	.LC163
+ 1828 11b0 78010000 		.word	.LC71
+ 1829 11b4 0D1BFF00 		.ascii	"\015\033\377\000"
+ 1830 11b8 00000000 		.space	4
+ 1831 11bc 00000000 		.word	Anything
+ 1832 11c0 20000000 		.word	.LC7
+ 1833 11c4 40030000 		.word	.LC164
+ 1834 11c8 0DFF00   		.ascii	"\015\377\000"
+ 1835 11cb 00000000 		.space	5
+ 1835      00
+ 1836 11d0 44030000 		.word	.LC165
+ 1837 11d4 20000000 		.word	.LC7
+ 1838 11d8 48030000 		.word	.LC166
+ 1839 11dc 01FF00   		.ascii	"\001\377\000"
+ 1840 11df 00000000 		.space	5
+ 1840      00
+ 1841 11e4 00000000 		.word	Anything
+ 1842 11e8 20000000 		.word	.LC7
+ 1843 11ec 4C030000 		.word	.LC167
+ 1844 11f0 0DFF00   		.ascii	"\015\377\000"
+ 1845 11f3 00000000 		.space	5
+ 1845      00
+ 1846 11f8 1C000000 		.word	.LC6
+ 1847 11fc 20000000 		.word	.LC7
+ 1848 1200 48030000 		.word	.LC166
+ 1849 1204 01FF00   		.ascii	"\001\377\000"
+ 1850 1207 00000000 		.space	5
+ 1850      00
+ 1851 120c 00000000 		.word	Anything
+ 1852 1210 20000000 		.word	.LC7
+ 1853 1214 48030000 		.word	.LC166
+ 1854 1218 0DFF00   		.ascii	"\015\377\000"
+ARM GAS  /tmp/ccDMOhBF.s 			page 38
+
+
+ 1855 121b 00000000 		.space	5
+ 1855      00
+ 1856 1220 00000000 		.word	Anything
+ 1857 1224 34030000 		.word	.LC161
+ 1858 1228 00000000 		.word	Anything
+ 1859 122c 0AFF00   		.ascii	"\012\377\000"
+ 1860 122f 00000000 		.space	5
+ 1860      00
+ 1861 1234 00000000 		.word	Anything
+ 1862 1238 50030000 		.word	.LC168
+ 1863 123c 00000000 		.word	Anything
+ 1864 1240 0DFF00   		.ascii	"\015\377\000"
+ 1865 1243 00000000 		.space	5
+ 1865      00
+ 1866 1248 00000000 		.word	Anything
+ 1867 124c 54030000 		.word	.LC169
+ 1868 1250 00000000 		.word	Anything
+ 1869 1254 0D2213FF 		.ascii	"\015\"\023\377\000"
+ 1869      00
+ 1870 1259 000000   		.space	3
+ 1871 125c 00000000 		.word	Anything
+ 1872 1260 58030000 		.word	.LC170
+ 1873 1264 00000000 		.word	Nothing
+ 1874 1268 0D20FF00 		.ascii	"\015 \377\000"
+ 1875 126c 00000000 		.space	4
+ 1876 1270 00000000 		.word	Anything
+ 1877 1274 58030000 		.word	.LC170
+ 1878 1278 80000000 		.word	.LC25
+ 1879 127c 0D20FF00 		.ascii	"\015 \377\000"
+ 1880 1280 00000000 		.space	4
+ 1881 1284 00000000 		.word	Anything
+ 1882 1288 58030000 		.word	.LC170
+ 1883 128c 78010000 		.word	.LC71
+ 1884 1290 0D20FF00 		.ascii	"\015 \377\000"
+ 1885 1294 00000000 		.space	4
+ 1886 1298 00000000 		.word	Anything
+ 1887 129c 5C030000 		.word	.LC171
+ 1888 12a0 00000000 		.word	Anything
+ 1889 12a4 0014FF00 		.ascii	"\000\024\377\000"
+ 1890 12a8 00000000 		.space	4
+ 1891 12ac 00000000 		.word	Anything
+ 1892 12b0 20000000 		.word	.LC7
+ 1893 12b4 00000000 		.word	Anything
+ 1894 12b8 01FF00   		.ascii	"\001\377\000"
+ 1895 12bb 00000000 		.space	5
+ 1895      00
+ 1896 12c0 00000000 		.word	Anything
+ 1897 12c4 00000000 		.word	0
+ 1898 12c8 00000000 		.word	Anything
+ 1899 12cc FE00     		.ascii	"\376\000"
+ 1900 12ce 00000000 		.space	6
+ 1900      0000
+ 1901              		.global	F_rules
+ 1902              		.section	.rodata.str1.4
+ 1903 0361 000000   		.align	2
+ 1904              	.LC172:
+ 1905 0364 46554C00 		.ascii	"FUL\000"
+ARM GAS  /tmp/ccDMOhBF.s 			page 39
+
+
+ 1906              		.align	2
+ 1907              	.LC173:
+ 1908 0368 4600     		.ascii	"F\000"
+ 1909              		.section	.flash
+ 1910              		.align	2
+ 1911              		.type	F_rules, %object
+ 1912              		.size	F_rules, 60
+ 1913              	F_rules:
+ 1914 12d4 00000000 		.word	Anything
+ 1915 12d8 64030000 		.word	.LC172
+ 1916 12dc 00000000 		.word	Anything
+ 1917 12e0 160822FF 		.ascii	"\026\010\"\377\000"
+ 1917      00
+ 1918 12e5 000000   		.space	3
+ 1919 12e8 00000000 		.word	Anything
+ 1920 12ec 68030000 		.word	.LC173
+ 1921 12f0 00000000 		.word	Anything
+ 1922 12f4 16FF00   		.ascii	"\026\377\000"
+ 1923 12f7 00000000 		.space	5
+ 1923      00
+ 1924 12fc 00000000 		.word	Anything
+ 1925 1300 00000000 		.word	0
+ 1926 1304 00000000 		.word	Anything
+ 1927 1308 FE00     		.ascii	"\376\000"
+ 1928 130a 00000000 		.space	6
+ 1928      0000
+ 1929              		.global	G_rules
+ 1930              		.section	.rodata.str1.4
+ 1931 036a 0000     		.align	2
+ 1932              	.LC174:
+ 1933 036c 47495600 		.ascii	"GIV\000"
+ 1934              		.align	2
+ 1935              	.LC175:
+ 1936 0370 495E00   		.ascii	"I^\000"
+ 1937 0373 00       		.align	2
+ 1938              	.LC176:
+ 1939 0374 474500   		.ascii	"GE\000"
+ 1940 0377 00       		.align	2
+ 1941              	.LC177:
+ 1942 0378 47474553 		.ascii	"GGES\000"
+ 1942      00
+ 1943 037d 000000   		.align	2
+ 1944              	.LC178:
+ 1945 0380 474700   		.ascii	"GG\000"
+ 1946 0383 00       		.align	2
+ 1947              	.LC179:
+ 1948 0384 20422300 		.ascii	" B#\000"
+ 1949              		.align	2
+ 1950              	.LC180:
+ 1951 0388 47524541 		.ascii	"GREAT\000"
+ 1951      5400
+ 1952 038e 0000     		.align	2
+ 1953              	.LC181:
+ 1954 0390 474800   		.ascii	"GH\000"
+ 1955              		.section	.flash
+ 1956              		.align	2
+ 1957              		.type	G_rules, %object
+ARM GAS  /tmp/ccDMOhBF.s 			page 40
+
+
+ 1958              		.size	G_rules, 220
+ 1959              	G_rules:
+ 1960 1310 00000000 		.word	Anything
+ 1961 1314 6C030000 		.word	.LC174
+ 1962 1318 00000000 		.word	Anything
+ 1963 131c 150117FF 		.ascii	"\025\001\027\377\000"
+ 1963      00
+ 1964 1321 000000   		.space	3
+ 1965 1324 00000000 		.word	Nothing
+ 1966 1328 74010000 		.word	.LC70
+ 1967 132c 70030000 		.word	.LC175
+ 1968 1330 15FF00   		.ascii	"\025\377\000"
+ 1969 1333 00000000 		.space	5
+ 1969      00
+ 1970 1338 00000000 		.word	Anything
+ 1971 133c 74030000 		.word	.LC176
+ 1972 1340 54000000 		.word	.LC17
+ 1973 1344 1503FF00 		.ascii	"\025\003\377\000"
+ 1974 1348 00000000 		.space	4
+ 1975 134c 94010000 		.word	.LC76
+ 1976 1350 78030000 		.word	.LC177
+ 1977 1354 00000000 		.word	Anything
+ 1978 1358 1527031A 		.ascii	"\025'\003\032\377\000"
+ 1978      FF00
+ 1979 135e 0000     		.space	2
+ 1980 1360 00000000 		.word	Anything
+ 1981 1364 80030000 		.word	.LC178
+ 1982 1368 00000000 		.word	Anything
+ 1983 136c 15FF00   		.ascii	"\025\377\000"
+ 1984 136f 00000000 		.space	5
+ 1984      00
+ 1985 1374 84030000 		.word	.LC179
+ 1986 1378 74010000 		.word	.LC70
+ 1987 137c 00000000 		.word	Anything
+ 1988 1380 15FF00   		.ascii	"\025\377\000"
+ 1989 1383 00000000 		.space	5
+ 1989      00
+ 1990 1388 00000000 		.word	Anything
+ 1991 138c 74010000 		.word	.LC70
+ 1992 1390 0C020000 		.word	.LC100
+ 1993 1394 27FF00   		.ascii	"'\377\000"
+ 1994 1397 00000000 		.space	5
+ 1994      00
+ 1995 139c 00000000 		.word	Anything
+ 1996 13a0 88030000 		.word	.LC180
+ 1997 13a4 00000000 		.word	Anything
+ 1998 13a8 15250212 		.ascii	"\025%\002\022\377\000"
+ 1998      FF00
+ 1999 13ae 0000     		.space	2
+ 2000 13b0 28000000 		.word	.LC9
+ 2001 13b4 90030000 		.word	.LC181
+ 2002 13b8 00000000 		.word	Anything
+ 2003 13bc FF00     		.ascii	"\377\000"
+ 2004 13be 00000000 		.space	6
+ 2004      0000
+ 2005 13c4 00000000 		.word	Anything
+ 2006 13c8 74010000 		.word	.LC70
+ARM GAS  /tmp/ccDMOhBF.s 			page 41
+
+
+ 2007 13cc 00000000 		.word	Anything
+ 2008 13d0 15FF00   		.ascii	"\025\377\000"
+ 2009 13d3 00000000 		.space	5
+ 2009      00
+ 2010 13d8 00000000 		.word	Anything
+ 2011 13dc 00000000 		.word	0
+ 2012 13e0 00000000 		.word	Anything
+ 2013 13e4 FE00     		.ascii	"\376\000"
+ 2014 13e6 00000000 		.space	6
+ 2014      0000
+ 2015              		.global	D_rules
+ 2016              		.section	.rodata.str1.4
+ 2017 0393 00       		.align	2
+ 2018              	.LC182:
+ 2019 0394 44454400 		.ascii	"DED\000"
+ 2020              		.align	2
+ 2021              	.LC183:
+ 2022 0398 2E4500   		.ascii	".E\000"
+ 2023 039b 00       		.align	2
+ 2024              	.LC184:
+ 2025 039c 233A5E45 		.ascii	"#:^E\000"
+ 2025      00
+ 2026 03a1 000000   		.align	2
+ 2027              	.LC185:
+ 2028 03a4 444500   		.ascii	"DE\000"
+ 2029 03a7 00       		.align	2
+ 2030              	.LC186:
+ 2031 03a8 444F00   		.ascii	"DO\000"
+ 2032 03ab 00       		.align	2
+ 2033              	.LC187:
+ 2034 03ac 444F4553 		.ascii	"DOES\000"
+ 2034      00
+ 2035 03b1 000000   		.align	2
+ 2036              	.LC188:
+ 2037 03b4 444F494E 		.ascii	"DOING\000"
+ 2037      4700
+ 2038 03ba 0000     		.align	2
+ 2039              	.LC189:
+ 2040 03bc 444F5700 		.ascii	"DOW\000"
+ 2041              		.align	2
+ 2042              	.LC190:
+ 2043 03c0 445500   		.ascii	"DU\000"
+ 2044              		.section	.flash
+ 2045              		.align	2
+ 2046              		.type	D_rules, %object
+ 2047              		.size	D_rules, 220
+ 2048              	D_rules:
+ 2049 13ec 08010000 		.word	.LC45
+ 2050 13f0 94030000 		.word	.LC182
+ 2051 13f4 00000000 		.word	Nothing
+ 2052 13f8 130113FF 		.ascii	"\023\001\023\377\000"
+ 2052      00
+ 2053 13fd 000000   		.space	3
+ 2054 1400 98030000 		.word	.LC183
+ 2055 1404 48010000 		.word	.LC59
+ 2056 1408 00000000 		.word	Nothing
+ 2057 140c 13FF00   		.ascii	"\023\377\000"
+ARM GAS  /tmp/ccDMOhBF.s 			page 42
+
+
+ 2058 140f 00000000 		.space	5
+ 2058      00
+ 2059 1414 9C030000 		.word	.LC184
+ 2060 1418 48010000 		.word	.LC59
+ 2061 141c 00000000 		.word	Nothing
+ 2062 1420 12FF00   		.ascii	"\022\377\000"
+ 2063 1423 00000000 		.space	5
+ 2063      00
+ 2064 1428 00000000 		.word	Nothing
+ 2065 142c A4030000 		.word	.LC185
+ 2066 1430 34000000 		.word	.LC11
+ 2067 1434 1301FF00 		.ascii	"\023\001\377\000"
+ 2068 1438 00000000 		.space	4
+ 2069 143c 00000000 		.word	Nothing
+ 2070 1440 A8030000 		.word	.LC186
+ 2071 1444 00000000 		.word	Nothing
+ 2072 1448 1309FF00 		.ascii	"\023\011\377\000"
+ 2073 144c 00000000 		.space	4
+ 2074 1450 00000000 		.word	Nothing
+ 2075 1454 AC030000 		.word	.LC187
+ 2076 1458 00000000 		.word	Anything
+ 2077 145c 130C1BFF 		.ascii	"\023\014\033\377\000"
+ 2077      00
+ 2078 1461 000000   		.space	3
+ 2079 1464 00000000 		.word	Nothing
+ 2080 1468 B4030000 		.word	.LC188
+ 2081 146c 00000000 		.word	Anything
+ 2082 1470 13090121 		.ascii	"\023\011\001!\377\000"
+ 2082      FF00
+ 2083 1476 0000     		.space	2
+ 2084 1478 00000000 		.word	Nothing
+ 2085 147c BC030000 		.word	.LC189
+ 2086 1480 00000000 		.word	Anything
+ 2087 1484 130EFF00 		.ascii	"\023\016\377\000"
+ 2088 1488 00000000 		.space	4
+ 2089 148c 00000000 		.word	Anything
+ 2090 1490 C0030000 		.word	.LC190
+ 2091 1494 1C010000 		.word	.LC50
+ 2092 1498 2709FF00 		.ascii	"'\011\377\000"
+ 2093 149c 00000000 		.space	4
+ 2094 14a0 00000000 		.word	Anything
+ 2095 14a4 48010000 		.word	.LC59
+ 2096 14a8 00000000 		.word	Anything
+ 2097 14ac 13FF00   		.ascii	"\023\377\000"
+ 2098 14af 00000000 		.space	5
+ 2098      00
+ 2099 14b4 00000000 		.word	Anything
+ 2100 14b8 00000000 		.word	0
+ 2101 14bc 00000000 		.word	Anything
+ 2102 14c0 FE00     		.ascii	"\376\000"
+ 2103 14c2 00000000 		.space	6
+ 2103      0000
+ 2104              		.global	E_rules
+ 2105              		.section	.rodata.str1.4
+ 2106 03c3 00       		.align	2
+ 2107              	.LC191:
+ 2108 03c4 273A5E00 		.ascii	"':^\000"
+ARM GAS  /tmp/ccDMOhBF.s 			page 43
+
+
+ 2109              		.align	2
+ 2110              	.LC192:
+ 2111 03c8 454400   		.ascii	"ED\000"
+ 2112 03cb 00       		.align	2
+ 2113              	.LC193:
+ 2114 03cc 442000   		.ascii	"D \000"
+ 2115 03cf 00       		.align	2
+ 2116              	.LC194:
+ 2117 03d0 455600   		.ascii	"EV\000"
+ 2118 03d3 00       		.align	2
+ 2119              	.LC195:
+ 2120 03d4 455200   		.ascii	"ER\000"
+ 2121 03d7 00       		.align	2
+ 2122              	.LC196:
+ 2123 03d8 45524900 		.ascii	"ERI\000"
+ 2124              		.align	2
+ 2125              	.LC197:
+ 2126 03dc 4556454E 		.ascii	"EVEN\000"
+ 2126      00
+ 2127 03e1 000000   		.align	2
+ 2128              	.LC198:
+ 2129 03e4 455700   		.ascii	"EW\000"
+ 2130 03e7 00       		.align	2
+ 2131              	.LC199:
+ 2132 03e8 233A5300 		.ascii	"#:S\000"
+ 2133              		.align	2
+ 2134              	.LC200:
+ 2135 03ec 455300   		.ascii	"ES\000"
+ 2136 03ef 00       		.align	2
+ 2137              	.LC201:
+ 2138 03f0 233A4300 		.ascii	"#:C\000"
+ 2139              		.align	2
+ 2140              	.LC202:
+ 2141 03f4 233A4700 		.ascii	"#:G\000"
+ 2142              		.align	2
+ 2143              	.LC203:
+ 2144 03f8 233A5A00 		.ascii	"#:Z\000"
+ 2145              		.align	2
+ 2146              	.LC204:
+ 2147 03fc 233A5800 		.ascii	"#:X\000"
+ 2148              		.align	2
+ 2149              	.LC205:
+ 2150 0400 233A4A00 		.ascii	"#:J\000"
+ 2151              		.align	2
+ 2152              	.LC206:
+ 2153 0404 233A4348 		.ascii	"#:CH\000"
+ 2153      00
+ 2154 0409 000000   		.align	2
+ 2155              	.LC207:
+ 2156 040c 233A5348 		.ascii	"#:SH\000"
+ 2156      00
+ 2157 0411 000000   		.align	2
+ 2158              	.LC208:
+ 2159 0414 532000   		.ascii	"S \000"
+ 2160 0417 00       		.align	2
+ 2161              	.LC209:
+ 2162 0418 454C5900 		.ascii	"ELY\000"
+ARM GAS  /tmp/ccDMOhBF.s 			page 44
+
+
+ 2163              		.align	2
+ 2164              	.LC210:
+ 2165 041c 454D454E 		.ascii	"EMENT\000"
+ 2165      5400
+ 2166 0422 0000     		.align	2
+ 2167              	.LC211:
+ 2168 0424 4546554C 		.ascii	"EFUL\000"
+ 2168      00
+ 2169 0429 000000   		.align	2
+ 2170              	.LC212:
+ 2171 042c 454500   		.ascii	"EE\000"
+ 2172 042f 00       		.align	2
+ 2173              	.LC213:
+ 2174 0430 4541524E 		.ascii	"EARN\000"
+ 2174      00
+ 2175 0435 000000   		.align	2
+ 2176              	.LC214:
+ 2177 0438 45415200 		.ascii	"EAR\000"
+ 2178              		.align	2
+ 2179              	.LC215:
+ 2180 043c 45414400 		.ascii	"EAD\000"
+ 2181              		.align	2
+ 2182              	.LC216:
+ 2183 0440 454100   		.ascii	"EA\000"
+ 2184 0443 00       		.align	2
+ 2185              	.LC217:
+ 2186 0444 45494748 		.ascii	"EIGH\000"
+ 2186      00
+ 2187 0449 000000   		.align	2
+ 2188              	.LC218:
+ 2189 044c 454900   		.ascii	"EI\000"
+ 2190 044f 00       		.align	2
+ 2191              	.LC219:
+ 2192 0450 45594500 		.ascii	"EYE\000"
+ 2193              		.align	2
+ 2194              	.LC220:
+ 2195 0454 455900   		.ascii	"EY\000"
+ 2196 0457 00       		.align	2
+ 2197              	.LC221:
+ 2198 0458 455500   		.ascii	"EU\000"
+ 2199              		.section	.flash
+ 2200              		.align	2
+ 2201              		.type	E_rules, %object
+ 2202              		.size	E_rules, 1060
+ 2203              	E_rules:
+ 2204 14c8 08010000 		.word	.LC45
+ 2205 14cc 04020000 		.word	.LC98
+ 2206 14d0 00000000 		.word	Nothing
+ 2207 14d4 FF00     		.ascii	"\377\000"
+ 2208 14d6 00000000 		.space	6
+ 2208      0000
+ 2209 14dc C4030000 		.word	.LC191
+ 2210 14e0 04020000 		.word	.LC98
+ 2211 14e4 00000000 		.word	Nothing
+ 2212 14e8 FF00     		.ascii	"\377\000"
+ 2213 14ea 00000000 		.space	6
+ 2213      0000
+ARM GAS  /tmp/ccDMOhBF.s 			page 45
+
+
+ 2214 14f0 24000000 		.word	.LC8
+ 2215 14f4 04020000 		.word	.LC98
+ 2216 14f8 00000000 		.word	Nothing
+ 2217 14fc 00FF00   		.ascii	"\000\377\000"
+ 2218 14ff 00000000 		.space	5
+ 2218      00
+ 2219 1504 28000000 		.word	.LC9
+ 2220 1508 C8030000 		.word	.LC192
+ 2221 150c 00000000 		.word	Nothing
+ 2222 1510 13FF00   		.ascii	"\023\377\000"
+ 2223 1513 00000000 		.space	5
+ 2223      00
+ 2224 1518 08010000 		.word	.LC45
+ 2225 151c 04020000 		.word	.LC98
+ 2226 1520 CC030000 		.word	.LC193
+ 2227 1524 FF00     		.ascii	"\377\000"
+ 2228 1526 00000000 		.space	6
+ 2228      0000
+ 2229 152c 00000000 		.word	Anything
+ 2230 1530 D0030000 		.word	.LC194
+ 2231 1534 D4030000 		.word	.LC195
+ 2232 1538 0317FF00 		.ascii	"\003\027\377\000"
+ 2233 153c 00000000 		.space	4
+ 2234 1540 00000000 		.word	Anything
+ 2235 1544 04020000 		.word	.LC98
+ 2236 1548 44020000 		.word	.LC112
+ 2237 154c 00FF00   		.ascii	"\000\377\000"
+ 2238 154f 00000000 		.space	5
+ 2238      00
+ 2239 1554 00000000 		.word	Anything
+ 2240 1558 D8030000 		.word	.LC196
+ 2241 155c 28000000 		.word	.LC9
+ 2242 1560 002500FF 		.ascii	"\000%\000\377\000"
+ 2242      00
+ 2243 1565 000000   		.space	3
+ 2244 1568 00000000 		.word	Anything
+ 2245 156c D8030000 		.word	.LC196
+ 2246 1570 00000000 		.word	Anything
+ 2247 1574 032501FF 		.ascii	"\003%\001\377\000"
+ 2247      00
+ 2248 1579 000000   		.space	3
+ 2249 157c 08010000 		.word	.LC45
+ 2250 1580 D4030000 		.word	.LC195
+ 2251 1584 28000000 		.word	.LC9
+ 2252 1588 0AFF00   		.ascii	"\012\377\000"
+ 2253 158b 00000000 		.space	5
+ 2253      00
+ 2254 1590 00000000 		.word	Anything
+ 2255 1594 D4030000 		.word	.LC195
+ 2256 1598 28000000 		.word	.LC9
+ 2257 159c 0325FF00 		.ascii	"\003%\377\000"
+ 2258 15a0 00000000 		.space	4
+ 2259 15a4 00000000 		.word	Anything
+ 2260 15a8 D4030000 		.word	.LC195
+ 2261 15ac 00000000 		.word	Anything
+ 2262 15b0 0AFF00   		.ascii	"\012\377\000"
+ 2263 15b3 00000000 		.space	5
+ARM GAS  /tmp/ccDMOhBF.s 			page 46
+
+
+ 2263      00
+ 2264 15b8 00000000 		.word	Nothing
+ 2265 15bc DC030000 		.word	.LC197
+ 2266 15c0 00000000 		.word	Anything
+ 2267 15c4 00170320 		.ascii	"\000\027\003 \377\000"
+ 2267      FF00
+ 2268 15ca 0000     		.space	2
+ 2269 15cc 08010000 		.word	.LC45
+ 2270 15d0 04020000 		.word	.LC98
+ 2271 15d4 88000000 		.word	.LC27
+ 2272 15d8 FF00     		.ascii	"\377\000"
+ 2273 15da 00000000 		.space	6
+ 2273      0000
+ 2274 15e0 54000000 		.word	.LC17
+ 2275 15e4 E4030000 		.word	.LC198
+ 2276 15e8 00000000 		.word	Anything
+ 2277 15ec 09FF00   		.ascii	"\011\377\000"
+ 2278 15ef 00000000 		.space	5
+ 2278      00
+ 2279 15f4 50000000 		.word	.LC16
+ 2280 15f8 E4030000 		.word	.LC198
+ 2281 15fc 00000000 		.word	Anything
+ 2282 1600 09FF00   		.ascii	"\011\377\000"
+ 2283 1603 00000000 		.space	5
+ 2283      00
+ 2284 1608 44010000 		.word	.LC58
+ 2285 160c E4030000 		.word	.LC198
+ 2286 1610 00000000 		.word	Anything
+ 2287 1614 09FF00   		.ascii	"\011\377\000"
+ 2288 1617 00000000 		.space	5
+ 2288      00
+ 2289 161c 48010000 		.word	.LC59
+ 2290 1620 E4030000 		.word	.LC198
+ 2291 1624 00000000 		.word	Anything
+ 2292 1628 09FF00   		.ascii	"\011\377\000"
+ 2293 162b 00000000 		.space	5
+ 2293      00
+ 2294 1630 4C010000 		.word	.LC60
+ 2295 1634 E4030000 		.word	.LC198
+ 2296 1638 00000000 		.word	Anything
+ 2297 163c 09FF00   		.ascii	"\011\377\000"
+ 2298 163f 00000000 		.space	5
+ 2298      00
+ 2299 1644 00000000 		.word	.LC0
+ 2300 1648 E4030000 		.word	.LC198
+ 2301 164c 00000000 		.word	Anything
+ 2302 1650 09FF00   		.ascii	"\011\377\000"
+ 2303 1653 00000000 		.space	5
+ 2303      00
+ 2304 1658 50010000 		.word	.LC61
+ 2305 165c E4030000 		.word	.LC198
+ 2306 1660 00000000 		.word	Anything
+ 2307 1664 09FF00   		.ascii	"\011\377\000"
+ 2308 1667 00000000 		.space	5
+ 2308      00
+ 2309 166c 54010000 		.word	.LC62
+ 2310 1670 E4030000 		.word	.LC198
+ARM GAS  /tmp/ccDMOhBF.s 			page 47
+
+
+ 2311 1674 00000000 		.word	Anything
+ 2312 1678 09FF00   		.ascii	"\011\377\000"
+ 2313 167b 00000000 		.space	5
+ 2313      00
+ 2314 1680 04010000 		.word	.LC44
+ 2315 1684 E4030000 		.word	.LC198
+ 2316 1688 00000000 		.word	Anything
+ 2317 168c 09FF00   		.ascii	"\011\377\000"
+ 2318 168f 00000000 		.space	5
+ 2318      00
+ 2319 1694 58010000 		.word	.LC63
+ 2320 1698 E4030000 		.word	.LC198
+ 2321 169c 00000000 		.word	Anything
+ 2322 16a0 09FF00   		.ascii	"\011\377\000"
+ 2323 16a3 00000000 		.space	5
+ 2323      00
+ 2324 16a8 5C010000 		.word	.LC64
+ 2325 16ac E4030000 		.word	.LC198
+ 2326 16b0 00000000 		.word	Anything
+ 2327 16b4 09FF00   		.ascii	"\011\377\000"
+ 2328 16b7 00000000 		.space	5
+ 2328      00
+ 2329 16bc 00000000 		.word	Anything
+ 2330 16c0 E4030000 		.word	.LC198
+ 2331 16c4 00000000 		.word	Anything
+ 2332 16c8 2409FF00 		.ascii	"$\011\377\000"
+ 2333 16cc 00000000 		.space	4
+ 2334 16d0 00000000 		.word	Anything
+ 2335 16d4 04020000 		.word	.LC98
+ 2336 16d8 18010000 		.word	.LC49
+ 2337 16dc 00FF00   		.ascii	"\000\377\000"
+ 2338 16df 00000000 		.space	5
+ 2338      00
+ 2339 16e4 E8030000 		.word	.LC199
+ 2340 16e8 EC030000 		.word	.LC200
+ 2341 16ec 00000000 		.word	Nothing
+ 2342 16f0 011BFF00 		.ascii	"\001\033\377\000"
+ 2343 16f4 00000000 		.space	4
+ 2344 16f8 F0030000 		.word	.LC201
+ 2345 16fc EC030000 		.word	.LC200
+ 2346 1700 00000000 		.word	Nothing
+ 2347 1704 011BFF00 		.ascii	"\001\033\377\000"
+ 2348 1708 00000000 		.space	4
+ 2349 170c F4030000 		.word	.LC202
+ 2350 1710 EC030000 		.word	.LC200
+ 2351 1714 00000000 		.word	Nothing
+ 2352 1718 011BFF00 		.ascii	"\001\033\377\000"
+ 2353 171c 00000000 		.space	4
+ 2354 1720 F8030000 		.word	.LC203
+ 2355 1724 EC030000 		.word	.LC200
+ 2356 1728 00000000 		.word	Nothing
+ 2357 172c 011BFF00 		.ascii	"\001\033\377\000"
+ 2358 1730 00000000 		.space	4
+ 2359 1734 FC030000 		.word	.LC204
+ 2360 1738 EC030000 		.word	.LC200
+ 2361 173c 00000000 		.word	Nothing
+ 2362 1740 011BFF00 		.ascii	"\001\033\377\000"
+ARM GAS  /tmp/ccDMOhBF.s 			page 48
+
+
+ 2363 1744 00000000 		.space	4
+ 2364 1748 00040000 		.word	.LC205
+ 2365 174c EC030000 		.word	.LC200
+ 2366 1750 00000000 		.word	Nothing
+ 2367 1754 011BFF00 		.ascii	"\001\033\377\000"
+ 2368 1758 00000000 		.space	4
+ 2369 175c 04040000 		.word	.LC206
+ 2370 1760 EC030000 		.word	.LC200
+ 2371 1764 00000000 		.word	Nothing
+ 2372 1768 011BFF00 		.ascii	"\001\033\377\000"
+ 2373 176c 00000000 		.space	4
+ 2374 1770 0C040000 		.word	.LC207
+ 2375 1774 EC030000 		.word	.LC200
+ 2376 1778 00000000 		.word	Nothing
+ 2377 177c 011BFF00 		.ascii	"\001\033\377\000"
+ 2378 1780 00000000 		.space	4
+ 2379 1784 08010000 		.word	.LC45
+ 2380 1788 04020000 		.word	.LC98
+ 2381 178c 14040000 		.word	.LC208
+ 2382 1790 FF00     		.ascii	"\377\000"
+ 2383 1792 00000000 		.space	6
+ 2383      0000
+ 2384 1798 08010000 		.word	.LC45
+ 2385 179c 18040000 		.word	.LC209
+ 2386 17a0 00000000 		.word	Nothing
+ 2387 17a4 2200FF00 		.ascii	"\"\000\377\000"
+ 2388 17a8 00000000 		.space	4
+ 2389 17ac 08010000 		.word	.LC45
+ 2390 17b0 1C040000 		.word	.LC210
+ 2391 17b4 00000000 		.word	Anything
+ 2392 17b8 1F032012 		.ascii	"\037\003 \022\377\000"
+ 2392      FF00
+ 2393 17be 0000     		.space	2
+ 2394 17c0 00000000 		.word	Anything
+ 2395 17c4 24040000 		.word	.LC211
+ 2396 17c8 00000000 		.word	Anything
+ 2397 17cc 160822FF 		.ascii	"\026\010\"\377\000"
+ 2397      00
+ 2398 17d1 000000   		.space	3
+ 2399 17d4 00000000 		.word	Anything
+ 2400 17d8 2C040000 		.word	.LC212
+ 2401 17dc 00000000 		.word	Anything
+ 2402 17e0 00FF00   		.ascii	"\000\377\000"
+ 2403 17e3 00000000 		.space	5
+ 2403      00
+ 2404 17e8 00000000 		.word	Anything
+ 2405 17ec 30040000 		.word	.LC213
+ 2406 17f0 00000000 		.word	Anything
+ 2407 17f4 0A20FF00 		.ascii	"\012 \377\000"
+ 2408 17f8 00000000 		.space	4
+ 2409 17fc 00000000 		.word	Nothing
+ 2410 1800 38040000 		.word	.LC214
+ 2411 1804 80000000 		.word	.LC25
+ 2412 1808 0AFF00   		.ascii	"\012\377\000"
+ 2413 180b 00000000 		.space	5
+ 2413      00
+ 2414 1810 00000000 		.word	Anything
+ARM GAS  /tmp/ccDMOhBF.s 			page 49
+
+
+ 2415 1814 3C040000 		.word	.LC215
+ 2416 1818 00000000 		.word	Anything
+ 2417 181c 0313FF00 		.ascii	"\003\023\377\000"
+ 2418 1820 00000000 		.space	4
+ 2419 1824 08010000 		.word	.LC45
+ 2420 1828 40040000 		.word	.LC216
+ 2421 182c 00000000 		.word	Nothing
+ 2422 1830 000BFF00 		.ascii	"\000\013\377\000"
+ 2423 1834 00000000 		.space	4
+ 2424 1838 00000000 		.word	Anything
+ 2425 183c 40040000 		.word	.LC216
+ 2426 1840 94010000 		.word	.LC76
+ 2427 1844 03FF00   		.ascii	"\003\377\000"
+ 2428 1847 00000000 		.space	5
+ 2428      00
+ 2429 184c 00000000 		.word	Anything
+ 2430 1850 40040000 		.word	.LC216
+ 2431 1854 00000000 		.word	Anything
+ 2432 1858 00FF00   		.ascii	"\000\377\000"
+ 2433 185b 00000000 		.space	5
+ 2433      00
+ 2434 1860 00000000 		.word	Anything
+ 2435 1864 44040000 		.word	.LC217
+ 2436 1868 00000000 		.word	Anything
+ 2437 186c 02FF00   		.ascii	"\002\377\000"
+ 2438 186f 00000000 		.space	5
+ 2438      00
+ 2439 1874 00000000 		.word	Anything
+ 2440 1878 4C040000 		.word	.LC218
+ 2441 187c 00000000 		.word	Anything
+ 2442 1880 00FF00   		.ascii	"\000\377\000"
+ 2443 1883 00000000 		.space	5
+ 2443      00
+ 2444 1888 00000000 		.word	Nothing
+ 2445 188c 50040000 		.word	.LC219
+ 2446 1890 00000000 		.word	Anything
+ 2447 1894 0DFF00   		.ascii	"\015\377\000"
+ 2448 1897 00000000 		.space	5
+ 2448      00
+ 2449 189c 00000000 		.word	Anything
+ 2450 18a0 54040000 		.word	.LC220
+ 2451 18a4 00000000 		.word	Anything
+ 2452 18a8 00FF00   		.ascii	"\000\377\000"
+ 2453 18ab 00000000 		.space	5
+ 2453      00
+ 2454 18b0 00000000 		.word	Anything
+ 2455 18b4 58040000 		.word	.LC221
+ 2456 18b8 00000000 		.word	Anything
+ 2457 18bc 2409FF00 		.ascii	"$\011\377\000"
+ 2458 18c0 00000000 		.space	4
+ 2459 18c4 00000000 		.word	Anything
+ 2460 18c8 04020000 		.word	.LC98
+ 2461 18cc 00000000 		.word	Anything
+ 2462 18d0 03FF00   		.ascii	"\003\377\000"
+ 2463 18d3 00000000 		.space	5
+ 2463      00
+ 2464 18d8 00000000 		.word	Anything
+ARM GAS  /tmp/ccDMOhBF.s 			page 50
+
+
+ 2465 18dc 00000000 		.word	0
+ 2466 18e0 00000000 		.word	Anything
+ 2467 18e4 FE00     		.ascii	"\376\000"
+ 2468 18e6 00000000 		.space	6
+ 2468      0000
+ 2469              		.global	B_rules
+ 2470              		.section	.rodata.str1.4
+ 2471 045b 00       		.align	2
+ 2472              	.LC222:
+ 2473 045c 424500   		.ascii	"BE\000"
+ 2474 045f 00       		.align	2
+ 2475              	.LC223:
+ 2476 0460 4245494E 		.ascii	"BEING\000"
+ 2476      4700
+ 2477 0466 0000     		.align	2
+ 2478              	.LC224:
+ 2479 0468 424F5448 		.ascii	"BOTH\000"
+ 2479      00
+ 2480 046d 000000   		.align	2
+ 2481              	.LC225:
+ 2482 0470 42555300 		.ascii	"BUS\000"
+ 2483              		.align	2
+ 2484              	.LC226:
+ 2485 0474 4255494C 		.ascii	"BUIL\000"
+ 2485      00
+ 2486 0479 000000   		.align	2
+ 2487              	.LC227:
+ 2488 047c 4200     		.ascii	"B\000"
+ 2489              		.section	.flash
+ 2490              		.align	2
+ 2491              		.type	B_rules, %object
+ 2492              		.size	B_rules, 140
+ 2493              	B_rules:
+ 2494 18ec 00000000 		.word	Nothing
+ 2495 18f0 5C040000 		.word	.LC222
+ 2496 18f4 34000000 		.word	.LC11
+ 2497 18f8 1101FF00 		.ascii	"\021\001\377\000"
+ 2498 18fc 00000000 		.space	4
+ 2499 1900 00000000 		.word	Anything
+ 2500 1904 60040000 		.word	.LC223
+ 2501 1908 00000000 		.word	Anything
+ 2502 190c 11000121 		.ascii	"\021\000\001!\377\000"
+ 2502      FF00
+ 2503 1912 0000     		.space	2
+ 2504 1914 00000000 		.word	Nothing
+ 2505 1918 68040000 		.word	.LC224
+ 2506 191c 00000000 		.word	Nothing
+ 2507 1920 110718FF 		.ascii	"\021\007\030\377\000"
+ 2507      00
+ 2508 1925 000000   		.space	3
+ 2509 1928 00000000 		.word	Nothing
+ 2510 192c 70040000 		.word	.LC225
+ 2511 1930 28000000 		.word	.LC9
+ 2512 1934 11011BFF 		.ascii	"\021\001\033\377\000"
+ 2512      00
+ 2513 1939 000000   		.space	3
+ 2514 193c 00000000 		.word	Anything
+ARM GAS  /tmp/ccDMOhBF.s 			page 51
+
+
+ 2515 1940 74040000 		.word	.LC226
+ 2516 1944 00000000 		.word	Anything
+ 2517 1948 110122FF 		.ascii	"\021\001\"\377\000"
+ 2517      00
+ 2518 194d 000000   		.space	3
+ 2519 1950 00000000 		.word	Anything
+ 2520 1954 7C040000 		.word	.LC227
+ 2521 1958 00000000 		.word	Anything
+ 2522 195c 11FF00   		.ascii	"\021\377\000"
+ 2523 195f 00000000 		.space	5
+ 2523      00
+ 2524 1964 00000000 		.word	Anything
+ 2525 1968 00000000 		.word	0
+ 2526 196c 00000000 		.word	Anything
+ 2527 1970 FE00     		.ascii	"\376\000"
+ 2528 1972 00000000 		.space	6
+ 2528      0000
+ 2529              		.global	C_rules
+ 2530              		.section	.rodata.str1.4
+ 2531 047e 0000     		.align	2
+ 2532              	.LC228:
+ 2533 0480 5E4500   		.ascii	"^E\000"
+ 2534 0483 00       		.align	2
+ 2535              	.LC229:
+ 2536 0484 205300   		.ascii	" S\000"
+ 2537 0487 00       		.align	2
+ 2538              	.LC230:
+ 2539 0488 434900   		.ascii	"CI\000"
+ 2540 048b 00       		.align	2
+ 2541              	.LC231:
+ 2542 048c 454E00   		.ascii	"EN\000"
+ 2543 048f 00       		.align	2
+ 2544              	.LC232:
+ 2545 0490 434B00   		.ascii	"CK\000"
+ 2546 0493 00       		.align	2
+ 2547              	.LC233:
+ 2548 0494 434F4D00 		.ascii	"COM\000"
+ 2549              		.section	.flash
+ 2550              		.align	2
+ 2551              		.type	C_rules, %object
+ 2552              		.size	C_rules, 240
+ 2553              	C_rules:
+ 2554 1978 00000000 		.word	Nothing
+ 2555 197c 58010000 		.word	.LC63
+ 2556 1980 80000000 		.word	.LC25
+ 2557 1984 14FF00   		.ascii	"\024\377\000"
+ 2558 1987 00000000 		.space	5
+ 2558      00
+ 2559 198c 80040000 		.word	.LC228
+ 2560 1990 58010000 		.word	.LC63
+ 2561 1994 00000000 		.word	Anything
+ 2562 1998 14FF00   		.ascii	"\024\377\000"
+ 2563 199b 00000000 		.space	5
+ 2563      00
+ 2564 19a0 00000000 		.word	Anything
+ 2565 19a4 58010000 		.word	.LC63
+ 2566 19a8 00000000 		.word	Anything
+ARM GAS  /tmp/ccDMOhBF.s 			page 52
+
+
+ 2567 19ac 26FF00   		.ascii	"&\377\000"
+ 2568 19af 00000000 		.space	5
+ 2568      00
+ 2569 19b4 84040000 		.word	.LC229
+ 2570 19b8 88040000 		.word	.LC230
+ 2571 19bc 28000000 		.word	.LC9
+ 2572 19c0 1A0DFF00 		.ascii	"\032\015\377\000"
+ 2573 19c4 00000000 		.space	4
+ 2574 19c8 00000000 		.word	Anything
+ 2575 19cc 88040000 		.word	.LC230
+ 2576 19d0 1C010000 		.word	.LC50
+ 2577 19d4 1CFF00   		.ascii	"\034\377\000"
+ 2578 19d7 00000000 		.space	5
+ 2578      00
+ 2579 19dc 00000000 		.word	Anything
+ 2580 19e0 88040000 		.word	.LC230
+ 2581 19e4 18010000 		.word	.LC49
+ 2582 19e8 1CFF00   		.ascii	"\034\377\000"
+ 2583 19eb 00000000 		.space	5
+ 2583      00
+ 2584 19f0 00000000 		.word	Anything
+ 2585 19f4 88040000 		.word	.LC230
+ 2586 19f8 8C040000 		.word	.LC231
+ 2587 19fc 1CFF00   		.ascii	"\034\377\000"
+ 2588 19ff 00000000 		.space	5
+ 2588      00
+ 2589 1a04 00000000 		.word	Anything
+ 2590 1a08 C4020000 		.word	.LC137
+ 2591 1a0c 0C020000 		.word	.LC100
+ 2592 1a10 1AFF00   		.ascii	"\032\377\000"
+ 2593 1a13 00000000 		.space	5
+ 2593      00
+ 2594 1a18 00000000 		.word	Anything
+ 2595 1a1c 90040000 		.word	.LC232
+ 2596 1a20 00000000 		.word	Anything
+ 2597 1a24 14FF00   		.ascii	"\024\377\000"
+ 2598 1a27 00000000 		.space	5
+ 2598      00
+ 2599 1a2c 00000000 		.word	Anything
+ 2600 1a30 94040000 		.word	.LC233
+ 2601 1a34 78010000 		.word	.LC71
+ 2602 1a38 140C1FFF 		.ascii	"\024\014\037\377\000"
+ 2602      00
+ 2603 1a3d 000000   		.space	3
+ 2604 1a40 00000000 		.word	Anything
+ 2605 1a44 C4020000 		.word	.LC137
+ 2606 1a48 00000000 		.word	Anything
+ 2607 1a4c 14FF00   		.ascii	"\024\377\000"
+ 2608 1a4f 00000000 		.space	5
+ 2608      00
+ 2609 1a54 00000000 		.word	Anything
+ 2610 1a58 00000000 		.word	0
+ 2611 1a5c 00000000 		.word	Anything
+ 2612 1a60 FE00     		.ascii	"\376\000"
+ 2613 1a62 00000000 		.space	6
+ 2613      0000
+ 2614              		.global	A_rules
+ARM GAS  /tmp/ccDMOhBF.s 			page 53
+
+
+ 2615              		.section	.rodata.str1.4
+ 2616              		.align	2
+ 2617              	.LC234:
+ 2618 0498 41524500 		.ascii	"ARE\000"
+ 2619              		.align	2
+ 2620              	.LC235:
+ 2621 049c 415200   		.ascii	"AR\000"
+ 2622 049f 00       		.align	2
+ 2623              	.LC236:
+ 2624 04a0 415300   		.ascii	"AS\000"
+ 2625 04a3 00       		.align	2
+ 2626              	.LC237:
+ 2627 04a4 415700   		.ascii	"AW\000"
+ 2628 04a7 00       		.align	2
+ 2629              	.LC238:
+ 2630 04a8 414E5900 		.ascii	"ANY\000"
+ 2631              		.align	2
+ 2632              	.LC239:
+ 2633 04ac 5E2B2300 		.ascii	"^+#\000"
+ 2634              		.align	2
+ 2635              	.LC240:
+ 2636 04b0 414C4C59 		.ascii	"ALLY\000"
+ 2636      00
+ 2637 04b5 000000   		.align	2
+ 2638              	.LC241:
+ 2639 04b8 414C00   		.ascii	"AL\000"
+ 2640 04bb 00       		.align	2
+ 2641              	.LC242:
+ 2642 04bc 41474149 		.ascii	"AGAIN\000"
+ 2642      4E00
+ 2643 04c2 0000     		.align	2
+ 2644              	.LC243:
+ 2645 04c4 414700   		.ascii	"AG\000"
+ 2646 04c7 00       		.align	2
+ 2647              	.LC244:
+ 2648 04c8 5E2B2000 		.ascii	"^+ \000"
+ 2649              		.align	2
+ 2650              	.LC245:
+ 2651 04cc 41525200 		.ascii	"ARR\000"
+ 2652              		.align	2
+ 2653              	.LC246:
+ 2654 04d0 41495200 		.ascii	"AIR\000"
+ 2655              		.align	2
+ 2656              	.LC247:
+ 2657 04d4 414900   		.ascii	"AI\000"
+ 2658 04d7 00       		.align	2
+ 2659              	.LC248:
+ 2660 04d8 415900   		.ascii	"AY\000"
+ 2661 04db 00       		.align	2
+ 2662              	.LC249:
+ 2663 04dc 415500   		.ascii	"AU\000"
+ 2664 04df 00       		.align	2
+ 2665              	.LC250:
+ 2666 04e0 414C5300 		.ascii	"ALS\000"
+ 2667              		.align	2
+ 2668              	.LC251:
+ 2669 04e4 414C4B00 		.ascii	"ALK\000"
+ARM GAS  /tmp/ccDMOhBF.s 			page 54
+
+
+ 2670              		.align	2
+ 2671              	.LC252:
+ 2672 04e8 41424C45 		.ascii	"ABLE\000"
+ 2672      00
+ 2673 04ed 000000   		.align	2
+ 2674              	.LC253:
+ 2675 04f0 414E4700 		.ascii	"ANG\000"
+ 2676              		.section	.flash
+ 2677              		.align	2
+ 2678              		.type	A_rules, %object
+ 2679              		.size	A_rules, 680
+ 2680              	A_rules:
+ 2681 1a68 00000000 		.word	Anything
+ 2682 1a6c 1C010000 		.word	.LC50
+ 2683 1a70 00000000 		.word	Nothing
+ 2684 1a74 0BFF00   		.ascii	"\013\377\000"
+ 2685 1a77 00000000 		.space	5
+ 2685      00
+ 2686 1a7c 00000000 		.word	Nothing
+ 2687 1a80 98040000 		.word	.LC234
+ 2688 1a84 00000000 		.word	Nothing
+ 2689 1a88 0525FF00 		.ascii	"\005%\377\000"
+ 2690 1a8c 00000000 		.space	4
+ 2691 1a90 00000000 		.word	Nothing
+ 2692 1a94 9C040000 		.word	.LC235
+ 2693 1a98 18010000 		.word	.LC49
+ 2694 1a9c 0B25FF00 		.ascii	"\013%\377\000"
+ 2695 1aa0 00000000 		.space	4
+ 2696 1aa4 00000000 		.word	Anything
+ 2697 1aa8 9C040000 		.word	.LC235
+ 2698 1aac 28000000 		.word	.LC9
+ 2699 1ab0 0325FF00 		.ascii	"\003%\377\000"
+ 2700 1ab4 00000000 		.space	4
+ 2701 1ab8 80000000 		.word	.LC25
+ 2702 1abc A0040000 		.word	.LC236
+ 2703 1ac0 28000000 		.word	.LC9
+ 2704 1ac4 021AFF00 		.ascii	"\002\032\377\000"
+ 2705 1ac8 00000000 		.space	4
+ 2706 1acc 00000000 		.word	Anything
+ 2707 1ad0 1C010000 		.word	.LC50
+ 2708 1ad4 4C000000 		.word	.LC15
+ 2709 1ad8 0BFF00   		.ascii	"\013\377\000"
+ 2710 1adb 00000000 		.space	5
+ 2710      00
+ 2711 1ae0 00000000 		.word	Anything
+ 2712 1ae4 A4040000 		.word	.LC237
+ 2713 1ae8 00000000 		.word	Anything
+ 2714 1aec 06FF00   		.ascii	"\006\377\000"
+ 2715 1aef 00000000 		.space	5
+ 2715      00
+ 2716 1af4 24000000 		.word	.LC8
+ 2717 1af8 A8040000 		.word	.LC238
+ 2718 1afc 00000000 		.word	Anything
+ 2719 1b00 032000FF 		.ascii	"\003 \000\377\000"
+ 2719      00
+ 2720 1b05 000000   		.space	3
+ 2721 1b08 00000000 		.word	Anything
+ARM GAS  /tmp/ccDMOhBF.s 			page 55
+
+
+ 2722 1b0c 1C010000 		.word	.LC50
+ 2723 1b10 AC040000 		.word	.LC239
+ 2724 1b14 02FF00   		.ascii	"\002\377\000"
+ 2725 1b17 00000000 		.space	5
+ 2725      00
+ 2726 1b1c 08010000 		.word	.LC45
+ 2727 1b20 B0040000 		.word	.LC240
+ 2728 1b24 00000000 		.word	Anything
+ 2729 1b28 0B2200FF 		.ascii	"\013\"\000\377\000"
+ 2729      00
+ 2730 1b2d 000000   		.space	3
+ 2731 1b30 00000000 		.word	Nothing
+ 2732 1b34 B8040000 		.word	.LC241
+ 2733 1b38 28000000 		.word	.LC9
+ 2734 1b3c 0B22FF00 		.ascii	"\013\"\377\000"
+ 2735 1b40 00000000 		.space	4
+ 2736 1b44 00000000 		.word	Anything
+ 2737 1b48 BC040000 		.word	.LC242
+ 2738 1b4c 00000000 		.word	Anything
+ 2739 1b50 0B150320 		.ascii	"\013\025\003 \377\000"
+ 2739      FF00
+ 2740 1b56 0000     		.space	2
+ 2741 1b58 08010000 		.word	.LC45
+ 2742 1b5c C4040000 		.word	.LC243
+ 2743 1b60 04020000 		.word	.LC98
+ 2744 1b64 0127FF00 		.ascii	"\001'\377\000"
+ 2745 1b68 00000000 		.space	4
+ 2746 1b6c 00000000 		.word	Anything
+ 2747 1b70 1C010000 		.word	.LC50
+ 2748 1b74 2C000000 		.word	.LC10
+ 2749 1b78 04FF00   		.ascii	"\004\377\000"
+ 2750 1b7b 00000000 		.space	5
+ 2750      00
+ 2751 1b80 24000000 		.word	.LC8
+ 2752 1b84 1C010000 		.word	.LC50
+ 2753 1b88 C8040000 		.word	.LC244
+ 2754 1b8c 02FF00   		.ascii	"\002\377\000"
+ 2755 1b8f 00000000 		.space	5
+ 2755      00
+ 2756 1b94 00000000 		.word	Anything
+ 2757 1b98 1C010000 		.word	.LC50
+ 2758 1b9c 44020000 		.word	.LC112
+ 2759 1ba0 02FF00   		.ascii	"\002\377\000"
+ 2760 1ba3 00000000 		.space	5
+ 2760      00
+ 2761 1ba8 00000000 		.word	Nothing
+ 2762 1bac CC040000 		.word	.LC245
+ 2763 1bb0 00000000 		.word	Anything
+ 2764 1bb4 0B25FF00 		.ascii	"\013%\377\000"
+ 2765 1bb8 00000000 		.space	4
+ 2766 1bbc 00000000 		.word	Anything
+ 2767 1bc0 CC040000 		.word	.LC245
+ 2768 1bc4 00000000 		.word	Anything
+ 2769 1bc8 0425FF00 		.ascii	"\004%\377\000"
+ 2770 1bcc 00000000 		.space	4
+ 2771 1bd0 24000000 		.word	.LC8
+ 2772 1bd4 9C040000 		.word	.LC235
+ARM GAS  /tmp/ccDMOhBF.s 			page 56
+
+
+ 2773 1bd8 00000000 		.word	Nothing
+ 2774 1bdc 0525FF00 		.ascii	"\005%\377\000"
+ 2775 1be0 00000000 		.space	4
+ 2776 1be4 00000000 		.word	Anything
+ 2777 1be8 9C040000 		.word	.LC235
+ 2778 1bec 00000000 		.word	Nothing
+ 2779 1bf0 0AFF00   		.ascii	"\012\377\000"
+ 2780 1bf3 00000000 		.space	5
+ 2780      00
+ 2781 1bf8 00000000 		.word	Anything
+ 2782 1bfc 9C040000 		.word	.LC235
+ 2783 1c00 00000000 		.word	Anything
+ 2784 1c04 0525FF00 		.ascii	"\005%\377\000"
+ 2785 1c08 00000000 		.space	4
+ 2786 1c0c 00000000 		.word	Anything
+ 2787 1c10 D0040000 		.word	.LC246
+ 2788 1c14 00000000 		.word	Anything
+ 2789 1c18 0325FF00 		.ascii	"\003%\377\000"
+ 2790 1c1c 00000000 		.space	4
+ 2791 1c20 00000000 		.word	Anything
+ 2792 1c24 D4040000 		.word	.LC247
+ 2793 1c28 00000000 		.word	Anything
+ 2794 1c2c 02FF00   		.ascii	"\002\377\000"
+ 2795 1c2f 00000000 		.space	5
+ 2795      00
+ 2796 1c34 00000000 		.word	Anything
+ 2797 1c38 D8040000 		.word	.LC248
+ 2798 1c3c 00000000 		.word	Anything
+ 2799 1c40 02FF00   		.ascii	"\002\377\000"
+ 2800 1c43 00000000 		.space	5
+ 2800      00
+ 2801 1c48 00000000 		.word	Anything
+ 2802 1c4c DC040000 		.word	.LC249
+ 2803 1c50 00000000 		.word	Anything
+ 2804 1c54 06FF00   		.ascii	"\006\377\000"
+ 2805 1c57 00000000 		.space	5
+ 2805      00
+ 2806 1c5c 08010000 		.word	.LC45
+ 2807 1c60 B8040000 		.word	.LC241
+ 2808 1c64 00000000 		.word	Nothing
+ 2809 1c68 0B22FF00 		.ascii	"\013\"\377\000"
+ 2810 1c6c 00000000 		.space	4
+ 2811 1c70 08010000 		.word	.LC45
+ 2812 1c74 E0040000 		.word	.LC250
+ 2813 1c78 00000000 		.word	Nothing
+ 2814 1c7c 0B221BFF 		.ascii	"\013\"\033\377\000"
+ 2814      00
+ 2815 1c81 000000   		.space	3
+ 2816 1c84 00000000 		.word	Anything
+ 2817 1c88 E4040000 		.word	.LC251
+ 2818 1c8c 00000000 		.word	Anything
+ 2819 1c90 0614FF00 		.ascii	"\006\024\377\000"
+ 2820 1c94 00000000 		.space	4
+ 2821 1c98 00000000 		.word	Anything
+ 2822 1c9c B8040000 		.word	.LC241
+ 2823 1ca0 80000000 		.word	.LC25
+ 2824 1ca4 0622FF00 		.ascii	"\006\"\377\000"
+ARM GAS  /tmp/ccDMOhBF.s 			page 57
+
+
+ 2825 1ca8 00000000 		.space	4
+ 2826 1cac 24000000 		.word	.LC8
+ 2827 1cb0 E8040000 		.word	.LC252
+ 2828 1cb4 00000000 		.word	Anything
+ 2829 1cb8 02110B22 		.ascii	"\002\021\013\"\377\000"
+ 2829      FF00
+ 2830 1cbe 0000     		.space	2
+ 2831 1cc0 00000000 		.word	Anything
+ 2832 1cc4 E8040000 		.word	.LC252
+ 2833 1cc8 00000000 		.word	Anything
+ 2834 1ccc 0B110B22 		.ascii	"\013\021\013\"\377\000"
+ 2834      FF00
+ 2835 1cd2 0000     		.space	2
+ 2836 1cd4 00000000 		.word	Anything
+ 2837 1cd8 F0040000 		.word	.LC253
+ 2838 1cdc 0C020000 		.word	.LC100
+ 2839 1ce0 022027FF 		.ascii	"\002 '\377\000"
+ 2839      00
+ 2840 1ce5 000000   		.space	3
+ 2841 1ce8 00000000 		.word	Anything
+ 2842 1cec 1C010000 		.word	.LC50
+ 2843 1cf0 00000000 		.word	Anything
+ 2844 1cf4 04FF00   		.ascii	"\004\377\000"
+ 2845 1cf7 00000000 		.space	5
+ 2845      00
+ 2846 1cfc 00000000 		.word	Anything
+ 2847 1d00 00000000 		.word	0
+ 2848 1d04 00000000 		.word	Anything
+ 2849 1d08 FE00     		.ascii	"\376\000"
+ 2850 1d0a 00000000 		.space	6
+ 2850      0000
+ 2851              		.global	punct_rules
+ 2852              		.section	.rodata.str1.4
+ 2853              		.align	2
+ 2854              	.LC254:
+ 2855 04f4 2000     		.ascii	" \000"
+ 2856 04f6 0000     		.align	2
+ 2857              	.LC255:
+ 2858 04f8 2D2D00   		.ascii	"--\000"
+ 2859 04fb 00       		.align	2
+ 2860              	.LC256:
+ 2861 04fc 2D00     		.ascii	"-\000"
+ 2862 04fe 0000     		.align	2
+ 2863              	.LC257:
+ 2864 0500 275300   		.ascii	"'S\000"
+ 2865 0503 00       		.align	2
+ 2866              	.LC258:
+ 2867 0504 2C00     		.ascii	",\000"
+ 2868 0506 0000     		.align	2
+ 2869              	.LC259:
+ 2870 0508 3F00     		.ascii	"?\000"
+ 2871 050a 0000     		.align	2
+ 2872              	.LC260:
+ 2873 050c 2100     		.ascii	"!\000"
+ 2874 050e 0000     		.align	2
+ 2875              	.LC261:
+ 2876 0510 4000     		.ascii	"@\000"
+ARM GAS  /tmp/ccDMOhBF.s 			page 58
+
+
+ 2877              		.section	.flash
+ 2878              		.align	2
+ 2879              		.type	punct_rules, %object
+ 2880              		.size	punct_rules, 260
+ 2881              	punct_rules:
+ 2882 1d10 00000000 		.word	Anything
+ 2883 1d14 F4040000 		.word	.LC254
+ 2884 1d18 00000000 		.word	Anything
+ 2885 1d1c 29FF00   		.ascii	")\377\000"
+ 2886 1d1f 00000000 		.space	5
+ 2886      00
+ 2887 1d24 00000000 		.word	Anything
+ 2888 1d28 F8040000 		.word	.LC255
+ 2889 1d2c 00000000 		.word	Anything
+ 2890 1d30 29FF00   		.ascii	")\377\000"
+ 2891 1d33 00000000 		.space	5
+ 2891      00
+ 2892 1d38 00000000 		.word	Anything
+ 2893 1d3c FC040000 		.word	.LC256
+ 2894 1d40 00000000 		.word	Anything
+ 2895 1d44 FF00     		.ascii	"\377\000"
+ 2896 1d46 00000000 		.space	6
+ 2896      0000
+ 2897 1d4c A8010000 		.word	.LC80
+ 2898 1d50 00050000 		.word	.LC257
+ 2899 1d54 00000000 		.word	Anything
+ 2900 1d58 1BFF00   		.ascii	"\033\377\000"
+ 2901 1d5b 00000000 		.space	5
+ 2901      00
+ 2902 1d60 AC010000 		.word	.LC81
+ 2903 1d64 00050000 		.word	.LC257
+ 2904 1d68 00000000 		.word	Anything
+ 2905 1d6c 1BFF00   		.ascii	"\033\377\000"
+ 2906 1d6f 00000000 		.space	5
+ 2906      00
+ 2907 1d74 28000000 		.word	.LC9
+ 2908 1d78 00050000 		.word	.LC257
+ 2909 1d7c 00000000 		.word	Anything
+ 2910 1d80 1BFF00   		.ascii	"\033\377\000"
+ 2911 1d83 00000000 		.space	5
+ 2911      00
+ 2912 1d88 00000000 		.word	Anything
+ 2913 1d8c D8010000 		.word	.LC89
+ 2914 1d90 00000000 		.word	Anything
+ 2915 1d94 FF00     		.ascii	"\377\000"
+ 2916 1d96 00000000 		.space	6
+ 2916      0000
+ 2917 1d9c 00000000 		.word	Anything
+ 2918 1da0 04050000 		.word	.LC258
+ 2919 1da4 00000000 		.word	Anything
+ 2920 1da8 29FF00   		.ascii	")\377\000"
+ 2921 1dab 00000000 		.space	5
+ 2921      00
+ 2922 1db0 00000000 		.word	Anything
+ 2923 1db4 A8010000 		.word	.LC80
+ 2924 1db8 00000000 		.word	Anything
+ 2925 1dbc 29FF00   		.ascii	")\377\000"
+ARM GAS  /tmp/ccDMOhBF.s 			page 59
+
+
+ 2926 1dbf 00000000 		.space	5
+ 2926      00
+ 2927 1dc4 00000000 		.word	Anything
+ 2928 1dc8 08050000 		.word	.LC259
+ 2929 1dcc 00000000 		.word	Anything
+ 2930 1dd0 29FF00   		.ascii	")\377\000"
+ 2931 1dd3 00000000 		.space	5
+ 2931      00
+ 2932 1dd8 00000000 		.word	Anything
+ 2933 1ddc 0C050000 		.word	.LC260
+ 2934 1de0 00000000 		.word	Anything
+ 2935 1de4 29FF00   		.ascii	")\377\000"
+ 2936 1de7 00000000 		.space	5
+ 2936      00
+ 2937 1dec 00000000 		.word	Anything
+ 2938 1df0 10050000 		.word	.LC261
+ 2939 1df4 00000000 		.word	Anything
+ 2940 1df8 0412FF00 		.ascii	"\004\022\377\000"
+ 2941 1dfc 00000000 		.space	4
+ 2942 1e00 00000000 		.word	Anything
+ 2943 1e04 00000000 		.word	0
+ 2944 1e08 00000000 		.word	Anything
+ 2945 1e0c FE00     		.ascii	"\376\000"
+ 2946 1e0e 00000000 		.space	6
+ 2946      0000
+ 2947              		.section	.data.Nothing,"aw"
+ 2948              		.align	2
+ 2949              		.type	Nothing, %object
+ 2950              		.size	Nothing, 2
+ 2951              	Nothing:
+ 2952 0000 2000     		.ascii	" \000"
+ 2953              		.section	.bss.Anything,"aw",%nobits
+ 2954              		.align	2
+ 2955              		.type	Anything, %object
+ 2956              		.size	Anything, 1
+ 2957              	Anything:
+ 2958 0000 00       		.space	1
+ 2959              		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/ccDMOhBF.s 			page 60
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 newenglish.c
+     /tmp/ccDMOhBF.s:21     .data.Rules:00000000 Rules
+     /tmp/ccDMOhBF.s:18     .data.Rules:00000000 $d
+     /tmp/ccDMOhBF.s:2881   .flash:00001d10 punct_rules
+     /tmp/ccDMOhBF.s:2680   .flash:00001a68 A_rules
+     /tmp/ccDMOhBF.s:2493   .flash:000018ec B_rules
+     /tmp/ccDMOhBF.s:2553   .flash:00001978 C_rules
+     /tmp/ccDMOhBF.s:2048   .flash:000013ec D_rules
+     /tmp/ccDMOhBF.s:2203   .flash:000014c8 E_rules
+     /tmp/ccDMOhBF.s:1913   .flash:000012d4 F_rules
+     /tmp/ccDMOhBF.s:1959   .flash:00001310 G_rules
+     /tmp/ccDMOhBF.s:1662   .flash:00001004 H_rules
+     /tmp/ccDMOhBF.s:1755   .flash:00001090 I_rules
+     /tmp/ccDMOhBF.s:1608   .flash:00000fa0 J_rules
+     /tmp/ccDMOhBF.s:1628   .flash:00000fc8 K_rules
+     /tmp/ccDMOhBF.s:1545   .flash:00000eec L_rules
+     /tmp/ccDMOhBF.s:1588   .flash:00000f64 M_rules
+     /tmp/ccDMOhBF.s:1104   .flash:00000a50 N_rules
+     /tmp/ccDMOhBF.s:1279   .flash:00000b04 O_rules
+     /tmp/ccDMOhBF.s:1013   .flash:00000988 P_rules
+     /tmp/ccDMOhBF.s:1059   .flash:00000a00 Q_rules
+     /tmp/ccDMOhBF.s:798    .flash:0000076c R_rules
+     /tmp/ccDMOhBF.s:871    .flash:000007a8 S_rules
+     /tmp/ccDMOhBF.s:415    .flash:00000280 T_rules
+     /tmp/ccDMOhBF.s:608    .flash:0000049c U_rules
+     /tmp/ccDMOhBF.s:198    .flash:00000140 V_rules
+     /tmp/ccDMOhBF.s:262    .flash:0000017c W_rules
+     /tmp/ccDMOhBF.s:78     .flash:00000028 X_rules
+     /tmp/ccDMOhBF.s:125    .flash:00000050 Y_rules
+     /tmp/ccDMOhBF.s:58     .flash:00000000 Z_rules
+     /tmp/ccDMOhBF.s:51     .rodata.str1.4:00000000 $d
+     /tmp/ccDMOhBF.s:55     .flash:00000000 $d
+     /tmp/ccDMOhBF.s:2957   .bss.Anything:00000000 Anything
+     /tmp/ccDMOhBF.s:2951   .data.Nothing:00000000 Nothing
+     /tmp/ccDMOhBF.s:2948   .data.Nothing:00000000 $d
+     /tmp/ccDMOhBF.s:2954   .bss.Anything:00000000 $d
+
+NO UNDEFINED SYMBOLS

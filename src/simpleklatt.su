@@ -1,0 +1,4 @@
+src/simpleklatt.c:75:6:simpleklatt_init	4	static
+src/simpleklatt.c:104:6:generate_exy_frame	8	static
+src/simpleklatt.c:116:9:simpleklatt_get_sample	24	static
+src/simpleklatt.c:131:6:simpleklatt_newsay	8	static

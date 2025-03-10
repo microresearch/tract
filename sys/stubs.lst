@@ -1,0 +1,161 @@
+ARM GAS  /tmp/cc5hUYnV.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=sys/stubs.lst 
+ input file    	: /tmp/cc5hUYnV.s
+ output file   	: sys/stubs.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:36:01.000+0100
+
+ARM GAS  /tmp/cc5hUYnV.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"stubs.c"
+  15              		.text
+  16              		.section	.text._write,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	_write
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	_write, %function
+  24              	_write:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 4FF0FF30 		mov	r0, #-1
+  29 0004 7047     		bx	lr
+  30              		.size	_write, .-_write
+  31 0006 00BF     		.section	.text._read,"ax",%progbits
+  32              		.align	1
+  33              		.p2align 2,,3
+  34              		.global	_read
+  35              		.syntax unified
+  36              		.thumb
+  37              		.thumb_func
+  38              		.type	_read, %function
+  39              	_read:
+  40              		@ args = 0, pretend = 0, frame = 0
+  41              		@ frame_needed = 0, uses_anonymous_args = 0
+  42              		@ link register save eliminated.
+  43 0000 4FF0FF30 		mov	r0, #-1
+  44 0004 7047     		bx	lr
+  45              		.size	_read, .-_read
+  46 0006 00BF     		.section	.text._close,"ax",%progbits
+  47              		.align	1
+  48              		.p2align 2,,3
+  49              		.global	_close
+  50              		.syntax unified
+  51              		.thumb
+  52              		.thumb_func
+  53              		.type	_close, %function
+  54              	_close:
+  55              		@ args = 0, pretend = 0, frame = 0
+  56              		@ frame_needed = 0, uses_anonymous_args = 0
+  57              		@ link register save eliminated.
+ARM GAS  /tmp/cc5hUYnV.s 			page 3
+
+
+  58 0000 4FF0FF30 		mov	r0, #-1
+  59 0004 7047     		bx	lr
+  60              		.size	_close, .-_close
+  61 0006 00BF     		.section	.text._fstat,"ax",%progbits
+  62              		.align	1
+  63              		.p2align 2,,3
+  64              		.global	_fstat
+  65              		.syntax unified
+  66              		.thumb
+  67              		.thumb_func
+  68              		.type	_fstat, %function
+  69              	_fstat:
+  70              		@ args = 0, pretend = 0, frame = 0
+  71              		@ frame_needed = 0, uses_anonymous_args = 0
+  72              		@ link register save eliminated.
+  73 0000 4FF0FF30 		mov	r0, #-1
+  74 0004 7047     		bx	lr
+  75              		.size	_fstat, .-_fstat
+  76 0006 00BF     		.section	.text._isatty,"ax",%progbits
+  77              		.align	1
+  78              		.p2align 2,,3
+  79              		.global	_isatty
+  80              		.syntax unified
+  81              		.thumb
+  82              		.thumb_func
+  83              		.type	_isatty, %function
+  84              	_isatty:
+  85              		@ args = 0, pretend = 0, frame = 0
+  86              		@ frame_needed = 0, uses_anonymous_args = 0
+  87              		@ link register save eliminated.
+  88 0000 4FF0FF30 		mov	r0, #-1
+  89 0004 7047     		bx	lr
+  90              		.size	_isatty, .-_isatty
+  91 0006 00BF     		.section	.text._lseek,"ax",%progbits
+  92              		.align	1
+  93              		.p2align 2,,3
+  94              		.global	_lseek
+  95              		.syntax unified
+  96              		.thumb
+  97              		.thumb_func
+  98              		.type	_lseek, %function
+  99              	_lseek:
+ 100              		@ args = 0, pretend = 0, frame = 0
+ 101              		@ frame_needed = 0, uses_anonymous_args = 0
+ 102              		@ link register save eliminated.
+ 103 0000 4FF0FF30 		mov	r0, #-1
+ 104 0004 7047     		bx	lr
+ 105              		.size	_lseek, .-_lseek
+ 106 0006 00BF     		.section	.text._exit,"ax",%progbits
+ 107              		.align	1
+ 108              		.p2align 2,,3
+ 109              		.global	_exit
+ 110              		.syntax unified
+ 111              		.thumb
+ 112              		.thumb_func
+ 113              		.type	_exit, %function
+ 114              	_exit:
+ARM GAS  /tmp/cc5hUYnV.s 			page 4
+
+
+ 115              		@ args = 0, pretend = 0, frame = 0
+ 116              		@ frame_needed = 0, uses_anonymous_args = 0
+ 117              		@ link register save eliminated.
+ 118 0000 7047     		bx	lr
+ 119              		.size	_exit, .-_exit
+ 120 0002 00BF     		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/cc5hUYnV.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stubs.c
+     /tmp/cc5hUYnV.s:17     .text._write:00000000 $t
+     /tmp/cc5hUYnV.s:24     .text._write:00000000 _write
+     /tmp/cc5hUYnV.s:32     .text._read:00000000 $t
+     /tmp/cc5hUYnV.s:39     .text._read:00000000 _read
+     /tmp/cc5hUYnV.s:47     .text._close:00000000 $t
+     /tmp/cc5hUYnV.s:54     .text._close:00000000 _close
+     /tmp/cc5hUYnV.s:62     .text._fstat:00000000 $t
+     /tmp/cc5hUYnV.s:69     .text._fstat:00000000 _fstat
+     /tmp/cc5hUYnV.s:77     .text._isatty:00000000 $t
+     /tmp/cc5hUYnV.s:84     .text._isatty:00000000 _isatty
+     /tmp/cc5hUYnV.s:92     .text._lseek:00000000 $t
+     /tmp/cc5hUYnV.s:99     .text._lseek:00000000 _lseek
+     /tmp/cc5hUYnV.s:107    .text._exit:00000000 $t
+     /tmp/cc5hUYnV.s:114    .text._exit:00000000 _exit
+
+NO UNDEFINED SYMBOLS

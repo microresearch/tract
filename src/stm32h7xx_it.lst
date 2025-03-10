@@ -1,0 +1,220 @@
+ARM GAS  /tmp/ccWKmTkm.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/stm32h7xx_it.lst 
+ input file    	: /tmp/ccWKmTkm.s
+ output file   	: src/stm32h7xx_it.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:35:57.000+0100
+
+ARM GAS  /tmp/ccWKmTkm.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"stm32h7xx_it.c"
+  15              		.text
+  16              		.section	.text.NMI_Handler,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	NMI_Handler
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	NMI_Handler, %function
+  24              	NMI_Handler:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 7047     		bx	lr
+  29              		.size	NMI_Handler, .-NMI_Handler
+  30 0002 00BF     		.section	.text.HardFault_Handler,"ax",%progbits
+  31              		.align	1
+  32              		.p2align 2,,3
+  33              		.global	HardFault_Handler
+  34              		.syntax unified
+  35              		.thumb
+  36              		.thumb_func
+  37              		.type	HardFault_Handler, %function
+  38              	HardFault_Handler:
+  39              		@ Volatile: function does not return.
+  40              		@ args = 0, pretend = 0, frame = 0
+  41              		@ frame_needed = 0, uses_anonymous_args = 0
+  42              		@ link register save eliminated.
+  43              	.L4:
+  44 0000 FEE7     		b	.L4
+  45              		.size	HardFault_Handler, .-HardFault_Handler
+  46 0002 00BF     		.section	.text.MemManage_Handler,"ax",%progbits
+  47              		.align	1
+  48              		.p2align 2,,3
+  49              		.global	MemManage_Handler
+  50              		.syntax unified
+  51              		.thumb
+  52              		.thumb_func
+  53              		.type	MemManage_Handler, %function
+  54              	MemManage_Handler:
+  55              		@ Volatile: function does not return.
+  56              		@ args = 0, pretend = 0, frame = 0
+  57              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccWKmTkm.s 			page 3
+
+
+  58              		@ link register save eliminated.
+  59              	.L6:
+  60 0000 FEE7     		b	.L6
+  61              		.size	MemManage_Handler, .-MemManage_Handler
+  62 0002 00BF     		.section	.text.BusFault_Handler,"ax",%progbits
+  63              		.align	1
+  64              		.p2align 2,,3
+  65              		.global	BusFault_Handler
+  66              		.syntax unified
+  67              		.thumb
+  68              		.thumb_func
+  69              		.type	BusFault_Handler, %function
+  70              	BusFault_Handler:
+  71              		@ Volatile: function does not return.
+  72              		@ args = 0, pretend = 0, frame = 0
+  73              		@ frame_needed = 0, uses_anonymous_args = 0
+  74              		@ link register save eliminated.
+  75              	.L8:
+  76 0000 FEE7     		b	.L8
+  77              		.size	BusFault_Handler, .-BusFault_Handler
+  78 0002 00BF     		.section	.text.UsageFault_Handler,"ax",%progbits
+  79              		.align	1
+  80              		.p2align 2,,3
+  81              		.global	UsageFault_Handler
+  82              		.syntax unified
+  83              		.thumb
+  84              		.thumb_func
+  85              		.type	UsageFault_Handler, %function
+  86              	UsageFault_Handler:
+  87              		@ Volatile: function does not return.
+  88              		@ args = 0, pretend = 0, frame = 0
+  89              		@ frame_needed = 0, uses_anonymous_args = 0
+  90              		@ link register save eliminated.
+  91              	.L10:
+  92 0000 FEE7     		b	.L10
+  93              		.size	UsageFault_Handler, .-UsageFault_Handler
+  94 0002 00BF     		.section	.text.SVC_Handler,"ax",%progbits
+  95              		.align	1
+  96              		.p2align 2,,3
+  97              		.global	SVC_Handler
+  98              		.syntax unified
+  99              		.thumb
+ 100              		.thumb_func
+ 101              		.type	SVC_Handler, %function
+ 102              	SVC_Handler:
+ 103              		@ args = 0, pretend = 0, frame = 0
+ 104              		@ frame_needed = 0, uses_anonymous_args = 0
+ 105              		@ link register save eliminated.
+ 106 0000 7047     		bx	lr
+ 107              		.size	SVC_Handler, .-SVC_Handler
+ 108 0002 00BF     		.section	.text.DebugMon_Handler,"ax",%progbits
+ 109              		.align	1
+ 110              		.p2align 2,,3
+ 111              		.global	DebugMon_Handler
+ 112              		.syntax unified
+ 113              		.thumb
+ 114              		.thumb_func
+ARM GAS  /tmp/ccWKmTkm.s 			page 4
+
+
+ 115              		.type	DebugMon_Handler, %function
+ 116              	DebugMon_Handler:
+ 117              		@ args = 0, pretend = 0, frame = 0
+ 118              		@ frame_needed = 0, uses_anonymous_args = 0
+ 119              		@ link register save eliminated.
+ 120 0000 7047     		bx	lr
+ 121              		.size	DebugMon_Handler, .-DebugMon_Handler
+ 122 0002 00BF     		.section	.text.PendSV_Handler,"ax",%progbits
+ 123              		.align	1
+ 124              		.p2align 2,,3
+ 125              		.global	PendSV_Handler
+ 126              		.syntax unified
+ 127              		.thumb
+ 128              		.thumb_func
+ 129              		.type	PendSV_Handler, %function
+ 130              	PendSV_Handler:
+ 131              		@ args = 0, pretend = 0, frame = 0
+ 132              		@ frame_needed = 0, uses_anonymous_args = 0
+ 133              		@ link register save eliminated.
+ 134 0000 7047     		bx	lr
+ 135              		.size	PendSV_Handler, .-PendSV_Handler
+ 136 0002 00BF     		.section	.text.SysTick_Handler,"ax",%progbits
+ 137              		.align	1
+ 138              		.p2align 2,,3
+ 139              		.global	SysTick_Handler
+ 140              		.syntax unified
+ 141              		.thumb
+ 142              		.thumb_func
+ 143              		.type	SysTick_Handler, %function
+ 144              	SysTick_Handler:
+ 145              		@ args = 0, pretend = 0, frame = 0
+ 146              		@ frame_needed = 0, uses_anonymous_args = 0
+ 147              		@ link register save eliminated.
+ 148 0000 FFF7FEBF 		b	HAL_IncTick
+ 149              		.size	SysTick_Handler, .-SysTick_Handler
+ 150              		.section	.text.DMA1_Stream0_IRQHandler,"ax",%progbits
+ 151              		.align	1
+ 152              		.p2align 2,,3
+ 153              		.global	DMA1_Stream0_IRQHandler
+ 154              		.syntax unified
+ 155              		.thumb
+ 156              		.thumb_func
+ 157              		.type	DMA1_Stream0_IRQHandler, %function
+ 158              	DMA1_Stream0_IRQHandler:
+ 159              		@ args = 0, pretend = 0, frame = 0
+ 160              		@ frame_needed = 0, uses_anonymous_args = 0
+ 161              		@ link register save eliminated.
+ 162 0000 0148     		ldr	r0, .L16
+ 163 0002 FFF7FEBF 		b	HAL_DMA_IRQHandler
+ 164              	.L17:
+ 165 0006 00BF     		.align	2
+ 166              	.L16:
+ 167 0008 00000000 		.word	hdma_sai1_a
+ 168              		.size	DMA1_Stream0_IRQHandler, .-DMA1_Stream0_IRQHandler
+ 169              		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/ccWKmTkm.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32h7xx_it.c
+     /tmp/ccWKmTkm.s:17     .text.NMI_Handler:00000000 $t
+     /tmp/ccWKmTkm.s:24     .text.NMI_Handler:00000000 NMI_Handler
+     /tmp/ccWKmTkm.s:31     .text.HardFault_Handler:00000000 $t
+     /tmp/ccWKmTkm.s:38     .text.HardFault_Handler:00000000 HardFault_Handler
+     /tmp/ccWKmTkm.s:47     .text.MemManage_Handler:00000000 $t
+     /tmp/ccWKmTkm.s:54     .text.MemManage_Handler:00000000 MemManage_Handler
+     /tmp/ccWKmTkm.s:63     .text.BusFault_Handler:00000000 $t
+     /tmp/ccWKmTkm.s:70     .text.BusFault_Handler:00000000 BusFault_Handler
+     /tmp/ccWKmTkm.s:79     .text.UsageFault_Handler:00000000 $t
+     /tmp/ccWKmTkm.s:86     .text.UsageFault_Handler:00000000 UsageFault_Handler
+     /tmp/ccWKmTkm.s:95     .text.SVC_Handler:00000000 $t
+     /tmp/ccWKmTkm.s:102    .text.SVC_Handler:00000000 SVC_Handler
+     /tmp/ccWKmTkm.s:109    .text.DebugMon_Handler:00000000 $t
+     /tmp/ccWKmTkm.s:116    .text.DebugMon_Handler:00000000 DebugMon_Handler
+     /tmp/ccWKmTkm.s:123    .text.PendSV_Handler:00000000 $t
+     /tmp/ccWKmTkm.s:130    .text.PendSV_Handler:00000000 PendSV_Handler
+     /tmp/ccWKmTkm.s:137    .text.SysTick_Handler:00000000 $t
+     /tmp/ccWKmTkm.s:144    .text.SysTick_Handler:00000000 SysTick_Handler
+     /tmp/ccWKmTkm.s:151    .text.DMA1_Stream0_IRQHandler:00000000 $t
+     /tmp/ccWKmTkm.s:158    .text.DMA1_Stream0_IRQHandler:00000000 DMA1_Stream0_IRQHandler
+     /tmp/ccWKmTkm.s:167    .text.DMA1_Stream0_IRQHandler:00000008 $d
+
+UNDEFINED SYMBOLS
+HAL_IncTick
+HAL_DMA_IRQHandler
+hdma_sai1_a

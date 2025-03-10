@@ -1,0 +1,13 @@
+src/lfgen2.c:34:14:truncate	0	static
+src/lfgen2.c:49:6:shimmer_init	0	static
+src/lfgen2.c:54:5:do_shimmer	88	static
+src/lfgen2.c:148:9:shimmer_get_sample	16	static
+src/lfgen2.c:165:7:doklglott	0	static
+src/lfgen2.c:182:6:setfreq	8	static
+src/lfgen2.c:206:6:setfreqq	0	static
+src/lfgen2.c:225:6:klglott88_init	4	static
+src/lfgen2.c:232:9:klg_get_sample	8	static
+src/lfgen2.c:244:9:pulse_lf	72	static
+src/lfgen2.c:268:8:lf_alpha	96	static
+src/lfgen2.c:286:8:lf_epsilon	56	static
+src/lfgen2.c:300:9:LF2_get_sample	40	static

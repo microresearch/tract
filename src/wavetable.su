@@ -1,0 +1,9 @@
+src/wavetable.c:56:6:dowavetable	8	static
+src/wavetable.c:80:6:wavetable_init	0	static
+src/wavetable.c:87:9:wave_get_sample1	0	static
+src/wavetable.c:105:9:wave_get_sample2	0	static
+src/wavetable.c:123:9:wave_get_sample3	0	static
+src/wavetable.c:141:9:wave_get_sample4	0	static
+src/wavetable.c:159:9:wave_get_sample5	0	static
+src/wavetable.c:177:9:wave_get_sample6	0	static
+src/wavetable.c:196:10:wave_newsay	0	static

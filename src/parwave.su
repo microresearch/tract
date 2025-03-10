@@ -1,0 +1,7 @@
+src/parwave.c:104:14:sampled_source	0	static
+src/parwave.c:861:13:setabc.isra	24	static
+src/parwave.c:685:13:pitch_synch_par_reset.constprop	32	static
+src/parwave.c:321:9:single_single_parwave	40	static
+src/parwave.c:498:6:simple_parwave_init	16	static
+src/parwave.c:553:6:frame_init	64	static
+src/parwave.c:142:6:single_parwave	48	static

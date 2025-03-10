@@ -1,0 +1,1138 @@
+ARM GAS  /tmp/cciSGOLD.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/audio.lst 
+ input file    	: /tmp/cciSGOLD.s
+ output file   	: src/audio.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T15:23:57.000+0100
+
+ARM GAS  /tmp/cciSGOLD.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"audio.c"
+  15              		.text
+  16              		.section	.text.Codec_HandleBlock,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.syntax unified
+  20              		.thumb
+  21              		.thumb_func
+  22              		.type	Codec_HandleBlock, %function
+  23              	Codec_HandleBlock:
+  24              		@ args = 0, pretend = 0, frame = 40
+  25              		@ frame_needed = 0, uses_anonymous_args = 0
+  26 0000 30B5     		push	{r4, r5, lr}
+  27 0002 9F4B     		ldr	r3, .L32+8
+  28 0004 8DB0     		sub	sp, sp, #52
+  29 0006 9F4A     		ldr	r2, .L32+12
+  30 0008 03F1C004 		add	r4, r3, #192
+  31 000c 04A9     		add	r1, sp, #16
+  32 000e 0492     		str	r2, [sp, #16]
+  33 0010 0622     		movs	r2, #6
+  34 0012 0028     		cmp	r0, #0
+  35 0014 18BF     		it	ne
+  36 0016 1C46     		movne	r4, r3
+  37 0018 40F2FF73 		movw	r3, #2047
+  38 001c 0592     		str	r2, [sp, #20]
+  39 001e 0222     		movs	r2, #2
+  40 0020 9948     		ldr	r0, .L32+16
+  41 0022 CDE90623 		strd	r2, r3, [sp, #24]
+  42 0026 0422     		movs	r2, #4
+  43 0028 0023     		movs	r3, #0
+  44 002a CDE90823 		strd	r2, [sp, #32]
+  45 002e FFF7FEFF 		bl	HAL_ADC_ConfigChannel
+  46 0032 9548     		ldr	r0, .L32+16
+  47 0034 FFF7FEFF 		bl	HAL_ADC_Start
+  48 0038 0A21     		movs	r1, #10
+  49 003a 9348     		ldr	r0, .L32+16
+  50 003c FFF7FEFF 		bl	HAL_ADC_PollForConversion
+  51 0040 0028     		cmp	r0, #0
+  52 0042 00F0F880 		beq	.L23
+  53 0046 914D     		ldr	r5, .L32+20
+  54              	.L3:
+  55 0048 914A     		ldr	r2, .L32+24
+  56 004a 0623     		movs	r3, #6
+  57 004c 04A9     		add	r1, sp, #16
+ARM GAS  /tmp/cciSGOLD.s 			page 3
+
+
+  58 004e 8E48     		ldr	r0, .L32+16
+  59 0050 CDE90423 		strd	r2, r3, [sp, #16]
+  60 0054 0222     		movs	r2, #2
+  61 0056 40F2FF73 		movw	r3, #2047
+  62 005a CDE90623 		strd	r2, r3, [sp, #24]
+  63 005e 0422     		movs	r2, #4
+  64 0060 0023     		movs	r3, #0
+  65 0062 CDE90823 		strd	r2, [sp, #32]
+  66 0066 FFF7FEFF 		bl	HAL_ADC_ConfigChannel
+  67 006a 8748     		ldr	r0, .L32+16
+  68 006c FFF7FEFF 		bl	HAL_ADC_Start
+  69 0070 0A21     		movs	r1, #10
+  70 0072 8548     		ldr	r0, .L32+16
+  71 0074 FFF7FEFF 		bl	HAL_ADC_PollForConversion
+  72 0078 0028     		cmp	r0, #0
+  73 007a 00F0D680 		beq	.L27
+  74              	.L4:
+  75 007e 854A     		ldr	r2, .L32+28
+  76 0080 0623     		movs	r3, #6
+  77 0082 04A9     		add	r1, sp, #16
+  78 0084 8048     		ldr	r0, .L32+16
+  79 0086 CDE90423 		strd	r2, r3, [sp, #16]
+  80 008a 0222     		movs	r2, #2
+  81 008c 40F2FF73 		movw	r3, #2047
+  82 0090 CDE90623 		strd	r2, r3, [sp, #24]
+  83 0094 0422     		movs	r2, #4
+  84 0096 0023     		movs	r3, #0
+  85 0098 CDE90823 		strd	r2, [sp, #32]
+  86 009c FFF7FEFF 		bl	HAL_ADC_ConfigChannel
+  87 00a0 7948     		ldr	r0, .L32+16
+  88 00a2 FFF7FEFF 		bl	HAL_ADC_Start
+  89 00a6 0A21     		movs	r1, #10
+  90 00a8 7748     		ldr	r0, .L32+16
+  91 00aa FFF7FEFF 		bl	HAL_ADC_PollForConversion
+  92 00ae 0028     		cmp	r0, #0
+  93 00b0 00F0B580 		beq	.L28
+  94              	.L5:
+  95 00b4 2B88     		ldrh	r3, [r5]
+  96 00b6 784A     		ldr	r2, .L32+32
+  97 00b8 9BB2     		uxth	r3, r3
+  98 00ba DFED786A 		vldr.32	s13, .L32+36
+  99 00be 92ED007A 		vldr.32	s14, [r2]
+ 100 00c2 07EE903A 		vmov	s15, r3	@ int
+ 101 00c6 FBEEC87A 		vcvt.f32.u32	s15, s15, #16
+ 102 00ca 77EEC77A 		vsub.f32	s15, s15, s14
+ 103 00ce 67EEA67A 		vmul.f32	s15, s15, s13
+ 104 00d2 77EE877A 		vadd.f32	s15, s15, s14
+ 105 00d6 F5EEC07A 		vcmpe.f32	s15, #0
+ 106 00da F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 107 00de 00F19A80 		bmi	.L16
+ 108 00e2 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 109 00e6 F4EEC77A 		vcmpe.f32	s15, s14
+ 110 00ea F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 111 00ee 6BDD     		ble	.L29
+ 112 00f0 40F2FF31 		movw	r1, #1023
+ 113              	.L6:
+ 114 00f4 6A4B     		ldr	r3, .L32+40
+ARM GAS  /tmp/cciSGOLD.s 			page 4
+
+
+ 115 00f6 C2ED007A 		vstr.32	s15, [r2]
+ 116 00fa 83ED007A 		vstr.32	s14, [r3]
+ 117 00fe 6B88     		ldrh	r3, [r5, #2]
+ 118 0100 D2ED016A 		vldr.32	s13, [r2, #4]
+ 119 0104 9BB2     		uxth	r3, r3
+ 120 0106 9FED656A 		vldr.32	s12, .L32+36
+ 121 010a 07EE903A 		vmov	s15, r3	@ int
+ 122 010e FBEEC87A 		vcvt.f32.u32	s15, s15, #16
+ 123 0112 77EEE67A 		vsub.f32	s15, s15, s13
+ 124 0116 67EE867A 		vmul.f32	s15, s15, s12
+ 125 011a 77EEA67A 		vadd.f32	s15, s15, s13
+ 126 011e F5EEC07A 		vcmpe.f32	s15, #0
+ 127 0122 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 128 0126 73D4     		bmi	.L18
+ 129 0128 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 130 012c F4EEC77A 		vcmpe.f32	s15, s14
+ 131 0130 F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 132 0134 37FE277A 		vselgt.f32	s14, s14, s15
+ 133              	.L7:
+ 134 0138 AB88     		ldrh	r3, [r5, #4]
+ 135 013a C2ED017A 		vstr.32	s15, [r2, #4]
+ 136 013e 9BB2     		uxth	r3, r3
+ 137 0140 D2ED026A 		vldr.32	s13, [r2, #8]
+ 138 0144 9FED576A 		vldr.32	s12, .L32+44
+ 139 0148 07EE903A 		vmov	s15, r3	@ int
+ 140 014c 5648     		ldr	r0, .L32+48
+ 141 014e FBEEC87A 		vcvt.f32.u32	s15, s15, #16
+ 142 0152 80ED007A 		vstr.32	s14, [r0]
+ 143 0156 0020     		movs	r0, #0
+ 144 0158 77EEE67A 		vsub.f32	s15, s15, s13
+ 145 015c 67EE867A 		vmul.f32	s15, s15, s12
+ 146 0160 77EEA67A 		vadd.f32	s15, s15, s13
+ 147 0164 F5EEC07A 		vcmpe.f32	s15, #0
+ 148 0168 C2ED027A 		vstr.32	s15, [r2, #8]
+ 149 016c F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 150 0170 3BD4     		bmi	.L30
+ 151 0172 B7EE007A 		vmov.f32	s14, #1.0e+0
+ 152 0176 F4EEC77A 		vcmpe.f32	s15, s14
+ 153 017a F1EE10FA 		vmrs	APSR_nzcv, FPSCR
+ 154 017e 61DD     		ble	.L31
+ 155 0180 4A4B     		ldr	r3, .L32+52
+ 156 0182 4B48     		ldr	r0, .L32+56
+ 157 0184 4B4A     		ldr	r2, .L32+60
+ 158 0186 03EB8103 		add	r3, r3, r1, lsl #2
+ 159 018a 80ED007A 		vstr.32	s14, [r0]
+ 160 018e 93ED000A 		vldr.32	s0, [r3]
+ 161 0192 1078     		ldrb	r0, [r2]	@ zero_extendqisi2
+ 162              	.L12:
+ 163 0194 1F21     		movs	r1, #31
+ 164 0196 F7EE000A 		vmov.f32	s1, #1.0e+0
+ 165 019a 474B     		ldr	r3, .L32+64
+ 166 019c 1170     		strb	r1, [r2]
+ 167 019e 474A     		ldr	r2, .L32+68
+ 168              	.L13:
+ 169 01a0 401A     		subs	r0, r0, r1
+ 170 01a2 4FF03001 		mov	r1, #48
+ 171 01a6 18BF     		it	ne
+ARM GAS  /tmp/cciSGOLD.s 			page 5
+
+
+ 172 01a8 0120     		movne	r0, #1
+ 173 01aa 0090     		str	r0, [sp]
+ 174 01ac 4448     		ldr	r0, .L32+72
+ 175 01ae FFF7FEFF 		bl	samplerate_simple
+ 176 01b2 444A     		ldr	r2, .L32+76
+ 177 01b4 0023     		movs	r3, #0
+ 178              	.L14:
+ 179 01b6 32F8021F 		ldrh	r1, [r2, #2]!
+ 180 01ba 24F82310 		strh	r1, [r4, r3, lsl #2]	@ movhi
+ 181 01be 0133     		adds	r3, r3, #1
+ 182 01c0 302B     		cmp	r3, #48
+ 183 01c2 F8D1     		bne	.L14
+ 184 01c4 0DB0     		add	sp, sp, #52
+ 185              		@ sp needed
+ 186 01c6 30BD     		pop	{r4, r5, pc}
+ 187              	.L29:
+ 188 01c8 DFED3F6A 		vldr.32	s13, .L32+80
+ 189 01cc 40F2FF33 		movw	r3, #1023
+ 190 01d0 B0EE677A 		vmov.f32	s14, s15
+ 191 01d4 67EEA66A 		vmul.f32	s13, s15, s13
+ 192 01d8 FCEEE66A 		vcvt.u32.f32	s13, s13
+ 193 01dc 16EE901A 		vmov	r1, s13	@ int
+ 194 01e0 89B2     		uxth	r1, r1
+ 195 01e2 9942     		cmp	r1, r3
+ 196 01e4 28BF     		it	cs
+ 197 01e6 1946     		movcs	r1, r3
+ 198 01e8 84E7     		b	.L6
+ 199              	.L30:
+ 200 01ea 304B     		ldr	r3, .L32+52
+ 201 01ec 314A     		ldr	r2, .L32+60
+ 202 01ee 03EB8103 		add	r3, r3, r1, lsl #2
+ 203 01f2 2F4D     		ldr	r5, .L32+56
+ 204 01f4 0021     		movs	r1, #0
+ 205 01f6 93ED000A 		vldr.32	s0, [r3]
+ 206 01fa 2860     		str	r0, [r5]	@ float
+ 207 01fc 1078     		ldrb	r0, [r2]	@ zero_extendqisi2
+ 208 01fe 1170     		strb	r1, [r2]
+ 209              	.L10:
+ 210 0200 324B     		ldr	r3, .L32+84
+ 211 0202 53F82130 		ldr	r3, [r3, r1, lsl #2]
+ 212 0206 9A68     		ldr	r2, [r3, #8]
+ 213 0208 D3ED010A 		vldr.32	s1, [r3, #4]
+ 214 020c DB68     		ldr	r3, [r3, #12]
+ 215 020e C7E7     		b	.L13
+ 216              	.L18:
+ 217 0210 9FED2F7A 		vldr.32	s14, .L32+88
+ 218 0214 90E7     		b	.L7
+ 219              	.L16:
+ 220 0216 9FED2E7A 		vldr.32	s14, .L32+88
+ 221 021a 0021     		movs	r1, #0
+ 222 021c 6AE7     		b	.L6
+ 223              	.L28:
+ 224 021e 1A48     		ldr	r0, .L32+16
+ 225 0220 FFF7FEFF 		bl	HAL_ADC_GetValue
+ 226 0224 83B2     		uxth	r3, r0
+ 227 0226 AB80     		strh	r3, [r5, #4]	@ movhi
+ 228 0228 44E7     		b	.L5
+ARM GAS  /tmp/cciSGOLD.s 			page 6
+
+
+ 229              	.L27:
+ 230 022a 1748     		ldr	r0, .L32+16
+ 231 022c FFF7FEFF 		bl	HAL_ADC_GetValue
+ 232 0230 83B2     		uxth	r3, r0
+ 233 0232 6B80     		strh	r3, [r5, #2]	@ movhi
+ 234 0234 23E7     		b	.L4
+ 235              	.L23:
+ 236 0236 1448     		ldr	r0, .L32+16
+ 237 0238 FFF7FEFF 		bl	HAL_ADC_GetValue
+ 238 023c 134D     		ldr	r5, .L32+20
+ 239 023e 83B2     		uxth	r3, r0
+ 240 0240 2B80     		strh	r3, [r5]	@ movhi
+ 241 0242 01E7     		b	.L3
+ 242              	.L31:
+ 243 0244 B7EEE76A 		vcvt.f64.f32	d6, s15
+ 244 0248 194D     		ldr	r5, .L32+56
+ 245 024a 184B     		ldr	r3, .L32+52
+ 246 024c C5ED007A 		vstr.32	s15, [r5]
+ 247 0250 03EB8103 		add	r3, r3, r1, lsl #2
+ 248 0254 174A     		ldr	r2, .L32+60
+ 249 0256 9FED085B 		vldr.64	d5, .L32
+ 250 025a 1078     		ldrb	r0, [r2]	@ zero_extendqisi2
+ 251 025c 93ED000A 		vldr.32	s0, [r3]
+ 252 0260 26EE056B 		vmul.f64	d6, d6, d5
+ 253 0264 FDEEC67B 		vcvt.s32.f64	s15, d6
+ 254 0268 CDED037A 		vstr.32	s15, [sp, #12]	@ int
+ 255 026c 9DF80C10 		ldrb	r1, [sp, #12]	@ zero_extendqisi2
+ 256 0270 1F29     		cmp	r1, #31
+ 257 0272 1170     		strb	r1, [r2]
+ 258 0274 C4D9     		bls	.L10
+ 259 0276 8DE7     		b	.L12
+ 260              	.L33:
+ 261              		.align	3
+ 262              	.L32:
+ 263 0278 00000000 		.word	0
+ 264 027c 00804140 		.word	1078034432
+ 265 0280 00000000 		.word	audio_out
+ 266 0284 00002143 		.word	1126236160
+ 267 0288 00000000 		.word	AdcHandle
+ 268 028c 00000000 		.word	adc_buffer
+ 269 0290 00005247 		.word	1196556288
+ 270 0294 0040C03A 		.word	985677824
+ 271 0298 00000000 		.word	smoothed_adc_value
+ 272 029c CDCCCC3D 		.word	1036831949
+ 273 02a0 00000000 		.word	_speed
+ 274 02a4 0AD7233C 		.word	1008981770
+ 275 02a8 00000000 		.word	_selz
+ 276 02ac 00000000 		.word	logspeed
+ 277 02b0 00000000 		.word	_mode
+ 278 02b4 00000000 		.word	_intmode.0
+ 279 02b8 00000000 		.word	no_newsay
+ 280 02bc 00000000 		.word	LF2_get_sample
+ 281 02c0 00000000 		.word	monobuffer
+ 282 02c4 FEFFFFFF 		.word	monobuffer-2
+ 283 02c8 00808044 		.word	1149272064
+ 284 02cc 00000000 		.word	wormlist
+ 285 02d0 00000000 		.word	0
+ARM GAS  /tmp/cciSGOLD.s 			page 7
+
+
+ 286              		.size	Codec_HandleBlock, .-Codec_HandleBlock
+ 287              		.section	.text.HAL_SAI_TxHalfCpltCallback,"ax",%progbits
+ 288              		.align	1
+ 289              		.p2align 2,,3
+ 290              		.global	HAL_SAI_TxHalfCpltCallback
+ 291              		.syntax unified
+ 292              		.thumb
+ 293              		.thumb_func
+ 294              		.type	HAL_SAI_TxHalfCpltCallback, %function
+ 295              	HAL_SAI_TxHalfCpltCallback:
+ 296              		@ args = 0, pretend = 0, frame = 0
+ 297              		@ frame_needed = 0, uses_anonymous_args = 0
+ 298              		@ link register save eliminated.
+ 299 0000 034B     		ldr	r3, .L37
+ 300 0002 0268     		ldr	r2, [r0]
+ 301 0004 9A42     		cmp	r2, r3
+ 302 0006 00D0     		beq	.L36
+ 303 0008 7047     		bx	lr
+ 304              	.L36:
+ 305 000a 0120     		movs	r0, #1
+ 306 000c FFF7FEBF 		b	Codec_HandleBlock
+ 307              	.L38:
+ 308              		.align	2
+ 309              	.L37:
+ 310 0010 04580140 		.word	1073829892
+ 311              		.size	HAL_SAI_TxHalfCpltCallback, .-HAL_SAI_TxHalfCpltCallback
+ 312              		.section	.text.HAL_SAI_TxCpltCallback,"ax",%progbits
+ 313              		.align	1
+ 314              		.p2align 2,,3
+ 315              		.global	HAL_SAI_TxCpltCallback
+ 316              		.syntax unified
+ 317              		.thumb
+ 318              		.thumb_func
+ 319              		.type	HAL_SAI_TxCpltCallback, %function
+ 320              	HAL_SAI_TxCpltCallback:
+ 321              		@ args = 0, pretend = 0, frame = 0
+ 322              		@ frame_needed = 0, uses_anonymous_args = 0
+ 323              		@ link register save eliminated.
+ 324 0000 034B     		ldr	r3, .L42
+ 325 0002 0268     		ldr	r2, [r0]
+ 326 0004 9A42     		cmp	r2, r3
+ 327 0006 00D0     		beq	.L41
+ 328 0008 7047     		bx	lr
+ 329              	.L41:
+ 330 000a 0020     		movs	r0, #0
+ 331 000c FFF7FEBF 		b	Codec_HandleBlock
+ 332              	.L43:
+ 333              		.align	2
+ 334              	.L42:
+ 335 0010 04580140 		.word	1073829892
+ 336              		.size	HAL_SAI_TxCpltCallback, .-HAL_SAI_TxCpltCallback
+ 337              		.section	.text.Codec_StartDMA,"ax",%progbits
+ 338              		.align	1
+ 339              		.p2align 2,,3
+ 340              		.global	Codec_StartDMA
+ 341              		.syntax unified
+ 342              		.thumb
+ARM GAS  /tmp/cciSGOLD.s 			page 8
+
+
+ 343              		.thumb_func
+ 344              		.type	Codec_StartDMA, %function
+ 345              	Codec_StartDMA:
+ 346              		@ args = 0, pretend = 0, frame = 0
+ 347              		@ frame_needed = 0, uses_anonymous_args = 0
+ 348 0000 08B5     		push	{r3, lr}
+ 349 0002 074B     		ldr	r3, .L46
+ 350 0004 4FF4C072 		mov	r2, #384
+ 351 0008 0021     		movs	r1, #0
+ 352 000a 1846     		mov	r0, r3
+ 353 000c FFF7FEFF 		bl	memset
+ 354 0010 C022     		movs	r2, #192
+ 355 0012 0146     		mov	r1, r0
+ 356 0014 0348     		ldr	r0, .L46+4
+ 357 0016 BDE80840 		pop	{r3, lr}
+ 358 001a FFF7FEBF 		b	HAL_SAI_Transmit_DMA
+ 359              	.L47:
+ 360 001e 00BF     		.align	2
+ 361              	.L46:
+ 362 0020 00000000 		.word	audio_out
+ 363 0024 00000000 		.word	hsai_BlockA1
+ 364              		.size	Codec_StartDMA, .-Codec_StartDMA
+ 365              		.section	.bss._intmode.0,"aw",%nobits
+ 366              		.type	_intmode.0, %object
+ 367              		.size	_intmode.0, 1
+ 368              	_intmode.0:
+ 369 0000 00       		.space	1
+ 370              		.section	.bss.monobuffer,"aw",%nobits
+ 371              		.align	2
+ 372              		.type	monobuffer, %object
+ 373              		.size	monobuffer, 512
+ 374              	monobuffer:
+ 375 0000 00000000 		.space	512
+ 375      00000000 
+ 375      00000000 
+ 375      00000000 
+ 375      00000000 
+ 376              		.section	.rodata.wormlist,"a"
+ 377              		.align	2
+ 378              		.type	wormlist, %object
+ 379              		.size	wormlist, 128
+ 380              	wormlist:
+ 381 0000 00000000 		.word	tmsphoner
+ 382 0004 00000000 		.word	tmser
+ 383 0008 00000000 		.word	votraxer
+ 384 000c 00000000 		.word	votraxGer
+ 385 0010 00000000 		.word	sp0256er
+ 386 0014 00000000 		.word	sp0256er1
+ 387 0018 00000000 		.word	rsynthy
+ 388 001c 00000000 		.word	rsynthy1
+ 389 0020 00000000 		.word	klatter
+ 390 0024 00000000 		.word	nvper
+ 391 0028 00000000 		.word	nvperv
+ 392 002c 00000000 		.word	waver
+ 393 0030 00000000 		.word	waver1
+ 394 0034 00000000 		.word	waver2
+ 395 0038 00000000 		.word	waver3
+ARM GAS  /tmp/cciSGOLD.s 			page 9
+
+
+ 396 003c 00000000 		.word	waver4
+ 397 0040 00000000 		.word	waver5
+ 398 0044 00000000 		.word	chirper
+ 399 0048 00000000 		.word	votgloter
+ 400 004c 00000000 		.word	impulser
+ 401 0050 00000000 		.word	smper
+ 402 0054 00000000 		.word	nater
+ 403 0058 00000000 		.word	impulsz
+ 404 005c 00000000 		.word	tuber
+ 405 0060 00000000 		.word	mindlin
+ 406 0064 00000000 		.word	gardner
+ 407 0068 00000000 		.word	balloner
+ 408 006c 00000000 		.word	LFF
+ 409 0070 00000000 		.word	rosen
+ 410 0074 00000000 		.word	shimmer
+ 411 0078 00000000 		.word	klglottt
+ 412 007c 00000000 		.word	LF2
+ 413              		.section	.rodata.LF2,"a"
+ 414              		.align	2
+ 415              		.type	LF2, %object
+ 416              		.size	LF2, 20
+ 417              	LF2:
+ 418 0000 00       		.byte	0
+ 419 0001 000000   		.space	3
+ 420 0004 0000803F 		.word	1065353216
+ 421 0008 00000000 		.word	LF2_get_sample
+ 422 000c 00000000 		.word	no_newsay
+ 423 0010 00       		.byte	0
+ 424 0011 00       		.byte	0
+ 425 0012 0000     		.space	2
+ 426              		.section	.rodata.klglottt,"a"
+ 427              		.align	2
+ 428              		.type	klglottt, %object
+ 429              		.size	klglottt, 20
+ 430              	klglottt:
+ 431 0000 00       		.byte	0
+ 432 0001 000000   		.space	3
+ 433 0004 0000803F 		.word	1065353216
+ 434 0008 00000000 		.word	klg_get_sample
+ 435 000c 00000000 		.word	no_newsay
+ 436 0010 00       		.byte	0
+ 437 0011 00       		.byte	0
+ 438 0012 0000     		.space	2
+ 439              		.section	.rodata.shimmer,"a"
+ 440              		.align	2
+ 441              		.type	shimmer, %object
+ 442              		.size	shimmer, 20
+ 443              	shimmer:
+ 444 0000 00       		.byte	0
+ 445 0001 000000   		.space	3
+ 446 0004 CDCCCC3E 		.word	1053609165
+ 447 0008 00000000 		.word	shimmer_get_sample
+ 448 000c 00000000 		.word	no_newsay
+ 449 0010 00       		.byte	0
+ 450 0011 00       		.byte	0
+ 451 0012 0000     		.space	2
+ 452              		.section	.rodata.rosen,"a"
+ARM GAS  /tmp/cciSGOLD.s 			page 10
+
+
+ 453              		.align	2
+ 454              		.type	rosen, %object
+ 455              		.size	rosen, 20
+ 456              	rosen:
+ 457 0000 00       		.byte	0
+ 458 0001 000000   		.space	3
+ 459 0004 0000803F 		.word	1065353216
+ 460 0008 00000000 		.word	rosenberg_get_sample
+ 461 000c 00000000 		.word	no_newsay
+ 462 0010 00       		.byte	0
+ 463 0011 00       		.byte	0
+ 464 0012 0000     		.space	2
+ 465              		.section	.rodata.LFF,"a"
+ 466              		.align	2
+ 467              		.type	LFF, %object
+ 468              		.size	LFF, 20
+ 469              	LFF:
+ 470 0000 00       		.byte	0
+ 471 0001 000000   		.space	3
+ 472 0004 0000803F 		.word	1065353216
+ 473 0008 00000000 		.word	LF_get_sample
+ 474 000c 00000000 		.word	no_newsay
+ 475 0010 00       		.byte	0
+ 476 0011 00       		.byte	0
+ 477 0012 0000     		.space	2
+ 478              		.section	.rodata.balloner,"a"
+ 479              		.align	2
+ 480              		.type	balloner, %object
+ 481              		.size	balloner, 20
+ 482              	balloner:
+ 483 0000 00       		.byte	0
+ 484 0001 000000   		.space	3
+ 485 0004 0000803F 		.word	1065353216
+ 486 0008 00000000 		.word	balloon_get_sample
+ 487 000c 00000000 		.word	no_newsay
+ 488 0010 00       		.byte	0
+ 489 0011 00       		.byte	0
+ 490 0012 0000     		.space	2
+ 491              		.section	.rodata.gardner,"a"
+ 492              		.align	2
+ 493              		.type	gardner, %object
+ 494              		.size	gardner, 20
+ 495              	gardner:
+ 496 0000 00       		.byte	0
+ 497 0001 000000   		.space	3
+ 498 0004 00000040 		.word	1073741824
+ 499 0008 00000000 		.word	gardner_get_sample
+ 500 000c 00000000 		.word	no_newsay
+ 501 0010 00       		.byte	0
+ 502 0011 00       		.byte	0
+ 503 0012 0000     		.space	2
+ 504              		.section	.rodata.mindlin,"a"
+ 505              		.align	2
+ 506              		.type	mindlin, %object
+ 507              		.size	mindlin, 20
+ 508              	mindlin:
+ 509 0000 00       		.byte	0
+ARM GAS  /tmp/cciSGOLD.s 			page 11
+
+
+ 510 0001 000000   		.space	3
+ 511 0004 0000803F 		.word	1065353216
+ 512 0008 00000000 		.word	mindlin_get_sample
+ 513 000c 00000000 		.word	no_newsay
+ 514 0010 00       		.byte	0
+ 515 0011 00       		.byte	0
+ 516 0012 0000     		.space	2
+ 517              		.section	.rodata.tuber,"a"
+ 518              		.align	2
+ 519              		.type	tuber, %object
+ 520              		.size	tuber, 20
+ 521              	tuber:
+ 522 0000 00       		.byte	0
+ 523 0001 000000   		.space	3
+ 524 0004 CDCC4C3F 		.word	1061997773
+ 525 0008 00000000 		.word	tube_get_sample
+ 526 000c 00000000 		.word	tube_newsay
+ 527 0010 00       		.byte	0
+ 528 0011 00       		.byte	0
+ 529 0012 0000     		.space	2
+ 530              		.section	.rodata.impulsz,"a"
+ 531              		.align	2
+ 532              		.type	impulsz, %object
+ 533              		.size	impulsz, 20
+ 534              	impulsz:
+ 535 0000 00       		.byte	0
+ 536 0001 000000   		.space	3
+ 537 0004 CDCC4C3F 		.word	1061997773
+ 538 0008 00000000 		.word	impulsivex_get_sample
+ 539 000c 00000000 		.word	wormed_newsay
+ 540 0010 00       		.byte	0
+ 541 0011 00       		.byte	0
+ 542 0012 0000     		.space	2
+ 543              		.section	.rodata.nater,"a"
+ 544              		.align	2
+ 545              		.type	nater, %object
+ 546              		.size	nater, 20
+ 547              	nater:
+ 548 0000 00       		.byte	0
+ 549 0001 000000   		.space	3
+ 550 0004 CDCC4C3F 		.word	1061997773
+ 551 0008 00000000 		.word	natural_source_getsample
+ 552 000c 00000000 		.word	wormed_newsay
+ 553 0010 00       		.byte	0
+ 554 0011 00       		.byte	0
+ 555 0012 0000     		.space	2
+ 556              		.section	.rodata.smper,"a"
+ 557              		.align	2
+ 558              		.type	smper, %object
+ 559              		.size	smper, 20
+ 560              	smper:
+ 561 0000 00       		.byte	0
+ 562 0001 000000   		.space	3
+ 563 0004 CDCCCC3D 		.word	1036831949
+ 564 0008 00000000 		.word	sampled_source_getsample
+ 565 000c 00000000 		.word	wormed_newsay
+ 566 0010 00       		.byte	0
+ARM GAS  /tmp/cciSGOLD.s 			page 12
+
+
+ 567 0011 00       		.byte	0
+ 568 0012 0000     		.space	2
+ 569              		.section	.rodata.impulser,"a"
+ 570              		.align	2
+ 571              		.type	impulser, %object
+ 572              		.size	impulser, 20
+ 573              	impulser:
+ 574 0000 00       		.byte	0
+ 575 0001 000000   		.space	3
+ 576 0004 CDCC4C3F 		.word	1061997773
+ 577 0008 00000000 		.word	impulsive_get_sample
+ 578 000c 00000000 		.word	wormed_newsay
+ 579 0010 00       		.byte	0
+ 580 0011 00       		.byte	0
+ 581 0012 0000     		.space	2
+ 582              		.section	.rodata.votgloter,"a"
+ 583              		.align	2
+ 584              		.type	votgloter, %object
+ 585              		.size	votgloter, 20
+ 586              	votgloter:
+ 587 0000 00       		.byte	0
+ 588 0001 000000   		.space	3
+ 589 0004 CDCCCC3E 		.word	1053609165
+ 590 0008 00000000 		.word	votglot_get_sample
+ 591 000c 00000000 		.word	wormed_newsay
+ 592 0010 00       		.byte	0
+ 593 0011 00       		.byte	0
+ 594 0012 0000     		.space	2
+ 595              		.section	.rodata.chirper,"a"
+ 596              		.align	2
+ 597              		.type	chirper, %object
+ 598              		.size	chirper, 20
+ 599              	chirper:
+ 600 0000 00       		.byte	0
+ 601 0001 000000   		.space	3
+ 602 0004 CDCCCC3E 		.word	1053609165
+ 603 0008 00000000 		.word	chirp_get_sample
+ 604 000c 00000000 		.word	wormed_newsay
+ 605 0010 00       		.byte	0
+ 606 0011 00       		.byte	0
+ 607 0012 0000     		.space	2
+ 608              		.section	.rodata.waver5,"a"
+ 609              		.align	2
+ 610              		.type	waver5, %object
+ 611              		.size	waver5, 20
+ 612              	waver5:
+ 613 0000 00       		.byte	0
+ 614 0001 000000   		.space	3
+ 615 0004 CDCC4C3E 		.word	1045220557
+ 616 0008 00000000 		.word	wave_get_sample6
+ 617 000c 00000000 		.word	wave_newsay
+ 618 0010 00       		.byte	0
+ 619 0011 00       		.byte	0
+ 620 0012 0000     		.space	2
+ 621              		.section	.rodata.waver4,"a"
+ 622              		.align	2
+ 623              		.type	waver4, %object
+ARM GAS  /tmp/cciSGOLD.s 			page 13
+
+
+ 624              		.size	waver4, 20
+ 625              	waver4:
+ 626 0000 00       		.byte	0
+ 627 0001 000000   		.space	3
+ 628 0004 CDCC4C3E 		.word	1045220557
+ 629 0008 00000000 		.word	wave_get_sample5
+ 630 000c 00000000 		.word	wave_newsay
+ 631 0010 00       		.byte	0
+ 632 0011 00       		.byte	0
+ 633 0012 0000     		.space	2
+ 634              		.section	.rodata.waver3,"a"
+ 635              		.align	2
+ 636              		.type	waver3, %object
+ 637              		.size	waver3, 20
+ 638              	waver3:
+ 639 0000 00       		.byte	0
+ 640 0001 000000   		.space	3
+ 641 0004 CDCC4C3E 		.word	1045220557
+ 642 0008 00000000 		.word	wave_get_sample4
+ 643 000c 00000000 		.word	wave_newsay
+ 644 0010 00       		.byte	0
+ 645 0011 00       		.byte	0
+ 646 0012 0000     		.space	2
+ 647              		.section	.rodata.waver2,"a"
+ 648              		.align	2
+ 649              		.type	waver2, %object
+ 650              		.size	waver2, 20
+ 651              	waver2:
+ 652 0000 00       		.byte	0
+ 653 0001 000000   		.space	3
+ 654 0004 CDCC4C3E 		.word	1045220557
+ 655 0008 00000000 		.word	wave_get_sample3
+ 656 000c 00000000 		.word	wave_newsay
+ 657 0010 00       		.byte	0
+ 658 0011 00       		.byte	0
+ 659 0012 0000     		.space	2
+ 660              		.section	.rodata.waver1,"a"
+ 661              		.align	2
+ 662              		.type	waver1, %object
+ 663              		.size	waver1, 20
+ 664              	waver1:
+ 665 0000 00       		.byte	0
+ 666 0001 000000   		.space	3
+ 667 0004 CDCC4C3E 		.word	1045220557
+ 668 0008 00000000 		.word	wave_get_sample2
+ 669 000c 00000000 		.word	wave_newsay
+ 670 0010 00       		.byte	0
+ 671 0011 00       		.byte	0
+ 672 0012 0000     		.space	2
+ 673              		.section	.rodata.waver,"a"
+ 674              		.align	2
+ 675              		.type	waver, %object
+ 676              		.size	waver, 20
+ 677              	waver:
+ 678 0000 00       		.byte	0
+ 679 0001 000000   		.space	3
+ 680 0004 CDCC4C3E 		.word	1045220557
+ARM GAS  /tmp/cciSGOLD.s 			page 14
+
+
+ 681 0008 00000000 		.word	wave_get_sample1
+ 682 000c 00000000 		.word	wave_newsay
+ 683 0010 00       		.byte	0
+ 684 0011 00       		.byte	0
+ 685 0012 0000     		.space	2
+ 686              		.section	.rodata.nvperv,"a"
+ 687              		.align	2
+ 688              		.type	nvperv, %object
+ 689              		.size	nvperv, 20
+ 690              	nvperv:
+ 691 0000 00       		.byte	0
+ 692 0001 000000   		.space	3
+ 693 0004 0000003F 		.word	1056964608
+ 694 0008 00000000 		.word	nvp_get_sample_vocab
+ 695 000c 00000000 		.word	nvp_newsay_vocab
+ 696 0010 00       		.byte	0
+ 697 0011 00       		.byte	0
+ 698 0012 0000     		.space	2
+ 699              		.section	.rodata.nvper,"a"
+ 700              		.align	2
+ 701              		.type	nvper, %object
+ 702              		.size	nvper, 20
+ 703              	nvper:
+ 704 0000 00       		.byte	0
+ 705 0001 000000   		.space	3
+ 706 0004 0000003F 		.word	1056964608
+ 707 0008 00000000 		.word	nvp_get_sample
+ 708 000c 00000000 		.word	nvp_newsay
+ 709 0010 00       		.byte	0
+ 710 0011 00       		.byte	0
+ 711 0012 0000     		.space	2
+ 712              		.section	.rodata.klatter,"a"
+ 713              		.align	2
+ 714              		.type	klatter, %object
+ 715              		.size	klatter, 20
+ 716              	klatter:
+ 717 0000 00       		.byte	0
+ 718 0001 000000   		.space	3
+ 719 0004 0000803F 		.word	1065353216
+ 720 0008 00000000 		.word	klatt_get_sample
+ 721 000c 00000000 		.word	klatt_newsay
+ 722 0010 00       		.byte	0
+ 723 0011 00       		.byte	0
+ 724 0012 0000     		.space	2
+ 725              		.section	.rodata.rsynthy1,"a"
+ 726              		.align	2
+ 727              		.type	rsynthy1, %object
+ 728              		.size	rsynthy1, 20
+ 729              	rsynthy1:
+ 730 0000 00       		.byte	0
+ 731 0001 000000   		.space	3
+ 732 0004 0000803F 		.word	1065353216
+ 733 0008 00000000 		.word	rsynth_get_sample_single
+ 734 000c 00000000 		.word	rsynth_newsay_single
+ 735 0010 00       		.byte	0
+ 736 0011 00       		.byte	0
+ 737 0012 0000     		.space	2
+ARM GAS  /tmp/cciSGOLD.s 			page 15
+
+
+ 738              		.section	.rodata.rsynthy,"a"
+ 739              		.align	2
+ 740              		.type	rsynthy, %object
+ 741              		.size	rsynthy, 20
+ 742              	rsynthy:
+ 743 0000 00       		.byte	0
+ 744 0001 000000   		.space	3
+ 745 0004 0000803F 		.word	1065353216
+ 746 0008 00000000 		.word	rsynth_get_sample
+ 747 000c 00000000 		.word	rsynth_newsay
+ 748 0010 00       		.byte	0
+ 749 0011 00       		.byte	0
+ 750 0012 0000     		.space	2
+ 751              		.section	.rodata.votraxGer,"a"
+ 752              		.align	2
+ 753              		.type	votraxGer, %object
+ 754              		.size	votraxGer, 20
+ 755              	votraxGer:
+ 756 0000 00       		.byte	0
+ 757 0001 000000   		.space	3
+ 758 0004 0000803F 		.word	1065353216
+ 759 0008 00000000 		.word	votrax_get_samplegorf
+ 760 000c 00000000 		.word	votrax_newsaygorf
+ 761 0010 00       		.byte	0
+ 762 0011 00       		.byte	0
+ 763 0012 0000     		.space	2
+ 764              		.section	.rodata.votraxer,"a"
+ 765              		.align	2
+ 766              		.type	votraxer, %object
+ 767              		.size	votraxer, 20
+ 768              	votraxer:
+ 769 0000 00       		.byte	0
+ 770 0001 000000   		.space	3
+ 771 0004 0000803F 		.word	1065353216
+ 772 0008 00000000 		.word	votrax_get_sample
+ 773 000c 00000000 		.word	votrax_newsay
+ 774 0010 00       		.byte	0
+ 775 0011 00       		.byte	0
+ 776 0012 0000     		.space	2
+ 777              		.section	.rodata.sp0256er1,"a"
+ 778              		.align	2
+ 779              		.type	sp0256er1, %object
+ 780              		.size	sp0256er1, 20
+ 781              	sp0256er1:
+ 782 0000 00       		.byte	0
+ 783 0001 000000   		.space	3
+ 784 0004 6666A63E 		.word	1051092582
+ 785 0008 00000000 		.word	sp0256_get_samplevocabbankone
+ 786 000c 00000000 		.word	sp0256_newsayvocabbankone
+ 787 0010 00       		.byte	0
+ 788 0011 00       		.byte	0
+ 789 0012 0000     		.space	2
+ 790              		.section	.rodata.sp0256er,"a"
+ 791              		.align	2
+ 792              		.type	sp0256er, %object
+ 793              		.size	sp0256er, 20
+ 794              	sp0256er:
+ARM GAS  /tmp/cciSGOLD.s 			page 16
+
+
+ 795 0000 00       		.byte	0
+ 796 0001 000000   		.space	3
+ 797 0004 6666A63E 		.word	1051092582
+ 798 0008 00000000 		.word	sp0256_get_sample
+ 799 000c 00000000 		.word	sp0256_newsay
+ 800 0010 00       		.byte	0
+ 801 0011 00       		.byte	0
+ 802 0012 0000     		.space	2
+ 803              		.section	.rodata.tmsphoner,"a"
+ 804              		.align	2
+ 805              		.type	tmsphoner, %object
+ 806              		.size	tmsphoner, 20
+ 807              	tmsphoner:
+ 808 0000 00       		.byte	0
+ 809 0001 000000   		.space	3
+ 810 0004 0000803F 		.word	1065353216
+ 811 0008 00000000 		.word	tms_get_sample_allphon
+ 812 000c 00000000 		.word	tms_newsay_allphon
+ 813 0010 00       		.byte	0
+ 814 0011 00       		.byte	0
+ 815 0012 0000     		.space	2
+ 816              		.section	.rodata.tmser,"a"
+ 817              		.align	2
+ 818              		.type	tmser, %object
+ 819              		.size	tmser, 20
+ 820              	tmser:
+ 821 0000 00       		.byte	0
+ 822 0001 000000   		.space	3
+ 823 0004 0000803F 		.word	1065353216
+ 824 0008 00000000 		.word	tms_get_sample
+ 825 000c 00000000 		.word	tms_newsay
+ 826 0010 00       		.byte	0
+ 827 0011 00       		.byte	0
+ 828 0012 0000     		.space	2
+ 829              		.global	_selz
+ 830              		.section	.data._selz,"aw"
+ 831              		.align	2
+ 832              		.type	_selz, %object
+ 833              		.size	_selz, 4
+ 834              	_selz:
+ 835 0000 0000003F 		.word	1056964608
+ 836              		.global	_sely
+ 837              		.section	.data._sely,"aw"
+ 838              		.align	2
+ 839              		.type	_sely, %object
+ 840              		.size	_sely, 4
+ 841              	_sely:
+ 842 0000 0000803F 		.word	1065353216
+ 843              		.global	_selx
+ 844              		.section	.data._selx,"aw"
+ 845              		.align	2
+ 846              		.type	_selx, %object
+ 847              		.size	_selx, 4
+ 848              	_selx:
+ 849 0000 0000003F 		.word	1056964608
+ 850              		.global	_speed
+ 851              		.section	.bss._speed,"aw",%nobits
+ARM GAS  /tmp/cciSGOLD.s 			page 17
+
+
+ 852              		.align	2
+ 853              		.type	_speed, %object
+ 854              		.size	_speed, 4
+ 855              	_speed:
+ 856 0000 00000000 		.space	4
+ 857              		.global	_mode
+ 858              		.section	.bss._mode,"aw",%nobits
+ 859              		.align	2
+ 860              		.type	_mode, %object
+ 861              		.size	_mode, 4
+ 862              	_mode:
+ 863 0000 00000000 		.space	4
+ 864              		.global	smoothed_adc_value
+ 865              		.section	.data.smoothed_adc_value,"aw"
+ 866              		.align	2
+ 867              		.type	smoothed_adc_value, %object
+ 868              		.size	smoothed_adc_value, 20
+ 869              	smoothed_adc_value:
+ 870 0000 00000000 		.word	0
+ 871 0004 0000803F 		.word	1065353216
+ 872 0008 00000000 		.word	0
+ 873 000c 00000000 		.word	0
+ 874 0010 00000000 		.word	0
+ 875              		.global	signall
+ 876              		.section	.bss.signall,"aw",%nobits
+ 877              		.align	2
+ 878              		.type	signall, %object
+ 879              		.size	signall, 256
+ 880              	signall:
+ 881 0000 00000000 		.space	256
+ 881      00000000 
+ 881      00000000 
+ 881      00000000 
+ 881      00000000 
+ 882              		.global	adc_buffer
+ 883              		.section	.bss.adc_buffer,"aw",%nobits
+ 884              		.align	2
+ 885              		.type	adc_buffer, %object
+ 886              		.size	adc_buffer, 6
+ 887              	adc_buffer:
+ 888 0000 00000000 		.space	6
+ 888      0000
+ 889              		.global	audio_out
+ 890              		.section	.dma_buffer,"aw"
+ 891              		.align	5
+ 892              		.type	audio_out, %object
+ 893              		.size	audio_out, 384
+ 894              	audio_out:
+ 895 0000 00000000 		.space	384
+ 895      00000000 
+ 895      00000000 
+ 895      00000000 
+ 895      00000000 
+ 896              		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/cciSGOLD.s 			page 18
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 audio.c
+     /tmp/cciSGOLD.s:17     .text.Codec_HandleBlock:00000000 $t
+     /tmp/cciSGOLD.s:23     .text.Codec_HandleBlock:00000000 Codec_HandleBlock
+     /tmp/cciSGOLD.s:263    .text.Codec_HandleBlock:00000278 $d
+     /tmp/cciSGOLD.s:894    .dma_buffer:00000000 audio_out
+     /tmp/cciSGOLD.s:887    .bss.adc_buffer:00000000 adc_buffer
+     /tmp/cciSGOLD.s:869    .data.smoothed_adc_value:00000000 smoothed_adc_value
+     /tmp/cciSGOLD.s:855    .bss._speed:00000000 _speed
+     /tmp/cciSGOLD.s:834    .data._selz:00000000 _selz
+     /tmp/cciSGOLD.s:862    .bss._mode:00000000 _mode
+     /tmp/cciSGOLD.s:368    .bss._intmode.0:00000000 _intmode.0
+     /tmp/cciSGOLD.s:374    .bss.monobuffer:00000000 monobuffer
+     /tmp/cciSGOLD.s:380    .rodata.wormlist:00000000 wormlist
+     /tmp/cciSGOLD.s:288    .text.HAL_SAI_TxHalfCpltCallback:00000000 $t
+     /tmp/cciSGOLD.s:295    .text.HAL_SAI_TxHalfCpltCallback:00000000 HAL_SAI_TxHalfCpltCallback
+     /tmp/cciSGOLD.s:310    .text.HAL_SAI_TxHalfCpltCallback:00000010 $d
+     /tmp/cciSGOLD.s:313    .text.HAL_SAI_TxCpltCallback:00000000 $t
+     /tmp/cciSGOLD.s:320    .text.HAL_SAI_TxCpltCallback:00000000 HAL_SAI_TxCpltCallback
+     /tmp/cciSGOLD.s:335    .text.HAL_SAI_TxCpltCallback:00000010 $d
+     /tmp/cciSGOLD.s:338    .text.Codec_StartDMA:00000000 $t
+     /tmp/cciSGOLD.s:345    .text.Codec_StartDMA:00000000 Codec_StartDMA
+     /tmp/cciSGOLD.s:362    .text.Codec_StartDMA:00000020 $d
+     /tmp/cciSGOLD.s:369    .bss._intmode.0:00000000 $d
+     /tmp/cciSGOLD.s:371    .bss.monobuffer:00000000 $d
+     /tmp/cciSGOLD.s:377    .rodata.wormlist:00000000 $d
+     /tmp/cciSGOLD.s:807    .rodata.tmsphoner:00000000 tmsphoner
+     /tmp/cciSGOLD.s:820    .rodata.tmser:00000000 tmser
+     /tmp/cciSGOLD.s:768    .rodata.votraxer:00000000 votraxer
+     /tmp/cciSGOLD.s:755    .rodata.votraxGer:00000000 votraxGer
+     /tmp/cciSGOLD.s:794    .rodata.sp0256er:00000000 sp0256er
+     /tmp/cciSGOLD.s:781    .rodata.sp0256er1:00000000 sp0256er1
+     /tmp/cciSGOLD.s:742    .rodata.rsynthy:00000000 rsynthy
+     /tmp/cciSGOLD.s:729    .rodata.rsynthy1:00000000 rsynthy1
+     /tmp/cciSGOLD.s:716    .rodata.klatter:00000000 klatter
+     /tmp/cciSGOLD.s:703    .rodata.nvper:00000000 nvper
+     /tmp/cciSGOLD.s:690    .rodata.nvperv:00000000 nvperv
+     /tmp/cciSGOLD.s:677    .rodata.waver:00000000 waver
+     /tmp/cciSGOLD.s:664    .rodata.waver1:00000000 waver1
+     /tmp/cciSGOLD.s:651    .rodata.waver2:00000000 waver2
+     /tmp/cciSGOLD.s:638    .rodata.waver3:00000000 waver3
+     /tmp/cciSGOLD.s:625    .rodata.waver4:00000000 waver4
+     /tmp/cciSGOLD.s:612    .rodata.waver5:00000000 waver5
+     /tmp/cciSGOLD.s:599    .rodata.chirper:00000000 chirper
+     /tmp/cciSGOLD.s:586    .rodata.votgloter:00000000 votgloter
+     /tmp/cciSGOLD.s:573    .rodata.impulser:00000000 impulser
+     /tmp/cciSGOLD.s:560    .rodata.smper:00000000 smper
+     /tmp/cciSGOLD.s:547    .rodata.nater:00000000 nater
+     /tmp/cciSGOLD.s:534    .rodata.impulsz:00000000 impulsz
+     /tmp/cciSGOLD.s:521    .rodata.tuber:00000000 tuber
+     /tmp/cciSGOLD.s:508    .rodata.mindlin:00000000 mindlin
+     /tmp/cciSGOLD.s:495    .rodata.gardner:00000000 gardner
+     /tmp/cciSGOLD.s:482    .rodata.balloner:00000000 balloner
+     /tmp/cciSGOLD.s:469    .rodata.LFF:00000000 LFF
+     /tmp/cciSGOLD.s:456    .rodata.rosen:00000000 rosen
+     /tmp/cciSGOLD.s:443    .rodata.shimmer:00000000 shimmer
+     /tmp/cciSGOLD.s:430    .rodata.klglottt:00000000 klglottt
+ARM GAS  /tmp/cciSGOLD.s 			page 19
+
+
+     /tmp/cciSGOLD.s:417    .rodata.LF2:00000000 LF2
+     /tmp/cciSGOLD.s:414    .rodata.LF2:00000000 $d
+     /tmp/cciSGOLD.s:427    .rodata.klglottt:00000000 $d
+     /tmp/cciSGOLD.s:440    .rodata.shimmer:00000000 $d
+     /tmp/cciSGOLD.s:453    .rodata.rosen:00000000 $d
+     /tmp/cciSGOLD.s:466    .rodata.LFF:00000000 $d
+     /tmp/cciSGOLD.s:479    .rodata.balloner:00000000 $d
+     /tmp/cciSGOLD.s:492    .rodata.gardner:00000000 $d
+     /tmp/cciSGOLD.s:505    .rodata.mindlin:00000000 $d
+     /tmp/cciSGOLD.s:518    .rodata.tuber:00000000 $d
+     /tmp/cciSGOLD.s:531    .rodata.impulsz:00000000 $d
+     /tmp/cciSGOLD.s:544    .rodata.nater:00000000 $d
+     /tmp/cciSGOLD.s:557    .rodata.smper:00000000 $d
+     /tmp/cciSGOLD.s:570    .rodata.impulser:00000000 $d
+     /tmp/cciSGOLD.s:583    .rodata.votgloter:00000000 $d
+     /tmp/cciSGOLD.s:596    .rodata.chirper:00000000 $d
+     /tmp/cciSGOLD.s:609    .rodata.waver5:00000000 $d
+     /tmp/cciSGOLD.s:622    .rodata.waver4:00000000 $d
+     /tmp/cciSGOLD.s:635    .rodata.waver3:00000000 $d
+     /tmp/cciSGOLD.s:648    .rodata.waver2:00000000 $d
+     /tmp/cciSGOLD.s:661    .rodata.waver1:00000000 $d
+     /tmp/cciSGOLD.s:674    .rodata.waver:00000000 $d
+     /tmp/cciSGOLD.s:687    .rodata.nvperv:00000000 $d
+     /tmp/cciSGOLD.s:700    .rodata.nvper:00000000 $d
+     /tmp/cciSGOLD.s:713    .rodata.klatter:00000000 $d
+     /tmp/cciSGOLD.s:726    .rodata.rsynthy1:00000000 $d
+     /tmp/cciSGOLD.s:739    .rodata.rsynthy:00000000 $d
+     /tmp/cciSGOLD.s:752    .rodata.votraxGer:00000000 $d
+     /tmp/cciSGOLD.s:765    .rodata.votraxer:00000000 $d
+     /tmp/cciSGOLD.s:778    .rodata.sp0256er1:00000000 $d
+     /tmp/cciSGOLD.s:791    .rodata.sp0256er:00000000 $d
+     /tmp/cciSGOLD.s:804    .rodata.tmsphoner:00000000 $d
+     /tmp/cciSGOLD.s:817    .rodata.tmser:00000000 $d
+     /tmp/cciSGOLD.s:831    .data._selz:00000000 $d
+     /tmp/cciSGOLD.s:841    .data._sely:00000000 _sely
+     /tmp/cciSGOLD.s:838    .data._sely:00000000 $d
+     /tmp/cciSGOLD.s:848    .data._selx:00000000 _selx
+     /tmp/cciSGOLD.s:845    .data._selx:00000000 $d
+     /tmp/cciSGOLD.s:852    .bss._speed:00000000 $d
+     /tmp/cciSGOLD.s:859    .bss._mode:00000000 $d
+     /tmp/cciSGOLD.s:866    .data.smoothed_adc_value:00000000 $d
+     /tmp/cciSGOLD.s:880    .bss.signall:00000000 signall
+     /tmp/cciSGOLD.s:877    .bss.signall:00000000 $d
+     /tmp/cciSGOLD.s:884    .bss.adc_buffer:00000000 $d
+     /tmp/cciSGOLD.s:891    .dma_buffer:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_ADC_ConfigChannel
+HAL_ADC_Start
+HAL_ADC_PollForConversion
+samplerate_simple
+HAL_ADC_GetValue
+AdcHandle
+logspeed
+no_newsay
+LF2_get_sample
+memset
+ARM GAS  /tmp/cciSGOLD.s 			page 20
+
+
+HAL_SAI_Transmit_DMA
+hsai_BlockA1
+klg_get_sample
+shimmer_get_sample
+rosenberg_get_sample
+LF_get_sample
+balloon_get_sample
+gardner_get_sample
+mindlin_get_sample
+tube_get_sample
+tube_newsay
+impulsivex_get_sample
+wormed_newsay
+natural_source_getsample
+sampled_source_getsample
+impulsive_get_sample
+votglot_get_sample
+chirp_get_sample
+wave_get_sample6
+wave_newsay
+wave_get_sample5
+wave_get_sample4
+wave_get_sample3
+wave_get_sample2
+wave_get_sample1
+nvp_get_sample_vocab
+nvp_newsay_vocab
+nvp_get_sample
+nvp_newsay
+klatt_get_sample
+klatt_newsay
+rsynth_get_sample_single
+rsynth_newsay_single
+rsynth_get_sample
+rsynth_newsay
+votrax_get_samplegorf
+votrax_newsaygorf
+votrax_get_sample
+votrax_newsay
+sp0256_get_samplevocabbankone
+sp0256_newsayvocabbankone
+sp0256_get_sample
+sp0256_newsay
+tms_get_sample_allphon
+tms_newsay_allphon
+tms_get_sample
+tms_newsay

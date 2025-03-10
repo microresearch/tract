@@ -1,0 +1,389 @@
+ARM GAS  /tmp/ccKTORW3.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/stm32h7xx_hal_msp.lst 
+ input file    	: /tmp/ccKTORW3.s
+ output file   	: src/stm32h7xx_hal_msp.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:35:57.000+0100
+
+ARM GAS  /tmp/ccKTORW3.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"stm32h7xx_hal_msp.c"
+  15              		.text
+  16              		.section	.text.HAL_ADC_MspInit,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	HAL_ADC_MspInit
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	HAL_ADC_MspInit, %function
+  24              	HAL_ADC_MspInit:
+  25              		@ args = 0, pretend = 0, frame = 32
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 1F4B     		ldr	r3, .L4
+  28 0002 4020     		movs	r0, #64
+  29 0004 0321     		movs	r1, #3
+  30 0006 D3F8E020 		ldr	r2, [r3, #224]
+  31 000a 42F00102 		orr	r2, r2, #1
+  32 000e 30B5     		push	{r4, r5, lr}
+  33 0010 C3F8E020 		str	r2, [r3, #224]
+  34 0014 89B0     		sub	sp, sp, #36
+  35 0016 D3F8E020 		ldr	r2, [r3, #224]
+  36 001a 0024     		movs	r4, #0
+  37 001c 194D     		ldr	r5, .L4+4
+  38 001e 02F00102 		and	r2, r2, #1
+  39 0022 0092     		str	r2, [sp]
+  40 0024 009A     		ldr	r2, [sp]
+  41 0026 D3F8D820 		ldr	r2, [r3, #216]
+  42 002a 42F02002 		orr	r2, r2, #32
+  43 002e C3F8D820 		str	r2, [r3, #216]
+  44 0032 D3F8D820 		ldr	r2, [r3, #216]
+  45 0036 02F02002 		and	r2, r2, #32
+  46 003a 0192     		str	r2, [sp, #4]
+  47 003c 019A     		ldr	r2, [sp, #4]
+  48 003e 9A6D     		ldr	r2, [r3, #88]
+  49 0040 22F44032 		bic	r2, r2, #196608
+  50 0044 42F40032 		orr	r2, r2, #131072
+  51 0048 9A65     		str	r2, [r3, #88]
+  52 004a 0494     		str	r4, [sp, #16]
+  53 004c CDE90201 		strd	r0, [sp, #8]
+  54 0050 02A9     		add	r1, sp, #8
+  55 0052 2846     		mov	r0, r5
+  56 0054 FFF7FEFF 		bl	HAL_GPIO_Init
+  57 0058 8022     		movs	r2, #128
+ARM GAS  /tmp/ccKTORW3.s 			page 3
+
+
+  58 005a 0323     		movs	r3, #3
+  59 005c 2846     		mov	r0, r5
+  60 005e 02A9     		add	r1, sp, #8
+  61 0060 0494     		str	r4, [sp, #16]
+  62 0062 CDE90223 		strd	r2, [sp, #8]
+  63 0066 FFF7FEFF 		bl	HAL_GPIO_Init
+  64 006a 0122     		movs	r2, #1
+  65 006c 0323     		movs	r3, #3
+  66 006e 02A9     		add	r1, sp, #8
+  67 0070 0548     		ldr	r0, .L4+8
+  68 0072 0494     		str	r4, [sp, #16]
+  69 0074 CDE90223 		strd	r2, [sp, #8]
+  70 0078 FFF7FEFF 		bl	HAL_GPIO_Init
+  71 007c 09B0     		add	sp, sp, #36
+  72              		@ sp needed
+  73 007e 30BD     		pop	{r4, r5, pc}
+  74              	.L5:
+  75              		.align	2
+  76              	.L4:
+  77 0080 00440258 		.word	1476543488
+  78 0084 00000258 		.word	1476526080
+  79 0088 00040258 		.word	1476527104
+  80              		.size	HAL_ADC_MspInit, .-HAL_ADC_MspInit
+  81              		.section	.text.HAL_ADC_MspDeInit,"ax",%progbits
+  82              		.align	1
+  83              		.p2align 2,,3
+  84              		.global	HAL_ADC_MspDeInit
+  85              		.syntax unified
+  86              		.thumb
+  87              		.thumb_func
+  88              		.type	HAL_ADC_MspDeInit, %function
+  89              	HAL_ADC_MspDeInit:
+  90              		@ args = 0, pretend = 0, frame = 0
+  91              		@ frame_needed = 0, uses_anonymous_args = 0
+  92              		@ link register save eliminated.
+  93 0000 0B4B     		ldr	r3, .L7
+  94 0002 4021     		movs	r1, #64
+  95 0004 0B48     		ldr	r0, .L7+4
+  96 0006 D3F88020 		ldr	r2, [r3, #128]
+  97 000a 42F02002 		orr	r2, r2, #32
+  98 000e C3F88020 		str	r2, [r3, #128]
+  99 0012 D3F88020 		ldr	r2, [r3, #128]
+ 100 0016 22F02002 		bic	r2, r2, #32
+ 101 001a C3F88020 		str	r2, [r3, #128]
+ 102 001e D3F8D820 		ldr	r2, [r3, #216]
+ 103 0022 22F02002 		bic	r2, r2, #32
+ 104 0026 C3F8D820 		str	r2, [r3, #216]
+ 105 002a FFF7FEBF 		b	HAL_GPIO_DeInit
+ 106              	.L8:
+ 107 002e 00BF     		.align	2
+ 108              	.L7:
+ 109 0030 00440258 		.word	1476543488
+ 110 0034 00000258 		.word	1476526080
+ 111              		.size	HAL_ADC_MspDeInit, .-HAL_ADC_MspDeInit
+ 112              		.section	.text.HAL_MspInit,"ax",%progbits
+ 113              		.align	1
+ 114              		.p2align 2,,3
+ARM GAS  /tmp/ccKTORW3.s 			page 4
+
+
+ 115              		.global	HAL_MspInit
+ 116              		.syntax unified
+ 117              		.thumb
+ 118              		.thumb_func
+ 119              		.type	HAL_MspInit, %function
+ 120              	HAL_MspInit:
+ 121              		@ args = 0, pretend = 0, frame = 8
+ 122              		@ frame_needed = 0, uses_anonymous_args = 0
+ 123              		@ link register save eliminated.
+ 124 0000 074B     		ldr	r3, .L11
+ 125 0002 82B0     		sub	sp, sp, #8
+ 126 0004 D3F8F420 		ldr	r2, [r3, #244]
+ 127 0008 42F00202 		orr	r2, r2, #2
+ 128 000c C3F8F420 		str	r2, [r3, #244]
+ 129 0010 D3F8F430 		ldr	r3, [r3, #244]
+ 130 0014 03F00203 		and	r3, r3, #2
+ 131 0018 0193     		str	r3, [sp, #4]
+ 132 001a 019B     		ldr	r3, [sp, #4]
+ 133 001c 02B0     		add	sp, sp, #8
+ 134              		@ sp needed
+ 135 001e 7047     		bx	lr
+ 136              	.L12:
+ 137              		.align	2
+ 138              	.L11:
+ 139 0020 00440258 		.word	1476543488
+ 140              		.size	HAL_MspInit, .-HAL_MspInit
+ 141              		.section	.text.HAL_MspDeInit,"ax",%progbits
+ 142              		.align	1
+ 143              		.p2align 2,,3
+ 144              		.global	HAL_MspDeInit
+ 145              		.syntax unified
+ 146              		.thumb
+ 147              		.thumb_func
+ 148              		.type	HAL_MspDeInit, %function
+ 149              	HAL_MspDeInit:
+ 150              		@ args = 0, pretend = 0, frame = 0
+ 151              		@ frame_needed = 0, uses_anonymous_args = 0
+ 152              		@ link register save eliminated.
+ 153 0000 7047     		bx	lr
+ 154              		.size	HAL_MspDeInit, .-HAL_MspDeInit
+ 155 0002 00BF     		.section	.text.HAL_PPP_MspInit,"ax",%progbits
+ 156              		.align	1
+ 157              		.p2align 2,,3
+ 158              		.global	HAL_PPP_MspInit
+ 159              		.syntax unified
+ 160              		.thumb
+ 161              		.thumb_func
+ 162              		.type	HAL_PPP_MspInit, %function
+ 163              	HAL_PPP_MspInit:
+ 164              		@ args = 0, pretend = 0, frame = 0
+ 165              		@ frame_needed = 0, uses_anonymous_args = 0
+ 166              		@ link register save eliminated.
+ 167 0000 7047     		bx	lr
+ 168              		.size	HAL_PPP_MspInit, .-HAL_PPP_MspInit
+ 169 0002 00BF     		.section	.text.HAL_PPP_MspDeInit,"ax",%progbits
+ 170              		.align	1
+ 171              		.p2align 2,,3
+ARM GAS  /tmp/ccKTORW3.s 			page 5
+
+
+ 172              		.global	HAL_PPP_MspDeInit
+ 173              		.syntax unified
+ 174              		.thumb
+ 175              		.thumb_func
+ 176              		.type	HAL_PPP_MspDeInit, %function
+ 177              	HAL_PPP_MspDeInit:
+ 178              		@ args = 0, pretend = 0, frame = 0
+ 179              		@ frame_needed = 0, uses_anonymous_args = 0
+ 180              		@ link register save eliminated.
+ 181 0000 7047     		bx	lr
+ 182              		.size	HAL_PPP_MspDeInit, .-HAL_PPP_MspDeInit
+ 183 0002 00BF     		.section	.text.HAL_SAI_MspInit,"ax",%progbits
+ 184              		.align	1
+ 185              		.p2align 2,,3
+ 186              		.global	HAL_SAI_MspInit
+ 187              		.syntax unified
+ 188              		.thumb
+ 189              		.thumb_func
+ 190              		.type	HAL_SAI_MspInit, %function
+ 191              	HAL_SAI_MspInit:
+ 192              		@ args = 0, pretend = 0, frame = 24
+ 193              		@ frame_needed = 0, uses_anonymous_args = 0
+ 194 0000 284B     		ldr	r3, .L30
+ 195 0002 0268     		ldr	r2, [r0]
+ 196 0004 9A42     		cmp	r2, r3
+ 197 0006 00D0     		beq	.L27
+ 198 0008 7047     		bx	lr
+ 199              	.L27:
+ 200 000a 274A     		ldr	r2, .L30+4
+ 201 000c 1368     		ldr	r3, [r2]
+ 202 000e 70B5     		push	{r4, r5, r6, lr}
+ 203 0010 0546     		mov	r5, r0
+ 204 0012 86B0     		sub	sp, sp, #24
+ 205 0014 002B     		cmp	r3, #0
+ 206 0016 34D0     		beq	.L28
+ 207              	.L18:
+ 208 0018 0133     		adds	r3, r3, #1
+ 209 001a 7421     		movs	r1, #116
+ 210 001c 0026     		movs	r6, #0
+ 211 001e 2348     		ldr	r0, .L30+8
+ 212 0020 1360     		str	r3, [r2]
+ 213 0022 0222     		movs	r2, #2
+ 214 0024 0623     		movs	r3, #6
+ 215 0026 0191     		str	r1, [sp, #4]
+ 216 0028 01A9     		add	r1, sp, #4
+ 217 002a 214C     		ldr	r4, .L30+12
+ 218 002c 0292     		str	r2, [sp, #8]
+ 219 002e 0396     		str	r6, [sp, #12]
+ 220 0030 CDE90463 		strd	r6, r3, [sp, #16]
+ 221 0034 FFF7FEFF 		bl	HAL_GPIO_Init
+ 222 0038 1E4A     		ldr	r2, .L30+16
+ 223 003a 5723     		movs	r3, #87
+ 224 003c 2046     		mov	r0, r4
+ 225 003e E660     		str	r6, [r4, #12]
+ 226 0040 E662     		str	r6, [r4, #44]
+ 227 0042 2663     		str	r6, [r4, #48]
+ 228 0044 C4E90023 		strd	r2, r3, [r4]
+ARM GAS  /tmp/ccKTORW3.s 			page 6
+
+
+ 229 0048 4022     		movs	r2, #64
+ 230 004a 4FF48063 		mov	r3, #1024
+ 231 004e A260     		str	r2, [r4, #8]
+ 232 0050 4FF40062 		mov	r2, #2048
+ 233 0054 2361     		str	r3, [r4, #16]
+ 234 0056 4FF40053 		mov	r3, #8192
+ 235 005a C4E90523 		strd	r2, r3, [r4, #20]
+ 236 005e 4FF48072 		mov	r2, #256
+ 237 0062 4FF40033 		mov	r3, #131072
+ 238 0066 C4E90723 		strd	r2, r3, [r4, #28]
+ 239 006a 0422     		movs	r2, #4
+ 240 006c 0323     		movs	r3, #3
+ 241 006e C4E90923 		strd	r2, r3, [r4, #36]
+ 242 0072 FFF7FEFF 		bl	HAL_DMA_Init
+ 243 0076 90B9     		cbnz	r0, .L29
+ 244              	.L19:
+ 245 0078 A563     		str	r5, [r4, #56]
+ 246 007a C5E92044 		strd	r4, r4, [r5, #128]
+ 247 007e 06B0     		add	sp, sp, #24
+ 248              		@ sp needed
+ 249 0080 70BD     		pop	{r4, r5, r6, pc}
+ 250              	.L28:
+ 251 0082 0D49     		ldr	r1, .L30+20
+ 252 0084 D1F8F000 		ldr	r0, [r1, #240]
+ 253 0088 40F48000 		orr	r0, r0, #4194304
+ 254 008c C1F8F000 		str	r0, [r1, #240]
+ 255 0090 D1F8F010 		ldr	r1, [r1, #240]
+ 256 0094 01F48001 		and	r1, r1, #4194304
+ 257 0098 0091     		str	r1, [sp]
+ 258 009a 0099     		ldr	r1, [sp]
+ 259 009c BCE7     		b	.L18
+ 260              	.L29:
+ 261 009e FFF7FEFF 		bl	Error_Handler
+ 262 00a2 E9E7     		b	.L19
+ 263              	.L31:
+ 264              		.align	2
+ 265              	.L30:
+ 266 00a4 04580140 		.word	1073829892
+ 267 00a8 00000000 		.word	SAI1_client
+ 268 00ac 00100258 		.word	1476530176
+ 269 00b0 00000000 		.word	hdma_sai1_a
+ 270 00b4 10000240 		.word	1073872912
+ 271 00b8 00440258 		.word	1476543488
+ 272              		.size	HAL_SAI_MspInit, .-HAL_SAI_MspInit
+ 273              		.section	.text.HAL_SAI_MspDeInit,"ax",%progbits
+ 274              		.align	1
+ 275              		.p2align 2,,3
+ 276              		.global	HAL_SAI_MspDeInit
+ 277              		.syntax unified
+ 278              		.thumb
+ 279              		.thumb_func
+ 280              		.type	HAL_SAI_MspDeInit, %function
+ 281              	HAL_SAI_MspDeInit:
+ 282              		@ args = 0, pretend = 0, frame = 0
+ 283              		@ frame_needed = 0, uses_anonymous_args = 0
+ 284 0000 104B     		ldr	r3, .L39
+ 285 0002 0268     		ldr	r2, [r0]
+ARM GAS  /tmp/ccKTORW3.s 			page 7
+
+
+ 286 0004 9A42     		cmp	r2, r3
+ 287 0006 00D0     		beq	.L38
+ 288 0008 7047     		bx	lr
+ 289              	.L38:
+ 290 000a 0F4A     		ldr	r2, .L39+4
+ 291 000c 1368     		ldr	r3, [r2]
+ 292 000e 013B     		subs	r3, r3, #1
+ 293 0010 10B5     		push	{r4, lr}
+ 294 0012 0446     		mov	r4, r0
+ 295 0014 1360     		str	r3, [r2]
+ 296 0016 33B9     		cbnz	r3, .L34
+ 297 0018 0C4A     		ldr	r2, .L39+8
+ 298 001a D2F8F030 		ldr	r3, [r2, #240]
+ 299 001e 23F48003 		bic	r3, r3, #4194304
+ 300 0022 C2F8F030 		str	r3, [r2, #240]
+ 301              	.L34:
+ 302 0026 7421     		movs	r1, #116
+ 303 0028 0948     		ldr	r0, .L39+12
+ 304 002a FFF7FEFF 		bl	HAL_GPIO_DeInit
+ 305 002e D4F88400 		ldr	r0, [r4, #132]
+ 306 0032 FFF7FEFF 		bl	HAL_DMA_DeInit
+ 307 0036 D4F88000 		ldr	r0, [r4, #128]
+ 308 003a BDE81040 		pop	{r4, lr}
+ 309 003e FFF7FEBF 		b	HAL_DMA_DeInit
+ 310              	.L40:
+ 311 0042 00BF     		.align	2
+ 312              	.L39:
+ 313 0044 04580140 		.word	1073829892
+ 314 0048 00000000 		.word	SAI1_client
+ 315 004c 00440258 		.word	1476543488
+ 316 0050 00100258 		.word	1476530176
+ 317              		.size	HAL_SAI_MspDeInit, .-HAL_SAI_MspDeInit
+ 318              		.section	.bss.SAI1_client,"aw",%nobits
+ 319              		.align	2
+ 320              		.type	SAI1_client, %object
+ 321              		.size	SAI1_client, 4
+ 322              	SAI1_client:
+ 323 0000 00000000 		.space	4
+ 324              		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/ccKTORW3.s 			page 8
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32h7xx_hal_msp.c
+     /tmp/ccKTORW3.s:17     .text.HAL_ADC_MspInit:00000000 $t
+     /tmp/ccKTORW3.s:24     .text.HAL_ADC_MspInit:00000000 HAL_ADC_MspInit
+     /tmp/ccKTORW3.s:77     .text.HAL_ADC_MspInit:00000080 $d
+     /tmp/ccKTORW3.s:82     .text.HAL_ADC_MspDeInit:00000000 $t
+     /tmp/ccKTORW3.s:89     .text.HAL_ADC_MspDeInit:00000000 HAL_ADC_MspDeInit
+     /tmp/ccKTORW3.s:109    .text.HAL_ADC_MspDeInit:00000030 $d
+     /tmp/ccKTORW3.s:113    .text.HAL_MspInit:00000000 $t
+     /tmp/ccKTORW3.s:120    .text.HAL_MspInit:00000000 HAL_MspInit
+     /tmp/ccKTORW3.s:139    .text.HAL_MspInit:00000020 $d
+     /tmp/ccKTORW3.s:142    .text.HAL_MspDeInit:00000000 $t
+     /tmp/ccKTORW3.s:149    .text.HAL_MspDeInit:00000000 HAL_MspDeInit
+     /tmp/ccKTORW3.s:156    .text.HAL_PPP_MspInit:00000000 $t
+     /tmp/ccKTORW3.s:163    .text.HAL_PPP_MspInit:00000000 HAL_PPP_MspInit
+     /tmp/ccKTORW3.s:170    .text.HAL_PPP_MspDeInit:00000000 $t
+     /tmp/ccKTORW3.s:177    .text.HAL_PPP_MspDeInit:00000000 HAL_PPP_MspDeInit
+     /tmp/ccKTORW3.s:184    .text.HAL_SAI_MspInit:00000000 $t
+     /tmp/ccKTORW3.s:191    .text.HAL_SAI_MspInit:00000000 HAL_SAI_MspInit
+     /tmp/ccKTORW3.s:266    .text.HAL_SAI_MspInit:000000a4 $d
+     /tmp/ccKTORW3.s:322    .bss.SAI1_client:00000000 SAI1_client
+     /tmp/ccKTORW3.s:274    .text.HAL_SAI_MspDeInit:00000000 $t
+     /tmp/ccKTORW3.s:281    .text.HAL_SAI_MspDeInit:00000000 HAL_SAI_MspDeInit
+     /tmp/ccKTORW3.s:313    .text.HAL_SAI_MspDeInit:00000044 $d
+     /tmp/ccKTORW3.s:319    .bss.SAI1_client:00000000 $d
+
+UNDEFINED SYMBOLS
+HAL_GPIO_Init
+HAL_GPIO_DeInit
+HAL_DMA_Init
+Error_Handler
+hdma_sai1_a
+HAL_DMA_DeInit

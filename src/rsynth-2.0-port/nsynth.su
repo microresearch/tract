@@ -1,0 +1,6 @@
+src/rsynth-2.0-port/nsynth.c:387:14:setabc	16	static
+src/rsynth-2.0-port/nsynth.c:451:13:pitch_synch_par_reset	40	static
+src/rsynth-2.0-port/nsynth.c:723:6:initparwave	88	static
+src/rsynth-2.0-port/nsynth.c:738:14:parwavesinglesample	72	static
+src/rsynth-2.0-port/nsynth.c:948:6:parwavesample	80	static
+src/rsynth-2.0-port/nsynth.c:1114:6:parwave_init	16	static

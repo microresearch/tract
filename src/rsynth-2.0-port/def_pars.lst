@@ -1,0 +1,164 @@
+ARM GAS  /tmp/ccFVDDlJ.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/rsynth-2.0-port/def_pars.lst 
+ input file    	: /tmp/ccFVDDlJ.s
+ output file   	: src/rsynth-2.0-port/def_pars.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:36:01.000+0100
+
+ARM GAS  /tmp/ccFVDDlJ.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"def_pars.c"
+  15              		.text
+  16              		.section	.text.klatt_init,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	klatt_init
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	klatt_init, %function
+  24              	klatt_init:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 134A     		ldr	r2, .L4
+  29 0002 F2EE047A 		vmov.f32	s15, #1.0e+1
+  30 0006 134B     		ldr	r3, .L4+4
+  31 0008 0A21     		movs	r1, #10
+  32 000a 1268     		ldr	r2, [r2]
+  33 000c 0020     		movs	r0, #0
+  34 000e DFED126A 		vldr.32	s13, .L4+8
+  35 0012 10B4     		push	{r4}
+  36 0014 1A61     		str	r2, [r3, #16]
+  37 0016 4FF4C864 		mov	r4, #1600
+  38 001a 93ED047A 		vldr.32	s14, [r3, #16]	@ int
+  39 001e 0F4A     		ldr	r2, .L4+12
+  40 0020 B8EEC77A 		vcvt.f32.s32	s14, s14
+  41 0024 9960     		str	r1, [r3, #8]
+  42 0026 5065     		str	r0, [r2, #84]
+  43 0028 0120     		movs	r0, #1
+  44 002a D165     		str	r1, [r2, #92]
+  45 002c 0121     		movs	r1, #1
+  46 002e 27EE277A 		vmul.f32	s14, s14, s15
+  47 0032 1460     		str	r4, [r2]
+  48 0034 0422     		movs	r2, #4
+  49 0036 5DF8044B 		ldr	r4, [sp], #4
+  50 003a C7EE267A 		vdiv.f32	s15, s14, s13
+  51 003e 5A61     		str	r2, [r3, #20]
+  52 0040 C3E90001 		strd	r0, [r3]
+  53 0044 FDEEE77A 		vcvt.s32.f32	s15, s15
+  54 0048 C3ED067A 		vstr.32	s15, [r3, #24]	@ int
+  55 004c 7047     		bx	lr
+  56              	.L5:
+  57 004e 00BF     		.align	2
+ARM GAS  /tmp/ccFVDDlJ.s 			page 3
+
+
+  58              	.L4:
+  59 0050 00000000 		.word	samp_rate
+  60 0054 00000000 		.word	klatt_global
+  61 0058 00007A44 		.word	1148846080
+  62 005c 00000000 		.word	def_pars
+  63              		.size	klatt_init, .-klatt_init
+  64              		.global	samp_rate
+  65              		.section	.data.samp_rate,"aw"
+  66              		.align	2
+  67              		.type	samp_rate, %object
+  68              		.size	samp_rate, 4
+  69              	samp_rate:
+  70 0000 007D0000 		.word	32000
+  71              		.global	def_pars
+  72              		.section	.data.def_pars,"aw"
+  73              		.align	2
+  74              		.type	def_pars, %object
+  75              		.size	def_pars, 160
+  76              	def_pars:
+  77 0000 32050000 		.word	1330
+  78 0004 3C000000 		.word	60
+  79 0008 F4010000 		.word	500
+  80 000c 3C000000 		.word	60
+  81 0010 DC050000 		.word	1500
+  82 0014 5A000000 		.word	90
+  83 0018 F00A0000 		.word	2800
+  84 001c 96000000 		.word	150
+  85 0020 B20C0000 		.word	3250
+  86 0024 C8000000 		.word	200
+  87 0028 740E0000 		.word	3700
+  88 002c C8000000 		.word	200
+  89 0030 7E130000 		.word	4990
+  90 0034 F4010000 		.word	500
+  91 0038 0E010000 		.word	270
+  92 003c 64000000 		.word	100
+  93 0040 0E010000 		.word	270
+  94 0044 64000000 		.word	100
+  95 0048 00000000 		.word	0
+  96 004c 1E000000 		.word	30
+  97 0050 00000000 		.word	0
+  98 0054 0A000000 		.word	10
+  99 0058 00000000 		.word	0
+ 100 005c 00000000 		.word	0
+ 101 0060 00000000 		.word	0
+ 102 0064 50000000 		.word	80
+ 103 0068 00000000 		.word	0
+ 104 006c C8000000 		.word	200
+ 105 0070 00000000 		.word	0
+ 106 0074 5E010000 		.word	350
+ 107 0078 00000000 		.word	0
+ 108 007c F4010000 		.word	500
+ 109 0080 00000000 		.word	0
+ 110 0084 58020000 		.word	600
+ 111 0088 00000000 		.word	0
+ 112 008c 20030000 		.word	800
+ 113 0090 00000000 		.word	0
+ 114 0094 00000000 		.word	0
+ARM GAS  /tmp/ccFVDDlJ.s 			page 4
+
+
+ 115 0098 00000000 		.word	0
+ 116 009c 3E000000 		.word	62
+ 117              		.global	klatt_global
+ 118              		.section	.bss.klatt_global,"aw",%nobits
+ 119              		.align	3
+ 120              		.type	klatt_global, %object
+ 121              		.size	klatt_global, 28
+ 122              	klatt_global:
+ 123 0000 00000000 		.space	28
+ 123      00000000 
+ 123      00000000 
+ 123      00000000 
+ 123      00000000 
+ 124              		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/ccFVDDlJ.s 			page 5
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 def_pars.c
+     /tmp/ccFVDDlJ.s:17     .text.klatt_init:00000000 $t
+     /tmp/ccFVDDlJ.s:24     .text.klatt_init:00000000 klatt_init
+     /tmp/ccFVDDlJ.s:59     .text.klatt_init:00000050 $d
+     /tmp/ccFVDDlJ.s:69     .data.samp_rate:00000000 samp_rate
+     /tmp/ccFVDDlJ.s:122    .bss.klatt_global:00000000 klatt_global
+     /tmp/ccFVDDlJ.s:76     .data.def_pars:00000000 def_pars
+     /tmp/ccFVDDlJ.s:66     .data.samp_rate:00000000 $d
+     /tmp/ccFVDDlJ.s:73     .data.def_pars:00000000 $d
+     /tmp/ccFVDDlJ.s:119    .bss.klatt_global:00000000 $d
+
+NO UNDEFINED SYMBOLS

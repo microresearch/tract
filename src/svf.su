@@ -1,0 +1,4 @@
+svf.c:111:6:SVF_Init	0	static
+svf.c:105:6:SVF_Reset	0	static
+svf.c:119:6:BANDS_Init_	24	static
+svf.c:144:6:runBANDStest_	32	static

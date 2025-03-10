@@ -1,0 +1,2 @@
+src/english2phoneme/saynum.c:52:6:say_cardinal	16	static
+src/english2phoneme/saynum.c:135:6:say_ordinal	16	static

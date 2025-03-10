@@ -1,0 +1,5 @@
+src/rsynth_2005/opsynth.c:103:1:set_pole_fbw.isra	32	static
+src/rsynth_2005/opsynth.c:334:1:gen_noise	4	static
+src/rsynth_2005/opsynth.c:405:1:rsynth_filter	0	static
+src/rsynth_2005/opsynth.c:456:9:rsynth_frame_single	88	static
+src/rsynth_2005/opsynth.c:498:6:rsynth_init	16	static

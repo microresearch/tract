@@ -1,0 +1,4 @@
+typedef struct mindlin {
+double x, xprime,xdobleprime, k, b, c, f0, T, p0;
+}Mindlin;
+

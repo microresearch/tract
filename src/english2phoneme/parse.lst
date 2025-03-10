@@ -1,0 +1,1372 @@
+ARM GAS  /tmp/cc175fXf.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/english2phoneme/parse.lst 
+ input file    	: /tmp/cc175fXf.s
+ output file   	: src/english2phoneme/parse.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:36:00.000+0100
+
+ARM GAS  /tmp/cc175fXf.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"parse.c"
+  15              		.text
+  16              		.section	.text.makeupper,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	makeupper
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	makeupper, %function
+  24              	makeupper:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 A0F16103 		sub	r3, r0, #97
+  29 0004 192B     		cmp	r3, #25
+  30 0006 98BF     		it	ls
+  31 0008 2038     		subls	r0, r0, #32
+  32 000a 7047     		bx	lr
+  33              		.size	makeupper, .-makeupper
+  34              		.section	.text.new_char,"ax",%progbits
+  35              		.align	1
+  36              		.p2align 2,,3
+  37              		.global	new_char
+  38              		.syntax unified
+  39              		.thumb
+  40              		.thumb_func
+  41              		.type	new_char, %function
+  42              	new_char:
+  43              		@ args = 0, pretend = 0, frame = 0
+  44              		@ frame_needed = 0, uses_anonymous_args = 0
+  45 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  46 0004 314C     		ldr	r4, .L31
+  47 0006 324D     		ldr	r5, .L31+4
+  48 0008 2768     		ldr	r7, [r4]
+  49 000a 324E     		ldr	r6, .L31+8
+  50 000c DFF8D480 		ldr	r8, .L31+24
+  51 0010 0A2F     		cmp	r7, #10
+  52 0012 3149     		ldr	r1, .L31+12
+  53 0014 2868     		ldr	r0, [r5]
+  54 0016 D6F800C0 		ldr	ip, [r6]
+  55 001a D8F80020 		ldr	r2, [r8]
+  56 001e 0B68     		ldr	r3, [r1]
+  57 0020 10D0     		beq	.L27
+ARM GAS  /tmp/cc175fXf.s 			page 3
+
+
+  58              	.L5:
+  59 0022 0A2A     		cmp	r2, #10
+  60 0024 C5F800C0 		str	ip, [r5]
+  61 0028 2060     		str	r0, [r4]
+  62 002a 3260     		str	r2, [r6]
+  63 002c 06D0     		beq	.L13
+  64 002e 0132     		adds	r2, r2, #1
+  65 0030 04D0     		beq	.L13
+  66 0032 2A4A     		ldr	r2, .L31+16
+  67 0034 1268     		ldr	r2, [r2]
+  68 0036 D25C     		ldrb	r2, [r2, r3]	@ zero_extendqisi2
+  69 0038 C8F80020 		str	r2, [r8]
+  70              	.L13:
+  71 003c 0133     		adds	r3, r3, #1
+  72              	.L12:
+  73 003e 0B60     		str	r3, [r1]
+  74              	.L4:
+  75 0040 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+  76              	.L27:
+  77 0044 0A28     		cmp	r0, #10
+  78 0046 ECD1     		bne	.L5
+  79 0048 BCF10A0F 		cmp	ip, #10
+  80 004c E9D1     		bne	.L5
+  81 004e 0A2A     		cmp	r2, #10
+  82 0050 E7D1     		bne	.L5
+  83 0052 234A     		ldr	r2, .L31+20
+  84 0054 D2F800C0 		ldr	ip, [r2]
+  85 0058 9C45     		cmp	ip, r3
+  86 005a 2EDD     		ble	.L28
+  87 005c 1F4A     		ldr	r2, .L31+16
+  88 005e D2F800E0 		ldr	lr, [r2]
+  89 0062 5A1C     		adds	r2, r3, #1
+  90 0064 1EF80300 		ldrb	r0, [lr, r3]	@ zero_extendqisi2
+  91 0068 0A60     		str	r2, [r1]
+  92 006a 0A28     		cmp	r0, #10
+  93 006c 2060     		str	r0, [r4]
+  94 006e E7D0     		beq	.L4
+  95 0070 9445     		cmp	ip, r2
+  96 0072 15DD     		ble	.L29
+  97 0074 1EF80240 		ldrb	r4, [lr, r2]	@ zero_extendqisi2
+  98 0078 9A1C     		adds	r2, r3, #2
+  99 007a 0A2C     		cmp	r4, #10
+ 100 007c 2C60     		str	r4, [r5]
+ 101 007e 0A60     		str	r2, [r1]
+ 102 0080 DED0     		beq	.L4
+ 103 0082 9445     		cmp	ip, r2
+ 104 0084 13DD     		ble	.L30
+ 105 0086 1EF80220 		ldrb	r2, [lr, r2]	@ zero_extendqisi2
+ 106 008a DC1C     		adds	r4, r3, #3
+ 107 008c 0A2A     		cmp	r2, #10
+ 108 008e 3260     		str	r2, [r6]
+ 109 0090 0C60     		str	r4, [r1]
+ 110 0092 D5D0     		beq	.L4
+ 111 0094 1EF80420 		ldrb	r2, [lr, r4]	@ zero_extendqisi2
+ 112 0098 0433     		adds	r3, r3, #4
+ 113 009a C8F80020 		str	r2, [r8]
+ 114 009e CEE7     		b	.L12
+ARM GAS  /tmp/cc175fXf.s 			page 4
+
+
+ 115              	.L29:
+ 116 00a0 4FF0FF33 		mov	r3, #-1
+ 117 00a4 2B60     		str	r3, [r5]
+ 118 00a6 3360     		str	r3, [r6]
+ 119 00a8 C8F80030 		str	r3, [r8]
+ 120 00ac C8E7     		b	.L4
+ 121              	.L30:
+ 122 00ae 4FF0FF33 		mov	r3, #-1
+ 123 00b2 3360     		str	r3, [r6]
+ 124 00b4 C8F80030 		str	r3, [r8]
+ 125 00b8 C2E7     		b	.L4
+ 126              	.L28:
+ 127 00ba 4FF0FF33 		mov	r3, #-1
+ 128 00be 1846     		mov	r0, r3
+ 129 00c0 2360     		str	r3, [r4]
+ 130 00c2 2B60     		str	r3, [r5]
+ 131 00c4 3360     		str	r3, [r6]
+ 132 00c6 C8F80030 		str	r3, [r8]
+ 133 00ca B9E7     		b	.L4
+ 134              	.L32:
+ 135              		.align	2
+ 136              	.L31:
+ 137 00cc 00000000 		.word	Char
+ 138 00d0 00000000 		.word	Char1
+ 139 00d4 00000000 		.word	Char2
+ 140 00d8 00000000 		.word	input_count
+ 141 00dc 00000000 		.word	input_array
+ 142 00e0 00000000 		.word	input_length
+ 143 00e4 00000000 		.word	Char3
+ 144              		.size	new_char, .-new_char
+ 145              		.section	.text.have_special,"ax",%progbits
+ 146              		.align	1
+ 147              		.p2align 2,,3
+ 148              		.global	have_special
+ 149              		.syntax unified
+ 150              		.thumb
+ 151              		.thumb_func
+ 152              		.type	have_special, %function
+ 153              	have_special:
+ 154              		@ args = 0, pretend = 0, frame = 0
+ 155              		@ frame_needed = 0, uses_anonymous_args = 0
+ 156 0000 084A     		ldr	r2, .L37
+ 157 0002 08B5     		push	{r3, lr}
+ 158 0004 1068     		ldr	r0, [r2]
+ 159 0006 084B     		ldr	r3, .L37+4
+ 160 0008 1B5C     		ldrb	r3, [r3, r0]	@ zero_extendqisi2
+ 161 000a 1B07     		lsls	r3, r3, #28
+ 162 000c 03D5     		bpl	.L36
+ 163 000e BDE80840 		pop	{r3, lr}
+ 164 0012 FFF7FEBF 		b	new_char
+ 165              	.L36:
+ 166 0016 FFF7FEFF 		bl	say_ascii
+ 167 001a BDE80840 		pop	{r3, lr}
+ 168 001e FFF7FEBF 		b	new_char
+ 169              	.L38:
+ 170 0022 00BF     		.align	2
+ 171              	.L37:
+ARM GAS  /tmp/cc175fXf.s 			page 5
+
+
+ 172 0024 00000000 		.word	Char
+ 173 0028 01000000 		.word	_ctype_+1
+ 174              		.size	have_special, .-have_special
+ 175              		.section	.text.have_number,"ax",%progbits
+ 176              		.align	1
+ 177              		.p2align 2,,3
+ 178              		.global	have_number
+ 179              		.syntax unified
+ 180              		.thumb
+ 181              		.thumb_func
+ 182              		.type	have_number, %function
+ 183              	have_number:
+ 184              		@ args = 0, pretend = 0, frame = 0
+ 185              		@ frame_needed = 0, uses_anonymous_args = 0
+ 186 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 187 0004 4C4E     		ldr	r6, .L91
+ 188 0006 4D4F     		ldr	r7, .L91+4
+ 189 0008 3268     		ldr	r2, [r6]
+ 190 000a A2F13008 		sub	r8, r2, #48
+ 191 000e FFF7FEFF 		bl	new_char
+ 192 0012 3568     		ldr	r5, [r6]
+ 193 0014 4446     		mov	r4, r8
+ 194 0016 7B5D     		ldrb	r3, [r7, r5]	@ zero_extendqisi2
+ 195 0018 5A07     		lsls	r2, r3, #29
+ 196 001a 0ED5     		bpl	.L40
+ 197              	.L41:
+ 198 001c A5F13003 		sub	r3, r5, #48
+ 199 0020 04EB8404 		add	r4, r4, r4, lsl #2
+ 200 0024 03EB4404 		add	r4, r3, r4, lsl #1
+ 201 0028 FFF7FEFF 		bl	new_char
+ 202 002c 2A46     		mov	r2, r5
+ 203 002e 3568     		ldr	r5, [r6]
+ 204 0030 7B5D     		ldrb	r3, [r7, r5]	@ zero_extendqisi2
+ 205 0032 5B07     		lsls	r3, r3, #29
+ 206 0034 F2D4     		bmi	.L41
+ 207 0036 A2F13008 		sub	r8, r2, #48
+ 208              	.L40:
+ 209 003a B8F1090F 		cmp	r8, #9
+ 210 003e 0DD8     		bhi	.L42
+ 211 0040 DFE808F0 		tbb	[pc, r8]
+ 212              	.L44:
+ 213 0044 1D       		.byte	(.L43-.L44)/2
+ 214 0045 05       		.byte	(.L47-.L44)/2
+ 215 0046 4C       		.byte	(.L46-.L44)/2
+ 216 0047 3B       		.byte	(.L45-.L44)/2
+ 217 0048 1D       		.byte	(.L43-.L44)/2
+ 218 0049 1D       		.byte	(.L43-.L44)/2
+ 219 004a 1D       		.byte	(.L43-.L44)/2
+ 220 004b 1D       		.byte	(.L43-.L44)/2
+ 221 004c 1D       		.byte	(.L43-.L44)/2
+ 222 004d 1D       		.byte	(.L43-.L44)/2
+ 223              		.p2align 1
+ 224              	.L47:
+ 225 004e A5F16103 		sub	r3, r5, #97
+ 226 0052 192B     		cmp	r3, #25
+ 227 0054 98BF     		it	ls
+ 228 0056 203D     		subls	r5, r5, #32
+ARM GAS  /tmp/cc175fXf.s 			page 6
+
+
+ 229 0058 532D     		cmp	r5, #83
+ 230 005a 55D0     		beq	.L88
+ 231              	.L42:
+ 232 005c 2046     		mov	r0, r4
+ 233 005e FFF7FEFF 		bl	say_cardinal
+ 234 0062 3068     		ldr	r0, [r6]
+ 235 0064 2E28     		cmp	r0, #46
+ 236 0066 05D1     		bne	.L82
+ 237 0068 45E0     		b	.L89
+ 238              	.L60:
+ 239 006a FFF7FEFF 		bl	say_ascii
+ 240 006e FFF7FEFF 		bl	new_char
+ 241 0072 3068     		ldr	r0, [r6]
+ 242              	.L82:
+ 243 0074 3B5C     		ldrb	r3, [r7, r0]	@ zero_extendqisi2
+ 244              	.L76:
+ 245 0076 9B07     		lsls	r3, r3, #30
+ 246 0078 F7D1     		bne	.L60
+ 247 007a BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 248              	.L43:
+ 249 007e A5F16103 		sub	r3, r5, #97
+ 250 0082 192B     		cmp	r3, #25
+ 251 0084 98BF     		it	ls
+ 252 0086 203D     		subls	r5, r5, #32
+ 253 0088 542D     		cmp	r5, #84
+ 254 008a E7D1     		bne	.L42
+ 255 008c 2C4B     		ldr	r3, .L91+8
+ 256 008e 1B68     		ldr	r3, [r3]
+ 257 0090 A3F16102 		sub	r2, r3, #97
+ 258 0094 192A     		cmp	r2, #25
+ 259 0096 98BF     		it	ls
+ 260 0098 203B     		subls	r3, r3, #32
+ 261 009a 482B     		cmp	r3, #72
+ 262 009c DED1     		bne	.L42
+ 263              	.L79:
+ 264 009e 294B     		ldr	r3, .L91+12
+ 265 00a0 1B68     		ldr	r3, [r3]
+ 266 00a2 FB5C     		ldrb	r3, [r7, r3]	@ zero_extendqisi2
+ 267 00a4 5807     		lsls	r0, r3, #29
+ 268 00a6 D9D1     		bne	.L42
+ 269 00a8 2046     		mov	r0, r4
+ 270 00aa FFF7FEFF 		bl	say_ordinal
+ 271 00ae FFF7FEFF 		bl	new_char
+ 272 00b2 BDE8F041 		pop	{r4, r5, r6, r7, r8, lr}
+ 273 00b6 FFF7FEBF 		b	new_char
+ 274              	.L45:
+ 275 00ba A5F16103 		sub	r3, r5, #97
+ 276 00be 192B     		cmp	r3, #25
+ 277 00c0 98BF     		it	ls
+ 278 00c2 203D     		subls	r5, r5, #32
+ 279 00c4 522D     		cmp	r5, #82
+ 280 00c6 C9D1     		bne	.L42
+ 281              	.L86:
+ 282 00c8 1D4B     		ldr	r3, .L91+8
+ 283 00ca 1B68     		ldr	r3, [r3]
+ 284 00cc A3F16102 		sub	r2, r3, #97
+ 285 00d0 192A     		cmp	r2, #25
+ARM GAS  /tmp/cc175fXf.s 			page 7
+
+
+ 286 00d2 98BF     		it	ls
+ 287 00d4 203B     		subls	r3, r3, #32
+ 288 00d6 442B     		cmp	r3, #68
+ 289 00d8 C0D1     		bne	.L42
+ 290 00da E0E7     		b	.L79
+ 291              	.L46:
+ 292 00dc A5F16103 		sub	r3, r5, #97
+ 293 00e0 192B     		cmp	r3, #25
+ 294 00e2 98BF     		it	ls
+ 295 00e4 203D     		subls	r5, r5, #32
+ 296 00e6 4E2D     		cmp	r5, #78
+ 297 00e8 EED0     		beq	.L86
+ 298 00ea 2046     		mov	r0, r4
+ 299 00ec FFF7FEFF 		bl	say_cardinal
+ 300 00f0 3068     		ldr	r0, [r6]
+ 301 00f2 2E28     		cmp	r0, #46
+ 302 00f4 BED1     		bne	.L82
+ 303              	.L89:
+ 304 00f6 124B     		ldr	r3, .L91+8
+ 305 00f8 1B68     		ldr	r3, [r3]
+ 306 00fa FB5C     		ldrb	r3, [r7, r3]	@ zero_extendqisi2
+ 307 00fc 5907     		lsls	r1, r3, #29
+ 308 00fe 0DD4     		bmi	.L57
+ 309 0100 114B     		ldr	r3, .L91+16
+ 310 0102 93F82F30 		ldrb	r3, [r3, #47]	@ zero_extendqisi2
+ 311 0106 B6E7     		b	.L76
+ 312              	.L88:
+ 313 0108 0D4B     		ldr	r3, .L91+8
+ 314 010a 1B68     		ldr	r3, [r3]
+ 315 010c A3F16102 		sub	r2, r3, #97
+ 316 0110 192A     		cmp	r2, #25
+ 317 0112 98BF     		it	ls
+ 318 0114 203B     		subls	r3, r3, #32
+ 319 0116 542B     		cmp	r3, #84
+ 320 0118 A0D1     		bne	.L42
+ 321 011a C0E7     		b	.L79
+ 322              	.L57:
+ 323 011c 0B48     		ldr	r0, .L91+20
+ 324 011e FFF7FEFF 		bl	outnum
+ 325 0122 01E0     		b	.L75
+ 326              	.L90:
+ 327 0124 FFF7FEFF 		bl	say_ascii
+ 328              	.L75:
+ 329 0128 FFF7FEFF 		bl	new_char
+ 330 012c 3068     		ldr	r0, [r6]
+ 331 012e 3B5C     		ldrb	r3, [r7, r0]	@ zero_extendqisi2
+ 332 0130 5A07     		lsls	r2, r3, #29
+ 333 0132 A0D5     		bpl	.L76
+ 334 0134 F6E7     		b	.L90
+ 335              	.L92:
+ 336 0136 00BF     		.align	2
+ 337              	.L91:
+ 338 0138 00000000 		.word	Char
+ 339 013c 01000000 		.word	_ctype_+1
+ 340 0140 00000000 		.word	Char1
+ 341 0144 00000000 		.word	Char2
+ 342 0148 00000000 		.word	_ctype_
+ARM GAS  /tmp/cc175fXf.s 			page 8
+
+
+ 343 014c 84000000 		.word	poynt
+ 344              		.size	have_number, .-have_number
+ 345              		.section	.rodata.abbrev.str1.4,"aMS",%progbits,1
+ 346              		.align	2
+ 347              	.LC0:
+ 348 0000 20445220 		.ascii	" DR \000"
+ 348      00
+ 349 0005 000000   		.align	2
+ 350              	.LC1:
+ 351 0008 20444F43 		.ascii	" DOCTOR \000"
+ 351      544F5220 
+ 351      00
+ 352 0011 000000   		.align	2
+ 353              	.LC2:
+ 354 0014 204D5220 		.ascii	" MR \000"
+ 354      00
+ 355 0019 000000   		.align	2
+ 356              	.LC3:
+ 357 001c 204D4953 		.ascii	" MISTER \000"
+ 357      54455220 
+ 357      00
+ 358 0025 000000   		.align	2
+ 359              	.LC4:
+ 360 0028 204D5253 		.ascii	" MRS \000"
+ 360      2000
+ 361 002e 0000     		.align	2
+ 362              	.LC5:
+ 363 0030 204D4953 		.ascii	" MISSUS \000"
+ 363      53555320 
+ 363      00
+ 364 0039 000000   		.align	2
+ 365              	.LC6:
+ 366 003c 20504844 		.ascii	" PHD \000"
+ 366      2000
+ 367              		.section	.text.abbrev,"ax",%progbits
+ 368              		.align	1
+ 369              		.p2align 2,,3
+ 370              		.global	abbrev
+ 371              		.syntax unified
+ 372              		.thumb
+ 373              		.thumb_func
+ 374              		.type	abbrev, %function
+ 375              	abbrev:
+ 376              		@ args = 0, pretend = 0, frame = 0
+ 377              		@ frame_needed = 0, uses_anonymous_args = 0
+ 378 0000 10B5     		push	{r4, lr}
+ 379 0002 1A49     		ldr	r1, .L102
+ 380 0004 0446     		mov	r4, r0
+ 381 0006 FFF7FEFF 		bl	strcmp
+ 382 000a E0B1     		cbz	r0, .L99
+ 383 000c 1849     		ldr	r1, .L102+4
+ 384 000e 2046     		mov	r0, r4
+ 385 0010 FFF7FEFF 		bl	strcmp
+ 386 0014 80B1     		cbz	r0, .L100
+ 387 0016 1749     		ldr	r1, .L102+8
+ 388 0018 2046     		mov	r0, r4
+ 389 001a FFF7FEFF 		bl	strcmp
+ARM GAS  /tmp/cc175fXf.s 			page 9
+
+
+ 390 001e F0B1     		cbz	r0, .L101
+ 391 0020 1549     		ldr	r1, .L102+12
+ 392 0022 2046     		mov	r0, r4
+ 393 0024 FFF7FEFF 		bl	strcmp
+ 394 0028 A0B9     		cbnz	r0, .L97
+ 395 002a 1348     		ldr	r0, .L102+12
+ 396 002c FFF7FEFF 		bl	spell_word
+ 397 0030 BDE81040 		pop	{r4, lr}
+ 398 0034 FFF7FEBF 		b	new_char
+ 399              	.L100:
+ 400 0038 1048     		ldr	r0, .L102+16
+ 401 003a FFF7FEFF 		bl	xlate_word
+ 402 003e BDE81040 		pop	{r4, lr}
+ 403 0042 FFF7FEBF 		b	new_char
+ 404              	.L99:
+ 405 0046 0E48     		ldr	r0, .L102+20
+ 406 0048 FFF7FEFF 		bl	xlate_word
+ 407 004c BDE81040 		pop	{r4, lr}
+ 408 0050 FFF7FEBF 		b	new_char
+ 409              	.L97:
+ 410 0054 2046     		mov	r0, r4
+ 411 0056 BDE81040 		pop	{r4, lr}
+ 412 005a FFF7FEBF 		b	xlate_word
+ 413              	.L101:
+ 414 005e 0948     		ldr	r0, .L102+24
+ 415 0060 FFF7FEFF 		bl	xlate_word
+ 416 0064 BDE81040 		pop	{r4, lr}
+ 417 0068 FFF7FEBF 		b	new_char
+ 418              	.L103:
+ 419              		.align	2
+ 420              	.L102:
+ 421 006c 00000000 		.word	.LC0
+ 422 0070 14000000 		.word	.LC2
+ 423 0074 28000000 		.word	.LC4
+ 424 0078 3C000000 		.word	.LC6
+ 425 007c 1C000000 		.word	.LC3
+ 426 0080 08000000 		.word	.LC1
+ 427 0084 30000000 		.word	.LC5
+ 428              		.size	abbrev, .-abbrev
+ 429              		.section	.text.have_letter,"ax",%progbits
+ 430              		.align	1
+ 431              		.p2align 2,,3
+ 432              		.global	have_letter
+ 433              		.syntax unified
+ 434              		.thumb
+ 435              		.thumb_func
+ 436              		.type	have_letter, %function
+ 437              	have_letter:
+ 438              		@ args = 0, pretend = 0, frame = 256
+ 439              		@ frame_needed = 0, uses_anonymous_args = 0
+ 440 0000 2DE9F043 		push	{r4, r5, r6, r7, r8, r9, lr}
+ 441 0004 354F     		ldr	r7, .L130
+ 442 0006 C1B0     		sub	sp, sp, #260
+ 443 0008 2022     		movs	r2, #32
+ 444 000a DFF8D880 		ldr	r8, .L130+8
+ 445 000e 3B68     		ldr	r3, [r7]
+ 446 0010 8DF80020 		strb	r2, [sp]
+ARM GAS  /tmp/cc175fXf.s 			page 10
+
+
+ 447 0014 A3F16102 		sub	r2, r3, #97
+ 448 0018 192A     		cmp	r2, #25
+ 449 001a 98BF     		it	ls
+ 450 001c 203B     		subls	r3, r3, #32
+ 451 001e 8DF80130 		strb	r3, [sp, #1]
+ 452 0022 FFF7FEFF 		bl	new_char
+ 453 0026 3C68     		ldr	r4, [r7]
+ 454 0028 18F80430 		ldrb	r3, [r8, r4]	@ zero_extendqisi2
+ 455 002c 9807     		lsls	r0, r3, #30
+ 456 002e 01D1     		bne	.L119
+ 457 0030 272C     		cmp	r4, #39
+ 458 0032 4AD1     		bne	.L118
+ 459              	.L119:
+ 460 0034 0225     		movs	r5, #2
+ 461 0036 4FF02009 		mov	r9, #32
+ 462              	.L122:
+ 463 003a A4F16103 		sub	r3, r4, #97
+ 464 003e 6A1C     		adds	r2, r5, #1
+ 465 0040 AE1C     		adds	r6, r5, #2
+ 466 0042 192B     		cmp	r3, #25
+ 467 0044 98BF     		it	ls
+ 468 0046 203C     		subls	r4, r4, #32
+ 469 0048 FE2D     		cmp	r5, #254
+ 470 004a 0DF80540 		strb	r4, [sp, r5]
+ 471 004e 1546     		mov	r5, r2
+ 472 0050 20D0     		beq	.L125
+ 473              	.L110:
+ 474 0052 FFF7FEFF 		bl	new_char
+ 475 0056 3C68     		ldr	r4, [r7]
+ 476 0058 18F80430 		ldrb	r3, [r8, r4]	@ zero_extendqisi2
+ 477 005c 9907     		lsls	r1, r3, #30
+ 478 005e ECD1     		bne	.L122
+ 479 0060 272C     		cmp	r4, #39
+ 480 0062 EAD0     		beq	.L122
+ 481              	.L106:
+ 482 0064 2022     		movs	r2, #32
+ 483 0066 6846     		mov	r0, sp
+ 484 0068 0DF80520 		strb	r2, [sp, r5]
+ 485 006c 0022     		movs	r2, #0
+ 486 006e 0DF80620 		strb	r2, [sp, r6]
+ 487 0072 5A07     		lsls	r2, r3, #29
+ 488 0074 24D4     		bmi	.L126
+ 489 0076 FFF7FEFF 		bl	strlen
+ 490 007a 0328     		cmp	r0, #3
+ 491 007c 28D0     		beq	.L127
+ 492 007e 2E2C     		cmp	r4, #46
+ 493 0080 6846     		mov	r0, sp
+ 494 0082 0FD0     		beq	.L128
+ 495 0084 FFF7FEFF 		bl	xlate_word
+ 496              	.L115:
+ 497 0088 3B68     		ldr	r3, [r7]
+ 498 008a 2D2B     		cmp	r3, #45
+ 499 008c 0FD0     		beq	.L129
+ 500              	.L104:
+ 501 008e 41B0     		add	sp, sp, #260
+ 502              		@ sp needed
+ 503 0090 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ARM GAS  /tmp/cc175fXf.s 			page 11
+
+
+ 504              	.L125:
+ 505 0094 6846     		mov	r0, sp
+ 506 0096 ADF8FF90 		strh	r9, [sp, #255]	@ unaligned
+ 507 009a 0226     		movs	r6, #2
+ 508 009c 0125     		movs	r5, #1
+ 509 009e FFF7FEFF 		bl	xlate_word
+ 510 00a2 D6E7     		b	.L110
+ 511              	.L128:
+ 512 00a4 FFF7FEFF 		bl	abbrev
+ 513 00a8 3B68     		ldr	r3, [r7]
+ 514 00aa 2D2B     		cmp	r3, #45
+ 515 00ac EFD1     		bne	.L104
+ 516              	.L129:
+ 517 00ae 0C4B     		ldr	r3, .L130+4
+ 518 00b0 1B68     		ldr	r3, [r3]
+ 519 00b2 18F80330 		ldrb	r3, [r8, r3]	@ zero_extendqisi2
+ 520 00b6 9B07     		lsls	r3, r3, #30
+ 521 00b8 E9D0     		beq	.L104
+ 522 00ba FFF7FEFF 		bl	new_char
+ 523 00be E6E7     		b	.L104
+ 524              	.L126:
+ 525 00c0 FFF7FEFF 		bl	spell_word
+ 526 00c4 41B0     		add	sp, sp, #260
+ 527              		@ sp needed
+ 528 00c6 BDE8F083 		pop	{r4, r5, r6, r7, r8, r9, pc}
+ 529              	.L118:
+ 530 00ca 0326     		movs	r6, #3
+ 531 00cc 0225     		movs	r5, #2
+ 532 00ce C9E7     		b	.L106
+ 533              	.L127:
+ 534 00d0 9DF80100 		ldrb	r0, [sp, #1]	@ zero_extendqisi2
+ 535 00d4 FFF7FEFF 		bl	say_ascii
+ 536 00d8 D6E7     		b	.L115
+ 537              	.L131:
+ 538 00da 00BF     		.align	2
+ 539              	.L130:
+ 540 00dc 00000000 		.word	Char
+ 541 00e0 00000000 		.word	Char1
+ 542 00e4 01000000 		.word	_ctype_+1
+ 543              		.size	have_letter, .-have_letter
+ 544              		.section	.text.xlate_file,"ax",%progbits
+ 545              		.align	1
+ 546              		.p2align 2,,3
+ 547              		.global	xlate_file
+ 548              		.syntax unified
+ 549              		.thumb
+ 550              		.thumb_func
+ 551              		.type	xlate_file, %function
+ 552              	xlate_file:
+ 553              		@ args = 0, pretend = 0, frame = 0
+ 554              		@ frame_needed = 0, uses_anonymous_args = 0
+ 555 0000 38B5     		push	{r3, r4, r5, lr}
+ 556 0002 1549     		ldr	r1, .L147
+ 557 0004 0A23     		movs	r3, #10
+ 558 0006 154C     		ldr	r4, .L147+4
+ 559 0008 1548     		ldr	r0, .L147+8
+ 560 000a 164A     		ldr	r2, .L147+12
+ARM GAS  /tmp/cc175fXf.s 			page 12
+
+
+ 561 000c 0B60     		str	r3, [r1]
+ 562 000e 2360     		str	r3, [r4]
+ 563 0010 0360     		str	r3, [r0]
+ 564 0012 1360     		str	r3, [r2]
+ 565 0014 FFF7FEFF 		bl	new_char
+ 566 0018 2068     		ldr	r0, [r4]
+ 567 001a 411C     		adds	r1, r0, #1
+ 568 001c 14D0     		beq	.L132
+ 569 001e 124D     		ldr	r5, .L147+16
+ 570 0020 0AE0     		b	.L139
+ 571              	.L134:
+ 572 0022 9907     		lsls	r1, r3, #30
+ 573 0024 11D1     		bne	.L140
+ 574 0026 2728     		cmp	r0, #39
+ 575 0028 0FD0     		beq	.L140
+ 576 002a 1A07     		lsls	r2, r3, #28
+ 577 002c 10D5     		bpl	.L146
+ 578              	.L138:
+ 579 002e FFF7FEFF 		bl	new_char
+ 580              	.L135:
+ 581 0032 2068     		ldr	r0, [r4]
+ 582 0034 431C     		adds	r3, r0, #1
+ 583 0036 07D0     		beq	.L132
+ 584              	.L139:
+ 585 0038 2B5C     		ldrb	r3, [r5, r0]	@ zero_extendqisi2
+ 586 003a 5A07     		lsls	r2, r3, #29
+ 587 003c F1D5     		bpl	.L134
+ 588 003e FFF7FEFF 		bl	have_number
+ 589 0042 2068     		ldr	r0, [r4]
+ 590 0044 431C     		adds	r3, r0, #1
+ 591 0046 F7D1     		bne	.L139
+ 592              	.L132:
+ 593 0048 38BD     		pop	{r3, r4, r5, pc}
+ 594              	.L140:
+ 595 004a FFF7FEFF 		bl	have_letter
+ 596 004e F0E7     		b	.L135
+ 597              	.L146:
+ 598 0050 FFF7FEFF 		bl	say_ascii
+ 599 0054 EBE7     		b	.L138
+ 600              	.L148:
+ 601 0056 00BF     		.align	2
+ 602              	.L147:
+ 603 0058 00000000 		.word	Char2
+ 604 005c 00000000 		.word	Char
+ 605 0060 00000000 		.word	Char1
+ 606 0064 00000000 		.word	Char3
+ 607 0068 01000000 		.word	_ctype_+1
+ 608              		.size	xlate_file, .-xlate_file
+ 609              		.section	.text.text2speech,"ax",%progbits
+ 610              		.align	1
+ 611              		.p2align 2,,3
+ 612              		.global	text2speech
+ 613              		.syntax unified
+ 614              		.thumb
+ 615              		.thumb_func
+ 616              		.type	text2speech, %function
+ 617              	text2speech:
+ARM GAS  /tmp/cc175fXf.s 			page 13
+
+
+ 618              		@ args = 0, pretend = 0, frame = 0
+ 619              		@ frame_needed = 0, uses_anonymous_args = 0
+ 620 0000 0F4B     		ldr	r3, .L154
+ 621 0002 70B5     		push	{r4, r5, r6, lr}
+ 622 0004 1960     		str	r1, [r3]
+ 623 0006 0024     		movs	r4, #0
+ 624 0008 0E4E     		ldr	r6, .L154+4
+ 625 000a FF23     		movs	r3, #255
+ 626 000c 1546     		mov	r5, r2
+ 627 000e 3460     		str	r4, [r6]
+ 628 0010 0B54     		strb	r3, [r1, r0]
+ 629 0012 0D4B     		ldr	r3, .L154+8
+ 630 0014 1860     		str	r0, [r3]
+ 631 0016 0D4B     		ldr	r3, .L154+12
+ 632 0018 1C60     		str	r4, [r3]
+ 633 001a FFF7FEFF 		bl	xlate_file
+ 634 001e 3068     		ldr	r0, [r6]
+ 635 0020 A042     		cmp	r0, r4
+ 636 0022 0ADD     		ble	.L150
+ 637 0024 2346     		mov	r3, r4
+ 638 0026 0A4A     		ldr	r2, .L154+16
+ 639 0028 2146     		mov	r1, r4
+ 640              	.L151:
+ 641 002a 505C     		ldrb	r0, [r2, r1]	@ zero_extendqisi2
+ 642 002c 591C     		adds	r1, r3, #1
+ 643 002e E854     		strb	r0, [r5, r3]
+ 644 0030 CBB2     		uxtb	r3, r1
+ 645 0032 3068     		ldr	r0, [r6]
+ 646 0034 1946     		mov	r1, r3
+ 647 0036 8342     		cmp	r3, r0
+ 648 0038 F7DB     		blt	.L151
+ 649              	.L150:
+ 650 003a C0B2     		uxtb	r0, r0
+ 651 003c 70BD     		pop	{r4, r5, r6, pc}
+ 652              	.L155:
+ 653 003e 00BF     		.align	2
+ 654              	.L154:
+ 655 0040 00000000 		.word	input_array
+ 656 0044 00000000 		.word	output_count
+ 657 0048 00000000 		.word	input_length
+ 658 004c 00000000 		.word	input_count
+ 659 0050 00000000 		.word	output_array
+ 660              		.size	text2speech, .-text2speech
+ 661              		.section	.text.text2speechfor256,"ax",%progbits
+ 662              		.align	1
+ 663              		.p2align 2,,3
+ 664              		.global	text2speechfor256
+ 665              		.syntax unified
+ 666              		.thumb
+ 667              		.thumb_func
+ 668              		.type	text2speechfor256, %function
+ 669              	text2speechfor256:
+ 670              		@ args = 0, pretend = 0, frame = 0
+ 671              		@ frame_needed = 0, uses_anonymous_args = 0
+ 672 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+ 673 0004 0023     		movs	r3, #0
+ 674 0006 224D     		ldr	r5, .L167
+ARM GAS  /tmp/cc175fXf.s 			page 14
+
+
+ 675 0008 1646     		mov	r6, r2
+ 676 000a FF22     		movs	r2, #255
+ 677 000c 2B60     		str	r3, [r5]
+ 678 000e 0A54     		strb	r2, [r1, r0]
+ 679 0010 204A     		ldr	r2, .L167+4
+ 680 0012 214C     		ldr	r4, .L167+8
+ 681 0014 1060     		str	r0, [r2]
+ 682 0016 214A     		ldr	r2, .L167+12
+ 683 0018 2160     		str	r1, [r4]
+ 684 001a 1360     		str	r3, [r2]
+ 685 001c FFF7FEFF 		bl	xlate_file
+ 686 0020 2868     		ldr	r0, [r5]
+ 687 0022 FE28     		cmp	r0, #254
+ 688 0024 2EDD     		ble	.L157
+ 689 0026 FE23     		movs	r3, #254
+ 690 0028 2B60     		str	r3, [r5]
+ 691              	.L158:
+ 692 002a 0023     		movs	r3, #0
+ 693 002c 1C4A     		ldr	r2, .L167+16
+ 694 002e 1D4C     		ldr	r4, .L167+20
+ 695 0030 4FF00F0E 		mov	lr, #15
+ 696 0034 9C46     		mov	ip, r3
+ 697 0036 FE27     		movs	r7, #254
+ 698 0038 04E0     		b	.L163
+ 699              	.L160:
+ 700 003a 2868     		ldr	r0, [r5]
+ 701              	.L162:
+ 702 003c CBB2     		uxtb	r3, r1
+ 703 003e 9842     		cmp	r0, r3
+ 704 0040 9C46     		mov	ip, r3
+ 705 0042 18DD     		ble	.L159
+ 706              	.L163:
+ 707 0044 14F80C00 		ldrb	r0, [r4, ip]	@ zero_extendqisi2
+ 708 0048 591C     		adds	r1, r3, #1
+ 709 004a 105C     		ldrb	r0, [r2, r0]	@ zero_extendqisi2
+ 710 004c 5FFA81F8 		uxtb	r8, r1
+ 711 0050 F054     		strb	r0, [r6, r3]
+ 712 0052 14F80C00 		ldrb	r0, [r4, ip]	@ zero_extendqisi2
+ 713 0056 0C28     		cmp	r0, #12
+ 714 0058 EFD1     		bne	.L160
+ 715 005a 06F803E0 		strb	lr, [r6, r3]
+ 716 005e 08F10101 		add	r1, r8, #1
+ 717 0062 2868     		ldr	r0, [r5]
+ 718 0064 0130     		adds	r0, r0, #1
+ 719 0066 FE28     		cmp	r0, #254
+ 720 0068 08DD     		ble	.L161
+ 721 006a CBB2     		uxtb	r3, r1
+ 722 006c FE20     		movs	r0, #254
+ 723 006e 2F60     		str	r7, [r5]
+ 724 0070 9842     		cmp	r0, r3
+ 725 0072 9C46     		mov	ip, r3
+ 726 0074 E6DC     		bgt	.L163
+ 727              	.L159:
+ 728 0076 C0B2     		uxtb	r0, r0
+ 729 0078 BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 730              	.L161:
+ 731 007c 08F10101 		add	r1, r8, #1
+ARM GAS  /tmp/cc175fXf.s 			page 15
+
+
+ 732 0080 2860     		str	r0, [r5]
+ 733 0082 DBE7     		b	.L162
+ 734              	.L157:
+ 735 0084 0028     		cmp	r0, #0
+ 736 0086 D0DC     		bgt	.L158
+ 737 0088 C0B2     		uxtb	r0, r0
+ 738 008a BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+ 739              	.L168:
+ 740 008e 00BF     		.align	2
+ 741              	.L167:
+ 742 0090 00000000 		.word	output_count
+ 743 0094 00000000 		.word	input_length
+ 744 0098 00000000 		.word	input_array
+ 745 009c 00000000 		.word	input_count
+ 746 00a0 58000000 		.word	remap256
+ 747 00a4 00000000 		.word	output_array
+ 748              		.size	text2speechfor256, .-text2speechfor256
+ 749              		.section	.text.text2speechforvotrax,"ax",%progbits
+ 750              		.align	1
+ 751              		.p2align 2,,3
+ 752              		.global	text2speechforvotrax
+ 753              		.syntax unified
+ 754              		.thumb
+ 755              		.thumb_func
+ 756              		.type	text2speechforvotrax, %function
+ 757              	text2speechforvotrax:
+ 758              		@ args = 0, pretend = 0, frame = 0
+ 759              		@ frame_needed = 0, uses_anonymous_args = 0
+ 760 0000 2DE9F843 		push	{r3, r4, r5, r6, r7, r8, r9, lr}
+ 761 0004 264B     		ldr	r3, .L180
+ 762 0006 0024     		movs	r4, #0
+ 763 0008 264D     		ldr	r5, .L180+4
+ 764 000a 1646     		mov	r6, r2
+ 765 000c 1960     		str	r1, [r3]
+ 766 000e FF23     		movs	r3, #255
+ 767 0010 2C60     		str	r4, [r5]
+ 768 0012 0B54     		strb	r3, [r1, r0]
+ 769 0014 244B     		ldr	r3, .L180+8
+ 770 0016 1860     		str	r0, [r3]
+ 771 0018 244B     		ldr	r3, .L180+12
+ 772 001a 1C60     		str	r4, [r3]
+ 773 001c FFF7FEFF 		bl	xlate_file
+ 774 0020 2B68     		ldr	r3, [r5]
+ 775 0022 FE2B     		cmp	r3, #254
+ 776 0024 36DD     		ble	.L170
+ 777 0026 FE23     		movs	r3, #254
+ 778 0028 2B60     		str	r3, [r5]
+ 779              	.L171:
+ 780 002a 4FF00008 		mov	r8, #0
+ 781 002e 204A     		ldr	r2, .L180+16
+ 782 0030 204F     		ldr	r7, .L180+20
+ 783 0032 4046     		mov	r0, r8
+ 784 0034 4446     		mov	r4, r8
+ 785              	.L173:
+ 786 0036 395D     		ldrb	r1, [r7, r4]	@ zero_extendqisi2
+ 787 0038 01EB410C 		add	ip, r1, r1, lsl #1
+ 788 003c 4B00     		lsls	r3, r1, #1
+ARM GAS  /tmp/cc175fXf.s 			page 16
+
+
+ 789 003e 12F81CC0 		ldrb	ip, [r2, ip, lsl #1]	@ zero_extendqisi2
+ 790 0042 BCF1000F 		cmp	ip, #0
+ 791 0046 1BD0     		beq	.L175
+ 792 0048 4FF0000C 		mov	ip, #0
+ 793              	.L174:
+ 794 004c 0B44     		add	r3, r3, r1
+ 795 004e 00F1010E 		add	lr, r0, #1
+ 796 0052 02EB4303 		add	r3, r2, r3, lsl #1
+ 797 0056 5FFA8EFE 		uxtb	lr, lr
+ 798 005a 6344     		add	r3, r3, ip
+ 799 005c 0CF1010C 		add	ip, ip, #1
+ 800 0060 5B78     		ldrb	r3, [r3, #1]	@ zero_extendqisi2
+ 801 0062 5FFA8CF9 		uxtb	r9, ip
+ 802 0066 3354     		strb	r3, [r6, r0]
+ 803 0068 7046     		mov	r0, lr
+ 804 006a 395D     		ldrb	r1, [r7, r4]	@ zero_extendqisi2
+ 805 006c FE28     		cmp	r0, #254
+ 806 006e 01EB410E 		add	lr, r1, r1, lsl #1
+ 807 0072 28BF     		it	cs
+ 808 0074 FE20     		movcs	r0, #254
+ 809 0076 4B00     		lsls	r3, r1, #1
+ 810 0078 12F81EE0 		ldrb	lr, [r2, lr, lsl #1]	@ zero_extendqisi2
+ 811 007c CE45     		cmp	lr, r9
+ 812 007e E5D8     		bhi	.L174
+ 813              	.L175:
+ 814 0080 08F10108 		add	r8, r8, #1
+ 815 0084 2B68     		ldr	r3, [r5]
+ 816 0086 5FFA88F8 		uxtb	r8, r8
+ 817 008a 9845     		cmp	r8, r3
+ 818 008c 4446     		mov	r4, r8
+ 819 008e D2DB     		blt	.L173
+ 820 0090 BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 821              	.L170:
+ 822 0094 002B     		cmp	r3, #0
+ 823 0096 C8DC     		bgt	.L171
+ 824 0098 2046     		mov	r0, r4
+ 825 009a BDE8F883 		pop	{r3, r4, r5, r6, r7, r8, r9, pc}
+ 826              	.L181:
+ 827 009e 00BF     		.align	2
+ 828              	.L180:
+ 829 00a0 00000000 		.word	input_array
+ 830 00a4 00000000 		.word	output_count
+ 831 00a8 00000000 		.word	input_length
+ 832 00ac 00000000 		.word	input_count
+ 833 00b0 8C000000 		.word	ourvot
+ 834 00b4 00000000 		.word	output_array
+ 835              		.size	text2speechforvotrax, .-text2speechforvotrax
+ 836              		.section	.text.text2speechforSAM,"ax",%progbits
+ 837              		.align	1
+ 838              		.p2align 2,,3
+ 839              		.global	text2speechforSAM
+ 840              		.syntax unified
+ 841              		.thumb
+ 842              		.thumb_func
+ 843              		.type	text2speechforSAM, %function
+ 844              	text2speechforSAM:
+ 845              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  /tmp/cc175fXf.s 			page 17
+
+
+ 846              		@ frame_needed = 0, uses_anonymous_args = 0
+ 847 0000 70B5     		push	{r4, r5, r6, lr}
+ 848 0002 134D     		ldr	r5, .L190
+ 849 0004 0023     		movs	r3, #0
+ 850 0006 134C     		ldr	r4, .L190+4
+ 851 0008 2960     		str	r1, [r5]
+ 852 000a 1546     		mov	r5, r2
+ 853 000c FF22     		movs	r2, #255
+ 854 000e 2360     		str	r3, [r4]
+ 855 0010 0A54     		strb	r2, [r1, r0]
+ 856 0012 114A     		ldr	r2, .L190+8
+ 857 0014 1060     		str	r0, [r2]
+ 858 0016 114A     		ldr	r2, .L190+12
+ 859 0018 1360     		str	r3, [r2]
+ 860 001a FFF7FEFF 		bl	xlate_file
+ 861 001e 2068     		ldr	r0, [r4]
+ 862 0020 FF28     		cmp	r0, #255
+ 863 0022 10DD     		ble	.L183
+ 864 0024 FE23     		movs	r3, #254
+ 865 0026 2360     		str	r3, [r4]
+ 866              	.L184:
+ 867 0028 0023     		movs	r3, #0
+ 868 002a 0D4E     		ldr	r6, .L190+16
+ 869 002c 0D4A     		ldr	r2, .L190+20
+ 870 002e 1946     		mov	r1, r3
+ 871              	.L186:
+ 872 0030 505C     		ldrb	r0, [r2, r1]	@ zero_extendqisi2
+ 873 0032 591C     		adds	r1, r3, #1
+ 874 0034 305C     		ldrb	r0, [r6, r0]	@ zero_extendqisi2
+ 875 0036 E854     		strb	r0, [r5, r3]
+ 876 0038 CBB2     		uxtb	r3, r1
+ 877 003a 2068     		ldr	r0, [r4]
+ 878 003c 1946     		mov	r1, r3
+ 879 003e 8342     		cmp	r3, r0
+ 880 0040 F6DB     		blt	.L186
+ 881 0042 C0B2     		uxtb	r0, r0
+ 882 0044 70BD     		pop	{r4, r5, r6, pc}
+ 883              	.L183:
+ 884 0046 0028     		cmp	r0, #0
+ 885 0048 EEDC     		bgt	.L184
+ 886 004a C0B2     		uxtb	r0, r0
+ 887 004c 70BD     		pop	{r4, r5, r6, pc}
+ 888              	.L191:
+ 889 004e 00BF     		.align	2
+ 890              	.L190:
+ 891 0050 00000000 		.word	input_array
+ 892 0054 00000000 		.word	output_count
+ 893 0058 00000000 		.word	input_length
+ 894 005c 00000000 		.word	input_count
+ 895 0060 2C000000 		.word	remapsam
+ 896 0064 00000000 		.word	output_array
+ 897              		.size	text2speechforSAM, .-text2speechforSAM
+ 898              		.section	.text.text2speechforTMS,"ax",%progbits
+ 899              		.align	1
+ 900              		.p2align 2,,3
+ 901              		.global	text2speechforTMS
+ 902              		.syntax unified
+ARM GAS  /tmp/cc175fXf.s 			page 18
+
+
+ 903              		.thumb
+ 904              		.thumb_func
+ 905              		.type	text2speechforTMS, %function
+ 906              	text2speechforTMS:
+ 907              		@ args = 0, pretend = 0, frame = 0
+ 908              		@ frame_needed = 0, uses_anonymous_args = 0
+ 909 0000 70B5     		push	{r4, r5, r6, lr}
+ 910 0002 134D     		ldr	r5, .L200
+ 911 0004 0023     		movs	r3, #0
+ 912 0006 134C     		ldr	r4, .L200+4
+ 913 0008 2960     		str	r1, [r5]
+ 914 000a 1546     		mov	r5, r2
+ 915 000c FF22     		movs	r2, #255
+ 916 000e 2360     		str	r3, [r4]
+ 917 0010 0A54     		strb	r2, [r1, r0]
+ 918 0012 114A     		ldr	r2, .L200+8
+ 919 0014 1060     		str	r0, [r2]
+ 920 0016 114A     		ldr	r2, .L200+12
+ 921 0018 1360     		str	r3, [r2]
+ 922 001a FFF7FEFF 		bl	xlate_file
+ 923 001e 2068     		ldr	r0, [r4]
+ 924 0020 FF28     		cmp	r0, #255
+ 925 0022 10DD     		ble	.L193
+ 926 0024 FE23     		movs	r3, #254
+ 927 0026 2360     		str	r3, [r4]
+ 928              	.L194:
+ 929 0028 0023     		movs	r3, #0
+ 930 002a 0D4E     		ldr	r6, .L200+16
+ 931 002c 0D4A     		ldr	r2, .L200+20
+ 932 002e 1946     		mov	r1, r3
+ 933              	.L196:
+ 934 0030 505C     		ldrb	r0, [r2, r1]	@ zero_extendqisi2
+ 935 0032 591C     		adds	r1, r3, #1
+ 936 0034 305C     		ldrb	r0, [r6, r0]	@ zero_extendqisi2
+ 937 0036 E854     		strb	r0, [r5, r3]
+ 938 0038 CBB2     		uxtb	r3, r1
+ 939 003a 2068     		ldr	r0, [r4]
+ 940 003c 1946     		mov	r1, r3
+ 941 003e 8342     		cmp	r3, r0
+ 942 0040 F6DB     		blt	.L196
+ 943 0042 C0B2     		uxtb	r0, r0
+ 944 0044 70BD     		pop	{r4, r5, r6, pc}
+ 945              	.L193:
+ 946 0046 0028     		cmp	r0, #0
+ 947 0048 EEDC     		bgt	.L194
+ 948 004a C0B2     		uxtb	r0, r0
+ 949 004c 70BD     		pop	{r4, r5, r6, pc}
+ 950              	.L201:
+ 951 004e 00BF     		.align	2
+ 952              	.L200:
+ 953 0050 00000000 		.word	input_array
+ 954 0054 00000000 		.word	output_count
+ 955 0058 00000000 		.word	input_length
+ 956 005c 00000000 		.word	input_count
+ 957 0060 00000000 		.word	remaptms
+ 958 0064 00000000 		.word	output_array
+ 959              		.size	text2speechforTMS, .-text2speechforTMS
+ARM GAS  /tmp/cc175fXf.s 			page 19
+
+
+ 960              		.section	.flash,"a"
+ 961              		.align	2
+ 962              		.type	remaptms, %object
+ 963              		.size	remaptms, 43
+ 964              	remaptms:
+ 965 0000 343B3921 		.ascii	"4;9!\031\002\036\016FG\026\001D\033\035&kUnWiYr`_^w"
+ 965      19021E0E 
+ 965      46471601 
+ 965      441B1D26 
+ 965      6B556E57 
+ 966 001b 627A6475 		.ascii	"bzduLMOHRTQq\\S}~"
+ 966      4C4D4F48 
+ 966      52545171 
+ 966      5C537D7E 
+ 967 002b 00       		.align	2
+ 968              		.type	remapsam, %object
+ 969              		.size	remapsam, 43
+ 970              	remapsam:
+ 971 002c 00010D02 		.ascii	"\000\001\015\002\003\004\006\021\010\022\012\013\005"
+ 971      03040611 
+ 971      08120A0B 
+ 971      05
+ 972 0039 0E100F27 		.ascii	"\016\020\017'\033(\034)\035%!&\"#\037$ +\030\031\032"
+ 972      1B281C29 
+ 972      1D252126 
+ 972      22231F24 
+ 972      202B1819 
+ 973 004e 14151713 		.ascii	"\024\025\027\023*\036\02666"
+ 973      2A1E1636 
+ 973      36
+ 974 0057 00       		.align	2
+ 975              		.type	remap256, %object
+ 976              		.size	remap256, 43
+ 977              	remap256:
+ 978 0058 130C1407 		.ascii	"\023\014\024\007\032\030\0275\036\0373\017\017\006 "
+ 978      1A181735 
+ 978      1E1F330F 
+ 978      0F0620
+ 979 0067 05091C11 		.ascii	"\005\011\034\021\025*=(#\035\0227+%&\033\020\013,-."
+ 979      152A3D28 
+ 979      231D1237 
+ 979      2B25261B 
+ 979      100B2C2D 
+ 980 007c 310E320A 		.ascii	"1\0162\0120\003\003"
+ 980      300303
+ 981 0083 00       		.align	2
+ 982              		.type	poynt, %object
+ 983              		.size	poynt, 5
+ 984              	poynt:
+ 985 0084 100F2012 		.ascii	"\020\017 \022)"
+ 985      29
+ 986 0089 000000   		.align	2
+ 987              		.type	ourvot, %object
+ 988              		.size	ourvot, 258
+ 989              	ourvot:
+ 990 008c 01       		.byte	1
+ 991 008d 2100     		.ascii	"!\000"
+ARM GAS  /tmp/cc175fXf.s 			page 20
+
+
+ 992 008f 000000   		.space	3
+ 993 0092 01       		.byte	1
+ 994 0093 2700     		.ascii	"'\000"
+ 995 0095 000000   		.space	3
+ 996 0098 03       		.byte	3
+ 997 0099 20212900 		.ascii	" !)\000"
+ 998 009d 00       		.space	1
+ 999 009e 01       		.byte	1
+ 1000 009f 0000     		.ascii	"\000\000"
+ 1001 00a1 000000   		.space	3
+ 1002 00a4 01       		.byte	1
+ 1003 00a5 2F00     		.ascii	"/\000"
+ 1004 00a7 000000   		.space	3
+ 1005 00aa 01       		.byte	1
+ 1006 00ab 2400     		.ascii	"$\000"
+ 1007 00ad 000000   		.space	3
+ 1008 00b0 03       		.byte	3
+ 1009 00b1 35262600 		.ascii	"5&&\000"
+ 1010 00b5 00       		.space	1
+ 1011 00b6 02       		.byte	2
+ 1012 00b7 262800   		.ascii	"&(\000"
+ 1013 00ba 0000     		.space	2
+ 1014 00bc 01       		.byte	1
+ 1015 00bd 2800     		.ascii	"(\000"
+ 1016 00bf 000000   		.space	3
+ 1017 00c2 03       		.byte	3
+ 1018 00c3 282800   		.ascii	"((\000"
+ 1019 00c6 0000     		.space	2
+ 1020 00c8 01       		.byte	1
+ 1021 00c9 3A00     		.ascii	":\000"
+ 1022 00cb 000000   		.space	3
+ 1023 00ce 02       		.byte	2
+ 1024 00cf 2E2D00   		.ascii	".-\000"
+ 1025 00d2 0000     		.space	2
+ 1026 00d4 01       		.byte	1
+ 1027 00d5 3300     		.ascii	"3\000"
+ 1028 00d7 000000   		.space	3
+ 1029 00da 04       		.byte	4
+ 1030 00db 152F0229 		.ascii	"\025/\002)\000"
+ 1030      00
+ 1031 00e0 04       		.byte	4
+ 1032 00e1 243D2628 		.ascii	"$=&(\000"
+ 1032      00
+ 1033 00e6 05       		.byte	5
+ 1034 00e7 26321527 		.ascii	"&2\025')"
+ 1034      29
+ 1035 00ec 01       		.byte	1
+ 1036 00ed 2500     		.ascii	"%\000"
+ 1037 00ef 000000   		.space	3
+ 1038 00f2 01       		.byte	1
+ 1039 00f3 0E00     		.ascii	"\016\000"
+ 1040 00f5 000000   		.space	3
+ 1041 00f8 01       		.byte	1
+ 1042 00f9 2A00     		.ascii	"*\000"
+ 1043 00fb 000000   		.space	3
+ 1044 00fe 01       		.byte	1
+ 1045 00ff 1E00     		.ascii	"\036\000"
+ARM GAS  /tmp/cc175fXf.s 			page 21
+
+
+ 1046 0101 000000   		.space	3
+ 1047 0104 02       		.byte	2
+ 1048 0105 191B00   		.ascii	"\031\033\000"
+ 1049 0108 0000     		.space	2
+ 1050 010a 01       		.byte	1
+ 1051 010b 1C00     		.ascii	"\034\000"
+ 1052 010d 000000   		.space	3
+ 1053 0110 01       		.byte	1
+ 1054 0111 1D00     		.ascii	"\035\000"
+ 1055 0113 000000   		.space	3
+ 1056 0116 01       		.byte	1
+ 1057 0117 0F00     		.ascii	"\017\000"
+ 1058 0119 000000   		.space	3
+ 1059 011c 01       		.byte	1
+ 1060 011d 3800     		.ascii	"8\000"
+ 1061 011f 000000   		.space	3
+ 1062 0122 01       		.byte	1
+ 1063 0123 3900     		.ascii	"9\000"
+ 1064 0125 000000   		.space	3
+ 1065 0128 01       		.byte	1
+ 1066 0129 1F00     		.ascii	"\037\000"
+ 1067 012b 000000   		.space	3
+ 1068 012e 01       		.byte	1
+ 1069 012f 1200     		.ascii	"\022\000"
+ 1070 0131 000000   		.space	3
+ 1071 0134 01       		.byte	1
+ 1072 0135 1100     		.ascii	"\021\000"
+ 1073 0137 000000   		.space	3
+ 1074 013a 01       		.byte	1
+ 1075 013b 0700     		.ascii	"\007\000"
+ 1076 013d 000000   		.space	3
+ 1077 0140 01       		.byte	1
+ 1078 0141 1B00     		.ascii	"\033\000"
+ 1079 0143 000000   		.space	3
+ 1080 0146 01       		.byte	1
+ 1081 0147 0C00     		.ascii	"\014\000"
+ 1082 0149 000000   		.space	3
+ 1083 014c 01       		.byte	1
+ 1084 014d 0D00     		.ascii	"\015\000"
+ 1085 014f 000000   		.space	3
+ 1086 0152 01       		.byte	1
+ 1087 0153 1400     		.ascii	"\024\000"
+ 1088 0155 000000   		.space	3
+ 1089 0158 01       		.byte	1
+ 1090 0159 1800     		.ascii	"\030\000"
+ 1091 015b 000000   		.space	3
+ 1092 015e 01       		.byte	1
+ 1093 015f 2D00     		.ascii	"-\000"
+ 1094 0161 000000   		.space	3
+ 1095 0164 01       		.byte	1
+ 1096 0165 2900     		.ascii	")\000"
+ 1097 0167 000000   		.space	3
+ 1098 016a 01       		.byte	1
+ 1099 016b 2B00     		.ascii	"+\000"
+ 1100 016d 000000   		.space	3
+ 1101 0170 02       		.byte	2
+ 1102 0171 2A1100   		.ascii	"*\021\000"
+ARM GAS  /tmp/cc175fXf.s 			page 22
+
+
+ 1103 0174 0000     		.space	2
+ 1104 0176 02       		.byte	2
+ 1105 0177 1E1A00   		.ascii	"\036\032\000"
+ 1106 017a 0000     		.space	2
+ 1107 017c 01       		.byte	1
+ 1108 017d 2D00     		.ascii	"-\000"
+ 1109 017f 000000   		.space	3
+ 1110 0182 01       		.byte	1
+ 1111 0183 3E00     		.ascii	">\000"
+ 1112 0185 000000   		.space	3
+ 1113 0188 01       		.byte	1
+ 1114 0189 3F00     		.ascii	"?\000"
+ 1115 018b 000000   		.space	3
+ 1116              		.global	output_count
+ 1117              		.section	.bss.output_count,"aw",%nobits
+ 1118              		.align	2
+ 1119              		.type	output_count, %object
+ 1120              		.size	output_count, 4
+ 1121              	output_count:
+ 1122 0000 00000000 		.space	4
+ 1123              		.global	output_array
+ 1124              		.section	.bss.output_array,"aw",%nobits
+ 1125              		.align	2
+ 1126              		.type	output_array, %object
+ 1127              		.size	output_array, 256
+ 1128              	output_array:
+ 1129 0000 00000000 		.space	256
+ 1129      00000000 
+ 1129      00000000 
+ 1129      00000000 
+ 1129      00000000 
+ 1130              		.section	.bss.input_array,"aw",%nobits
+ 1131              		.align	2
+ 1132              		.type	input_array, %object
+ 1133              		.size	input_array, 4
+ 1134              	input_array:
+ 1135 0000 00000000 		.space	4
+ 1136              		.section	.bss.input_length,"aw",%nobits
+ 1137              		.align	2
+ 1138              		.type	input_length, %object
+ 1139              		.size	input_length, 4
+ 1140              	input_length:
+ 1141 0000 00000000 		.space	4
+ 1142              		.section	.bss.input_count,"aw",%nobits
+ 1143              		.align	2
+ 1144              		.type	input_count, %object
+ 1145              		.size	input_count, 4
+ 1146              	input_count:
+ 1147 0000 00000000 		.space	4
+ 1148              		.section	.bss.Char3,"aw",%nobits
+ 1149              		.align	2
+ 1150              		.type	Char3, %object
+ 1151              		.size	Char3, 4
+ 1152              	Char3:
+ 1153 0000 00000000 		.space	4
+ 1154              		.section	.bss.Char2,"aw",%nobits
+ 1155              		.align	2
+ARM GAS  /tmp/cc175fXf.s 			page 23
+
+
+ 1156              		.type	Char2, %object
+ 1157              		.size	Char2, 4
+ 1158              	Char2:
+ 1159 0000 00000000 		.space	4
+ 1160              		.section	.bss.Char1,"aw",%nobits
+ 1161              		.align	2
+ 1162              		.type	Char1, %object
+ 1163              		.size	Char1, 4
+ 1164              	Char1:
+ 1165 0000 00000000 		.space	4
+ 1166              		.section	.bss.Char,"aw",%nobits
+ 1167              		.align	2
+ 1168              		.type	Char, %object
+ 1169              		.size	Char, 4
+ 1170              	Char:
+ 1171 0000 00000000 		.space	4
+ 1172              		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/cc175fXf.s 			page 24
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 parse.c
+     /tmp/cc175fXf.s:17     .text.makeupper:00000000 $t
+     /tmp/cc175fXf.s:24     .text.makeupper:00000000 makeupper
+     /tmp/cc175fXf.s:35     .text.new_char:00000000 $t
+     /tmp/cc175fXf.s:42     .text.new_char:00000000 new_char
+     /tmp/cc175fXf.s:137    .text.new_char:000000cc $d
+     /tmp/cc175fXf.s:1170   .bss.Char:00000000 Char
+     /tmp/cc175fXf.s:1164   .bss.Char1:00000000 Char1
+     /tmp/cc175fXf.s:1158   .bss.Char2:00000000 Char2
+     /tmp/cc175fXf.s:1146   .bss.input_count:00000000 input_count
+     /tmp/cc175fXf.s:1134   .bss.input_array:00000000 input_array
+     /tmp/cc175fXf.s:1140   .bss.input_length:00000000 input_length
+     /tmp/cc175fXf.s:1152   .bss.Char3:00000000 Char3
+     /tmp/cc175fXf.s:146    .text.have_special:00000000 $t
+     /tmp/cc175fXf.s:153    .text.have_special:00000000 have_special
+     /tmp/cc175fXf.s:172    .text.have_special:00000024 $d
+     /tmp/cc175fXf.s:176    .text.have_number:00000000 $t
+     /tmp/cc175fXf.s:183    .text.have_number:00000000 have_number
+     /tmp/cc175fXf.s:213    .text.have_number:00000044 $d
+     /tmp/cc175fXf.s:223    .text.have_number:0000004e $t
+     /tmp/cc175fXf.s:338    .text.have_number:00000138 $d
+     /tmp/cc175fXf.s:984    .flash:00000084 poynt
+     /tmp/cc175fXf.s:346    .rodata.abbrev.str1.4:00000000 $d
+     /tmp/cc175fXf.s:368    .text.abbrev:00000000 $t
+     /tmp/cc175fXf.s:375    .text.abbrev:00000000 abbrev
+     /tmp/cc175fXf.s:421    .text.abbrev:0000006c $d
+     /tmp/cc175fXf.s:430    .text.have_letter:00000000 $t
+     /tmp/cc175fXf.s:437    .text.have_letter:00000000 have_letter
+     /tmp/cc175fXf.s:540    .text.have_letter:000000dc $d
+     /tmp/cc175fXf.s:545    .text.xlate_file:00000000 $t
+     /tmp/cc175fXf.s:552    .text.xlate_file:00000000 xlate_file
+     /tmp/cc175fXf.s:603    .text.xlate_file:00000058 $d
+     /tmp/cc175fXf.s:610    .text.text2speech:00000000 $t
+     /tmp/cc175fXf.s:617    .text.text2speech:00000000 text2speech
+     /tmp/cc175fXf.s:655    .text.text2speech:00000040 $d
+     /tmp/cc175fXf.s:1121   .bss.output_count:00000000 output_count
+     /tmp/cc175fXf.s:1128   .bss.output_array:00000000 output_array
+     /tmp/cc175fXf.s:662    .text.text2speechfor256:00000000 $t
+     /tmp/cc175fXf.s:669    .text.text2speechfor256:00000000 text2speechfor256
+     /tmp/cc175fXf.s:742    .text.text2speechfor256:00000090 $d
+     /tmp/cc175fXf.s:977    .flash:00000058 remap256
+     /tmp/cc175fXf.s:750    .text.text2speechforvotrax:00000000 $t
+     /tmp/cc175fXf.s:757    .text.text2speechforvotrax:00000000 text2speechforvotrax
+     /tmp/cc175fXf.s:829    .text.text2speechforvotrax:000000a0 $d
+     /tmp/cc175fXf.s:989    .flash:0000008c ourvot
+     /tmp/cc175fXf.s:837    .text.text2speechforSAM:00000000 $t
+     /tmp/cc175fXf.s:844    .text.text2speechforSAM:00000000 text2speechforSAM
+     /tmp/cc175fXf.s:891    .text.text2speechforSAM:00000050 $d
+     /tmp/cc175fXf.s:970    .flash:0000002c remapsam
+     /tmp/cc175fXf.s:899    .text.text2speechforTMS:00000000 $t
+     /tmp/cc175fXf.s:906    .text.text2speechforTMS:00000000 text2speechforTMS
+     /tmp/cc175fXf.s:953    .text.text2speechforTMS:00000050 $d
+     /tmp/cc175fXf.s:964    .flash:00000000 remaptms
+     /tmp/cc175fXf.s:961    .flash:00000000 $d
+     /tmp/cc175fXf.s:1118   .bss.output_count:00000000 $d
+     /tmp/cc175fXf.s:1125   .bss.output_array:00000000 $d
+ARM GAS  /tmp/cc175fXf.s 			page 25
+
+
+     /tmp/cc175fXf.s:1131   .bss.input_array:00000000 $d
+     /tmp/cc175fXf.s:1137   .bss.input_length:00000000 $d
+     /tmp/cc175fXf.s:1143   .bss.input_count:00000000 $d
+     /tmp/cc175fXf.s:1149   .bss.Char3:00000000 $d
+     /tmp/cc175fXf.s:1155   .bss.Char2:00000000 $d
+     /tmp/cc175fXf.s:1161   .bss.Char1:00000000 $d
+     /tmp/cc175fXf.s:1167   .bss.Char:00000000 $d
+
+UNDEFINED SYMBOLS
+say_ascii
+_ctype_
+say_cardinal
+say_ordinal
+outnum
+strcmp
+spell_word
+xlate_word
+strlen

@@ -1,0 +1,789 @@
+ARM GAS  /tmp/ccdqTu4s.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/english2phoneme/saynum.lst 
+ input file    	: /tmp/ccdqTu4s.s
+ output file   	: src/english2phoneme/saynum.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:36:00.000+0100
+
+ARM GAS  /tmp/ccdqTu4s.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"saynum.c"
+  15              		.text
+  16              		.section	.text.say_cardinal,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	say_cardinal
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	say_cardinal, %function
+  24              	say_cardinal:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27 0000 38B5     		push	{r3, r4, r5, lr}
+  28 0002 041E     		subs	r4, r0, #0
+  29 0004 C0F28280 		blt	.L30
+  30              	.L2:
+  31 0008 434B     		ldr	r3, .L33
+  32 000a 9C42     		cmp	r4, r3
+  33 000c 6BDC     		bgt	.L31
+  34              	.L3:
+  35 000e 434B     		ldr	r3, .L33+4
+  36 0010 9C42     		cmp	r4, r3
+  37 0012 3BDC     		bgt	.L32
+  38 0014 A4F57A73 		sub	r3, r4, #1000
+  39 0018 632B     		cmp	r3, #99
+  40 001a 4ED9     		bls	.L10
+  41 001c B4F5FA6F 		cmp	r4, #2000
+  42 0020 4BDA     		bge	.L10
+  43 0022 632C     		cmp	r4, #99
+  44 0024 12DD     		ble	.L6
+  45              	.L11:
+  46 0026 3E4D     		ldr	r5, .L33+8
+  47 0028 3E4B     		ldr	r3, .L33+12
+  48 002a A5FB0425 		umull	r2, r5, r5, r4
+  49 002e 6D09     		lsrs	r5, r5, #5
+  50 0030 05EB8500 		add	r0, r5, r5, lsl #2
+  51 0034 03EB8000 		add	r0, r3, r0, lsl #2
+  52 0038 FFF7FEFF 		bl	outnum
+  53 003c 3A48     		ldr	r0, .L33+16
+  54 003e FFF7FEFF 		bl	outnum
+  55 0042 6423     		movs	r3, #100
+  56 0044 03FB1544 		mls	r4, r3, r5, r4
+  57 0048 002C     		cmp	r4, #0
+ARM GAS  /tmp/ccdqTu4s.s 			page 3
+
+
+  58 004a 4BD0     		beq	.L1
+  59              	.L6:
+  60 004c 132C     		cmp	r4, #19
+  61 004e 14DD     		ble	.L14
+  62 0050 A4F11403 		sub	r3, r4, #20
+  63 0054 354D     		ldr	r5, .L33+20
+  64 0056 3648     		ldr	r0, .L33+24
+  65 0058 A5FB0323 		umull	r2, r3, r5, r3
+  66 005c DB08     		lsrs	r3, r3, #3
+  67 005e 03EB8303 		add	r3, r3, r3, lsl #2
+  68 0062 00EB8300 		add	r0, r0, r3, lsl #2
+  69 0066 A5FB0435 		umull	r3, r5, r5, r4
+  70 006a FFF7FEFF 		bl	outnum
+  71 006e ED08     		lsrs	r5, r5, #3
+  72 0070 05EB8505 		add	r5, r5, r5, lsl #2
+  73 0074 B4EB4504 		subs	r4, r4, r5, lsl #1
+  74 0078 34D0     		beq	.L1
+  75              	.L14:
+  76 007a 04EB8404 		add	r4, r4, r4, lsl #2
+  77 007e 2948     		ldr	r0, .L33+12
+  78 0080 00EB8400 		add	r0, r0, r4, lsl #2
+  79 0084 BDE83840 		pop	{r3, r4, r5, lr}
+  80 0088 FFF7FEBF 		b	outnum
+  81              	.L32:
+  82 008c 294D     		ldr	r5, .L33+28
+  83 008e A5FB0435 		umull	r3, r5, r5, r4
+  84 0092 AD0C     		lsrs	r5, r5, #18
+  85 0094 2846     		mov	r0, r5
+  86 0096 FFF7FEFF 		bl	say_cardinal
+  87 009a 2748     		ldr	r0, .L33+32
+  88 009c FFF7FEFF 		bl	outnum
+  89 00a0 264B     		ldr	r3, .L33+36
+  90 00a2 03FB1544 		mls	r4, r3, r5, r4
+  91 00a6 ECB1     		cbz	r4, .L1
+  92 00a8 632C     		cmp	r4, #99
+  93 00aa 17DD     		ble	.L28
+  94 00ac A4F57A73 		sub	r3, r4, #1000
+  95 00b0 632B     		cmp	r3, #99
+  96 00b2 02D9     		bls	.L10
+  97 00b4 B4F5FA6F 		cmp	r4, #2000
+  98 00b8 B5DB     		blt	.L11
+  99              	.L10:
+ 100 00ba 214D     		ldr	r5, .L33+40
+ 101 00bc A5FB0435 		umull	r3, r5, r5, r4
+ 102 00c0 AD09     		lsrs	r5, r5, #6
+ 103 00c2 2846     		mov	r0, r5
+ 104 00c4 FFF7FEFF 		bl	say_cardinal
+ 105 00c8 1E48     		ldr	r0, .L33+44
+ 106 00ca FFF7FEFF 		bl	outnum
+ 107 00ce 4FF47A73 		mov	r3, #1000
+ 108 00d2 03FB1544 		mls	r4, r3, r5, r4
+ 109 00d6 2CB1     		cbz	r4, .L1
+ 110 00d8 632C     		cmp	r4, #99
+ 111 00da A4DC     		bgt	.L11
+ 112              	.L28:
+ 113 00dc 1A48     		ldr	r0, .L33+48
+ 114 00de FFF7FEFF 		bl	outnum
+ARM GAS  /tmp/ccdqTu4s.s 			page 4
+
+
+ 115 00e2 B3E7     		b	.L6
+ 116              	.L1:
+ 117 00e4 38BD     		pop	{r3, r4, r5, pc}
+ 118              	.L31:
+ 119 00e6 194B     		ldr	r3, .L33+52
+ 120 00e8 650A     		lsrs	r5, r4, #9
+ 121 00ea A3FB0535 		umull	r3, r5, r3, r5
+ 122 00ee ED09     		lsrs	r5, r5, #7
+ 123 00f0 2846     		mov	r0, r5
+ 124 00f2 FFF7FEFF 		bl	say_cardinal
+ 125 00f6 1648     		ldr	r0, .L33+56
+ 126 00f8 FFF7FEFF 		bl	outnum
+ 127 00fc 154B     		ldr	r3, .L33+60
+ 128 00fe 03FB1544 		mls	r4, r3, r5, r4
+ 129 0102 002C     		cmp	r4, #0
+ 130 0104 EED0     		beq	.L1
+ 131 0106 632C     		cmp	r4, #99
+ 132 0108 81DC     		bgt	.L3
+ 133 010a E7E7     		b	.L28
+ 134              	.L30:
+ 135 010c 1248     		ldr	r0, .L33+64
+ 136 010e 6442     		rsbs	r4, r4, #0
+ 137 0110 FFF7FEFF 		bl	outnum
+ 138 0114 78E7     		b	.L2
+ 139              	.L34:
+ 140 0116 00BF     		.align	2
+ 141              	.L33:
+ 142 0118 FFC99A3B 		.word	999999999
+ 143 011c 3F420F00 		.word	999999
+ 144 0120 1F85EB51 		.word	1374389535
+ 145 0124 D0020000 		.word	Cardinals
+ 146 0128 60040000 		.word	hahn
+ 147 012c CDCCCCCC 		.word	-858993459
+ 148 0130 30020000 		.word	Twenties
+ 149 0134 83DE1B43 		.word	1125899907
+ 150 0138 88040000 		.word	mil
+ 151 013c 40420F00 		.word	1000000
+ 152 0140 D34D6210 		.word	274877907
+ 153 0144 74040000 		.word	thaw
+ 154 0148 9C040000 		.word	end
+ 155 014c 834B0400 		.word	281475
+ 156 0150 B0040000 		.word	bihl
+ 157 0154 00CA9A3B 		.word	1000000000
+ 158 0158 C4040000 		.word	mayn
+ 159              		.size	say_cardinal, .-say_cardinal
+ 160              		.section	.text.say_ordinal,"ax",%progbits
+ 161              		.align	1
+ 162              		.p2align 2,,3
+ 163              		.global	say_ordinal
+ 164              		.syntax unified
+ 165              		.thumb
+ 166              		.thumb_func
+ 167              		.type	say_ordinal, %function
+ 168              	say_ordinal:
+ 169              		@ args = 0, pretend = 0, frame = 0
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171 0000 38B5     		push	{r3, r4, r5, lr}
+ARM GAS  /tmp/ccdqTu4s.s 			page 5
+
+
+ 172 0002 041E     		subs	r4, r0, #0
+ 173 0004 7FDB     		blt	.L54
+ 174              	.L36:
+ 175 0006 484B     		ldr	r3, .L59
+ 176 0008 9C42     		cmp	r4, r3
+ 177 000a 69DC     		bgt	.L55
+ 178              	.L37:
+ 179 000c 474B     		ldr	r3, .L59+4
+ 180 000e 9C42     		cmp	r4, r3
+ 181 0010 3CDC     		bgt	.L56
+ 182 0012 A4F57A73 		sub	r3, r4, #1000
+ 183 0016 632B     		cmp	r3, #99
+ 184 0018 50D9     		bls	.L43
+ 185 001a B4F5FA6F 		cmp	r4, #2000
+ 186 001e 4DDA     		bge	.L43
+ 187 0020 632C     		cmp	r4, #99
+ 188 0022 11DD     		ble	.L39
+ 189              	.L44:
+ 190 0024 424D     		ldr	r5, .L59+8
+ 191 0026 434B     		ldr	r3, .L59+12
+ 192 0028 A5FB0425 		umull	r2, r5, r5, r4
+ 193 002c 6D09     		lsrs	r5, r5, #5
+ 194 002e 05EB8500 		add	r0, r5, r5, lsl #2
+ 195 0032 03EB8000 		add	r0, r3, r0, lsl #2
+ 196 0036 FFF7FEFF 		bl	outnum
+ 197 003a 6423     		movs	r3, #100
+ 198 003c 3E48     		ldr	r0, .L59+16
+ 199 003e 03FB1544 		mls	r4, r3, r5, r4
+ 200 0042 FCB1     		cbz	r4, .L53
+ 201 0044 FFF7FEFF 		bl	outnum
+ 202              	.L39:
+ 203 0048 132C     		cmp	r4, #19
+ 204 004a 16DD     		ble	.L49
+ 205 004c 3B4B     		ldr	r3, .L59+20
+ 206 004e A4F11400 		sub	r0, r4, #20
+ 207 0052 A3FB0425 		umull	r2, r5, r3, r4
+ 208 0056 A3FB0030 		umull	r3, r0, r3, r0
+ 209 005a ED08     		lsrs	r5, r5, #3
+ 210 005c C008     		lsrs	r0, r0, #3
+ 211 005e 05EB8505 		add	r5, r5, r5, lsl #2
+ 212 0062 00EB8000 		add	r0, r0, r0, lsl #2
+ 213 0066 B4EB4505 		subs	r5, r4, r5, lsl #1
+ 214 006a 4FEA8000 		lsl	r0, r0, #2
+ 215 006e 4FD0     		beq	.L57
+ 216 0070 334B     		ldr	r3, .L59+24
+ 217 0072 2C46     		mov	r4, r5
+ 218 0074 1844     		add	r0, r0, r3
+ 219 0076 FFF7FEFF 		bl	outnum
+ 220              	.L49:
+ 221 007a 04EB8404 		add	r4, r4, r4, lsl #2
+ 222 007e 3148     		ldr	r0, .L59+28
+ 223 0080 00EB8400 		add	r0, r0, r4, lsl #2
+ 224              	.L53:
+ 225 0084 BDE83840 		pop	{r3, r4, r5, lr}
+ 226 0088 FFF7FEBF 		b	outnum
+ 227              	.L56:
+ 228 008c 2E4D     		ldr	r5, .L59+32
+ARM GAS  /tmp/ccdqTu4s.s 			page 6
+
+
+ 229 008e A5FB0435 		umull	r3, r5, r5, r4
+ 230 0092 AD0C     		lsrs	r5, r5, #18
+ 231 0094 2846     		mov	r0, r5
+ 232 0096 FFF7FEFF 		bl	say_cardinal
+ 233 009a 2C4B     		ldr	r3, .L59+36
+ 234 009c 2C48     		ldr	r0, .L59+40
+ 235 009e 03FB1544 		mls	r4, r3, r5, r4
+ 236 00a2 002C     		cmp	r4, #0
+ 237 00a4 EED0     		beq	.L53
+ 238 00a6 FFF7FEFF 		bl	outnum
+ 239 00aa 632C     		cmp	r4, #99
+ 240 00ac 14DD     		ble	.L52
+ 241 00ae A4F57A73 		sub	r3, r4, #1000
+ 242 00b2 632B     		cmp	r3, #99
+ 243 00b4 02D9     		bls	.L43
+ 244 00b6 B4F5FA6F 		cmp	r4, #2000
+ 245 00ba B3DB     		blt	.L44
+ 246              	.L43:
+ 247 00bc 254D     		ldr	r5, .L59+44
+ 248 00be A5FB0435 		umull	r3, r5, r5, r4
+ 249 00c2 AD09     		lsrs	r5, r5, #6
+ 250 00c4 2846     		mov	r0, r5
+ 251 00c6 FFF7FEFF 		bl	say_cardinal
+ 252 00ca 4FF47A73 		mov	r3, #1000
+ 253 00ce 03FB1544 		mls	r4, r3, r5, r4
+ 254 00d2 1CB3     		cbz	r4, .L58
+ 255 00d4 632C     		cmp	r4, #99
+ 256 00d6 A5DC     		bgt	.L44
+ 257              	.L52:
+ 258 00d8 1F48     		ldr	r0, .L59+48
+ 259 00da FFF7FEFF 		bl	outnum
+ 260 00de B3E7     		b	.L39
+ 261              	.L55:
+ 262 00e0 1E4B     		ldr	r3, .L59+52
+ 263 00e2 650A     		lsrs	r5, r4, #9
+ 264 00e4 A3FB0535 		umull	r3, r5, r3, r5
+ 265 00e8 ED09     		lsrs	r5, r5, #7
+ 266 00ea 2846     		mov	r0, r5
+ 267 00ec FFF7FEFF 		bl	say_cardinal
+ 268 00f0 1B4B     		ldr	r3, .L59+56
+ 269 00f2 1C48     		ldr	r0, .L59+60
+ 270 00f4 03FB1544 		mls	r4, r3, r5, r4
+ 271 00f8 002C     		cmp	r4, #0
+ 272 00fa C3D0     		beq	.L53
+ 273 00fc FFF7FEFF 		bl	outnum
+ 274 0100 632C     		cmp	r4, #99
+ 275 0102 83DC     		bgt	.L37
+ 276 0104 E8E7     		b	.L52
+ 277              	.L54:
+ 278 0106 1848     		ldr	r0, .L59+64
+ 279 0108 6442     		rsbs	r4, r4, #0
+ 280 010a FFF7FEFF 		bl	outnum
+ 281 010e 7AE7     		b	.L36
+ 282              	.L57:
+ 283 0110 164B     		ldr	r3, .L59+68
+ 284 0112 1844     		add	r0, r0, r3
+ 285 0114 BDE83840 		pop	{r3, r4, r5, lr}
+ARM GAS  /tmp/ccdqTu4s.s 			page 7
+
+
+ 286 0118 FFF7FEBF 		b	outnum
+ 287              	.L58:
+ 288 011c 1448     		ldr	r0, .L59+72
+ 289 011e BDE83840 		pop	{r3, r4, r5, lr}
+ 290 0122 FFF7FEBF 		b	outnum
+ 291              	.L60:
+ 292 0126 00BF     		.align	2
+ 293              	.L59:
+ 294 0128 FFC99A3B 		.word	999999999
+ 295 012c 3F420F00 		.word	999999
+ 296 0130 1F85EB51 		.word	1374389535
+ 297 0134 D0020000 		.word	Cardinals
+ 298 0138 60040000 		.word	hahn
+ 299 013c CDCCCCCC 		.word	-858993459
+ 300 0140 30020000 		.word	Twenties
+ 301 0144 A0000000 		.word	Ordinals
+ 302 0148 83DE1B43 		.word	1125899907
+ 303 014c 40420F00 		.word	1000000
+ 304 0150 88040000 		.word	mil
+ 305 0154 D34D6210 		.word	274877907
+ 306 0158 9C040000 		.word	end
+ 307 015c 834B0400 		.word	281475
+ 308 0160 00CA9A3B 		.word	1000000000
+ 309 0164 B0040000 		.word	bihl
+ 310 0168 C4040000 		.word	mayn
+ 311 016c 00000000 		.word	Ord_twenties
+ 312 0170 74040000 		.word	thaw
+ 313              		.size	say_ordinal, .-say_ordinal
+ 314              		.section	.flash,"a"
+ 315              		.align	2
+ 316              		.type	Ord_twenties, %object
+ 317              		.size	Ord_twenties, 160
+ 318              	Ord_twenties:
+ 319 0000 12230320 		.ascii	"\022#\003 \022\000\003\030)\377\000"
+ 319      12000318 
+ 319      29FF00
+ 320 000b 00000000 		.space	9
+ 320      00000000 
+ 320      00
+ 321 0014 180A1200 		.ascii	"\030\012\022\000\003\030)\377\000"
+ 321      031829FF 
+ 321      00
+ 322 001d 00000000 		.space	11
+ 322      00000000 
+ 322      000000
+ 323 0028 16072512 		.ascii	"\026\007%\022\000\003\030)\377\000"
+ 323      00031829 
+ 323      FF00
+ 324 0032 00000000 		.space	10
+ 324      00000000 
+ 324      0000
+ 325 003c 16011612 		.ascii	"\026\001\026\022\000\003\030)\377\000"
+ 325      00031829 
+ 325      FF00
+ 326 0046 00000000 		.space	10
+ 326      00000000 
+ 326      0000
+ARM GAS  /tmp/ccdqTu4s.s 			page 8
+
+
+ 327 0050 1A01141A 		.ascii	"\032\001\024\032\022\000\003\030)\377\000"
+ 327      12000318 
+ 327      29FF00
+ 328 005b 00000000 		.space	9
+ 328      00000000 
+ 328      00
+ 329 0064 1A031703 		.ascii	"\032\003\027\003 \022\000\003\030)\377\000"
+ 329      20120003 
+ 329      1829FF00 
+ 330 0070 00000000 		.space	8
+ 330      00000000 
+ 331 0078 02120003 		.ascii	"\002\022\000\003\030)\377\000"
+ 331      1829FF00 
+ 332 0080 00000000 		.space	12
+ 332      00000000 
+ 332      00000000 
+ 333 008c 200D2012 		.ascii	" \015 \022\000\003\030)\377\000"
+ 333      00031829 
+ 333      FF00
+ 334 0096 00000000 		.space	10
+ 334      00000000 
+ 334      0000
+ 335              		.align	2
+ 336              		.type	Ordinals, %object
+ 337              		.size	Ordinals, 400
+ 338              	Ordinals:
+ 339 00a0 1B012507 		.ascii	"\033\001%\007\003\030)\377\000"
+ 339      031829FF 
+ 339      00
+ 340 00a9 00000000 		.space	11
+ 340      00000000 
+ 340      000000
+ 341 00b4 160A1A12 		.ascii	"\026\012\032\022)\377\000"
+ 341      29FF00
+ 342 00bb 00000000 		.space	13
+ 342      00000000 
+ 342      00000000 
+ 342      00
+ 343 00c8 1A03140C 		.ascii	"\032\003\024\014 \023)\377\000"
+ 343      201329FF 
+ 343      00
+ 344 00d1 00000000 		.space	11
+ 344      00000000 
+ 344      000000
+ 345 00dc 180A1329 		.ascii	"\030\012\023)\377\000"
+ 345      FF00
+ 346 00e2 00000000 		.space	14
+ 346      00000000 
+ 346      00000000 
+ 346      0000
+ 347 00f0 16072518 		.ascii	"\026\007%\030)\377\000"
+ 347      29FF00
+ 348 00f7 00000000 		.space	13
+ 348      00000000 
+ 348      00000000 
+ 348      00
+ 349 0104 16011618 		.ascii	"\026\001\026\030)\377\000"
+ARM GAS  /tmp/ccdqTu4s.s 			page 9
+
+
+ 349      29FF00
+ 350 010b 00000000 		.space	13
+ 350      00000000 
+ 350      00000000 
+ 350      00
+ 351 0118 1A01141A 		.ascii	"\032\001\024\032\030)\377\000"
+ 351      1829FF00 
+ 352 0120 00000000 		.space	12
+ 352      00000000 
+ 352      00000000 
+ 353 012c 1A031703 		.ascii	"\032\003\027\003 \030)\377\000"
+ 353      201829FF 
+ 353      00
+ 354 0135 00000000 		.space	11
+ 354      00000000 
+ 354      000000
+ 355 0140 02121829 		.ascii	"\002\022\030)\377\000"
+ 355      FF00
+ 356 0146 00000000 		.space	14
+ 356      00000000 
+ 356      00000000 
+ 356      0000
+ 357 0154 200D2018 		.ascii	" \015 \030)\377\000"
+ 357      29FF00
+ 358 015b 00000000 		.space	13
+ 358      00000000 
+ 358      00000000 
+ 358      00
+ 359 0168 12032018 		.ascii	"\022\003 \030)\377\000"
+ 359      29FF00
+ 360 016f 00000000 		.space	13
+ 360      00000000 
+ 360      00000000 
+ 360      00
+ 361 017c 00220317 		.ascii	"\000\"\003\027\003 \030)\377\000"
+ 361      03201829 
+ 361      FF00
+ 362 0186 00000000 		.space	10
+ 362      00000000 
+ 362      0000
+ 363 0190 12230322 		.ascii	"\022#\003\"\027\030)\377\000"
+ 363      171829FF 
+ 363      00
+ 364 0199 00000000 		.space	11
+ 364      00000000 
+ 364      000000
+ 365 01a4 180A1200 		.ascii	"\030\012\022\000 \030)\377\000"
+ 365      201829FF 
+ 365      00
+ 366 01ad 00000000 		.space	11
+ 366      00000000 
+ 366      000000
+ 367 01b8 16062512 		.ascii	"\026\006%\022\000 \030)\377\000"
+ 367      00201829 
+ 367      FF00
+ 368 01c2 00000000 		.space	10
+ 368      00000000 
+ARM GAS  /tmp/ccdqTu4s.s 			page 10
+
+
+ 368      0000
+ 369 01cc 16011612 		.ascii	"\026\001\026\022\000 \030)\377\000"
+ 369      00201829 
+ 369      FF00
+ 370 01d6 00000000 		.space	10
+ 370      00000000 
+ 370      0000
+ 371 01e0 1A01141A 		.ascii	"\032\001\024\032\022\000 \030)\377\000"
+ 371      12002018 
+ 371      29FF00
+ 372 01eb 00000000 		.space	9
+ 372      00000000 
+ 372      00
+ 373 01f4 1A031703 		.ascii	"\032\003\027\003 \022\000 \030)\377\000"
+ 373      20120020 
+ 373      1829FF00 
+ 374 0200 00000000 		.space	8
+ 374      00000000 
+ 375 0208 02120020 		.ascii	"\002\022\000 \030)\377\000"
+ 375      1829FF00 
+ 376 0210 00000000 		.space	12
+ 376      00000000 
+ 376      00000000 
+ 377 021c 200D2012 		.ascii	" \015 \022\000 \030)\377\000"
+ 377      00201829 
+ 377      FF00
+ 378 0226 00000000 		.space	10
+ 378      00000000 
+ 378      0000
+ 379              		.align	2
+ 380              		.type	Twenties, %object
+ 381              		.size	Twenties, 160
+ 382              	Twenties:
+ 383 0230 12230320 		.ascii	"\022#\003 \022\000)\377\000"
+ 383      120029FF 
+ 383      00
+ 384 0239 00000000 		.space	11
+ 384      00000000 
+ 384      000000
+ 385 0244 180A1200 		.ascii	"\030\012\022\000)\377\000"
+ 385      29FF00
+ 386 024b 00000000 		.space	13
+ 386      00000000 
+ 386      00000000 
+ 386      00
+ 387 0258 16062512 		.ascii	"\026\006%\022\000)\377\000"
+ 387      0029FF00 
+ 388 0260 00000000 		.space	12
+ 388      00000000 
+ 388      00000000 
+ 389 026c 16011612 		.ascii	"\026\001\026\022\000)\377\000"
+ 389      0029FF00 
+ 390 0274 00000000 		.space	12
+ 390      00000000 
+ 390      00000000 
+ 391 0280 1A01141A 		.ascii	"\032\001\024\032\022\000)\377\000"
+ 391      120029FF 
+ARM GAS  /tmp/ccdqTu4s.s 			page 11
+
+
+ 391      00
+ 392 0289 00000000 		.space	11
+ 392      00000000 
+ 392      000000
+ 393 0294 1A031703 		.ascii	"\032\003\027\003 \022\000)\377\000"
+ 393      20120029 
+ 393      FF00
+ 394 029e 00000000 		.space	10
+ 394      00000000 
+ 394      0000
+ 395 02a8 02120029 		.ascii	"\002\022\000)\377\000"
+ 395      FF00
+ 396 02ae 00000000 		.space	14
+ 396      00000000 
+ 396      00000000 
+ 396      0000
+ 397 02bc 200D2012 		.ascii	" \015 \022\000)\377\000"
+ 397      0029FF00 
+ 398 02c4 00000000 		.space	12
+ 398      00000000 
+ 398      00000000 
+ 399              		.align	2
+ 400              		.type	Cardinals, %object
+ 401              		.size	Cardinals, 400
+ 402              	Cardinals:
+ 403 02d0 1B012507 		.ascii	"\033\001%\007)\377\000"
+ 403      29FF00
+ 404 02d7 00000000 		.space	13
+ 404      00000000 
+ 404      00000000 
+ 404      00
+ 405 02e4 230C2029 		.ascii	"#\014 )\377\000"
+ 405      FF00
+ 406 02ea 00000000 		.space	14
+ 406      00000000 
+ 406      00000000 
+ 406      0000
+ 407 02f8 120929FF 		.ascii	"\022\011)\377\000"
+ 407      00
+ 408 02fd 00000000 		.space	15
+ 408      00000000 
+ 408      00000000 
+ 408      000000
+ 409 030c 18250029 		.ascii	"\030%\000)\377\000"
+ 409      FF00
+ 410 0312 00000000 		.space	14
+ 410      00000000 
+ 410      00000000 
+ 410      0000
+ 411 0320 16072529 		.ascii	"\026\007%)\377\000"
+ 411      FF00
+ 412 0326 00000000 		.space	14
+ 412      00000000 
+ 412      00000000 
+ 412      0000
+ 413 0334 160D1729 		.ascii	"\026\015\027)\377\000"
+ 413      FF00
+ARM GAS  /tmp/ccdqTu4s.s 			page 12
+
+
+ 414 033a 00000000 		.space	14
+ 414      00000000 
+ 414      00000000 
+ 414      0000
+ 415 0348 1A01141A 		.ascii	"\032\001\024\032)\377\000"
+ 415      29FF00
+ 416 034f 00000000 		.space	13
+ 416      00000000 
+ 416      00000000 
+ 416      00
+ 417 035c 1A03170B 		.ascii	"\032\003\027\013 )\377\000"
+ 417      2029FF00 
+ 418 0364 00000000 		.space	12
+ 418      00000000 
+ 418      00000000 
+ 419 0370 021229FF 		.ascii	"\002\022)\377\000"
+ 419      00
+ 420 0375 00000000 		.space	15
+ 420      00000000 
+ 420      00000000 
+ 420      000000
+ 421 0384 200D2029 		.ascii	" \015 )\377\000"
+ 421      FF00
+ 422 038a 00000000 		.space	14
+ 422      00000000 
+ 422      00000000 
+ 422      0000
+ 423 0398 12032029 		.ascii	"\022\003 )\377\000"
+ 423      FF00
+ 424 039e 00000000 		.space	14
+ 424      00000000 
+ 424      00000000 
+ 424      0000
+ 425 03ac 00220317 		.ascii	"\000\"\003\027\013 )\377\000"
+ 425      0B2029FF 
+ 425      00
+ 426 03b5 00000000 		.space	11
+ 426      00000000 
+ 426      000000
+ 427 03c0 12230322 		.ascii	"\022#\003\"\027)\377\000"
+ 427      1729FF00 
+ 428 03c8 00000000 		.space	12
+ 428      00000000 
+ 428      00000000 
+ 429 03d4 180A1200 		.ascii	"\030\012\022\000 )\377\000"
+ 429      2029FF00 
+ 430 03dc 00000000 		.space	12
+ 430      00000000 
+ 430      00000000 
+ 431 03e8 16072512 		.ascii	"\026\007%\022\000 )\377\000"
+ 431      002029FF 
+ 431      00
+ 432 03f1 00000000 		.space	11
+ 432      00000000 
+ 432      000000
+ 433 03fc 16011612 		.ascii	"\026\001\026\022\000 )\377\000"
+ 433      002029FF 
+ARM GAS  /tmp/ccdqTu4s.s 			page 13
+
+
+ 433      00
+ 434 0405 00000000 		.space	11
+ 434      00000000 
+ 434      000000
+ 435 0410 1A01141A 		.ascii	"\032\001\024\032\022\000 )\377\000"
+ 435      12002029 
+ 435      FF00
+ 436 041a 00000000 		.space	10
+ 436      00000000 
+ 436      0000
+ 437 0424 1A031703 		.ascii	"\032\003\027\003 \022\000 )\377\000"
+ 437      20120020 
+ 437      29FF00
+ 438 042f 00000000 		.space	9
+ 438      00000000 
+ 438      00
+ 439 0438 02120020 		.ascii	"\002\022\000 )\377\000"
+ 439      29FF00
+ 440 043f 00000000 		.space	13
+ 440      00000000 
+ 440      00000000 
+ 440      00
+ 441 044c 200D2012 		.ascii	" \015 \022\000 )\377\000"
+ 441      002029FF 
+ 441      00
+ 442 0455 00000000 		.space	11
+ 442      00000000 
+ 442      000000
+ 443              		.align	2
+ 444              		.type	hahn, %object
+ 445              		.size	hahn, 20
+ 446              	hahn:
+ 447 0460 1E0C2013 		.ascii	"\036\014 \023%\003\023)\377\000"
+ 447      25031329 
+ 447      FF00
+ 448 046a 00000000 		.space	10
+ 448      00000000 
+ 448      0000
+ 449              		.align	2
+ 450              		.type	thaw, %object
+ 451              		.size	thaw, 20
+ 452              	thaw:
+ 453 0474 180E1B04 		.ascii	"\030\016\033\004 \023)\377\000"
+ 453      201329FF 
+ 453      00
+ 454 047d 00000000 		.space	11
+ 454      00000000 
+ 454      000000
+ 455              		.align	2
+ 456              		.type	mil, %object
+ 457              		.size	mil, 20
+ 458              	mil:
+ 459 0488 1F012200 		.ascii	"\037\001\"\000\013 \377\000"
+ 459      0B20FF00 
+ 460 0490 00000000 		.space	12
+ 460      00000000 
+ 460      00000000 
+ARM GAS  /tmp/ccdqTu4s.s 			page 14
+
+
+ 461              		.align	2
+ 462              		.type	end, %object
+ 463              		.size	end, 20
+ 464              	end:
+ 465 049c 04201329 		.ascii	"\004 \023)\377\000"
+ 465      FF00
+ 466 04a2 00000000 		.space	14
+ 466      00000000 
+ 466      00000000 
+ 466      0000
+ 467              		.align	2
+ 468              		.type	bihl, %object
+ 469              		.size	bihl, 20
+ 470              	bihl:
+ 471 04b0 11012200 		.ascii	"\021\001\"\000\013 )\377\000"
+ 471      0B2029FF 
+ 471      00
+ 472 04b9 00000000 		.space	11
+ 472      00000000 
+ 472      000000
+ 473              		.align	2
+ 474              		.type	mayn, %object
+ 475              		.size	mayn, 20
+ 476              	mayn:
+ 477 04c4 1F0D200C 		.ascii	"\037\015 \014\032)\377\000"
+ 477      1A29FF00 
+ 478 04cc 00000000 		.space	12
+ 478      00000000 
+ 478      00000000 
+ 479              		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/ccdqTu4s.s 			page 15
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 saynum.c
+     /tmp/ccdqTu4s.s:17     .text.say_cardinal:00000000 $t
+     /tmp/ccdqTu4s.s:24     .text.say_cardinal:00000000 say_cardinal
+     /tmp/ccdqTu4s.s:142    .text.say_cardinal:00000118 $d
+     /tmp/ccdqTu4s.s:402    .flash:000002d0 Cardinals
+     /tmp/ccdqTu4s.s:446    .flash:00000460 hahn
+     /tmp/ccdqTu4s.s:382    .flash:00000230 Twenties
+     /tmp/ccdqTu4s.s:458    .flash:00000488 mil
+     /tmp/ccdqTu4s.s:452    .flash:00000474 thaw
+     /tmp/ccdqTu4s.s:464    .flash:0000049c end
+     /tmp/ccdqTu4s.s:470    .flash:000004b0 bihl
+     /tmp/ccdqTu4s.s:476    .flash:000004c4 mayn
+     /tmp/ccdqTu4s.s:161    .text.say_ordinal:00000000 $t
+     /tmp/ccdqTu4s.s:168    .text.say_ordinal:00000000 say_ordinal
+     /tmp/ccdqTu4s.s:294    .text.say_ordinal:00000128 $d
+     /tmp/ccdqTu4s.s:338    .flash:000000a0 Ordinals
+     /tmp/ccdqTu4s.s:318    .flash:00000000 Ord_twenties
+     /tmp/ccdqTu4s.s:315    .flash:00000000 $d
+
+UNDEFINED SYMBOLS
+outnum

@@ -1,0 +1,62 @@
+ARM GAS  /tmp/ccjRklfA.s 			page 1
+
+
+ GNU assembler version 2.41.0 (arm-none-eabi)
+	 using BFD version (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 2.41.0.20231009.
+ options passed	: -I -I -I -I -I -I -I -EL -march=armv7e-m+fp.dp -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/process.lst 
+ input file    	: /tmp/ccjRklfA.s
+ output file   	: src/process.o
+ target        	: arm-none-eabi
+ time stamp    	: 2025-03-08T13:35:57.000+0100
+
+ARM GAS  /tmp/ccjRklfA.s 			page 2
+
+
+   1              		.cpu cortex-m7
+   2              		.arch armv7e-m
+   3              		.fpu fpv5-d16
+   4              		.eabi_attribute 28, 1
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.file	"process.c"
+  15              		.text
+  16              		.section	.text.processe,"ax",%progbits
+  17              		.align	1
+  18              		.p2align 2,,3
+  19              		.global	processe
+  20              		.syntax unified
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	processe, %function
+  24              	processe:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 002B     		cmp	r3, #0
+  29 0002 07DD     		ble	.L1
+  30 0004 01EB8303 		add	r3, r1, r3, lsl #2
+  31              	.L3:
+  32 0008 51F8040B 		ldr	r0, [r1], #4	@ float
+  33 000c 9942     		cmp	r1, r3
+  34 000e 42F8040B 		str	r0, [r2], #4	@ float
+  35 0012 F9D1     		bne	.L3
+  36              	.L1:
+  37 0014 7047     		bx	lr
+  38              		.size	processe, .-processe
+  39 0016 00BF     		.ident	"GCC: (Arm GNU Toolchain 13.2.rel1 (Build arm-13.7)) 13.2.1 20231009"
+ARM GAS  /tmp/ccjRklfA.s 			page 3
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 process.c
+     /tmp/ccjRklfA.s:17     .text.processe:00000000 $t
+     /tmp/ccjRklfA.s:24     .text.processe:00000000 processe
+
+NO UNDEFINED SYMBOLS

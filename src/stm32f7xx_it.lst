@@ -1,0 +1,240 @@
+ARM GAS  /tmp/ccsHRR5i.s 			page 1
+
+
+ GNU assembler version 2.28 (arm-none-eabi)
+	 using BFD version (2.28-5+9+b3) 2.28.
+ options passed	: -I -I -I -I -I -I -EL -mcpu=cortex-m7 -mthumb-interwork -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/stm32f7xx_it.lst 
+ input file    	: /tmp/ccsHRR5i.s
+ output file   	: src/stm32f7xx_it.o
+ target        	: arm-none-eabi
+ time stamp    	: 2021-01-21T15:18:54.000+0100
+
+ARM GAS  /tmp/ccsHRR5i.s 			page 2
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m7
+   3              		.eabi_attribute 28, 1
+   4              		.fpu fpv5-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"stm32f7xx_it.c"
+  17              		.section	.text.NMI_Handler,"ax",%progbits
+  18              		.align	2
+  19              		.global	NMI_Handler
+  20              		.thumb
+  21              		.thumb_func
+  22              		.type	NMI_Handler, %function
+  23              	NMI_Handler:
+  24              		.fnstart
+  25              	.LFB153:
+  26              		@ args = 0, pretend = 0, frame = 0
+  27              		@ frame_needed = 0, uses_anonymous_args = 0
+  28              		@ link register save eliminated.
+  29 0000 7047     		bx	lr
+  30              		.cantunwind
+  31              		.fnend
+  32              		.size	NMI_Handler, .-NMI_Handler
+  33 0002 00BF     		.section	.text.HardFault_Handler,"ax",%progbits
+  34              		.align	2
+  35              		.global	HardFault_Handler
+  36              		.thumb
+  37              		.thumb_func
+  38              		.type	HardFault_Handler, %function
+  39              	HardFault_Handler:
+  40              		.fnstart
+  41              	.LFB142:
+  42              		@ Volatile: function does not return.
+  43              		@ args = 0, pretend = 0, frame = 0
+  44              		@ frame_needed = 0, uses_anonymous_args = 0
+  45              		@ link register save eliminated.
+  46              	.L3:
+  47 0000 FEE7     		b	.L3
+  48              		.cantunwind
+  49              		.fnend
+  50              		.size	HardFault_Handler, .-HardFault_Handler
+  51 0002 00BF     		.section	.text.MemManage_Handler,"ax",%progbits
+  52              		.align	2
+  53              		.global	MemManage_Handler
+  54              		.thumb
+  55              		.thumb_func
+  56              		.type	MemManage_Handler, %function
+  57              	MemManage_Handler:
+ARM GAS  /tmp/ccsHRR5i.s 			page 3
+
+
+  58              		.fnstart
+  59              	.LFB143:
+  60              		@ Volatile: function does not return.
+  61              		@ args = 0, pretend = 0, frame = 0
+  62              		@ frame_needed = 0, uses_anonymous_args = 0
+  63              		@ link register save eliminated.
+  64              	.L5:
+  65 0000 FEE7     		b	.L5
+  66              		.cantunwind
+  67              		.fnend
+  68              		.size	MemManage_Handler, .-MemManage_Handler
+  69 0002 00BF     		.section	.text.UsageFault_Handler,"ax",%progbits
+  70              		.align	2
+  71              		.global	UsageFault_Handler
+  72              		.thumb
+  73              		.thumb_func
+  74              		.type	UsageFault_Handler, %function
+  75              	UsageFault_Handler:
+  76              		.fnstart
+  77              	.LFB144:
+  78              		@ Volatile: function does not return.
+  79              		@ args = 0, pretend = 0, frame = 0
+  80              		@ frame_needed = 0, uses_anonymous_args = 0
+  81              		@ link register save eliminated.
+  82              	.L7:
+  83 0000 FEE7     		b	.L7
+  84              		.cantunwind
+  85              		.fnend
+  86              		.size	UsageFault_Handler, .-UsageFault_Handler
+  87 0002 00BF     		.section	.text.SysTick_Handler,"ax",%progbits
+  88              		.align	2
+  89              		.global	SysTick_Handler
+  90              		.thumb
+  91              		.thumb_func
+  92              		.type	SysTick_Handler, %function
+  93              	SysTick_Handler:
+  94              		.fnstart
+  95              	.LFB145:
+  96              		@ args = 0, pretend = 0, frame = 0
+  97              		@ frame_needed = 0, uses_anonymous_args = 0
+  98              		@ link register save eliminated.
+  99 0000 FFF7FEBF 		b	HAL_IncTick
+ 100              		.cantunwind
+ 101              		.fnend
+ 102              		.size	SysTick_Handler, .-SysTick_Handler
+ 103              		.section	.text.SVC_Handler,"ax",%progbits
+ 104              		.align	2
+ 105              		.global	SVC_Handler
+ 106              		.thumb
+ 107              		.thumb_func
+ 108              		.type	SVC_Handler, %function
+ 109              	SVC_Handler:
+ 110              		.fnstart
+ 111              	.LFB151:
+ 112              		@ args = 0, pretend = 0, frame = 0
+ 113              		@ frame_needed = 0, uses_anonymous_args = 0
+ 114              		@ link register save eliminated.
+ARM GAS  /tmp/ccsHRR5i.s 			page 4
+
+
+ 115 0000 7047     		bx	lr
+ 116              		.cantunwind
+ 117              		.fnend
+ 118              		.size	SVC_Handler, .-SVC_Handler
+ 119 0002 00BF     		.section	.text.DebugMon_Handler,"ax",%progbits
+ 120              		.align	2
+ 121              		.global	DebugMon_Handler
+ 122              		.thumb
+ 123              		.thumb_func
+ 124              		.type	DebugMon_Handler, %function
+ 125              	DebugMon_Handler:
+ 126              		.fnstart
+ 127              	.LFB147:
+ 128              		@ args = 0, pretend = 0, frame = 0
+ 129              		@ frame_needed = 0, uses_anonymous_args = 0
+ 130              		@ link register save eliminated.
+ 131 0000 7047     		bx	lr
+ 132              		.cantunwind
+ 133              		.fnend
+ 134              		.size	DebugMon_Handler, .-DebugMon_Handler
+ 135 0002 00BF     		.section	.text.DMA2_Stream0_IRQHandler,"ax",%progbits
+ 136              		.align	2
+ 137              		.global	DMA2_Stream0_IRQHandler
+ 138              		.thumb
+ 139              		.thumb_func
+ 140              		.type	DMA2_Stream0_IRQHandler, %function
+ 141              	DMA2_Stream0_IRQHandler:
+ 142              		.fnstart
+ 143              	.LFB148:
+ 144              		@ args = 0, pretend = 0, frame = 0
+ 145              		@ frame_needed = 0, uses_anonymous_args = 0
+ 146              		@ link register save eliminated.
+ 147 0000 0148     		ldr	r0, .L12
+ 148 0002 FFF7FEBF 		b	HAL_DMA_IRQHandler
+ 149              	.L13:
+ 150 0006 00BF     		.align	2
+ 151              	.L12:
+ 152 0008 00000000 		.word	hdma_sai1_b
+ 153              		.cantunwind
+ 154              		.fnend
+ 155              		.size	DMA2_Stream0_IRQHandler, .-DMA2_Stream0_IRQHandler
+ 156              		.section	.text.DMA2_Stream1_IRQHandler,"ax",%progbits
+ 157              		.align	2
+ 158              		.global	DMA2_Stream1_IRQHandler
+ 159              		.thumb
+ 160              		.thumb_func
+ 161              		.type	DMA2_Stream1_IRQHandler, %function
+ 162              	DMA2_Stream1_IRQHandler:
+ 163              		.fnstart
+ 164              	.LFB149:
+ 165              		@ args = 0, pretend = 0, frame = 0
+ 166              		@ frame_needed = 0, uses_anonymous_args = 0
+ 167              		@ link register save eliminated.
+ 168 0000 0148     		ldr	r0, .L15
+ 169 0002 FFF7FEBF 		b	HAL_DMA_IRQHandler
+ 170              	.L16:
+ 171 0006 00BF     		.align	2
+ARM GAS  /tmp/ccsHRR5i.s 			page 5
+
+
+ 172              	.L15:
+ 173 0008 00000000 		.word	hdma_sai1_a
+ 174              		.cantunwind
+ 175              		.fnend
+ 176              		.size	DMA2_Stream1_IRQHandler, .-DMA2_Stream1_IRQHandler
+ 177              		.ident	"GCC: (15:5.4.1+svn241155-1) 5.4.1 20160919"
+ARM GAS  /tmp/ccsHRR5i.s 			page 6
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f7xx_it.c
+     /tmp/ccsHRR5i.s:18     .text.NMI_Handler:0000000000000000 $t
+     /tmp/ccsHRR5i.s:23     .text.NMI_Handler:0000000000000000 NMI_Handler
+      .ARM.exidx.text.NMI_Handler:0000000000000000 $d
+     /tmp/ccsHRR5i.s:34     .text.HardFault_Handler:0000000000000000 $t
+     /tmp/ccsHRR5i.s:39     .text.HardFault_Handler:0000000000000000 HardFault_Handler
+.ARM.exidx.text.HardFault_Handler:0000000000000000 $d
+     /tmp/ccsHRR5i.s:52     .text.MemManage_Handler:0000000000000000 $t
+     /tmp/ccsHRR5i.s:57     .text.MemManage_Handler:0000000000000000 MemManage_Handler
+.ARM.exidx.text.MemManage_Handler:0000000000000000 $d
+     /tmp/ccsHRR5i.s:70     .text.UsageFault_Handler:0000000000000000 $t
+     /tmp/ccsHRR5i.s:75     .text.UsageFault_Handler:0000000000000000 UsageFault_Handler
+.ARM.exidx.text.UsageFault_Handler:0000000000000000 $d
+     /tmp/ccsHRR5i.s:88     .text.SysTick_Handler:0000000000000000 $t
+     /tmp/ccsHRR5i.s:93     .text.SysTick_Handler:0000000000000000 SysTick_Handler
+  .ARM.exidx.text.SysTick_Handler:0000000000000000 $d
+     /tmp/ccsHRR5i.s:104    .text.SVC_Handler:0000000000000000 $t
+     /tmp/ccsHRR5i.s:109    .text.SVC_Handler:0000000000000000 SVC_Handler
+      .ARM.exidx.text.SVC_Handler:0000000000000000 $d
+     /tmp/ccsHRR5i.s:120    .text.DebugMon_Handler:0000000000000000 $t
+     /tmp/ccsHRR5i.s:125    .text.DebugMon_Handler:0000000000000000 DebugMon_Handler
+ .ARM.exidx.text.DebugMon_Handler:0000000000000000 $d
+     /tmp/ccsHRR5i.s:136    .text.DMA2_Stream0_IRQHandler:0000000000000000 $t
+     /tmp/ccsHRR5i.s:141    .text.DMA2_Stream0_IRQHandler:0000000000000000 DMA2_Stream0_IRQHandler
+     /tmp/ccsHRR5i.s:152    .text.DMA2_Stream0_IRQHandler:0000000000000008 $d
+.ARM.exidx.text.DMA2_Stream0_IRQHandler:0000000000000000 $d
+     /tmp/ccsHRR5i.s:157    .text.DMA2_Stream1_IRQHandler:0000000000000000 $t
+     /tmp/ccsHRR5i.s:162    .text.DMA2_Stream1_IRQHandler:0000000000000000 DMA2_Stream1_IRQHandler
+     /tmp/ccsHRR5i.s:173    .text.DMA2_Stream1_IRQHandler:0000000000000008 $d
+.ARM.exidx.text.DMA2_Stream1_IRQHandler:0000000000000000 $d
+
+UNDEFINED SYMBOLS
+HAL_IncTick
+HAL_DMA_IRQHandler
+hdma_sai1_b
+hdma_sai1_a

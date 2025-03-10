@@ -1,0 +1,140 @@
+ARM GAS  /tmp/ccAARg7d.s 			page 1
+
+
+ GNU assembler version 2.28 (arm-none-eabi)
+	 using BFD version (2.28-5+9+b3) 2.28.
+ options passed	: -I -I -I -I -I -I -EL -mcpu=cortex-m7 -mthumb-interwork -mfloat-abi=hard -mfpu=fpv5-d16 -meabi=5 -aghlms=src/stm32f7xx_hal_msp.lst 
+ input file    	: /tmp/ccAARg7d.s
+ output file   	: src/stm32f7xx_hal_msp.o
+ target        	: arm-none-eabi
+ time stamp    	: 2021-01-21T15:18:54.000+0100
+
+ARM GAS  /tmp/ccAARg7d.s 			page 2
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m7
+   3              		.eabi_attribute 28, 1
+   4              		.fpu fpv5-d16
+   5              		.eabi_attribute 20, 1
+   6              		.eabi_attribute 21, 1
+   7              		.eabi_attribute 23, 3
+   8              		.eabi_attribute 24, 1
+   9              		.eabi_attribute 25, 1
+  10              		.eabi_attribute 26, 1
+  11              		.eabi_attribute 30, 2
+  12              		.eabi_attribute 34, 1
+  13              		.eabi_attribute 18, 4
+  14              		.thumb
+  15              		.syntax unified
+  16              		.file	"stm32f7xx_hal_msp.c"
+  17              		.section	.text.HAL_MspInit,"ax",%progbits
+  18              		.align	2
+  19              		.global	HAL_MspInit
+  20              		.thumb
+  21              		.thumb_func
+  22              		.type	HAL_MspInit, %function
+  23              	HAL_MspInit:
+  24              		.fnstart
+  25              	.LFB141:
+  26              		@ args = 0, pretend = 0, frame = 8
+  27              		@ frame_needed = 0, uses_anonymous_args = 0
+  28              		@ link register save eliminated.
+  29 0000 0A4B     		ldr	r3, .L3
+  30 0002 82B0     		sub	sp, sp, #8
+  31 0004 1A6C     		ldr	r2, [r3, #64]
+  32 0006 42F08050 		orr	r0, r2, #268435456
+  33 000a 1864     		str	r0, [r3, #64]
+  34 000c 196C     		ldr	r1, [r3, #64]
+  35 000e 01F08052 		and	r2, r1, #268435456
+  36 0012 0092     		str	r2, [sp]
+  37 0014 009A     		ldr	r2, [sp]
+  38 0016 586C     		ldr	r0, [r3, #68]
+  39 0018 40F48041 		orr	r1, r0, #16384
+  40 001c 5964     		str	r1, [r3, #68]
+  41 001e 5B6C     		ldr	r3, [r3, #68]
+  42 0020 03F48042 		and	r2, r3, #16384
+  43 0024 0192     		str	r2, [sp, #4]
+  44 0026 019B     		ldr	r3, [sp, #4]
+  45 0028 02B0     		add	sp, sp, #8
+  46              		@ sp needed
+  47 002a 7047     		bx	lr
+  48              	.L4:
+  49              		.align	2
+  50              	.L3:
+  51 002c 00380240 		.word	1073887232
+  52              		.cantunwind
+  53              		.fnend
+  54              		.size	HAL_MspInit, .-HAL_MspInit
+  55              		.section	.text.HAL_MspDeInit,"ax",%progbits
+  56              		.align	2
+  57              		.global	HAL_MspDeInit
+ARM GAS  /tmp/ccAARg7d.s 			page 3
+
+
+  58              		.thumb
+  59              		.thumb_func
+  60              		.type	HAL_MspDeInit, %function
+  61              	HAL_MspDeInit:
+  62              		.fnstart
+  63              	.LFB148:
+  64              		@ args = 0, pretend = 0, frame = 0
+  65              		@ frame_needed = 0, uses_anonymous_args = 0
+  66              		@ link register save eliminated.
+  67 0000 7047     		bx	lr
+  68              		.cantunwind
+  69              		.fnend
+  70              		.size	HAL_MspDeInit, .-HAL_MspDeInit
+  71 0002 00BF     		.section	.text._Z15HAL_PPP_MspInitv,"ax",%progbits
+  72              		.align	2
+  73              		.global	_Z15HAL_PPP_MspInitv
+  74              		.thumb
+  75              		.thumb_func
+  76              		.type	_Z15HAL_PPP_MspInitv, %function
+  77              	_Z15HAL_PPP_MspInitv:
+  78              		.fnstart
+  79              	.LFB146:
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              		@ link register save eliminated.
+  83 0000 7047     		bx	lr
+  84              		.cantunwind
+  85              		.fnend
+  86              		.size	_Z15HAL_PPP_MspInitv, .-_Z15HAL_PPP_MspInitv
+  87 0002 00BF     		.section	.text._Z17HAL_PPP_MspDeInitv,"ax",%progbits
+  88              		.align	2
+  89              		.global	_Z17HAL_PPP_MspDeInitv
+  90              		.thumb
+  91              		.thumb_func
+  92              		.type	_Z17HAL_PPP_MspDeInitv, %function
+  93              	_Z17HAL_PPP_MspDeInitv:
+  94              		.fnstart
+  95              	.LFB144:
+  96              		@ args = 0, pretend = 0, frame = 0
+  97              		@ frame_needed = 0, uses_anonymous_args = 0
+  98              		@ link register save eliminated.
+  99 0000 7047     		bx	lr
+ 100              		.cantunwind
+ 101              		.fnend
+ 102              		.size	_Z17HAL_PPP_MspDeInitv, .-_Z17HAL_PPP_MspDeInitv
+ 103 0002 00BF     		.ident	"GCC: (15:5.4.1+svn241155-1) 5.4.1 20160919"
+ARM GAS  /tmp/ccAARg7d.s 			page 4
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 stm32f7xx_hal_msp.c
+     /tmp/ccAARg7d.s:18     .text.HAL_MspInit:0000000000000000 $t
+     /tmp/ccAARg7d.s:23     .text.HAL_MspInit:0000000000000000 HAL_MspInit
+     /tmp/ccAARg7d.s:51     .text.HAL_MspInit:000000000000002c $d
+      .ARM.exidx.text.HAL_MspInit:0000000000000000 $d
+     /tmp/ccAARg7d.s:56     .text.HAL_MspDeInit:0000000000000000 $t
+     /tmp/ccAARg7d.s:61     .text.HAL_MspDeInit:0000000000000000 HAL_MspDeInit
+    .ARM.exidx.text.HAL_MspDeInit:0000000000000000 $d
+     /tmp/ccAARg7d.s:72     .text._Z15HAL_PPP_MspInitv:0000000000000000 $t
+     /tmp/ccAARg7d.s:77     .text._Z15HAL_PPP_MspInitv:0000000000000000 _Z15HAL_PPP_MspInitv
+.ARM.exidx.text._Z15HAL_PPP_MspInitv:0000000000000000 $d
+     /tmp/ccAARg7d.s:88     .text._Z17HAL_PPP_MspDeInitv:0000000000000000 $t
+     /tmp/ccAARg7d.s:93     .text._Z17HAL_PPP_MspDeInitv:0000000000000000 _Z17HAL_PPP_MspDeInitv
+.ARM.exidx.text._Z17HAL_PPP_MspDeInitv:0000000000000000 $d
+
+NO UNDEFINED SYMBOLS

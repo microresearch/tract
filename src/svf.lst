@@ -1,0 +1,468 @@
+ARM GAS  /tmp/ccUsyIBG.s 			page 1
+
+
+ GNU assembler version 2.28 (arm-none-eabi)
+	 using BFD version (2.28-5+9+b3) 2.28.
+ options passed	: -I -I -I -I -I -I -EL -mcpu=cortex-m7 -mfloat-abi=hard -mfpu=fpv5-sp-d16 -meabi=5 -aghlms=src/svf.lst 
+ input file    	: /tmp/ccUsyIBG.s
+ output file   	: src/svf.o
+ target        	: arm-none-eabi
+ time stamp    	: 2021-01-20T16:56:12.000+0100
+
+ARM GAS  /tmp/ccUsyIBG.s 			page 2
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m7
+   3              		.eabi_attribute 27, 1
+   4              		.eabi_attribute 28, 1
+   5              		.fpu fpv5-sp-d16
+   6              		.eabi_attribute 20, 1
+   7              		.eabi_attribute 21, 1
+   8              		.eabi_attribute 23, 3
+   9              		.eabi_attribute 24, 1
+  10              		.eabi_attribute 25, 1
+  11              		.eabi_attribute 26, 1
+  12              		.eabi_attribute 30, 2
+  13              		.eabi_attribute 34, 1
+  14              		.eabi_attribute 18, 4
+  15              		.thumb
+  16              		.syntax unified
+  17              		.file	"svf.c"
+  18              		.section	.text.SVF_Init,"ax",%progbits
+  19              		.align	2
+  20              		.global	SVF_Init
+  21              		.thumb
+  22              		.thumb_func
+  23              		.type	SVF_Init, %function
+  24              	SVF_Init:
+  25              		@ args = 0, pretend = 0, frame = 0
+  26              		@ frame_needed = 0, uses_anonymous_args = 0
+  27              		@ link register save eliminated.
+  28 0000 0023     		movs	r3, #0
+  29 0002 C361     		str	r3, [r0, #28]	@ float
+  30 0004 4361     		str	r3, [r0, #20]	@ float
+  31 0006 8361     		str	r3, [r0, #24]	@ float
+  32 0008 0361     		str	r3, [r0, #16]	@ float
+  33 000a 8360     		str	r3, [r0, #8]	@ float
+  34 000c C360     		str	r3, [r0, #12]	@ float
+  35 000e 7047     		bx	lr
+  36              		.size	SVF_Init, .-SVF_Init
+  37              		.section	.text.SVF_Reset,"ax",%progbits
+  38              		.align	2
+  39              		.global	SVF_Reset
+  40              		.thumb
+  41              		.thumb_func
+  42              		.type	SVF_Reset, %function
+  43              	SVF_Reset:
+  44              		@ args = 0, pretend = 0, frame = 0
+  45              		@ frame_needed = 0, uses_anonymous_args = 0
+  46              		@ link register save eliminated.
+  47 0000 FFF7FEBF 		b	SVF_Init
+  48              		.size	SVF_Reset, .-SVF_Reset
+  49              		.section	.text.BANDS_Init_,"ax",%progbits
+  50              		.align	2
+  51              		.global	BANDS_Init_
+  52              		.thumb
+  53              		.thumb_func
+  54              		.type	BANDS_Init_, %function
+  55              	BANDS_Init_:
+  56              		@ args = 0, pretend = 0, frame = 0
+  57              		@ frame_needed = 0, uses_anonymous_args = 0
+ARM GAS  /tmp/ccUsyIBG.s 			page 3
+
+
+  58 0000 2DE9F041 		push	{r4, r5, r6, r7, r8, lr}
+  59 0004 134D     		ldr	r5, .L10
+  60 0006 0022     		movs	r2, #0
+  61 0008 DFF84CE0 		ldr	lr, .L10+4
+  62 000c 05F58258 		add	r8, r5, #4160
+  63 0010 DFF848C0 		ldr	ip, .L10+8
+  64              	.L5:
+  65 0014 2946     		mov	r1, r5
+  66 0016 7446     		mov	r4, lr
+  67 0018 2B46     		mov	r3, r5
+  68 001a 0020     		movs	r0, #0
+  69 001c C5F800C0 		str	ip, [r5]	@ float
+  70              	.L4:
+  71 0020 0830     		adds	r0, r0, #8
+  72 0022 6768     		ldr	r7, [r4, #4]	@ float
+  73 0024 54F8086B 		ldr	r6, [r4], #8	@ float
+  74 0028 2033     		adds	r3, r3, #32
+  75 002a 1028     		cmp	r0, #16
+  76 002c 1A64     		str	r2, [r3, #64]	@ float
+  77 002e 9A63     		str	r2, [r3, #56]	@ float
+  78 0030 01F12001 		add	r1, r1, #32
+  79 0034 DA63     		str	r2, [r3, #60]	@ float
+  80 0036 5A63     		str	r2, [r3, #52]	@ float
+  81 0038 DA62     		str	r2, [r3, #44]	@ float
+  82 003a 1A63     		str	r2, [r3, #48]	@ float
+  83 003c 8F62     		str	r7, [r1, #40]	@ float
+  84 003e 4E62     		str	r6, [r1, #36]	@ float
+  85 0040 EED1     		bne	.L4
+  86 0042 05F58275 		add	r5, r5, #260
+  87 0046 0EF1100E 		add	lr, lr, #16
+  88 004a 4545     		cmp	r5, r8
+  89 004c E2D1     		bne	.L5
+  90 004e BDE8F081 		pop	{r4, r5, r6, r7, r8, pc}
+  91              	.L11:
+  92 0052 00BF     		.align	2
+  93              	.L10:
+  94 0054 00000000 		.word	Filterbankk
+  95 0058 00000000 		.word	.LANCHOR0
+  96 005c 8FC2753D 		.word	1031127695
+  97              		.size	BANDS_Init_, .-BANDS_Init_
+  98              		.section	.text.runBANDStest_,"ax",%progbits
+  99              		.align	2
+ 100              		.global	runBANDStest_
+ 101              		.thumb
+ 102              		.thumb_func
+ 103              		.type	runBANDStest_, %function
+ 104              	runBANDStest_:
+ 105              		@ args = 0, pretend = 0, frame = 0
+ 106              		@ frame_needed = 0, uses_anonymous_args = 0
+ 107 0000 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, r10, lr}
+ 108 0004 8846     		mov	r8, r1
+ 109 0006 1146     		mov	r1, r2
+ 110 0008 002A     		cmp	r2, #0
+ 111 000a 00F0A580 		beq	.L50
+ 112 000e 551E     		subs	r5, r2, #1
+ 113 0010 4346     		mov	r3, r8
+ 114 0012 0024     		movs	r4, #0
+ARM GAS  /tmp/ccUsyIBG.s 			page 4
+
+
+ 115 0014 EAB2     		uxtb	r2, r5
+ 116 0016 0132     		adds	r2, r2, #1
+ 117 0018 08EB8202 		add	r2, r8, r2, lsl #2
+ 118              	.L15:
+ 119 001c 43F8044B 		str	r4, [r3], #4	@ float
+ 120 0020 9342     		cmp	r3, r2
+ 121 0022 FBD1     		bne	.L15
+ 122              	.L16:
+ 123 0024 EDB2     		uxtb	r5, r5
+ 124 0026 DFF864E2 		ldr	lr, .L53+4
+ 125 002a 4FF07E52 		mov	r2, #1065353216
+ 126 002e 964B     		ldr	r3, .L53
+ 127 0030 0EEB8507 		add	r7, lr, r5, lsl #2
+ 128 0034 0135     		adds	r5, r5, #1
+ 129 0036 DA63     		str	r2, [r3, #60]	@ float
+ 130 0038 9C46     		mov	ip, r3
+ 131 003a 0437     		adds	r7, r7, #4
+ 132 003c 4FEA8509 		lsl	r9, r5, #2
+ 133 0040 0022     		movs	r2, #0
+ 134              	.L14:
+ 135 0042 AEF18405 		sub	r5, lr, #132
+ 136 0046 0346     		mov	r3, r0
+ 137 0048 4FF0000A 		mov	r10, #0
+ 138              	.L30:
+ 139 004c 002A     		cmp	r2, #0
+ 140 004e 00F08680 		beq	.L51
+ 141 0052 0F2A     		cmp	r2, #15
+ 142 0054 00F0C680 		beq	.L52
+ 143 0058 D5ED154A 		vldr.32	s9, [r5, #84]
+ 144 005c 95ED177A 		vldr.32	s14, [r5, #92]
+ 145 0060 95ED165A 		vldr.32	s10, [r5, #88]
+ 146 0064 D5ED187A 		vldr.32	s15, [r5, #96]
+ 147 0068 95ED133A 		vldr.32	s6, [r5, #76]
+ 148 006c D5ED142A 		vldr.32	s5, [r5, #80]
+ 149 0070 D5ED123A 		vldr.32	s7, [r5, #72]
+ 150 0074 D5ED115A 		vldr.32	s11, [r5, #68]
+ 151 0078 0029     		cmp	r1, #0
+ 152 007a 68D0     		beq	.L33
+ 153 007c B1EE632A 		vneg.f32	s4, s7
+ 154 0080 03EB0906 		add	r6, r3, r9
+ 155 0084 7446     		mov	r4, lr
+ 156              	.L25:
+ 157 0086 65EE876A 		vmul.f32	s13, s11, s14
+ 158 008a B3EC014A 		vldmia.32	r3!, {s8}
+ 159 008e 27EE026A 		vmul.f32	s12, s14, s4
+ 160 0092 65EEA71A 		vmul.f32	s3, s11, s15
+ 161 0096 9E42     		cmp	r6, r3
+ 162 0098 74EEA64A 		vadd.f32	s9, s9, s13
+ 163 009c 67EE826A 		vmul.f32	s13, s15, s4
+ 164 00a0 35EE215A 		vadd.f32	s10, s10, s3
+ 165 00a4 25EEA41A 		vmul.f32	s2, s11, s9
+ 166 00a8 65EE851A 		vmul.f32	s3, s11, s10
+ 167 00ac 36EE416A 		vsub.f32	s12, s12, s2
+ 168 00b0 76EEE16A 		vsub.f32	s13, s13, s3
+ 169 00b4 36EE046A 		vadd.f32	s12, s12, s8
+ 170 00b8 36EE077A 		vadd.f32	s14, s12, s14
+ 171 00bc 37EE037A 		vadd.f32	s14, s14, s6
+ARM GAS  /tmp/ccUsyIBG.s 			page 5
+
+
+ 172 00c0 B0EE443A 		vmov.f32	s6, s8
+ 173 00c4 23EE876A 		vmul.f32	s12, s7, s14
+ 174 00c8 76EE866A 		vadd.f32	s13, s13, s12
+ 175 00cc 76EEA77A 		vadd.f32	s15, s13, s15
+ 176 00d0 77EEA27A 		vadd.f32	s15, s15, s5
+ 177 00d4 F0EE462A 		vmov.f32	s5, s12
+ 178 00d8 63EEA76A 		vmul.f32	s13, s7, s15
+ 179 00dc E4EC016A 		vstmia.32	r4!, {s13}
+ 180 00e0 D1D1     		bne	.L25
+ 181              	.L24:
+ 182 00e2 C5ED154A 		vstr.32	s9, [r5, #84]
+ 183 00e6 85ED177A 		vstr.32	s14, [r5, #92]
+ 184 00ea 85ED165A 		vstr.32	s10, [r5, #88]
+ 185 00ee C5ED187A 		vstr.32	s15, [r5, #96]
+ 186 00f2 85ED134A 		vstr.32	s8, [r5, #76]
+ 187 00f6 85ED146A 		vstr.32	s12, [r5, #80]
+ 188              	.L20:
+ 189 00fa 0AF1010A 		add	r10, r10, #1
+ 190 00fe 5FFA8AFA 		uxtb	r10, r10
+ 191 0102 BAF1020F 		cmp	r10, #2
+ 192 0106 1FD1     		bne	.L31
+ 193 0108 89B1     		cbz	r1, .L29
+ 194 010a DCED006A 		vldr.32	s13, [ip]
+ 195 010e 4446     		mov	r4, r8
+ 196 0110 7346     		mov	r3, lr
+ 197              	.L28:
+ 198 0112 D3ED007A 		vldr.32	s15, [r3]
+ 199 0116 66EEA77A 		vmul.f32	s15, s13, s15
+ 200 011a E3EC017A 		vstmia.32	r3!, {s15}
+ 201 011e 9F42     		cmp	r7, r3
+ 202 0120 94ED007A 		vldr.32	s14, [r4]
+ 203 0124 77EE277A 		vadd.f32	s15, s14, s15
+ 204 0128 E4EC017A 		vstmia.32	r4!, {s15}
+ 205 012c F1D1     		bne	.L28
+ 206              	.L29:
+ 207 012e 0132     		adds	r2, r2, #1
+ 208 0130 0EF5827E 		add	lr, lr, #260
+ 209 0134 07F58277 		add	r7, r7, #260
+ 210 0138 0CF1040C 		add	ip, ip, #4
+ 211 013c D2B2     		uxtb	r2, r2
+ 212 013e 102A     		cmp	r2, #16
+ 213 0140 7FF47FAF 		bne	.L14
+ 214 0144 BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, r10, pc}
+ 215              	.L31:
+ 216 0148 2035     		adds	r5, r5, #32
+ 217 014a 7346     		mov	r3, lr
+ 218 014c 7EE7     		b	.L30
+ 219              	.L33:
+ 220 014e B0EE626A 		vmov.f32	s12, s5
+ 221 0152 B0EE434A 		vmov.f32	s8, s6
+ 222 0156 C4E7     		b	.L24
+ 223              	.L50:
+ 224 0158 4FF0FF35 		mov	r5, #-1
+ 225 015c 62E7     		b	.L16
+ 226              	.L51:
+ 227 015e D5ED154A 		vldr.32	s9, [r5, #84]
+ 228 0162 95ED177A 		vldr.32	s14, [r5, #92]
+ARM GAS  /tmp/ccUsyIBG.s 			page 6
+
+
+ 229 0166 95ED165A 		vldr.32	s10, [r5, #88]
+ 230 016a D5ED187A 		vldr.32	s15, [r5, #96]
+ 231 016e 95ED133A 		vldr.32	s6, [r5, #76]
+ 232 0172 D5ED145A 		vldr.32	s11, [r5, #80]
+ 233 0176 95ED124A 		vldr.32	s8, [r5, #72]
+ 234 017a D5ED113A 		vldr.32	s7, [r5, #68]
+ 235 017e 21B3     		cbz	r1, .L18
+ 236 0180 B1EE444A 		vneg.f32	s8, s8
+ 237 0184 7446     		mov	r4, lr
+ 238              	.L19:
+ 239 0186 63EE875A 		vmul.f32	s11, s7, s14
+ 240 018a B3EC013A 		vldmia.32	r3!, {s6}
+ 241 018e 63EEA76A 		vmul.f32	s13, s7, s15
+ 242 0192 27EE046A 		vmul.f32	s12, s14, s8
+ 243 0196 74EEA54A 		vadd.f32	s9, s9, s11
+ 244 019a 35EE265A 		vadd.f32	s10, s10, s13
+ 245 019e 67EE846A 		vmul.f32	s13, s15, s8
+ 246 01a2 63EEA45A 		vmul.f32	s11, s7, s9
+ 247 01a6 63EE852A 		vmul.f32	s5, s7, s10
+ 248 01aa 36EE656A 		vsub.f32	s12, s12, s11
+ 249 01ae 76EEE26A 		vsub.f32	s13, s13, s5
+ 250 01b2 E4EC012A 		vstmia.32	r4!, {s5}
+ 251 01b6 A742     		cmp	r7, r4
+ 252 01b8 36EE036A 		vadd.f32	s12, s12, s6
+ 253 01bc 76EEA56A 		vadd.f32	s13, s13, s11
+ 254 01c0 37EE067A 		vadd.f32	s14, s14, s12
+ 255 01c4 77EEA67A 		vadd.f32	s15, s15, s13
+ 256 01c8 DDD1     		bne	.L19
+ 257              	.L18:
+ 258 01ca C5ED154A 		vstr.32	s9, [r5, #84]
+ 259 01ce 85ED177A 		vstr.32	s14, [r5, #92]
+ 260 01d2 85ED165A 		vstr.32	s10, [r5, #88]
+ 261 01d6 C5ED187A 		vstr.32	s15, [r5, #96]
+ 262 01da 85ED133A 		vstr.32	s6, [r5, #76]
+ 263 01de C5ED145A 		vstr.32	s11, [r5, #80]
+ 264 01e2 8AE7     		b	.L20
+ 265              	.L52:
+ 266 01e4 D5ED153A 		vldr.32	s7, [r5, #84]
+ 267 01e8 D5ED176A 		vldr.32	s13, [r5, #92]
+ 268 01ec 95ED164A 		vldr.32	s8, [r5, #88]
+ 269 01f0 95ED187A 		vldr.32	s14, [r5, #96]
+ 270 01f4 D5ED134A 		vldr.32	s9, [r5, #76]
+ 271 01f8 D5ED147A 		vldr.32	s15, [r5, #80]
+ 272 01fc D5ED122A 		vldr.32	s5, [r5, #72]
+ 273 0200 95ED113A 		vldr.32	s6, [r5, #68]
+ 274 0204 91B3     		cbz	r1, .L22
+ 275 0206 B1EE622A 		vneg.f32	s4, s5
+ 276 020a 03EB0906 		add	r6, r3, r9
+ 277 020e 7446     		mov	r4, lr
+ 278              	.L23:
+ 279 0210 26EE836A 		vmul.f32	s12, s13, s6
+ 280 0214 F3EC014A 		vldmia.32	r3!, {s9}
+ 281 0218 63EE077A 		vmul.f32	s15, s6, s14
+ 282 021c 26EE825A 		vmul.f32	s10, s13, s4
+ 283 0220 B342     		cmp	r3, r6
+ 284 0222 73EE863A 		vadd.f32	s7, s7, s12
+ 285 0226 34EE274A 		vadd.f32	s8, s8, s15
+ARM GAS  /tmp/ccUsyIBG.s 			page 7
+
+
+ 286 022a 67EE025A 		vmul.f32	s11, s14, s4
+ 287 022e 63EE237A 		vmul.f32	s15, s6, s7
+ 288 0232 23EE046A 		vmul.f32	s12, s6, s8
+ 289 0236 35EE675A 		vsub.f32	s10, s10, s15
+ 290 023a 74EEE77A 		vsub.f32	s15, s9, s15
+ 291 023e 75EEC65A 		vsub.f32	s11, s11, s12
+ 292 0242 35EE245A 		vadd.f32	s10, s10, s9
+ 293 0246 76EE856A 		vadd.f32	s13, s13, s10
+ 294 024a 22EEA65A 		vmul.f32	s10, s5, s13
+ 295 024e 77EEC57A 		vsub.f32	s15, s15, s10
+ 296 0252 75EEA75A 		vadd.f32	s11, s11, s15
+ 297 0256 37EEC66A 		vsub.f32	s12, s15, s12
+ 298 025a 37EE257A 		vadd.f32	s14, s14, s11
+ 299 025e 62EE875A 		vmul.f32	s11, s5, s14
+ 300 0262 36EE656A 		vsub.f32	s12, s12, s11
+ 301 0266 A4EC016A 		vstmia.32	r4!, {s12}
+ 302 026a D1D1     		bne	.L23
+ 303              	.L22:
+ 304 026c C5ED153A 		vstr.32	s7, [r5, #84]
+ 305 0270 C5ED176A 		vstr.32	s13, [r5, #92]
+ 306 0274 85ED164A 		vstr.32	s8, [r5, #88]
+ 307 0278 85ED187A 		vstr.32	s14, [r5, #96]
+ 308 027c C5ED134A 		vstr.32	s9, [r5, #76]
+ 309 0280 C5ED147A 		vstr.32	s15, [r5, #80]
+ 310 0284 39E7     		b	.L20
+ 311              	.L54:
+ 312 0286 00BF     		.align	2
+ 313              	.L53:
+ 314 0288 00000000 		.word	.LANCHOR1
+ 315 028c 84000000 		.word	Filterbankk+132
+ 316              		.size	runBANDStest_, .-runBANDStest_
+ 317              		.global	coefficients
+ 318              		.comm	Filterbankk,4420,4
+ 319              		.section	.data.coefficients,"aw",%progbits
+ 320              		.align	2
+ 321              		.set	.LANCHOR0,. + 0
+ 322              		.type	coefficients, %object
+ 323              		.size	coefficients, 256
+ 324              	coefficients:
+ 325 0000 32AAE7BC 		.word	3169298994
+ 326 0004 DA2B1D3C 		.word	1008544730
+ 327 0008 C2AA85BC 		.word	3162876610
+ 328 000c 1A78BC3C 		.word	1018984474
+ 329 0010 4D3D21BD 		.word	3173072205
+ 330 0014 6F2BD23B 		.word	1003629423
+ 331 0018 45DF08BD 		.word	3171475269
+ 332 001c F575B23B 		.word	1001551349
+ 333 0020 EE216BBD 		.word	3177914862
+ 334 0024 9C22193C 		.word	1008280220
+ 335 0028 CE9F47BD 		.word	3175587790
+ 336 002c 1712023C 		.word	1006768663
+ 337 0030 A2A69FBD 		.word	3181356706
+ 338 0034 C0C94F3C 		.word	1011861952
+ 339 0038 119087BD 		.word	3179778065
+ 340 003c 348F303C 		.word	1009815348
+ 341 0040 22FFC0BD 		.word	3183542050
+ 342 0044 95087B3C 		.word	1014696085
+ARM GAS  /tmp/ccUsyIBG.s 			page 8
+
+
+ 343 0048 1AE6A3BD 		.word	3181635098
+ 344 004c 3B60553C 		.word	1012228155
+ 345 0050 180FEABD 		.word	3186233112
+ 346 0054 CF1B983C 		.word	1016601551
+ 347 0058 D9CDC6BD 		.word	3183922649
+ 348 005c 0559813C 		.word	1015109893
+ 349 0060 709B0DBE 		.word	3188562800
+ 350 0064 8DE4B73C 		.word	1018684557
+ 351 0068 789BF0BD 		.word	3186662264
+ 352 006c 50779C3C 		.word	1016887120
+ 353 0070 80442BBE 		.word	3190506624
+ 354 0074 952EDE3C 		.word	1021193877
+ 355 0078 CC8A11BE 		.word	3188820684
+ 356 007c 9D30BD3C 		.word	1019031709
+ 357 0080 E8044FBE 		.word	3192849640
+ 358 0084 C31E063D 		.word	1023811267
+ 359 0088 95FC2FBE 		.word	3190815893
+ 360 008c 13A5E43C 		.word	1021617427
+ 361 0090 40417ABE 		.word	3195683136
+ 362 0094 E1E7213D 		.word	1025632225
+ 363 0098 50D754BE 		.word	3193231184
+ 364 009c 56330A3D 		.word	1024078678
+ 365 00a0 110B97BE 		.word	3197569809
+ 366 00a4 4621433D 		.word	1027809606
+ 367 00a8 718A80BE 		.word	3196095089
+ 368 00ac 22E1263D 		.word	1025958178
+ 369 00b0 AE2EB6BE 		.word	3199610542
+ 370 00b4 9CF06A3D 		.word	1030418588
+ 371 00b8 C52A9BBE 		.word	3197840069
+ 372 00bc 1575493D 		.word	1028224277
+ 373 00c0 FB95DBBE 		.word	3202061819
+ 374 00c4 864F8D3D 		.word	1032671110
+ 375 00c8 563ABBBE 		.word	3199941206
+ 376 00cc 1D3D733D 		.word	1030962461
+ 377 00d0 FF130EBF 		.word	3205370879
+ 378 00d4 E354B63D 		.word	1035359459
+ 379 00d8 63CFF2BE 		.word	3203583843
+ 380 00dc 5D269E3D 		.word	1033774685
+ 381 00e0 57FB4CBF 		.word	3209493335
+ 382 00e4 C601033E 		.word	1040384454
+ 383 00e8 861930BF 		.word	3207600518
+ 384 00ec B922E83D 		.word	1038623417
+ 385 00f0 7B1962BF 		.word	3210877307
+ 386 00f4 5434913E 		.word	1049703508
+ 387 00f8 05457DBF 		.word	3212657925
+ 388 00fc 18EF5B3F 		.word	1062989592
+ 389              		.section	.data.mult_table,"aw",%progbits
+ 390              		.align	2
+ 391              		.set	.LANCHOR1,. + 0
+ 392              		.type	mult_table, %object
+ 393              		.size	mult_table, 64
+ 394              	mult_table:
+ 395 0000 8FC2753D 		.word	1031127695
+ 396 0004 8FC2753D 		.word	1031127695
+ 397 0008 8FC2753D 		.word	1031127695
+ 398 000c 8FC2753D 		.word	1031127695
+ 399 0010 8FC2753D 		.word	1031127695
+ARM GAS  /tmp/ccUsyIBG.s 			page 9
+
+
+ 400 0014 8FC2753D 		.word	1031127695
+ 401 0018 8FC2753D 		.word	1031127695
+ 402 001c 8FC2753D 		.word	1031127695
+ 403 0020 8FC2753D 		.word	1031127695
+ 404 0024 8FC2753D 		.word	1031127695
+ 405 0028 8FC2753D 		.word	1031127695
+ 406 002c 8FC2753D 		.word	1031127695
+ 407 0030 8FC2753D 		.word	1031127695
+ 408 0034 8FC2753D 		.word	1031127695
+ 409 0038 8FC2753D 		.word	1031127695
+ 410 003c 8FC2753D 		.word	1031127695
+ 411              		.ident	"GCC: (15:5.4.1+svn241155-1) 5.4.1 20160919"
+ARM GAS  /tmp/ccUsyIBG.s 			page 10
+
+
+DEFINED SYMBOLS
+                            *ABS*:0000000000000000 svf.c
+     /tmp/ccUsyIBG.s:19     .text.SVF_Init:0000000000000000 $t
+     /tmp/ccUsyIBG.s:24     .text.SVF_Init:0000000000000000 SVF_Init
+     /tmp/ccUsyIBG.s:38     .text.SVF_Reset:0000000000000000 $t
+     /tmp/ccUsyIBG.s:43     .text.SVF_Reset:0000000000000000 SVF_Reset
+     /tmp/ccUsyIBG.s:50     .text.BANDS_Init_:0000000000000000 $t
+     /tmp/ccUsyIBG.s:55     .text.BANDS_Init_:0000000000000000 BANDS_Init_
+     /tmp/ccUsyIBG.s:94     .text.BANDS_Init_:0000000000000054 $d
+                            *COM*:0000000000001144 Filterbankk
+     /tmp/ccUsyIBG.s:99     .text.runBANDStest_:0000000000000000 $t
+     /tmp/ccUsyIBG.s:104    .text.runBANDStest_:0000000000000000 runBANDStest_
+     /tmp/ccUsyIBG.s:314    .text.runBANDStest_:0000000000000288 $d
+     /tmp/ccUsyIBG.s:324    .data.coefficients:0000000000000000 coefficients
+     /tmp/ccUsyIBG.s:320    .data.coefficients:0000000000000000 $d
+     /tmp/ccUsyIBG.s:390    .data.mult_table:0000000000000000 $d
+     /tmp/ccUsyIBG.s:394    .data.mult_table:0000000000000000 mult_table
+
+NO UNDEFINED SYMBOLS

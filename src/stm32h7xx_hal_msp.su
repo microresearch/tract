@@ -1,0 +1,8 @@
+src/stm32h7xx_hal_msp.c:72:6:HAL_ADC_MspInit	48	static
+src/stm32h7xx_hal_msp.c:140:6:HAL_ADC_MspDeInit	0	static
+src/stm32h7xx_hal_msp.c:159:6:HAL_MspInit	8	static
+src/stm32h7xx_hal_msp.c:168:6:HAL_MspDeInit	0	static
+src/stm32h7xx_hal_msp.c:177:6:HAL_PPP_MspInit	0	static
+src/stm32h7xx_hal_msp.c:186:6:HAL_PPP_MspDeInit	0	static
+src/stm32h7xx_hal_msp.c:196:6:HAL_SAI_MspInit	40	static
+src/stm32h7xx_hal_msp.c:251:6:HAL_SAI_MspDeInit	8	static
